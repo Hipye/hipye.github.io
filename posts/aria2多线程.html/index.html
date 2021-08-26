@@ -1,0 +1,569 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="noodp">
+<meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
+<title>Aria2多线程 - 拾集</title><meta name=Description content><meta property="og:title" content="Aria2多线程">
+<meta property="og:description" content="写在前面
+aria2主要功能当然是下载🙂虽然是废话但是既然叫做下载神器它的用处经过网络上各位大神轮番折腾 发掘出很多可以称得上老司机必备的功能。比如BT下载(全称: Bittorrent )/滑稽/
+使用文档
+官方文档(en)">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.omoe.cc/posts/aria2%E5%A4%9A%E7%BA%BF%E7%A8%8B.html/"><meta property="og:image" content="https://www.omoe.cc"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-02-02T16:26:31+00:00">
+<meta property="article:modified_time" content="2021-02-02T16:26:31+00:00">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://www.omoe.cc">
+<meta name=twitter:title content="Aria2多线程">
+<meta name=twitter:description content="写在前面
+aria2主要功能当然是下载🙂虽然是废话但是既然叫做下载神器它的用处经过网络上各位大神轮番折腾 发掘出很多可以称得上老司机必备的功能。比如BT下载(全称: Bittorrent )/滑稽/
+使用文档
+官方文档(en)">
+<meta name=application-name content="Moriz Page">
+<meta name=apple-mobile-web-app-title content="Moriz Page"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://www.omoe.cc/posts/aria2%E5%A4%9A%E7%BA%BF%E7%A8%8B.html/><link rel=prev href=https://www.omoe.cc/posts/linuxdepoly%E8%87%AA%E7%94%A8%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86.html/><link rel=next href=https://www.omoe.cc/posts/centos7%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF.html/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Aria2多线程","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.omoe.cc\/posts\/aria2%E5%A4%9A%E7%BA%BF%E7%A8%8B.html\/"},"image":["https:\/\/www.omoe.cc\/images\/Apple-Devices-Preview.png"],"genre":"posts","wordcount":1941,"url":"https:\/\/www.omoe.cc\/posts\/aria2%E5%A4%9A%E7%BA%BF%E7%A8%8B.html\/","datePublished":"2021-02-02T16:26:31+00:00","dateModified":"2021-02-02T16:26:31+00:00","license":"***","publisher":{"@type":"Organization","name":"moriz","logo":"https:\/\/www.omoe.cc\/images\/avatar.png"},"author":{"@type":"Person","name":"Moriz"},"description":""}</script></head>
+<body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
+<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title=拾集><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span><span id=id-1 class=typeit></span></a>
+</div>
+<div class=menu>
+<div class=menu-inner><a class=menu-item href=/posts/> 所有文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><a class=menu-item href=/categories/documentation/> 文档 </a><a class=menu-item href=/about/> 关于 </a><span class="menu-item delimiter"></span><a href=javascript:void(0); class="menu-item language" title=选择语言>简体中文<i class="fas fa-chevron-right fa-fw"></i>
+<select class=language-select id=language-select-desktop onchange="location=this.value"><option value=/posts/aria2%E5%A4%9A%E7%BA%BF%E7%A8%8B.html/ selected>简体中文</option></select>
+</a><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-desktop>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a>
+</div>
+</div>
+</div>
+</header><header class=mobile id=header-mobile>
+<div class=header-container>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title=拾集><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span><span id=id-2 class=typeit></span></a>
+</div>
+<div class=menu-toggle id=menu-toggle-mobile>
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class=menu id=menu-mobile><div class=search-wrapper>
+<div class="search mobile" id=search-mobile>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-mobile>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</div>
+<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
+取消
+</a>
+</div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/categories/documentation/ title>文档</a><a class=menu-item href=/about/ title>关于</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a><a href=javascript:void(0); class=menu-item title=选择语言>简体中文<i class="fas fa-chevron-right fa-fw"></i>
+<select class=language-select onchange="location=this.value"><option value=/posts/aria2%E5%A4%9A%E7%BA%BF%E7%A8%8B.html/ selected>简体中文</option></select>
+</a></div>
+</div>
+</header>
+<div class="search-dropdown desktop">
+<div id=search-dropdown-desktop></div>
+</div>
+<div class="search-dropdown mobile">
+<div id=search-dropdown-mobile></div>
+</div>
+<main class=main>
+<div class=container>
+<div class=toc id=toc-auto>
+<h2 class=toc-title>目录</h2>
+<div class=toc-content id=toc-content-auto></div>
+</div><article class="page single"><h1 class="single-title animated flipInX">Aria2多线程</h1><div class=post-meta>
+<div class=post-meta-line><span class=post-author><a href=/ title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>Moriz</a></span></div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2021-02-02>2021-02-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1941 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id=/posts/aria2%E5%A4%9A%E7%BA%BF%E7%A8%8B.html/ class=leancloud_visitors data-flag-title=Aria2多线程>
+<i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+</span>&nbsp;</div>
+</div><div class="details toc" id=toc-static kept>
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span>
+</div>
+<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#写在前面>写在前面</a></li>
+</ul>
+</li>
+<li><a href=#编译前注意事项>编译前注意事项</a></li>
+<li><a href=#添加依赖>添加依赖</a></li>
+<li><a href=#源码下载及修改>源码下载及修改</a></li>
+<li><a href=#编译>编译</a></li>
+<li><a href=#创建配置文件>创建配置文件</a></li>
+<li><a href=#创建默认的配置文件etcaria2>创建默认的配置文件<code>/etc/aria2</code></a></li>
+<li><a href=#执行配置文件>执行配置文件</a></li>
+<li><a href=#参考链接>参考链接</a></li>
+</ul>
+</nav></div>
+</div><div class=content id=content><h3 id=写在前面>写在前面</h3>
+<p><strong><del>aria2主要功能当然是下载</del>🙂虽然是废话但是既然叫做下载神器它的用处经过网络上各位大神轮番折腾 发掘出很多可以称得上老司机必备的功能。比如BT下载(全称: <code>Bittorrent</code> )/滑稽/</strong></p>
+<p><em>使用文档</em><br>
+<a href=https://aria2.github.io/ target=_blank rel="noopener noreffer">官方文档(en)</a></p>
+<h2 id=编译前注意事项>编译前注意事项</h2>
+<ol>
+<li>根据系统以及平台的不同，编译的方法大同小异。本教程仅提供linux发行版<strong>Kali liunx</strong>的编译方法。</li>
+<li>因为国内的网络你懂的的某些特殊原因，可能在<a href=https://www.github.com target=_blank rel="noopener noreffer">gayhub</a>上下载作者提供的<a href=https://github.com/aria2/aria2/releases target=_blank rel="noopener noreffer">源码</a>的时候会出现下载失败以及访问龟速还有 404/<code>笑而不语</code>。</li>
+<li>由于不是和我存在同样操作环境下可能会有不同状况发生所以请善用<a href=https://www.google.com target=_blank rel="noopener noreffer">谷歌</a><code>Or</code><a href=https://www.baidu.com target=_blank rel="noopener noreffer">百度</a></li>
+</ol>
+<hr>
+<h2 id=添加依赖>添加依赖</h2>
+<p>先更新一下系统的软件</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>sudo apt-get update &amp;&amp; apt-get upgrade -y
+</code></pre></td></tr></table>
+</div>
+</div><p>安装编译时官方说明需要的依赖</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>sudo apt-get install -y gcc libgnutls28-dev nettle-dev libssh2-1-dev libc-ares-dev libxml2-dev zlib1g-dev wget perl libsqlite3-dev pkg-config libcppunit-dev autoconf automake autotools-dev autopoint libtool git c++11 g++
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>2019.04.06新增ubuntu18.10编译条件</strong></p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>sudo apt-get update &amp;&amp; sudo apt-get install libgnutls28-dev nettle-dev libgmp-dev libssh2-1-dev libc-ares-dev libxml2-dev zlib1g-dev libsqlite3-dev pkg-config libcppunit-dev autoconf automake autotools-dev autopoint libtool git gcc g++ libxml2-dev make quilt
+
+</code></pre></td></tr></table>
+</div>
+</div><p>centos指令如下</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>yum install gcc-g++ gcc -y 
+</code></pre></td></tr></table>
+</div>
+</div><p>下载aria2的源码这里我下载的是<a href=https://github.com/aria2/aria2/archive/release-1.34.0.tar.gz target=_blank rel="noopener noreffer">1.34</a>版本</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>wget https://github.com/aria2/aria2/archive/release-1.34.0.tar.gz
+</code></pre></td></tr></table>
+</div>
+</div><p>解压😳</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>tar zxvf *1.34*.gz
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=源码下载及修改>源码下载及修改</h2>
+<p><strong>接下来就是最重要的步骤了</strong></p>
+<p>先cd进你解压完毕的目录</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>cd *aria2*  
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>修改源码修改线程</strong></p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>cd src 
+</code></pre></td></tr></table>
+</div>
+</div><p>~~OptionHandler* op(newNumberOptionHandler(PREF_MAX_CONNECTION_PER_SERVER, TEXT_MAX_CONNECTION_PER_SERVER, &lsquo;1&rsquo;, 1, 16, &lsquo;x&rsquo;));~~</p>
+<p>修改为</p>
+<p>~~OptionHandler* op(new NumberOptionHandler(PREF_MAX_CONNECTION_PER_SERVER, TEXT_MAX_CONNECTION_PER_SERVER, &lsquo;128&rsquo;, 1, -1, &lsquo;x&rsquo;));~~</p>
+<p><del>PREF_MIN_SPLIT_SIZE, TEXT_MIN_SPLIT_SIZE, &lsquo;20M&rsquo;, 1_m, 1_g, &lsquo;k&rsquo;));</del></p>
+<p>修改为</p>
+<p>PREF_MIN_SPLIT_SIZE, TEXT_MIN_SPLIT_SIZE, &lsquo;4K&rsquo;, 1_k, 1_g, &lsquo;k&rsquo;));</p>
+<p><del>PREF_PIECE_LENGTH, TEXT_PIECE_LENGTH, &lsquo;1M&rsquo;, 1_m, 1_g));</del></p>
+<p>修改为</p>
+<p><del>PREF_PIECE_LENGTH, TEXT_PIECE_LENGTH, &lsquo;4k&rsquo;, 1_k, 1_g));</del></p>
+<hr>
+<p><del>PREF_CONNECT_TIMEOUT, TEXT_CONNECT_TIMEOUT, &lsquo;60&rsquo;, 1, 600));</del></p>
+<p>修改为</p>
+<p><del>PREF_CONNECT_TIMEOUT, TEXT_CONNECT_TIMEOUT, &lsquo;30&rsquo;, 1, 600));</del></p>
+<hr>
+<p><del>new NumberOptionHandler(PREF_RETRY_WAIT, TEXT_RETRY_WAIT, &lsquo;0&rsquo;, 0, 600));</del></p>
+<p>修改为</p>
+<p><del>new NumberOptionHandler(PREF_RETRY_WAIT, TEXT_RETRY_WAIT, &lsquo;2&rsquo;, 0, 600));</del></p>
+<hr>
+<p><del>new NumberOptionHandler(PREF_SPLIT, TEXT_SPLIT, &lsquo;5&rsquo;, 1, -1, &rsquo;s'));</del></p>
+<p>修改为</p>
+<p><del>new NumberOptionHandler(PREF_SPLIT, TEXT_SPLIT, &lsquo;8&rsquo;, 1, -1, &rsquo;s'));</del></p>
+<hr>
+<p><strong>2021.02.02文字替换</strong></p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sed -i <span class=s1>&#39;s/&#34;1&#34;, 1, 16/&#34;128&#34;, 1, -1/g&#39;</span> ./src/OptionHandlerFactory.cc                                                                  sed -i <span class=s1>&#39;s/&#34;20M&#34;, 1_m, 1_g/&#34;4K&#34;, 1_k, 1_g/g&#39;</span> ./src/OptionHandlerFactory.cc
+sed -i <span class=s1>&#39;s/PREF_CONNECT_TIMEOUT, TEXT_CONNECT_TIMEOUT, &#34;60&#34;, 1, 600/PREF_CONNECT_TIMEOUT, TEXT_CONNECT_TIMEOUT, &#34;30&#34;, 1, 600/g&#39;</span> ./src/OptionHandlerFactory.cc                                          sed -i <span class=s1>&#39;s/PREF_PIECE_LENGTH, TEXT_PIECE_LENGTH, &#34;1M&#34;, 1_m, 1_g/PREF_PIECE_LENGTH, TEXT_PIECE_LENGTH, &#34;4k&#34;, 1_k, 1_g/g&#39;</span> ./src/OptionHandlerFactory.cc                                                  sed -i <span class=s1>&#39;s/new NumberOptionHandler(PREF_RETRY_WAIT, TEXT_RETRY_WAIT, &#34;0&#34;, 0, 600/new NumberOptionHandler(PREF_RETRY_WAIT, TEXT_RETRY_WAIT, &#34;2&#34;, 0, 600/g&#39;</span> ./src/OptionHandlerFactory.cc                
+sed -i <span class=s1>&#39;s/new NumberOptionHandler(PREF_SPLIT, TEXT_SPLIT, &#34;5&#34;, 1, -1,/new NumberOptionHandler(PREF_SPLIT, TEXT_SPLIT, &#34;8&#34;, 1, -1,/g&#39;</span> ./src/OptionHandlerFactory.cc
+</code></pre></td></tr></table>
+</div>
+</div><p><del>这里我放出我已经修改好的1.34版本128线程的源码包
+<a href=https://github.com/nkozhi/backups/blob/backup/exaria2.tar.gz target=_blank rel="noopener noreffer">128线程打包[github]</a></del></p>
+<p><code>这里我用的文本编辑器是nano没有则安装即可</code>
+<code>nano保存退出的快捷键为ctrl+x 然后点击Y键即可</code></p>
+<p>代码检查</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>sudo autoreconf -i 
+</code></pre></td></tr></table>
+</div>
+</div><div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>./configure
+</code></pre></td></tr></table>
+</div>
+</div><p><code>再次执行代码检查(若代码检查出现错误则执行此步骤)</code></p>
+<p><strong>以上</strong></p>
+<h2 id=编译>编译</h2>
+<p>安装</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>sudo make &amp;&amp; make install
+</code></pre></td></tr></table>
+</div>
+</div><p>等待10分钟左右输入</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>aria2c -v
+</code></pre></td></tr></table>
+</div>
+</div><p>成功则显示如下</p>
+<p><img class=lazyload src=/svg/loading.min.svg data-src=https://i.loli.net/2019/10/04/ZulcfhyCTBbVe4X.jpg data-srcset="https://i.loli.net/2019/10/04/ZulcfhyCTBbVe4X.jpg, https://i.loli.net/2019/10/04/ZulcfhyCTBbVe4X.jpg 1.5x, https://i.loli.net/2019/10/04/ZulcfhyCTBbVe4X.jpg 2x" data-sizes=auto alt=https://i.loli.net/2019/10/04/ZulcfhyCTBbVe4X.jpg title=https://i.loli.net/2019/10/04/ZulcfhyCTBbVe4X.jpg></p>
+<p>下载文件时只需输入</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>aria2c 下载链接
+</code></pre></td></tr></table>
+</div>
+</div><p>承接上一个关于aria2下载功能。aria2为众多老司机喜欢的一点就是可是利用<code>Bittorrent</code>功能下载种子or磁力😏</p>
+<hr>
+<h2 id=创建配置文件>创建配置文件</h2>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>mkdir /etc/aria2
+touch /etc/aria2/aria2.conf
+vim /etc/aria2/aria2.conf
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id=创建默认的配置文件etcaria2>创建默认的配置文件<code>/etc/aria2</code></h2>
+<p><code>Esc</code>+<code>:</code>+<code>wq</code> 保存退出</p>
+<hr>
+<p><strong>我的配置文件</strong></p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span><span class=lnt>70
+</span><span class=lnt>71
+</span><span class=lnt>72
+</span><span class=lnt>73
+</span><span class=lnt>74
+</span><span class=lnt>75
+</span><span class=lnt>76
+</span><span class=lnt>77
+</span><span class=lnt>78
+</span><span class=lnt>79
+</span><span class=lnt>80
+</span><span class=lnt>81
+</span><span class=lnt>82
+</span><span class=lnt>83
+</span><span class=lnt>84
+</span><span class=lnt>85
+</span><span class=lnt>86
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>##下载默认的目录
+
+#下载的文件存放
+dir=/mnt/sdcard/Downloads
+#开启ipv6
+disable-ipv6=true
+#开启rpc
+enable-rpc=true
+#总是保持连接
+rpc-allow-origin-all=true
+#监听rpc
+rpc-listen-all=true
+#rpc-listen-port=6800
+#断点续传
+continue=true
+#进度保存.默认从session中读取下载的文件
+input-file=/etc/aria2/aria2.session
+save-session=/etc/aria2/aria2.session
+save-session-interval=30
+#最大同时下载量
+#max-concurrent-downloads=3
+# 启用磁盘缓存, 0为禁用缓存, 需1.16以上版本, 默认:16M
+disk-cache=32M
+listen-port=51413
+
+
+## BT/PT下载相关 ##
+
+# 当下载的是一个种子(以.torrent结尾)时, 自动开始BT任务, 默认:true
+follow-torrent=true
+# BT监听端口, 当端口被屏蔽时使用, 默认:6881-6999
+listen-port=51413
+# 单个种子最大连接数, 默认:55
+#bt-max-peers=55
+# 打开DHT功能, PT需要禁用, 默认:true
+enable-dht=true
+# 打开IPv6 DHT功能, PT需要禁用
+enable-dht6=false
+# DHT网络监听端口, 默认:6881-6999
+#dht-listen-port=6881-6999
+# 本地节点查找, PT需要禁用, 默认:false
+bt-enable-lpd=false
+# 种子交换, PT需要禁用, 默认:true
+enable-peer-exchange=false
+# 每个种子限速, 对少种的PT很有用, 默认:50K
+#bt-request-peer-speed-limit=50K
+# 客户端伪装, PT需要
+peer-id-prefix=-TR2770-
+user-agent=Transmission/2.77
+# 当种子的分享率达到这个数时, 自动停止做种, 0为一直做种, 默认:1.0
+seed-ratio=1.0
+# 强制保存会话, 即使任务已经完成, 默认:false
+# 强制保存会话, 即使任务已经完成, 默认:false
+# 较新的版本开启后会在任务完成后依然保留.aria2文件
+#force-save=false
+# BT校验相关, 默认:true
+#bt-hash-check-seed=true
+# 继续之前的BT任务时, 无需再次校验, 默认:false
+bt-seed-unverified=true
+# 保存磁力链接元数据为种子文件(.torrent文件), 默认:false
+bt-save-metadata=true
+# bt-tracker数据来自https://github.com/ngosang/trackerslist/blob/master/trackers_all_udp.txt
+bt-tracker=udp://tracker.coppersurfer.tk:6969/announce,udp://tracker.internetwarriors.net:1337/announce,http://tracker.internetwarriors.net:1337/announce,udp://tracker.opentrackr.org:1337/announce,udp://9.rarbg.to:2710/announce,udp://exodus.desync.com:6969/announce,udp://tracker1.itzmx.com:8080/announce,udp://explodie.org:6969/announce,http://tracker1.itzmx.com:8080/announce,http://explodie.org:6969/announce,udp://ipv4.tracker.harry.lu:80/announce,udp://open.demonii.si:1337/announce,udp://denis.stalker.upeer.me:6969/announce,udp://thetracker.org:80/announce,udp://bt.xxx-tracker.com:2710/announce,udp://tracker.torrent.eu.org:451/announce,udp://tracker.tiny-vps.com:6969/announce,udp://tracker.port443.xyz:6969/announce,udp://retracker.lanta-net.ru:2710/announce,http://tracker.port443.xyz:6969/announce,udp://tracker.uw0.xyz:6969/announce,udp://tracker.iamhansen.xyz:2000/announce,udp://open.stealth.si:80/announce,http://open.acgnxtracker.com:80/announce,udp://zephir.monocul.us:6969/announce,udp://tracker.vanitycore.co:6969/announce,https://tracker.fastdownload.xyz:443/announce,https://opentracker.xyz:443/announce,http://retracker.telecom.by:80/announce,http://opentracker.xyz:80/announce,http://open.trackerlist.xyz:80/announce,udp://tracker.cyberia.is:6969/announce,http://tracker.city9x.com:2710/announce,http://tracker3.itzmx.com:6961/announce,http://torrent.nwps.ws:80/announce,wss://tracker.openwebtorrent.com:443/announce,udp://tracker4.itzmx.com:2710/announce,udp://tracker1.wasabii.com.tw:6969/announce,udp://tracker.swateam.org.uk:2710/announce,udp://tracker.kamigami.org:2710/announce,udp://tracker.filepit.to:6969/announce,udp://tracker.dler.org:6969/announce,udp://torrentclub.tech:6969/announce,udp://pubt.in:2710/announce,udp://bittracker.ru:6969/announce,udp://amigacity.xyz:6969/announce,http://tracker4.itzmx.com:2710/announce,http://tracker2.itzmx.com:6961/announce,http://tracker1.wasabii.com.tw:6969/announce,http://tracker.torrentyorg.pl:80/announce,http://torrentclub.tech:6969/announce,http://t.nyaatracker.com:80/announce,http://retracker.mgts.by:80/announce,http://private.minimafia.nl:443/announce,http://prestige.minimafia.nl:443/announce,http://open.acgtracker.com:1096/announce,http://fxtt.ru:80/announce,http://bittracker.ru:80/announce,http://amigacity.xyz:6969/announce,http://0d.kebhana.mx:443/announce,wss://tracker.fastcast.nz:443/announce,wss://tracker.btorrent.xyz:443/announce,wss://ltrackr.iamhansen.xyz:443/announce,udp://tracker.justseed.it:1337/announce,udp://packages.crunchbangplusplus.org:6969/announce,https://1337.abcvg.info:443/announce,http://tracker.tfile.me:80/announce.php,http://tracker.tfile.me:80/announce,http://tracker.tfile.co:80/announce,http://share.camoe.cn:8080/announce,http://peersteers.org:80/announce
+## 下载连接相关 ##
+
+# 最大同时下载任务数, 运行时可修改, 默认:5
+max-concurrent-downloads=5
+# 同一服务器连接数, 添加时可指定, 默认:1
+max-connection-per-server=10
+# 最小文件分片大小, 添加时可指定, 取值范围1M -1024M, 默认:20M
+# 假定size=10M, 文件为20MiB 则使用两个来源下载; 文件为15MiB 则使用一个来源下载
+min-split-size=10M
+# 单个任务最大线程数, 添加时可指定, 默认:5
+split=10
+# 整体下载速度限制, 运行时可修改, 默认:0
+max-overall-download-limit=0
+# 单个任务下载速度限制, 默认:0
+max-download-limit=0
+# 整体上传速度限制, 运行时可修改, 默认:0
+max-overall-upload-limit=0
+# 单个任务上传速度限制, 默认:0
+max-upload-limit=0
+#运行覆盖已存在文件
+allow-overwrite=true
+#自动重命名
+auto-file-renaming=true
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id=执行配置文件>执行配置文件</h2>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>aria2c --conf-path=/etc/aria2/aria2.conf -D
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=参考链接>参考链接</h2>
+<p><a href=https://www.jianshu.com/p/9fc3250df14f target=_blank rel="noopener noreffer">[Jianshu && 一切不如学习]</a></p><div class="details admonition warning open">
+<div class="details-summary admonition-title">
+<i class="icon fas fa-exclamation-triangle fa-fwwarning"></i>警告<i class="details-icon fas fa-angle-right fa-fw"></i>
+</div>
+<div class=details-content>
+<div class=admonition-content>
+本文最后更新于 <span class=timeago datetime=2021-02-02T16:26:31 title="February 2, 2021">February 2, 2021</span>，文中内容可能已过时，请谨慎使用。</div>
+</div>
+</div></div><div class=post-footer id=post-footer>
+<div class=post-info>
+<div class=post-info-line>
+<div class=post-info-mod>
+<span>更新于 2021-02-02</span>
+</div>
+<div class=post-info-license></div>
+</div>
+<div class=post-info-line>
+<div class=post-info-md><span>
+<a class=link-to-markdown href=/posts/aria2%E5%A4%9A%E7%BA%BF%E7%A8%8B.html/index.md target=_blank>阅读原始文档</a>
+</span></div>
+<div class=post-info-share>
+<span></span>
+</div>
+</div>
+</div>
+<div class=post-info-more>
+<section class=post-tags></section>
+<section>
+<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
+</section>
+</div>
+<div class=post-nav><a href=/posts/linuxdepoly%E8%87%AA%E7%94%A8%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86.html/ class=prev rel=prev title=Linuxdepoly自用命令合集><i class="fas fa-angle-left fa-fw"></i>Linuxdepoly自用命令合集</a>
+<a href=/posts/centos7%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF.html/ class=next rel=next title=Centos7开机自启>Centos7开机自启<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id=comments><div id=valine class=comment></div><noscript>
+Please enable JavaScript to view the comments powered by <a href=https://valine.js.org/>Valine</a>.
+</noscript></div></article></div>
+</main><footer class=footer>
+<div class=footer-container><div class=footer-line>基于<a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>主题
+</div><div class=footer-line></div>
+</div>
+</footer>
+</div>
+<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
+<i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论>
+<i class="fas fa-comment fa-fw"></i>
+</a>
+</div>
+<div class=sidebar_wo>
+<div id=leimu>
+<img src=https://cdn.jsdelivr.net/gh/lewky/lewky.github.io@master/images/b2t/leimuA.png alt=雷姆 onmouseover="this.src='https://cdn.jsdelivr.net/gh/lewky/lewky.github.io@master/images/b2t/leimuB.png'" onmouseout="this.src='https://cdn.jsdelivr.net/gh/lewky/lewky.github.io@master/images/b2t/leimuA.png'" title=回到顶部>
+</div>
+<div class=sidebar_wo id=lamu>
+<img src=https://cdn.jsdelivr.net/gh/lewky/lewky.github.io@master/images/b2t/lamuA.png alt=雷姆 onmouseover="this.src='https://cdn.jsdelivr.net/gh/lewky/lewky.github.io@master/images/b2t/lamuB.png'" onmouseout="this.src='https://cdn.jsdelivr.net/gh/lewky/lewky.github.io@master/images/b2t/lamuA.png'" title=回到底部>
+</div>
+</div><link rel=stylesheet href=/lib/valine/valine.min.css><script type=text/javascript src=https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{valine:{appId:"aKBVUH2Jr9Bu3ySOQJcfjeGy-gzGzoHsz",appKey:"OfFjaY4At138nq0ynrnz8FDm",avatar:"mp",el:"#valine",emojiCDN:"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/",emojiMaps:{100:"1f4af.png",alien:"1f47d.png",anger:"1f4a2.png",angry:"1f620.png",anguished:"1f627.png",astonished:"1f632.png",black_heart:"1f5a4.png",blue_heart:"1f499.png",blush:"1f60a.png",bomb:"1f4a3.png",boom:"1f4a5.png",broken_heart:"1f494.png",brown_heart:"1f90e.png",clown_face:"1f921.png",cold_face:"1f976.png",cold_sweat:"1f630.png",confounded:"1f616.png",confused:"1f615.png",cry:"1f622.png",crying_cat_face:"1f63f.png",cupid:"1f498.png",dash:"1f4a8.png",disappointed:"1f61e.png",disappointed_relieved:"1f625.png",dizzy:"1f4ab.png",dizzy_face:"1f635.png",drooling_face:"1f924.png",exploding_head:"1f92f.png",expressionless:"1f611.png",face_vomiting:"1f92e.png",face_with_cowboy_hat:"1f920.png",face_with_hand_over_mouth:"1f92d.png",face_with_head_bandage:"1f915.png",face_with_monocle:"1f9d0.png",face_with_raised_eyebrow:"1f928.png",face_with_rolling_eyes:"1f644.png",face_with_symbols_on_mouth:"1f92c.png",face_with_thermometer:"1f912.png",fearful:"1f628.png",flushed:"1f633.png",frowning:"1f626.png",ghost:"1f47b.png",gift_heart:"1f49d.png",green_heart:"1f49a.png",grimacing:"1f62c.png",grin:"1f601.png",grinning:"1f600.png",hankey:"1f4a9.png",hear_no_evil:"1f649.png",heart:"2764-fe0f.png",heart_decoration:"1f49f.png",heart_eyes:"1f60d.png",heart_eyes_cat:"1f63b.png",heartbeat:"1f493.png",heartpulse:"1f497.png",heavy_heart_exclamation_mark_ornament:"2763-fe0f.png",hole:"1f573-fe0f.png",hot_face:"1f975.png",hugging_face:"1f917.png",hushed:"1f62f.png",imp:"1f47f.png",innocent:"1f607.png",japanese_goblin:"1f47a.png",japanese_ogre:"1f479.png",joy:"1f602.png",joy_cat:"1f639.png",kiss:"1f48b.png",kissing:"1f617.png",kissing_cat:"1f63d.png",kissing_closed_eyes:"1f61a.png",kissing_heart:"1f618.png",kissing_smiling_eyes:"1f619.png",laughing:"1f606.png",left_speech_bubble:"1f5e8-fe0f.png",love_letter:"1f48c.png",lying_face:"1f925.png",mask:"1f637.png",money_mouth_face:"1f911.png",nauseated_face:"1f922.png",nerd_face:"1f913.png",neutral_face:"1f610.png",no_mouth:"1f636.png",open_mouth:"1f62e.png",orange_heart:"1f9e1.png",partying_face:"1f973.png",pensive:"1f614.png",persevere:"1f623.png",pleading_face:"1f97a.png",pouting_cat:"1f63e.png",purple_heart:"1f49c.png",rage:"1f621.png",relaxed:"263a-fe0f.png",relieved:"1f60c.png",revolving_hearts:"1f49e.png",right_anger_bubble:"1f5ef-fe0f.png",robot_face:"1f916.png",rolling_on_the_floor_laughing:"1f923.png",scream:"1f631.png",scream_cat:"1f640.png",see_no_evil:"1f648.png",shushing_face:"1f92b.png",skull:"1f480.png",skull_and_crossbones:"2620-fe0f.png",sleeping:"1f634.png",sleepy:"1f62a.png",slightly_frowning_face:"1f641.png",slightly_smiling_face:"1f642.png",smile:"1f604.png",smile_cat:"1f638.png",smiley:"1f603.png",smiley_cat:"1f63a.png",smiling_face_with_3_hearts:"1f970.png",smiling_imp:"1f608.png",smirk:"1f60f.png",smirk_cat:"1f63c.png",sneezing_face:"1f927.png",sob:"1f62d.png",space_invader:"1f47e.png",sparkling_heart:"1f496.png",speak_no_evil:"1f64a.png",speech_balloon:"1f4ac.png","star-struck":"1f929.png",stuck_out_tongue:"1f61b.png",stuck_out_tongue_closed_eyes:"1f61d.png",stuck_out_tongue_winking_eye:"1f61c.png",sunglasses:"1f60e.png",sweat:"1f613.png",sweat_drops:"1f4a6.png",sweat_smile:"1f605.png",thinking_face:"1f914.png",thought_balloon:"1f4ad.png",tired_face:"1f62b.png",triumph:"1f624.png",two_hearts:"1f495.png",unamused:"1f612.png",upside_down_face:"1f643.png",weary:"1f629.png",white_frowning_face:"2639-fe0f.png",white_heart:"1f90d.png",wink:"1f609.png",woozy_face:"1f974.png",worried:"1f61f.png",yawning_face:"1f971.png",yellow_heart:"1f49b.png",yum:"1f60b.png",zany_face:"1f92a.png",zipper_mouth_face:"1f910.png",zzz:"1f4a4.png"},enableQQ:!1,highlight:!0,lang:"zh-cn",pageSize:10,placeholder:"你的评论 ...",recordIP:!0,serverURLs:"https://leancloud.hugoloveit.com",visitor:!0}},data:{"id-1":"Moriz Page","id-2":"Moriz Page"},search:{algoliaAppID:"PASDMWALPK",algoliaIndex:"index.zh-cn",algoliaSearchKey:"b42948e51daaa93df92381c8e2ac0f93",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"},typeit:{cursorChar:"|",cursorSpeed:1e3,data:{"id-1":["id-1"],"id-2":["id-2"]},duration:-1,speed:100}}</script><script type=text/javascript src=/js/theme.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js></script>
+<script type=text/javascript src=https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js></script>
+<script type=text/javascript src=https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js></script><script type=text/javascript src=/js/custom.js></script></body>
+</html>

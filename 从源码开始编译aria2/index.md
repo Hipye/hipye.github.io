@@ -28,7 +28,15 @@ sudo apt-get install -y gcc libgnutls28-dev nettle-dev libssh2-1-dev libc-ares-d
 2019.04.06新增ubuntu18.10编译条件
 ```
 sudo apt-get install libgnutls28-dev nettle-dev libgmp-dev libssh2-1-dev libc-ares-dev libxml2-dev zlib1g-dev libsqlite3-dev pkg-config libcppunit-dev autoconf automake autotools-dev autopoint libtool git gcc g++ libxml2-dev make quilt
-
+```
+```
+sudo apt-get install libxml2-dev \
+libcppunit-dev \
+autoconf \
+automake \
+autotools-dev \
+autopoint \
+libtool \
 ```
 
 centos指令如下
@@ -100,7 +108,7 @@ wget https://github.com/aria2/aria2/archive/release-1.36.0.tar.gz
 ```bash
 autoreconf -i
 ```
-修改128线程如下
+修改128线程如下执行即可
 ```
 sed -i 's/"1", 1, 16/"128", 1, -1/g' ./src/OptionHandlerFactory.cc
 sed -i 's/"20M", 1_m, 1_g/"4K", 1_k, 1_g/g' ./src/OptionHandlerFactory.cc
@@ -109,4 +117,16 @@ sed -i 's/PREF_PIECE_LENGTH, TEXT_PIECE_LENGTH, "1M", 1_m, 1_g/PREF_PIECE_LENGTH
 sed -i 's/new NumberOptionHandler(PREF_RETRY_WAIT, TEXT_RETRY_WAIT, "0", 0, 600/new NumberOptionHandler(PREF_RETRY_WAIT, TEXT_RETRY_WAIT, "2", 0, 600/g' ./src/OptionHandlerFactory.cc
 sed -i 's/new NumberOptionHandler(PREF_SPLIT, TEXT_SPLIT, "5", 1, -1,/new NumberOptionHandler(PREF_SPLIT, TEXT_SPLIT, "8", 1, -1,/g' ./src/OptionHandlerFactory.cc
 ```
-
+#### 编译
+```
+./configure --prefix=$PREFIX
+```
+**$PREFIX**是变量 在`.bashrc`下申明 位置自定义推荐在`/usr`下
+```
+make -j12
+```
+**12**是pc的线程数一般是核心数x2
+```
+make install
+```
+安装

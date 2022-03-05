@@ -2,15 +2,22 @@
 
 
 <!--more-->
-### 依赖
+
+#### 切换管理员
 ```
-# 切换管理员
 sudo su -
+```
 
-# 安装 docker-ce
+#### 安装 docker-ce
+```
+curl -fsSL https://get.docker.com | bash -s docker
+```
+##### 国内加速源
+```
 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
-
-# 国内镜像
+```
+##### 国内镜像
+```
 mkdir -p /etc/docker
 cat >/etc/docker/daemon.json << EOF
 {
@@ -20,29 +27,40 @@ cat >/etc/docker/daemon.json << EOF
   ]
 }
 EOF
-
-# 创建 docker 工作组
+```
+#### 创建 docker 工作组   *一般不需要*
 groupadd docker
 
-# 添加用户到 docker 工作组
+#### 添加用户到 docker 工作组
 gpasswd -a ${USER} docker
 
-# 启动 Docker 并加入开机启动项
+#### 启动 Docker 并加入开机启动项
+`重载配置文件`
 systemctl daemon-reload
+`开启docker`
 systemctl enable docker
+`重启docker`
 systemctl restart docker
 
-# 校验 docker
+#### 校验 docker
 docker version
 
-```
-### 安装青龙面板
-```
-# 拉取镜像
-docker pull whyour/qinglong:latest
+#### npm模块安装
+***question***
+<u>Error: Cannot find module 'xxx'</u>
 
-# 启动容器
-## 普通服务器
+```
+docker exec -it qinglong pnpm install crypto-js dotenv got request tough-cookie http-server tunnel ws
+```
+#### 开始安装青龙面板
+##### 拉取镜像
+```
+docker pull whyour/qinglong:latest
+```
+
+##### 启动容器
+#####  普通服务器
+```
 docker run -dit \
   -v $PWD/ql/config:/ql/config \
   -v $PWD/ql/db:/ql/db \
@@ -60,7 +78,9 @@ docker run -dit \
   --hostname qinglong \
   --restart always \
   whyour/qinglong:latest
-## N1 等路由器
+```
+#####   N1 等路由器
+```
 docker run -dit \
   -v $PWD/ql/config:/ql/config \
   -v $PWD/ql/db:/ql/db \
@@ -78,7 +98,9 @@ docker run -dit \
   --hostname qinglong \
   --restart always \
   whyour/qinglong:latest
+```
 ## MacVlan 方式
+```
 docker run -dit \
   --name qinglong \
   --hostname qinglong \
@@ -99,15 +121,16 @@ docker run -dit \
   -e ENABLE_WEB_PANEL=true \
   -e TZ=CST-8 \
   whyour/qinglong:latest
-
-# 修改密码
-## 服务器防火墙放行 5700 端口 (如果是国内云主机，还需要到云服务商安全组 / 外网防火墙处放行 5700 端口)
-## 访问 http://ip:5700 ，使用 admin/adminadmin 登录，网页会提示已初始化密码，使用以下命令获取新密码
-docker exec -it qinglong cat /ql/config/auth.json
-## 登录面板之后修改用户名和密码即可
-
 ```
-### 脚本拉取
+#### 修改密码
+服务器防火墙放行 5700 端口 (如果是国内云主机，还需要到云服务商安全组 / 外网防火墙处放行 5700 端口)
+访问 http://localhost:5700 ，使用 admin/adminadmin 登录，网页会提示已初始化密码，使用以下命令获取新密码
+```
+docker exec -it qinglong cat /ql/config/auth.json
+```
+登录面板之后修改用户名和密码即可
+
+#### 脚本拉取
 ```
 # 进入容器
 docker exec -it qinglong bash
@@ -131,5 +154,4 @@ docker exec -it qinglong notify test test
 docker exec -it qinglong task test.js now
 # 并行执行脚本
 docker exec -it qinglong task test.js conc
-
 ```

@@ -4,25 +4,38 @@
 <!--more-->
 #### 依赖包
 ```
-sudo apt install make gcc bison flex libssl-dev musl-tools python3-pip python-dev libffi-dev libssl-dev libxml2-dev libxslt1-dev libjpeg8-dev zlib1g-dev
+sudo apt install make \
+             gcc \
+             bison \ 
+             flex \
+             libssl-dev \
+             musl-tools \
+             python3-pip \ 
+             python-dev \ 
+             libffi-dev \ 
+             libssl-dev \
+             libxml2-dev \ 
+             libxslt1-dev \
+             libjpeg8-dev \
+             zlib1g-dev
 ```
 
 ```
- export CFLAGS=""
-	export CPPFLAGS=""
-	export LDFLAGS="-L${TERMUX_PREFIX}/lib"
-	export AS=$TERMUX_HOST_PLATFORM-clang
-	export CC=$TERMUX_HOST_PLATFORM-clang
-	export CXX=$TERMUX_HOST_PLATFORM-clang++
-	export CPP=$TERMUX_HOST_PLATFORM-cpp
-	export LD=ld.lld
-	export AR=llvm-ar
-	export OBJCOPY=llvm-objcopy
-	export OBJDUMP=llvm-objdump
-	export RANLIB=llvm-ranlib
-	export READELF=llvm-readelf
-	export STRIP=llvm-strip
-	export NM=llvm-nm
+export CFLAGS=""
+export CPPFLAGS=""
+export LDFLAGS="-L${TERMUX_PREFIX}/lib"
+export AS=$TERMUX_HOST_PLATFORM-clang
+export CC=$TERMUX_HOST_PLATFORM-clang
+export CXX=$TERMUX_HOST_PLATFORM-clang++
+export CPP=$TERMUX_HOST_PLATFORM-cpp
+export LD=ld.lld
+export AR=llvm-ar
+export OBJCOPY=llvm-objcopy
+export OBJDUMP=llvm-objdump
+export RANLIB=llvm-ranlib
+export READELF=llvm-readelf
+export STRIP=llvm-strip
+export NM=llvm-nm
 ```
 
 ```
@@ -72,9 +85,9 @@ g++-10-x86-64-linux-gnux32
 
 ```
 sudo apt install -y gcc-10 \
-gcc-10-arm-linux-gnueabihf \
-gcc-10-aarch64-linux-gnu \
-gcc-10-multilib-arm-linux-gnueabihf \
+             gcc-10-arm-linux-gnueabihf \
+             gcc-10-aarch64-linux-gnu \
+             gcc-10-multilib-arm-linux-gnueabihf
 ```
 `aarch64版本`
 ```bash
@@ -210,10 +223,12 @@ bash <(curl -L -s https://gitee.com/hipye/st/raw/master/morizinstall.sh)
 ```
 sudo apt install dpkg-dev -y
 ```
+```
 yes | $ANDROID_HOME/cmdline-tools/bin/sdkmanager --sdk_root=$ANDROID_HOME --l    icenses
 
 yes | $ANDROID_HOME/cmdline-tools/bin/sdkmanager --sdk_root=$ANDROID_HOME \
-         "platform-tools" \                                                                      "platforms;android-28" \                                                        "platforms;android-24" \    
+         "platform-tools" \                                                                      "platforms;android-28" \                                                        "platforms;android-24" \
+```    
 ```
 ./configure --host=$HOST --build=`dpkg-architecture -qDEB_BUILD_GNU_TYPE` --without-docbook --prefix=$PREFIX --enable-static=yes --enable-shared=no   
 ```   
@@ -227,9 +242,13 @@ PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig/ LD_LIBRARY_PATH=$PREFIX/lib/ CC=$HOST-cla
 PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig/ LD_LIBRARY_PATH=$PREFIX/lib/ CC=$HOST-clang CXX=$HOST-clang++ ./configure --host=$HOST --build=`dpkg-architecture -qDEB_BUILD_GNU_TYPE` --prefix=$PREFIX --enable-static --disable-shared
 ```
 **error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory**
+```
 sudo apt install libncurses5
+```
 **error while loading shared libraries: libc++.so.1: cannot open shared object file: No such file or directory**
+```
 sudo apt-get install libc++1
+```
 ```
 apt-get install -y make binutils autoconf automake autotools-dev libtool pkg-config git curl dpkg-dev autopoint libcppunit-dev libxml2-dev libgcrypt20-dev libc++1 libncurses5 gcc-mingw-w64 lzip
 ```

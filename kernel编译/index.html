@@ -15,7 +15,7 @@
 <meta name=twitter:title content="Kernel编译">
 <meta name=twitter:description content>
 <meta name=application-name content="LoveIt">
-<meta name=apple-mobile-web-app-title content="LoveIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=canonical href=https://www.omoe.cc/kernel%E7%BC%96%E8%AF%91/><link rel=prev href=https://www.omoe.cc/linuxfirefox%E5%AF%BC%E5%85%A5.csv/><link rel=next href=https://www.omoe.cc/emoji-support/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.89b621a9bf174f6453c265bdcf5f2ffe8feb8bf3555ce4432c220058d367643a9e0aae3b0c211fc83b05a5bdc47d2ce47d74361d8a2becb6f76a7df35e3c3def.css integrity="sha512-ibYhqb8XT2RTwmW9z18v/o/ri/NVXORDLCIAWNNnZDqeCq47DCEfyDsFpb3EfSzkfXQ2HYor7Lb3an3zXjw97w=="><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Kernel编译","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.omoe.cc\/kernel%E7%BC%96%E8%AF%91\/"},"image":[{"@type":"ImageObject","url":"https:\/\/www.omoe.cc\/images\/Apple-Devices-Preview.png","width":3200,"height":2048}],"genre":"posts","wordcount":883,"url":"https:\/\/www.omoe.cc\/kernel%E7%BC%96%E8%AF%91\/","datePublished":"2022-03-07T23:19:38+00:00","dateModified":"2022-03-07T23:19:38+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"moriz","logo":{"@type":"ImageObject","url":"https:\/\/www.omoe.cc\/images\/avatar.png","width":528,"height":560}},"author":{"@type":"Person","name":"moriz"},"description":""}</script></head><body header-desktop=fixed header-mobile=fixed><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"auto"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"auto"==="dark")&&document.body.setAttribute("theme","dark")</script>
+<meta name=apple-mobile-web-app-title content="LoveIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=canonical href=https://www.omoe.cc/kernel%E7%BC%96%E8%AF%91/><link rel=prev href=https://www.omoe.cc/linuxfirefox%E5%AF%BC%E5%85%A5.csv/><link rel=next href=https://www.omoe.cc/emoji-support/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.89b621a9bf174f6453c265bdcf5f2ffe8feb8bf3555ce4432c220058d367643a9e0aae3b0c211fc83b05a5bdc47d2ce47d74361d8a2becb6f76a7df35e3c3def.css integrity="sha512-ibYhqb8XT2RTwmW9z18v/o/ri/NVXORDLCIAWNNnZDqeCq47DCEfyDsFpb3EfSzkfXQ2HYor7Lb3an3zXjw97w=="><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Kernel编译","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.omoe.cc\/kernel%E7%BC%96%E8%AF%91\/"},"image":[{"@type":"ImageObject","url":"https:\/\/www.omoe.cc\/images\/Apple-Devices-Preview.png","width":3200,"height":2048}],"genre":"posts","keywords":"Linux, llvm","wordcount":915,"url":"https:\/\/www.omoe.cc\/kernel%E7%BC%96%E8%AF%91\/","datePublished":"2022-03-07T23:19:38+00:00","dateModified":"2022-03-07T23:19:38+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"moriz","logo":{"@type":"ImageObject","url":"https:\/\/www.omoe.cc\/images\/avatar.png","width":528,"height":560}},"author":{"@type":"Person","name":"moriz"},"description":""}</script></head><body header-desktop=fixed header-mobile=fixed><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"auto"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"auto"==="dark")&&document.body.setAttribute("theme","dark")</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
 <div class=header-title>
@@ -42,7 +42,7 @@
 <div id=search-dropdown-mobile></div></div><main class=main>
 <div class=container><div class=toc id=toc-auto>
 <h2 class=toc-title>目录</h2><div class="toc-content always-active" id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animated flipInX">Kernel编译</h1><div class=post-meta>
-<div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>moriz</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2022-03-07>2022-03-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 883 字&nbsp;
+<div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>moriz</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2022-03-07>2022-03-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 915 字&nbsp;
 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div></div><div class="details toc" id=toc-static kept>
 <div class="details-summary toc-title">
 <span>目录</span>
@@ -57,9 +57,35 @@
 <ul>
 <li><a href=#clangllvm工具链>clang/llvm工具链</a></li></ul></li></ul></li></ul></nav></div></div><div class=content id=content><h4 id=依赖包>依赖包</h4><div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
 </span></code></pre></td><td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>sudo apt install make gcc bison flex libssl-dev musl-tools python3-pip python-dev libffi-dev libssl-dev libxml2-dev libxslt1-dev libjpeg8-dev zlib1g-dev
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>sudo apt install make \
+</span></span><span class=line><span class=cl>             gcc \
+</span></span><span class=line><span class=cl>             bison \ 
+</span></span><span class=line><span class=cl>             flex \
+</span></span><span class=line><span class=cl>             libssl-dev \
+</span></span><span class=line><span class=cl>             musl-tools \
+</span></span><span class=line><span class=cl>             python3-pip \ 
+</span></span><span class=line><span class=cl>             python-dev \ 
+</span></span><span class=line><span class=cl>             libffi-dev \ 
+</span></span><span class=line><span class=cl>             libssl-dev \
+</span></span><span class=line><span class=cl>             libxml2-dev \ 
+</span></span><span class=line><span class=cl>             libxslt1-dev \
+</span></span><span class=line><span class=cl>             libjpeg8-dev \
+</span></span><span class=line><span class=cl>             zlib1g-dev
 </span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt> 1
@@ -78,21 +104,21 @@
 </span><span class=lnt>14
 </span><span class=lnt>15
 </span></code></pre></td><td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl> export CFLAGS=&#34;&#34;
-</span></span><span class=line><span class=cl>	export CPPFLAGS=&#34;&#34;
-</span></span><span class=line><span class=cl>	export LDFLAGS=&#34;-L${TERMUX_PREFIX}/lib&#34;
-</span></span><span class=line><span class=cl>	export AS=$TERMUX_HOST_PLATFORM-clang
-</span></span><span class=line><span class=cl>	export CC=$TERMUX_HOST_PLATFORM-clang
-</span></span><span class=line><span class=cl>	export CXX=$TERMUX_HOST_PLATFORM-clang++
-</span></span><span class=line><span class=cl>	export CPP=$TERMUX_HOST_PLATFORM-cpp
-</span></span><span class=line><span class=cl>	export LD=ld.lld
-</span></span><span class=line><span class=cl>	export AR=llvm-ar
-</span></span><span class=line><span class=cl>	export OBJCOPY=llvm-objcopy
-</span></span><span class=line><span class=cl>	export OBJDUMP=llvm-objdump
-</span></span><span class=line><span class=cl>	export RANLIB=llvm-ranlib
-</span></span><span class=line><span class=cl>	export READELF=llvm-readelf
-</span></span><span class=line><span class=cl>	export STRIP=llvm-strip
-</span></span><span class=line><span class=cl>	export NM=llvm-nm
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>export CFLAGS=&#34;&#34;
+</span></span><span class=line><span class=cl>export CPPFLAGS=&#34;&#34;
+</span></span><span class=line><span class=cl>export LDFLAGS=&#34;-L${TERMUX_PREFIX}/lib&#34;
+</span></span><span class=line><span class=cl>export AS=$TERMUX_HOST_PLATFORM-clang
+</span></span><span class=line><span class=cl>export CC=$TERMUX_HOST_PLATFORM-clang
+</span></span><span class=line><span class=cl>export CXX=$TERMUX_HOST_PLATFORM-clang++
+</span></span><span class=line><span class=cl>export CPP=$TERMUX_HOST_PLATFORM-cpp
+</span></span><span class=line><span class=cl>export LD=ld.lld
+</span></span><span class=line><span class=cl>export AR=llvm-ar
+</span></span><span class=line><span class=cl>export OBJCOPY=llvm-objcopy
+</span></span><span class=line><span class=cl>export OBJDUMP=llvm-objdump
+</span></span><span class=line><span class=cl>export RANLIB=llvm-ranlib
+</span></span><span class=line><span class=cl>export READELF=llvm-readelf
+</span></span><span class=line><span class=cl>export STRIP=llvm-strip
+</span></span><span class=line><span class=cl>export NM=llvm-nm
 </span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt> 1
@@ -188,9 +214,9 @@
 </span><span class=lnt>4
 </span></code></pre></td><td class=lntd>
 <pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>sudo apt install -y gcc-10 \
-</span></span><span class=line><span class=cl>gcc-10-arm-linux-gnueabihf \
-</span></span><span class=line><span class=cl>gcc-10-aarch64-linux-gnu \
-</span></span><span class=line><span class=cl>gcc-10-multilib-arm-linux-gnueabihf \
+</span></span><span class=line><span class=cl>             gcc-10-arm-linux-gnueabihf \
+</span></span><span class=line><span class=cl>             gcc-10-aarch64-linux-gnu \
+</span></span><span class=line><span class=cl>             gcc-10-multilib-arm-linux-gnueabihf
 </span></span></code></pre></td></tr></table></div></div><p><code>aarch64版本</code></p><div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
@@ -395,8 +421,18 @@
 <pre tabindex=0 class=chroma><code><span class=lnt>1
 </span></code></pre></td><td class=lntd>
 <pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>sudo apt install dpkg-dev -y
-</span></span></code></pre></td></tr></table></div></div><p>yes | $ANDROID_HOME/cmdline-tools/bin/sdkmanager &ndash;sdk_root=$ANDROID_HOME &ndash;l icenses</p><p>yes | $ANDROID_HOME/cmdline-tools/bin/sdkmanager &ndash;sdk_root=$ANDROID_HOME <br>
-&ldquo;platform-tools&rdquo; \ &ldquo;platforms;android-28&rdquo; \ &ldquo;platforms;android-24&rdquo; \</p><div class=highlight><div class=chroma>
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>yes | $ANDROID_HOME/cmdline-tools/bin/sdkmanager --sdk_root=$ANDROID_HOME --l    icenses
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>yes | $ANDROID_HOME/cmdline-tools/bin/sdkmanager --sdk_root=$ANDROID_HOME \
+</span></span><span class=line><span class=cl>         &#34;platform-tools&#34; \                                                                      &#34;platforms;android-28&#34; \                                                        &#34;platforms;android-24&#34; \
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
 </span></code></pre></td><td class=lntd>
@@ -416,10 +452,17 @@
 <pre tabindex=0 class=chroma><code><span class=lnt>1
 </span></code></pre></td><td class=lntd>
 <pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig/ LD_LIBRARY_PATH=$PREFIX/lib/ CC=$HOST-clang CXX=$HOST-clang++ ./configure --host=$HOST --build=`dpkg-architecture -qDEB_BUILD_GNU_TYPE` --prefix=$PREFIX --enable-static --disable-shared
-</span></span></code></pre></td></tr></table></div></div><p><strong>error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory</strong>
-sudo apt install libncurses5
-<strong>error while loading shared libraries: libc++.so.1: cannot open shared object file: No such file or directory</strong>
-sudo apt-get install libc++1</p><div class=highlight><div class=chroma>
+</span></span></code></pre></td></tr></table></div></div><p><strong>error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory</strong></p><div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>sudo apt install libncurses5
+</span></span></code></pre></td></tr></table></div></div><p><strong>error while loading shared libraries: libc++.so.1: cannot open shared object file: No such file or directory</strong></p><div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>sudo apt-get install libc++1
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
 </span></code></pre></td><td class=lntd>
@@ -453,7 +496,7 @@ sudo apt-get install libc++1</p><div class=highlight><div class=chroma>
 <div class=post-info-md></div><div class=post-info-share>
 <span></span>
 </div></div></div><div class=post-info-more>
-<section class=post-tags></section><section>
+<section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/linux/>Linux</a>,&nbsp;<a href=/tags/llvm/>llvm</a></section><section>
 <span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
 </section></div><div class=post-nav><a href=/linuxfirefox%E5%AF%BC%E5%85%A5.csv/ class=prev rel=prev title=Linuxfirefox导入.CSV><i class="fas fa-angle-left fa-fw"></i>Linuxfirefox导入.CSV</a>
 <a href=/emoji-support/ class=next rel=next title="Emoji 支持">Emoji 支持<i class="fas fa-angle-right fa-fw"></i></a></div></div><div id=comments><div id=disqus_thread class=comment></div><noscript>

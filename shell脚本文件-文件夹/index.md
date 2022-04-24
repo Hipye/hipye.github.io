@@ -17,5 +17,16 @@ fi
 | -s |  检查文件长度| none|
 | -h | 检查文件是否软链接| ln -s生成|
 | -L| 检查文件是否符号链接| none|
-
+#### nodejs安装
+`curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -`
+```
+## Run `sudo apt-get install -y nodejs` to install Node.js 14.x and npm
+## You may also need development tools to build native addons:
+     sudo apt-get install gcc g++ make
+## To install the Yarn package manager, run:
+     curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
+     echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+     sudo apt-get update && sudo apt-get install yarn
+```
 [Tobe ]^(未完待续)
+

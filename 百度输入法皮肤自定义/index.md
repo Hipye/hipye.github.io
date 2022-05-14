@@ -1,5 +1,6 @@
 # 百度输入法皮肤自定义
 
+<!--more-->
 ```
 .
 ├── Info.txt
@@ -10,7 +11,6 @@
 └── token
 3 directories, 3 files
 ```
-<!--more-->
 #### 列表展示
 ```
 .

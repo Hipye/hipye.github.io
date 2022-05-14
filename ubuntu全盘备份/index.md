@@ -1,4 +1,4 @@
-# Ubuntu全盘备份
+# Ubuntu软件配置以及全盘备份
 
 
 <!--more-->
@@ -9,6 +9,10 @@ Errors were encountered while processing:
 
 ```
 sudo apt --fix-broken install
+```
+neovim配色
+```
+:colorscheme $names
 ```
 Linux 系统本身的优越性，系统的备份和还原还是比较容易的
 `df -lh`

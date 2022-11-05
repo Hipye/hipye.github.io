@@ -42,8 +42,7 @@ git clone https://github.com/coolsnowwolf/lede.git
 先编辑基础配置文件
 **feeds.conf.default** 这个文本类似软件包配置
 - [√] kenzo是第三方基础源有想用的软件包
-- [√] small是依赖包必须要添加![文件大小](https://camo.githubusercontent.com/010add610fe6bc2bcde0f75677b7eda2909565fc621def657003dbb5f399c695/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c616e6775616765732f636f64652d73697a652f6b656e7a6f6b382f6f70656e7772742d7061636b616765733f636f6c6f723d626c756576696f6c6574)
-![IMG_20220307_045025](https://moriz-zoom.coding.net/p/page/d/image/git/raw/master/IMG_20220307_045025.jpg)
+- [√] small是依赖包必须要添加
 
 ```
 echo "src-git kenzo https://github.com/kenzok8/openwrt-packages" >> feeds.conf.default
@@ -59,36 +58,40 @@ make menuconfig
 
 前两项的必须选好 第一项是选择cpu的类别 第二项是你的路由型号
 #### dl包
-由于国内的网络环境导致在下载所需软件包时会导致失败这里提供一个国内dl镜像
+~~由于国内的网络环境导致在下载所需软件包时会导致失败这里提供一个国内dl镜像
 [gitee](https://gitee.com/tolqy/openwrt-lede-dl)
 
 #### 修改默认网关地址
 不喜欢路由器的默认地址`192.168.1.1`自己修改
+-
+有多台路由时避免网关重复，这一步多设备必修改。
 ```
 vim package/base-files/files/bin/config_generate
 ```
 
 #### 编译
 ```
-make download -j(nproc) 
-make -j(nproc) V=s 
+make download -j12
+make -j12 V=s 
 ```
+特别提醒 国内特殊的网络条件下在使用`make download`下载依赖包时建议挂上全局避免直接404导致后面编译报error
+-
 编译好的固件在/lede/bin/targets/xxx下
 
 #### 二次编译
 ```
 ./scripts/feeds update -a
- ./scripts/feeds install -a
+./scripts/feeds install -a
  make defconfig
- make -j(nproc) download
- make -j(nproc) V=s
+ make -j12 download
+ make -j12 V=s
  ``` 
 
  第三方编译软件包 [[Lienol/openwrt备份]](https://github.com/OpenWrt-Actions/lienol-openwrt-package)
-
+-
  官方原版 [[openwrt]](https://github.com/openwrt/openwrt)
-
+-
  第三方固件地址国内镜像 [[gitee]](https://gitee.com/qmgta/lede)
-
+-
  利用CI自动构建项目 [[openwrt_Build]](https://github.com/kenzok8/openwrt_Build)
 

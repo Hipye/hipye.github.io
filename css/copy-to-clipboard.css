@@ -1,0 +1,36 @@
+
+.highlight {
+    position: relative;
+}
+
+.highlight pre {
+    padding-right: 10px;
+    background-color:#f8f8f8 !important;
+}
+
+.highlight td:first-child {
+    user-select: none;
+}
+
+.highlight-copy-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    border-radius: 8px;
+    padding: 0 5px 5px 5px;
+    font-size: 0.5em;
+    line-height: 1.8;
+    color: #fff;
+    background-color: #888;
+    min-width: 55px;
+    text-align: center;
+    z-index: 1;
+    transition: .1s;
+    margin: 10px;
+    opacity: 0.5;
+}
+
+.highlight-copy-btn:hover {
+    background-color: #666;
+}

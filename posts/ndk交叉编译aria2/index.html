@@ -1,0 +1,168 @@
+<!doctype html><html lang=zh><meta charset=utf-8><meta name=generator content="Hugo 0.105.0"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name=color-scheme content="light dark"><meta name=supported-color-schemes content="light dark"><link rel=bookmark type=image/x-icon href=images/yibo_1.jpeg><link rel=icon type=image/x-icon href=images/yibo_1.jpeg><link rel="shortcut icon" type=image/x-icon href=images/yibo_1.jpeg><script>var _hmt=_hmt||[];(function(){var e,t=document.createElement("script");t.src="https://hm.baidu.com/hm.js?e5030d0d5c8f146cc58d0a4fe660754f",e=document.getElementsByTagName("script")[0],e.parentNode.insertBefore(t,e)})()</script><title>Ndk交叉编译aria2&nbsp;&ndash;&nbsp;拾集</title><link rel=stylesheet href=/css/core.min.ae9e5febc479f9f69eacf20e7a343d20eb9ea95227e498ba8da9527e35ebbc500c141dabde95f7434b78e0a5a9860f2c.css integrity=sha384-rp5f68R5+faerPIOejQ9IOueqVIn5Ji6jalSfjXrvFAMFB2r3pX3Q0t44KWphg8s><meta name=twitter:card content="summary"><meta name=twitter:title content="Ndk交叉编译aria2"><body><section id=header><div class="header wrap"><span class="header left-side"><a class="site home" href=/><span class="site name">拾集</span></a></span>
+<span class="header right-side"><div class="nav wrap"><nav class=nav><a class="nav item" href=/archives/>归档 </a><a class="nav item" href=/categories/>分类 </a><a class="nav item" href=/tags/>标签</a>
+<a class="nav item" href></a></nav></div></span></div></section><section id=content><div class=article-container><section class="article header"><h1 class="article title">Ndk交叉编译aria2</h1><p class="article date">2022-11-11
+<span class=wordcount>&nbsp;•&nbsp;共&nbsp;1042&nbsp;个字</span><span class=reading-time> • 预计阅读时间 3 分钟</span></p></section><aside id=toc-container class="toc-container wide"><div class=toc><h3>文章目录</h3><div class=inner><ul><li><a href=#%e7%b3%bb%e7%bb%9f%e8%87%aa%e5%b8%a6%e5%b7%a5%e5%85%b7%e6%89%93%e5%8c%85 aria-label=系统自带工具打包>系统自带工具打包</a></li></ul></div></div></aside><article class="article markdown-body"><div><p>交叉编译aria2</p><p>下载交叉编译工具(这里推荐r21e比较稳定且兼容)</p><table><thead><tr><th style=text-align:center>系统版本</th><th style=text-align:center>链接</th><th style=text-align:center>sha1</th></tr></thead><tbody><tr><td style=text-align:center>linux</td><td style=text-align:center><a href=https://dl.google.com/android/repository/android-ndk-r21e-linux-x86_64.zip target=_blank rel="noopener noreferrer">https://dl.google.com/android/repository/android-ndk-r21e-linux-x86_64.zip</a></td><td style=text-align:center>c3ebc83c96a4d7f539bd72c241b2be9dcd29bda9</td></tr><tr><td style=text-align:center>win</td><td style=text-align:center><a href=https://dl.google.com/android/repository/android-ndk-r21e-windows-x86_64.zip target=_blank rel="noopener noreferrer">https://dl.google.com/android/repository/android-ndk-r21e-windows-x86_64.zip</a></td><td style=text-align:center>fc44fea8bb3f5a6789821f40f41dce2d2cd5dc30</td></tr><tr><td style=text-align:center>mac</td><td style=text-align:center><a href=https://dl.google.com/android/repository/android-ndk-r21e-darwin-x86_64.zip target=_blank rel="noopener noreferrer">https://dl.google.com/android/repository/android-ndk-r21e-darwin-x86_64.zip</a></td><td style=text-align:center>3f15c23a1c247ad17c7c271806848dbd40434738</td></tr></tbody></table><p>导入交叉编译工具</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nb>export</span> <span class=nv>PATH</span><span class=o>=</span><span class=nv>$PATH</span>:/opt/android-ndk-r21e/toolchains/llvm/prebuilt/linux-x86_64/bin
+</span></span></code></pre></div><p><code>自带sdk管理器</code>下载</p><pre tabindex=0><code>sdkmanager \
+&#34;platform-tools&#34; \
+&#34;build-tools;28.0.3&#34; \
+&#34;platforms;android-33&#34; \
+&#34;platforms;android-28&#34; \
+&#34;platforms;android-24&#34; \
+&#34;platforms;android-21&#34;
+</code></pre><pre tabindex=0><code>PKG_CONFIG_PATH=/data/data/com.termux/files/usr/lib/pkgconfig/ LD_LIBRARY_PATH=/data/data/com.termux/files/usr/lib 
+export CROSS_COMPILE=armv7a-linux-androideabi- --prefix=/data/data/com.termux/files/usr android
+</code></pre><p>交叉编译<code>openssl</code>lib库</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nv>CXX</span><span class=o>=</span>aarch64-linux-android29-clang++ <span class=nv>CC</span><span class=o>=</span>aarch64-linux-android29-clang <span class=nv>AR</span><span class=o>=</span>aarch64-linux-android-ar <span class=nv>LD</span><span class=o>=</span>aarch64-linux-android-ld
+</span></span><span class=line><span class=cl> ./Configure android-arm64 -D__ANDROID_API__<span class=o>=</span><span class=m>21</span> --prefix<span class=o>=</span>/data/data/com.termux/files/usr
+</span></span></code></pre></div><p><code>zlib</code>静态库文件</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nv>PKG_CONFIG_PATH</span><span class=o>=</span>/data/data/com.termux/files/usr/lib/pkgconfig/ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>LD_LIBRARY_PATH</span><span class=o>=</span>/data/data/com.termux/files/usr/lib/ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>CXX</span><span class=o>=</span>aarch64-linux-android29-clang++ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>CC</span><span class=o>=</span>aarch64-linux-android29-clang <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>AR</span><span class=o>=</span>aarch64-linux-android-ar <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>RANLIB</span><span class=o>=</span>aarch64-linux-android-ranlib <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>./configure --prefix<span class=o>=</span>/data/data/com.termux/files/usr --static
+</span></span></code></pre></div><p><code>expat</code>静态库</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nv>PKG_CONFIG_PATH</span><span class=o>=</span>/data/data/com.termux/files/usr/lib/pkgconfig/ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>LD_LIBRARY_PATH</span><span class=o>=</span>/data/data/com.termux/files/usr/lib/ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>CXX</span><span class=o>=</span>aarch64-linux-android29-clang++ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>CC</span><span class=o>=</span>aarch64-linux-android29-clang <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>AR</span><span class=o>=</span>aarch64-linux-android-ar <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>RANLIB</span><span class=o>=</span>aarch64-linux-android-ranlib <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>./configure <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--host<span class=o>=</span>aarch64-linux-android <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--prefix<span class=o>=</span>/data/data/com.termux/files/usr <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--build<span class=o>=</span><span class=sb>`</span>dpkg-architecture -qDEB_BUILD_GNU_TYPE<span class=sb>`</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--enable-static<span class=o>=</span>yes <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--enable-shared<span class=o>=</span>no
+</span></span></code></pre></div><p><code>c-ares</code>静态库</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nv>PKG_CONFIG_PATH</span><span class=o>=</span>/data/data/com.termux/files/usr/lib/pkgconfig/ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>LD_LIBRARY_PATH</span><span class=o>=</span>/data/data/com.termux/files/usr/lib/ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>CXX</span><span class=o>=</span>aarch64-linux-android29-clang++ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>CC</span><span class=o>=</span>aarch64-linux-android29-clang <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>AR</span><span class=o>=</span>aarch64-linux-android-ar <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>RANLIB</span><span class=o>=</span>aarch64-linux-android-ranlib <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>./configure <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--host<span class=o>=</span>aarch64-linux-android <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--prefix<span class=o>=</span>/data/data/com.termux/files/usr <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--build<span class=o>=</span><span class=sb>`</span>dpkg-architecture -qDEB_BUILD_GNU_TYPE<span class=sb>`</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--enable-static <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--disable-shared
+</span></span></code></pre></div><p><code>openssl</code>静态库</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nv>PKG_CONFIG_PATH</span><span class=o>=</span>/data/data/com.termux/files/usr/lib/pkgconfig/ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>LD_LIBRARY_PATH</span><span class=o>=</span>/data/data/com.termux/files/usr/lib/ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>CXX</span><span class=o>=</span>aarch64-linux-android29-clang++ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>CC</span><span class=o>=</span>aarch64-linux-android29-clang <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>AR</span><span class=o>=</span>aarch64-linux-android-ar <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>RANLIB</span><span class=o>=</span>aarch64-linux-android-ranlib <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>./Configure <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>android-arm64 -march<span class=o>=</span>armv8-a -mtune<span class=o>=</span>cortex-a53 <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--prefix<span class=o>=</span>/data/data/com.termux/files/usr <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>shared zlib zlib-dynamic -D_GNU_SOURCE -D_BSD_SOURCE <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--with-zlib-lib<span class=o>=</span>/data/data/com.termux/files/usr/lib <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--with-zlib-include<span class=o>=</span>/data/data/com.termux/files/usr/include
+</span></span></code></pre></div><p><code>libssh2</code>静态库</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nv>PKG_CONFIG_PATH</span><span class=o>=</span>/data/data/com.termux/files/usr/lib/pkgconfig/ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>LD_LIBRARY_PATH</span><span class=o>=</span>/data/data/com.termux/files/usr/lib/ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>CXX</span><span class=o>=</span>aarch64-linux-android29-clang++ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>CC</span><span class=o>=</span>aarch64-linux-android29-clang <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>AR</span><span class=o>=</span>aarch64-linux-android-ar <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>RANLIB</span><span class=o>=</span>aarch64-linux-android-ranlib <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>./configure <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>CPPFLAGS</span><span class=o>=</span><span class=s2>&#34;-I,/data/data/com.termux/files/usr/include&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>LDFLAGS</span><span class=o>=</span><span class=s2>&#34;-Wl,-rpath-link,/data/data/com.termux/files/usr/lib&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--prefix<span class=o>=</span><span class=s2>&#34;/data/data/com.termux/files/usr&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--with-libssl-prefix<span class=o>=</span>/data/data/com.termux/files/usr <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--with-libz-prefix<span class=o>=</span>/data/data/com.termux/files/usr <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--host<span class=o>=</span>aarch64-linux-android
+</span></span></code></pre></div><p><code>sqlite</code>静态库</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nv>PKG_CONFIG_PATH</span><span class=o>=</span>/data/data/com.termux/files/usr/lib/pkgconfig/ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>LD_LIBRARY_PATH</span><span class=o>=</span>/data/data/com.termux/files/usr/lib/ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>CXX</span><span class=o>=</span>aarch64-linux-android29-clang++ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>CC</span><span class=o>=</span>aarch64-linux-android29-clang <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>AR</span><span class=o>=</span>aarch64-linux-android-ar <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>RANLIB</span><span class=o>=</span>aarch64-linux-android-ranlib <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>./configure --host<span class=o>=</span>aarch64-linux-android <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--prefix<span class=o>=</span>/data/data/com.termux/files/usr/ --enable-static <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--enable-shared <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--build<span class=o>=</span><span class=sb>`</span>dpkg-architecture -qDEB_BUILD_GNU_TYPE<span class=sb>`</span>
+</span></span></code></pre></div><p>在编译 aria2时因为1.36相比1.35有修改所以必须修改到源码部分才能顺利编译</p><p><strong>这一步必须↓操作，不然进行<code>ARIA2_STATIC=yes</code>链接会失败</strong></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sed -i <span class=s1>&#39;s|-lrt||g;s|-lpthread||g&#39;</span> <span class=k>$(</span>grep -rEl <span class=s1>&#39;\-lrt|\-lpthread&#39;</span> .<span class=k>)</span>
+</span></span><span class=line><span class=cl>sed -i <span class=s1>&#39;s|timegm(|timegm_(|g&#39;</span> <span class=k>$(</span>grep -rl <span class=s1>&#39;timegm(&#39;</span> .<span class=k>)</span>
+</span></span></code></pre></div><p>开始编译</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nv>PKG_CONFIG_PATH</span><span class=o>=</span>/data/data/com.termux/files/usr/lib/pkgconfig/ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>LD_LIBRARY_PATH</span><span class=o>=</span>/data/data/com.termux/files/usr/lib/ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>CXX</span><span class=o>=</span>aarch64-linux-android29-clang++ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>CC</span><span class=o>=</span>aarch64-linux-android29-clang <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>AR</span><span class=o>=</span>aarch64-linux-android-ar <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>RANLIB</span><span class=o>=</span>aarch64-linux-android-ranlib <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>./configure <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--host<span class=o>=</span>aarch64-linux-android <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--build<span class=o>=</span><span class=sb>`</span>dpkg-architecture -qDEB_BUILD_GNU_TYPE<span class=sb>`</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--prefix<span class=o>=</span>/data/data/com.termux/files/usr/ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--disable-nls <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--without-gnutls <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--with-openssl <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--without-libxml2 <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--with-libz --with-libz-prefix<span class=o>=</span>/data/data/com.termux/files/usr/ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--with-libexpat --with-libexpat-prefix<span class=o>=</span>/data/data/com.termux/files/usr/ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--with-slite3 --with-sqlite3-prefix<span class=o>=</span>/data/data/com.termux/files/usr/ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--with-libcares --with-libcares-prefix<span class=o>=</span>/data/data/com.termux/files/usr/ <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>--with-ca-bundle<span class=o>=</span><span class=s1>&#39;/data/data/com.termux/files/usr/ssl/certs/ca-certificates.crt&#39;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>LDFLAGS</span><span class=o>=</span><span class=s2>&#34;-L/data/data/com.termux/files/usr/lib&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>PKG_CONFIG_PATH</span><span class=o>=</span><span class=s2>&#34;/data/data/com.termux/files/usr/lib/pkgconfig&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span><span class=nv>ARIA2_STATIC</span><span class=o>=</span>yes
+</span></span></code></pre></div><p><code>aria2编译</code></p><h3 id=系统自带工具打包>系统自带工具打包</h3><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo checkinstall -D --install<span class=o>=</span>no
+</span></span></code></pre></div><p>打包过程中提示</p><pre tabindex=0><code>The package documentation directory ./doc-pak does not exist.
+Should I create a default set of package docs?  [y]:n #不需要创建doc文档
+</code></pre><pre tabindex=0><code>0 -  Maintainer: [ root@DESKTOP-U5H0M22 ]#编译设备
+1 -  Summary: [ moriz build aria2 ]#自定义信息
+2 -  Name:    [ aria2 ]#文件名&amp;卸载用
+3 -  Version: [ 1.36.0 ]#版本
+4 -  Release: [ 1 ]#发布
+5 -  License: [ GPL ]#协议
+6 -  Group:   [ checkinstall ]#可忽略
+7 -  Architecture: [ aarch64 ]#编译目标的cpu架构
+8 -  Source location: [ aria2-release-1.36.0 ]#可忽略
+9 -  Alternate source location: [  ]#可忽略
+10 - Requires: [ libc++, c-ares, openssl, libxml2, zlib ]#软件所需依赖包
+11 - Recommends: [  ]#可忽略
+12 - Suggests: [  ]#可忽略
+13 - Provides: [ aria2-release ]#可忽略
+14 - Conflicts: [  ]#可忽略
+15 - Replaces: [  ]#可忽略
+</code></pre><p><font color=#C12414>注意选项7必须修改目标设备的cpu架构</font>
+成功后显示内容如下，文件所在文件夹和安装过程提示，后面安装过程略过
+新建文件夹解包</p><pre tabindex=0><code>dpkg-deb -R xxxxx.deb .
+#非必须
+</code></pre><p>重新打包<code>命令不一样</code></p><pre tabindex=0><code>dpkg -b xxx new_deb_name.deb
+#非必须
+</code></pre><pre tabindex=0><code>**********************************************************************
+
+ Done. The new package has been saved to
+
+ $HOME/aria2-release-1.36.0/aria2-release_1.36.0-1_aarch64.deb
+ You can install it in your system anytime using:
+      dpkg -i aria2-release_1.36.0-1_aarch64.deb
+
+**********************************************************************
+</code></pre><p>安装使用<code>dpkg -i</code>，使用<code>aria2c --v</code>，出现如下内容成功需要多线程则<code>aria2c -x 128 +链接</code>即可</p><pre tabindex=0><code>aria2 version 1.36.0
+Copyright (C) 2006, 2019 Tatsuhiro Tsujikawa
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+** Configuration **
+Enabled Features: Async DNS, BitTorrent, Firefox3 Cookie, GZip, HTTPS, Message Digest, Metalink, XML-RPC, SFTP
+Hash Algorithms: sha-1, sha-224, sha-256, sha-384, sha-512, md5, adler32
+Libraries: zlib/1.2.13 expat/2.5.0 sqlite3/3.39.4 OpenSSL/1.1.1s c-ares/1.18.1 libssh2/1.10.0
+Compiler: clang 9.0.9 (https://android.googlesource.com/toolchain/llvm-project a2a1e703c0edb03ba29944e529ccbf457742737b)
+  built by  x86_64-pc-linux-gnu
+  targeting aarch64-unknown-linux-android
+  on        Nov 10 2022 15:30:40
+System: Linux 4.19.113-perf-g4a878ec38421 #1 SMP PREEMPT Tue May 11 02:13:41 CST 2021 aarch64
+
+Report bugs to https://github.com/aria2/aria2/issues
+Visit https://aria2.github.io/
+</code></pre><ul><li>群晖交叉编译<a href=https://stray.love/itshou-zha/da-jian-qun-hui-jiao-cha-bian-yi-huan-jing-bing-bian-yi-aria2 target=_blank rel="noopener noreferrer">[相关]</a></li><li>openssl编译问题<a href="https://fucknmb.com/2017/05/24/openssl-NDK%e4%ba%a4%e5%8f%89%e7%bc%96%e8%af%91/?utm_source=tuicool&utm_medium=referral" target=_blank rel="noopener noreferrer">[相关]</a></li><li>aria2 1.36源码静态库链接编译问题<a href=https://fh0.github.io/%e7%bc%96%e8%af%91/2019/12/28/android-aria2.html target=_blank rel="noopener noreferrer">[相关]</a></li></ul></div></article><section class="article labels"><a class=category href=/categories/></a><a class=tag href=/tags/></a></section></div><div class="article bottom"><div class="article bottom title">更多文章</div><section class="article navigation"><p><a class=link href=/posts/shell%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97/><span class="iconfont icon-article"></span>Shell脚本编写指南</a></p><p><a class=link href=/posts/fishshell%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/><span class="iconfont icon-article"></span>FishShell基础配置指南</a></p></section><section class="article discussion"><div id=disqus_thread></div><script type=application/javascript>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//morizpage.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></section><div class=nav-bottom><div class="nav wrap bottom"><nav class=nav><a class="nav item" href=/archives/>归档 </a><a class="nav item" href=/categories/>分类 </a><a class="nav item" href=/tags/>标签</a></nav></div></div></div></section><section id=footer><div class=tongji style=text-align:center><span>共 6 篇文章 • 总计 8739 字</span></div><div class=footer-wrap><p class=copyright>©2019 Moriz.</p><p class=powerby><span>Powered&nbsp;by&nbsp;</span><a href=https://gohugo.io target=_blank rel="noopener noreferrer">Hugo</a><span>&nbsp;&&nbsp;</span><a href=https://themes.gohugo.io/hugo-notepadium/ target=_blank rel="noopener noreferrer">Notepadium</a></p></div></section><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css integrity=sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js integrity=sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js integrity=sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR crossorigin=anonymous onload=renderMathInElement(document.body)></script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],throwOnError:!1})})</script><script src=/js/hljs.min.6f979583f61e4ec5f0b94f94eab2e130ee628032474d374414dba4e33cc12097a0d01fe65b33378b23f6d3b053b95445.js integrity=sha384-b5eVg/YeTsXwuU+U6rLhMO5igDJHTTdEFNuk4zzBIJeg0B/mWzM3iyP207BTuVRF></script><script>hljs.initHighlightingOnLoad()</script><script src=/js/core.min.5c7b67437ff4e36acca5d4f8fd7094276f09573657d699a765d6ad6b40a7c4e00993c7f07cb6637e726ae7c3f77fc968.js integrity=sha384-XHtnQ3/042rMpdT4/XCUJ28JVzZX1pmnZdata0CnxOAJk8fwfLZjfnJq58P3f8lo></script>
+<script src=https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js></script>
+<script type=text/javascript>var myChart=echarts.init(document.getElementById("heatmap")),option,data,rangeArr,listeners;window.onresize=function(){myChart.resize()};function heatmap_width(e){var t=new Date,o=t.setMonth(t.getMonth()-e),n=+new Date,t=+new Date(o),n=echarts.format.formatTime("yyyy-MM-dd",n),t=echarts.format.formatTime("yyyy-MM-dd",t),s=[];return s.push([t,n]),s}data=[],data.push(["2022-11-11",250]),data.push(["2022-11-11",704]),data.push(["2022-11-11",778]),data.push(["2022-11-11",1505]),data.push(["2022-11-11",1042]),data.push(["2022-11-11",4311]),data.push(["2019-05-28",0]),data.push(["2019-02-28",149]),data.push(["0001-01-01",0]),window.matchMedia("(max-width: 320px)").matches?(rangeArr=heatmap_width(3)):window.matchMedia("(max-width: 400px)").matches?(rangeArr=heatmap_width(5)):window.matchMedia("(max-width: 550px)").matches?(rangeArr=heatmap_width(6)):window.matchMedia("(max-width: 1021px)").matches?(rangeArr=heatmap_width(12)):window.matchMedia("(max-width: 1400px)").matches?(rangeArr=heatmap_width(9)):window.matchMedia("(max-width: 1920px)").matches?(rangeArr=heatmap_width(12)):window.matchMedia("(max-width: 2560px)").matches&&(rangeArr=heatmap_width(24));function LightOption(){option={title:{show:!0,top:0,left:20,text:"文章热力图",textStyle:{color:"rgba(29,43,76,.85)",fontSize:10}},tooltip:{padding:10,backgroundColor:"#777",borderColor:"#777",borderWidth:1,formatter:function(e){var t=e.value;return'<div style="font-size: 14px;color: white;">'+t[0]+": "+t[1]+"</div>"}},visualMap:{show:!1,top:0,min:0,max:5e3,textStyle:{color:"#7bc96f",fontWeight:"bold",fontFamily:"monospace"},calculable:!0,inRange:{symbol:"rect",color:["#ccffcc","#82c979","#43923c","#125b15","#002800"]},itemWidth:12,itemHeight:200,orient:"horizontal",right:0},calendar:{top:45,left:30,right:30,cellSize:[12,12],orient:"horizontal",range:rangeArr,splitLine:{show:!1,lineStyle:{width:.5,type:"solid",color:"white"}},itemStyle:{borderWidth:3.4,borderType:"solid",shadowColor:"#f3f6f9",shadowBlur:1.2,borderColor:"#f3f6f9",color:"#dddddd",opacity:1},yearLabel:{show:!0,position:"top",fontWeight:"normal",fontSize:12,color:"#24292e"},monthLabel:{nameMap:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],fontWeight:"bolder",color:"#24292e",fontSize:8},dayLabel:{formatter:"{start}  1st",fontWeight:"bolder",nameMap:["","Mon","","Wed","","Fri",""],color:"#24292e",fontSize:8}},series:{type:"heatmap",coordinateSystem:"calendar",data}},option&&myChart.setOption(option)}function DarkOption(){option={title:{show:!0,top:0,left:20,text:"文章热力图",textStyle:{color:"#c7d5f6",fontSize:10}},tooltip:{padding:10,backgroundColor:"#777",borderColor:"#777",borderWidth:1,formatter:function(e){var t=e.value;return'<div style="font-size: 14px;color: white;">'+t[0]+": "+t[1]+"</div>"}},visualMap:{show:!1,top:0,min:0,max:5e3,textStyle:{color:"#c7d5f6",fontWeight:"bold",fontFamily:"monospace"},calculable:!0,inRange:{symbol:"rect",color:["#ccffcc","#82c979","#43923c","#125b15","#002800"],opacity:.8},itemWidth:12,itemHeight:200,orient:"horizontal",right:0},calendar:{top:45,left:30,right:30,cellSize:[12,12],orient:"horizontal",range:rangeArr,splitLine:{show:!1,lineStyle:{width:.5,type:"solid",color:"white"}},itemStyle:{borderWidth:3.4,borderType:"solid",shadowColor:"#0d1117",shadowBlur:1.2,borderColor:"#0d1117",color:"#24292e",opacity:1},yearLabel:{show:!0,position:"top",fontWeight:"normal",fontSize:12,color:"#c7d5f6"},monthLabel:{nameMap:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],fontWeight:"bolder",color:"#c7d5f6",fontSize:8},dayLabel:{formatter:"{start}  1st",fontWeight:"bolder",nameMap:["","Mon","","Wed","","Fri",""],color:"#c7d5f6",fontSize:8}},series:{type:"heatmap",coordinateSystem:"calendar",data}},option&&myChart.setOption(option)}window.matchMedia("(prefers-color-scheme: dark)").matches?DarkOption():LightOption(),listeners={dark:e=>{e.matches&&DarkOption()},light:e=>{e.matches&&LightOption()}},window.matchMedia("(prefers-color-scheme: dark)").addListener(listeners.dark),window.matchMedia("(prefers-color-scheme: light)").addListener(listeners.light)</script></body></html>

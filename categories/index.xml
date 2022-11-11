@@ -1,92 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Categories on 拾集</title><link>https://www.omoe.cc/categories/</link><description>Recent content in Categories on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><atom:link href="https://www.omoe.cc/categories/index.xml" rel="self" type="application/rss+xml"/><item><title>主题配置</title><link>https://www.omoe.cc/posts/%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</link><pubDate>Fri, 11 Nov 2022 23:28:54 +0800</pubDate><guid>https://www.omoe.cc/posts/%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>主题简约没有代码复制 自定义添加&lt;/p>
-&lt;p>博客目录下&lt;code>static/css&lt;/code>添加&lt;code>copy-to-clipboard.css&lt;/code>内容&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-css" data-lang="css">&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="nc">highlight&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">position&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">relative&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="nc">highlight&lt;/span> &lt;span class="nt">pre&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">padding-right&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">10&lt;/span>&lt;span class="kt">px&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">background-color&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mh">#f8f8f8&lt;/span> &lt;span class="cp">!important&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="nc">highlight&lt;/span> &lt;span class="nt">td&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="nd">first-child&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">user-select&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">none&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="nc">highlight-copy-btn&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">position&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">absolute&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">top&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">right&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">border&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">none&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">border-radius&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">8&lt;/span>&lt;span class="kt">px&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">padding&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">0&lt;/span> &lt;span class="mi">5&lt;/span>&lt;span class="kt">px&lt;/span> &lt;span class="mi">5&lt;/span>&lt;span class="kt">px&lt;/span> &lt;span class="mi">5&lt;/span>&lt;span class="kt">px&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">font-size&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mf">0.5&lt;/span>&lt;span class="kt">em&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">line-height&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mf">1.8&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">color&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mh">#fff&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">background-color&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mh">#888&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">min-width&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">55&lt;/span>&lt;span class="kt">px&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">text-align&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">center&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">z-index&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">transition&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mf">.1&lt;/span>&lt;span class="kt">s&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">margin&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">10&lt;/span>&lt;span class="kt">px&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">opacity&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mf">0.5&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="nc">highlight-copy-btn&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="nd">hover&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">background-color&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mh">#666&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在&lt;code>static/js&lt;/code>下添加&lt;code>copy-to-clipboard.js&lt;/code>内容&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-JavaScript" data-lang="JavaScript">&lt;span class="line">&lt;span class="cl">&lt;span class="p">(&lt;/span>&lt;span class="kd">function&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;use strict&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="nb">document&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">queryCommandSupported&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;copy&amp;#39;&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">function&lt;/span> &lt;span class="nx">flashCopyMessage&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">el&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">msg&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">el&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">textContent&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">msg&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">setTimeout&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kd">function&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">el&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">textContent&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;Copy&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},&lt;/span> &lt;span class="mi">1000&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">function&lt;/span> &lt;span class="nx">selectText&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">node&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="nx">selection&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">window&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">getSelection&lt;/span>&lt;span class="p">();&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="nx">range&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">document&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">createRange&lt;/span>&lt;span class="p">();&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">range&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">selectNodeContents&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">node&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">selection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">removeAllRanges&lt;/span>&lt;span class="p">();&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">selection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">addRange&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">range&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="nx">selection&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">function&lt;/span> &lt;span class="nx">addCopyButton&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">containerEl&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="nx">copyBtn&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">document&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">createElement&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;button&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">copyBtn&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">className&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;highlight-copy-btn&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">copyBtn&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">textContent&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;Copy&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="nx">codeEl&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">containerEl&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">firstElementChild&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">copyBtn&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">addEventListener&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;click&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kd">function&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="nx">selection&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">selectText&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">codeEl&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">document&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">execCommand&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;copy&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">selection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">removeAllRanges&lt;/span>&lt;span class="p">();&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">flashCopyMessage&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">copyBtn&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;Copied!&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">catch&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">e&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">console&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">e&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">flashCopyMessage&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">copyBtn&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;Failed :\&amp;#39;(&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">});&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">containerEl&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">appendChild&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">copyBtn&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// Add copy button to code blocks
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kd">var&lt;/span> &lt;span class="nx">highlightBlocks&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">document&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">getElementsByClassName&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;highlight&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">Array&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">prototype&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">forEach&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">call&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">highlightBlocks&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">addCopyButton&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">})();&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>编译aria2添加128线程下载</title><link>https://www.omoe.cc/posts/%E7%BC%96%E8%AF%91aria2%E6%B7%BB%E5%8A%A0128%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD/</link><pubDate>Fri, 11 Nov 2022 23:28:15 +0800</pubDate><guid>https://www.omoe.cc/posts/%E7%BC%96%E8%AF%91aria2%E6%B7%BB%E5%8A%A0128%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD/</guid><description>&lt;p>aria2编译细节以及error处理&lt;/p>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Categories on 拾集</title><link>https://www.omoe.cc/categories/</link><description>Recent content in Categories on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><atom:link href="https://www.omoe.cc/categories/index.xml" rel="self" type="application/rss+xml"/><item><title>编译aria2添加128线程下载</title><link>https://www.omoe.cc/posts/%E7%BC%96%E8%AF%91aria2%E6%B7%BB%E5%8A%A0128%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD/</link><pubDate>Fri, 11 Nov 2022 19:48:06 +0000</pubDate><guid>https://www.omoe.cc/posts/%E7%BC%96%E8%AF%91aria2%E6%B7%BB%E5%8A%A0128%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD/</guid><description>&lt;p>aria2编译细节以及error处理&lt;/p>
 &lt;p>使用文档&lt;br>
 &lt;a href="https://aria2.github.io/"target="_blank" rel="noopener noreferrer">官方文档(en)&lt;/a>
 &lt;/p>
@@ -187,7 +99,7 @@
 #12是我的pc的线程数一般是核心数x2
 make install
 #安装
-&lt;/code>&lt;/pre></description></item><item><title>Ubuntu编译openwrt</title><link>https://www.omoe.cc/posts/ubuntu%E7%BC%96%E8%AF%91openwrt/</link><pubDate>Fri, 11 Nov 2022 23:27:32 +0800</pubDate><guid>https://www.omoe.cc/posts/ubuntu%E7%BC%96%E8%AF%91openwrt/</guid><description>&lt;p>无论是潘多拉还是openwrt还是其他固件其底包都需要编译支持由于个人比较喜欢openwrt的高自由度所以特地列举编译固件当中遇到的报错以及问题。&lt;/p>
+&lt;/code>&lt;/pre></description></item><item><title>Ubuntu编译openwrt</title><link>https://www.omoe.cc/posts/ubuntu%E7%BC%96%E8%AF%91openwrt/</link><pubDate>Fri, 11 Nov 2022 19:46:09 +0000</pubDate><guid>https://www.omoe.cc/posts/ubuntu%E7%BC%96%E8%AF%91openwrt/</guid><description>&lt;p>无论是潘多拉还是openwrt还是其他固件其底包都需要编译支持由于个人比较喜欢openwrt的高自由度所以特地列举编译固件当中遇到的报错以及问题。&lt;/p>
 &lt;p>固件首先使用的是&lt;code>win10&lt;/code>的&lt;code>wsl&lt;/code>建&lt;code>ubuntu20.04&lt;/code>开始编译&lt;/p>
 &lt;h3 id="本地编译">本地编译&lt;/h3>
 &lt;p>添加依赖&lt;/p>
@@ -278,176 +190,7 @@ make install
 &lt;/li>
 &lt;li>自定义网关地址以及无线网络名称 &lt;a href="http://www.5lazy.cn/post-147.html"target="_blank" rel="noopener noreferrer">[源码修改]&lt;/a>
 &lt;/li>
-&lt;/ul></description></item><item><title>Shell脚本编写指南</title><link>https://www.omoe.cc/posts/shell%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97/</link><pubDate>Fri, 11 Nov 2022 23:26:46 +0800</pubDate><guid>https://www.omoe.cc/posts/shell%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97/</guid><description>&lt;h3 id="if判断实例">if判断实例&lt;/h3>
-&lt;pre tabindex="0">&lt;code>if [ ! -d $变量 ];then
-#command
-else
-fi
-&lt;/code>&lt;/pre>&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:center">&lt;/th>
-&lt;th style="text-align:center">&lt;/th>
-&lt;th style="text-align:center">&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:center">-e&lt;/td>
-&lt;td style="text-align:center">判断文件目录&lt;/td>
-&lt;td style="text-align:center">不可和-f组合&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">-f&lt;/td>
-&lt;td style="text-align:center">判断文件&lt;/td>
-&lt;td style="text-align:center">不可和-e组合&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">-r&lt;/td>
-&lt;td style="text-align:center">检查文件夹或者文件是否可写&lt;/td>
-&lt;td style="text-align:center">可组合&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">-w&lt;/td>
-&lt;td style="text-align:center">检查文件夹或者文件是否可写&lt;/td>
-&lt;td style="text-align:center">可组合&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">-x&lt;/td>
-&lt;td style="text-align:center">检查文件夹或者文件是否可执行&lt;/td>
-&lt;td style="text-align:center">可组合&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">-s&lt;/td>
-&lt;td style="text-align:center">检查文件长度&lt;/td>
-&lt;td style="text-align:center">none&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">-h&lt;/td>
-&lt;td style="text-align:center">检查文件是否软链接&lt;/td>
-&lt;td style="text-align:center">ln -s生成&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">-L&lt;/td>
-&lt;td style="text-align:center">检查文件是否符号链接&lt;/td>
-&lt;td style="text-align:center">none&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;hr>
-&lt;p>&lt;strong>获取当前用户的绝对路径&lt;/strong>&lt;/p>
-&lt;pre tabindex="0">&lt;code>USE_DIR=$(pwd)
-&lt;/code>&lt;/pre>&lt;p>&lt;strong>获得shell脚本所在的绝对路径&lt;/strong>&lt;/p>
-&lt;pre tabindex="0">&lt;code>#实例
-CURRENT_DIR=$(cd $(dirname $0); pwd)
-#or
-#实例
-CURRENT_DIR=$(cd `dirname $0`; pwd)
-&lt;/code>&lt;/pre>&lt;ul>
-&lt;li>&lt;code>dirname $0&lt;/code>: 取得当前执行的脚本文件所在的目录；&lt;/li>
-&lt;li>&lt;code>cd&lt;/code>: 进入当前工作目录；&lt;/li>
-&lt;li>&lt;code>pwd&lt;/code>: 显示当前工作目录；
-将当前工作目录输出给变量&lt;code>CURRENT_DIR&lt;/code>。
-&lt;strong>获得shell脚本所在目录的父级目录的绝对路径&lt;/strong>
-由于能获得shell脚本所在的绝对路径，那么同理，就可以获得脚本所在目录的父级目录的绝对路径。&lt;/li>
-&lt;/ul>
-&lt;pre tabindex="0">&lt;code>#实例
-PARENT_DIR=$(cd $(dirname $0);cd ..; pwd)
-&lt;/code>&lt;/pre>&lt;p>只是在pwd命令之前添加了cd ..到父级目录。&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>$()&lt;/code>与&lt;code>``&lt;/code>作用一样，用于shell命令的执行。&lt;/li>
-&lt;li>&lt;code>dirname&lt;/code>: 显示最后一个结点前的路径;&lt;/li>
-&lt;li>&lt;code>basename&lt;/code>: 显示最后一个结点的名称。&lt;/li>
-&lt;li>&lt;code>$0&lt;/code>: 脚本的路径名称，包含脚本本身的名称。&lt;/li>
-&lt;/ul>
-&lt;p>如果知道行号可以用下面的方法&lt;/p>
-&lt;pre tabindex="0">&lt;code>sed -i &amp;#39;88 r b.file&amp;#39; a.file
-&lt;/code>&lt;/pre>&lt;p>在a.txt的第88行插入文件b.txt&lt;/p>
-&lt;pre tabindex="0">&lt;code>awk &amp;#39;1;NR==88{system(&amp;#34;cat b.file&amp;#34;)}&amp;#39;
-a.file &amp;gt; a.file
-&lt;/code>&lt;/pre>&lt;p>如果不知道行号，可以用正則匹配&lt;/p>
-&lt;pre tabindex="0">&lt;code>sed -i &amp;#39;/regex/ r b.txt&amp;#39; a.txt # regex是正则表达式
-awk &amp;#39;/target/{system(&amp;#34;cat b.file&amp;#34;)}&amp;#39;
-a.file &amp;gt; c.file
-&lt;/code>&lt;/pre>&lt;h3 id="nodejs安装">nodejs安装&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">curl -sL https://deb.nodesource.com/setup_14.x &lt;span class="p">|&lt;/span> sudo -E bash -
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>允许 &lt;code>sudo apt-get install -y nodejs&lt;/code> 来安装 Node.js 14.x 和 npm&lt;/li>
-&lt;li>使用开发者工具箱来编译添加插件
-&lt;code>sudo apt-get install gcc g++ make&lt;/code>&lt;/li>
-&lt;li>使用yarn包管理器安装
-&lt;code>curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg &amp;gt;/dev/null&lt;/code>&lt;/li>
-&lt;li>or
-&lt;code>echo &amp;quot;deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main&amp;quot; | sudo tee /etc/apt/sources.list.d/yarn.list&lt;/code>&lt;/li>
-&lt;li>or
-&lt;code>sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install yarn&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h3 id="tar解压">tar解压&lt;/h3>
-&lt;ul>
-&lt;li>压缩（-c，compress）：对文档，目录进行打包操作，并没有压缩&lt;/li>
-&lt;li>解压（-x，extract）：对文档，目录进行解包操作&lt;/li>
-&lt;li>查看（-t，list）：查看压缩包或普通包里的文件名&lt;/li>
-&lt;li>gzip（-z）：后缀名为.tar.gz，后缀名非硬性要求，建议这么做，下同。压缩率最低，速度快，常用&lt;/li>
-&lt;li>bzip2（-j）：后缀名为.tar.bz2，压缩率高，速度较慢&lt;/li>
-&lt;li>xz（-J）：后缀名为.tar.xz，压缩率超高，速度很慢，看情况使用&lt;/li>
-&lt;li>-v：在处理的时候，显示正在处理的文件名&lt;/li>
-&lt;li>-f：用于指定压缩后的文档名，或者是欲解压的文档名&lt;/li>
-&lt;/ul>
-&lt;p>搭建简易git服务&lt;/p>
-&lt;ul>
-&lt;li>安装git(这里安装略过)&lt;/li>
-&lt;li>创建用户&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo adduser git
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">su git
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>复制主用户的证书，后期验证使用(git用户操作)，主用户公钥&lt;code>id_rsa.pub&lt;/code>导入到.ssh/authorized_keys&lt;/li>
-&lt;li>初始化用户仓库，并且更改仅限git用户。&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo git init --bare xxxx.git
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo chown -R git:git xxxx.git
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>禁用shell登录(非必须)，编辑/etc/passwd&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git:x:1001:1001:,,,:/home/git:/bin/bash
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#改为&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>使用设备远程克隆仓库&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git clone git@ip:xxx.git
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
-&lt;p>Linux使用图片压缩命令压缩图片大小&lt;/p>
-&lt;p>[博客多图页面必备]^(ImageMagick)&lt;/p>
-&lt;h4 id="安装">安装&lt;/h4>
-&lt;pre tabindex="0">&lt;code>sudo apt-get install imagemagick
-&lt;/code>&lt;/pre>&lt;h4 id="使用说明">使用说明&lt;/h4>
-&lt;pre tabindex="0">&lt;code>imagemagick的命令convert可以完成此任务,其参数-resize用来改变图片尺寸,可以直接指定像素值,也可以指定缩放百分比。而如果想降低图片的质量,可以用convert的-quality参数,质量值为0-100之间的数值,数字越大,质量越好,一般指定70-80,基本上看不出前后的差别。
-强大的convert命令 convert命令可以用来转换图像的格式，支持JPG, BMP, PCX, GIF, PNG, TIFF, XPM和XWD等类型。
-&lt;/code>&lt;/pre>&lt;h4 id="详情">详情&lt;/h4>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">identify IMG_xxx.jpg
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">xxx.jpg JPEG 2437x1125 2437x1125+0+0 8-bit sRGB 1.24503MiB 0.000u 0:00.001
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;img src="https://moriz-zoom.coding.net/p/page/d/image/git/raw/master/IMG_20220303_085754.jpg"
-alt="IMG_20220303_085754"/>&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">convert xxx.jpg xxx.png 将jpeg转成png文件
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">convert xxx.gif xxx.bmp 将gif转换成bmp图像
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">convert xxx.tiff xxx.pcx 将tiff转换成pcx图像
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;pre tabindex="0">&lt;code>convert -resize 1024x768 xxx.jpg xxx1.jpg
-&lt;/code>&lt;/pre>&lt;p>将图像的像素改为1024*768，注意1024与768之间是小写字母&lt;/p>
-&lt;pre tabindex="0">&lt;code>convert -sample 50%x50% xxx.jpg xxx1.jpg
-&lt;/code>&lt;/pre>&lt;p>将图像的缩减为原来的50%*50%&lt;/p>
-&lt;pre tabindex="0">&lt;code>convert -rotate 270 xxx.jpg xxx-final.jpg
-&lt;/code>&lt;/pre>&lt;p>旋转图像 将图像顺时针旋转270度&lt;/p>
-&lt;pre tabindex="0">&lt;code>convert -fill black -pointsize 60 -font helvetica -draw &amp;#39;text 10,80 &amp;#34;Hello, World!&amp;#34; ‘ hello.jpg helloworld.jpg
-&lt;/code>&lt;/pre>&lt;p>使用-draw选项还可以在图像里面添加文字
-git remote add origin [远程仓库]
-git push &amp;ndash;set-upstream origin master
-git branch -D branch
-删除本地分支: git branch -d 分支名
-删除远程分支: git push origin &amp;ndash;delete 分支名
-git config commit.gpgsign ture 添加gpg验证
-export GPG_TTY=$(tty)&lt;/p></description></item><item><title>Ndk交叉编译aria2</title><link>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</link><pubDate>Fri, 11 Nov 2022 23:25:51 +0800</pubDate><guid>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</guid><description>&lt;p>交叉编译aria2&lt;/p>
+&lt;/ul></description></item><item><title>Ndk交叉编译aria2</title><link>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</link><pubDate>Fri, 11 Nov 2022 19:44:46 +0000</pubDate><guid>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</guid><description>&lt;p>交叉编译aria2&lt;/p>
 &lt;p>下载交叉编译工具(这里推荐r21e比较稳定且兼容)&lt;/p>
 &lt;table>
 &lt;thead>
@@ -657,10 +400,176 @@ Visit https://aria2.github.io/
 &lt;/li>
 &lt;li>aria2 1.36源码静态库链接编译问题&lt;a href="https://fh0.github.io/%e7%bc%96%e8%af%91/2019/12/28/android-aria2.html"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
 &lt;/li>
-&lt;/ul></description></item><item><title>FishShell基础配置指南</title><link>https://www.omoe.cc/posts/fishshell%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</link><pubDate>Fri, 11 Nov 2022 23:24:22 +0800</pubDate><guid>https://www.omoe.cc/posts/fishshell%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</guid><description>&lt;h3 id="前言">前言&lt;/h3>
+&lt;/ul></description></item><item><title>Shell脚本编写指南</title><link>https://www.omoe.cc/posts/shell%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97/</link><pubDate>Fri, 11 Nov 2022 19:39:26 +0000</pubDate><guid>https://www.omoe.cc/posts/shell%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97/</guid><description>&lt;h3 id="if判断实例">if判断实例&lt;/h3>
+&lt;pre tabindex="0">&lt;code>if [ ! -d $变量 ];then
+#command
+else
+fi
+&lt;/code>&lt;/pre>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:center">&lt;/th>
+&lt;th style="text-align:center">&lt;/th>
+&lt;th style="text-align:center">&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:center">-e&lt;/td>
+&lt;td style="text-align:center">判断文件目录&lt;/td>
+&lt;td style="text-align:center">不可和-f组合&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">-f&lt;/td>
+&lt;td style="text-align:center">判断文件&lt;/td>
+&lt;td style="text-align:center">不可和-e组合&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">-r&lt;/td>
+&lt;td style="text-align:center">检查文件夹或者文件是否可写&lt;/td>
+&lt;td style="text-align:center">可组合&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">-w&lt;/td>
+&lt;td style="text-align:center">检查文件夹或者文件是否可写&lt;/td>
+&lt;td style="text-align:center">可组合&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">-x&lt;/td>
+&lt;td style="text-align:center">检查文件夹或者文件是否可执行&lt;/td>
+&lt;td style="text-align:center">可组合&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">-s&lt;/td>
+&lt;td style="text-align:center">检查文件长度&lt;/td>
+&lt;td style="text-align:center">none&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">-h&lt;/td>
+&lt;td style="text-align:center">检查文件是否软链接&lt;/td>
+&lt;td style="text-align:center">ln -s生成&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">-L&lt;/td>
+&lt;td style="text-align:center">检查文件是否符号链接&lt;/td>
+&lt;td style="text-align:center">none&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="获取当前用户的绝对路径">获取当前用户的绝对路径&lt;/h3>
+&lt;pre tabindex="0">&lt;code>USE_DIR=$(pwd)
+&lt;/code>&lt;/pre>&lt;p>&lt;strong>获得shell脚本所在的绝对路径&lt;/strong>&lt;/p>
+&lt;pre tabindex="0">&lt;code>#实例
+CURRENT_DIR=$(cd $(dirname $0); pwd)
+#or
+#实例
+CURRENT_DIR=$(cd `dirname $0`; pwd)
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>&lt;code>dirname $0&lt;/code>: 取得当前执行的脚本文件所在的目录；&lt;/li>
+&lt;li>&lt;code>cd&lt;/code>: 进入当前工作目录；&lt;/li>
+&lt;li>&lt;code>pwd&lt;/code>: 显示当前工作目录；
+将当前工作目录输出给变量&lt;code>CURRENT_DIR&lt;/code>。
+&lt;strong>获得shell脚本所在目录的父级目录的绝对路径&lt;/strong>
+由于能获得shell脚本所在的绝对路径，那么同理，就可以获得脚本所在目录的父级目录的绝对路径。&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>#实例
+PARENT_DIR=$(cd $(dirname $0);cd ..; pwd)
+&lt;/code>&lt;/pre>&lt;p>只是在pwd命令之前添加了cd ..到父级目录。&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>$()&lt;/code>与&lt;code>``&lt;/code>作用一样，用于shell命令的执行。&lt;/li>
+&lt;li>&lt;code>dirname&lt;/code>: 显示最后一个结点前的路径;&lt;/li>
+&lt;li>&lt;code>basename&lt;/code>: 显示最后一个结点的名称。&lt;/li>
+&lt;li>&lt;code>$0&lt;/code>: 脚本的路径名称，包含脚本本身的名称。&lt;/li>
+&lt;/ul>
+&lt;h3 id="sed命令文件写入">sed命令文件写入&lt;/h3>
+&lt;p>如果知道行号可以用下面的方法&lt;/p>
+&lt;pre tabindex="0">&lt;code>sed -i &amp;#39;88 r b.file&amp;#39; a.file
+&lt;/code>&lt;/pre>&lt;p>在a.txt的第88行插入文件b.txt&lt;/p>
+&lt;pre tabindex="0">&lt;code>awk &amp;#39;1;NR==88{system(&amp;#34;cat b.file&amp;#34;)}&amp;#39;
+a.file &amp;gt; a.file
+&lt;/code>&lt;/pre>&lt;p>如果不知道行号，可以用正則匹配&lt;/p>
+&lt;pre tabindex="0">&lt;code>sed -i &amp;#39;/regex/ r b.txt&amp;#39; a.txt # regex是正则表达式
+awk &amp;#39;/target/{system(&amp;#34;cat b.file&amp;#34;)}&amp;#39;
+a.file &amp;gt; c.file
+&lt;/code>&lt;/pre>&lt;h3 id="nodejs安装">nodejs安装&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">curl -sL https://deb.nodesource.com/setup_14.x &lt;span class="p">|&lt;/span> sudo -E bash -
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>允许 &lt;code>sudo apt-get install -y nodejs&lt;/code> 来安装 Node.js 14.x 和 npm&lt;/li>
+&lt;li>使用开发者工具箱来编译添加插件
+&lt;code>sudo apt-get install gcc g++ make&lt;/code>&lt;/li>
+&lt;li>使用yarn包管理器安装
+&lt;code>curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg &amp;gt;/dev/null&lt;/code>&lt;/li>
+&lt;li>or
+&lt;code>echo &amp;quot;deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main&amp;quot; | sudo tee /etc/apt/sources.list.d/yarn.list&lt;/code>&lt;/li>
+&lt;li>or
+&lt;code>sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install yarn&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="tar解压">tar解压&lt;/h3>
+&lt;ul>
+&lt;li>压缩（-c，compress）：对文档，目录进行打包操作，并没有压缩&lt;/li>
+&lt;li>解压（-x，extract）：对文档，目录进行解包操作&lt;/li>
+&lt;li>查看（-t，list）：查看压缩包或普通包里的文件名&lt;/li>
+&lt;li>gzip（-z）：后缀名为.tar.gz，后缀名非硬性要求，建议这么做，下同。压缩率最低，速度快，常用&lt;/li>
+&lt;li>bzip2（-j）：后缀名为.tar.bz2，压缩率高，速度较慢&lt;/li>
+&lt;li>xz（-J）：后缀名为.tar.xz，压缩率超高，速度很慢，看情况使用&lt;/li>
+&lt;li>-v：在处理的时候，显示正在处理的文件名&lt;/li>
+&lt;li>-f：用于指定压缩后的文档名，或者是欲解压的文档名&lt;/li>
+&lt;/ul>
+&lt;h3 id="搭建简易git服务">搭建简易git服务&lt;/h3>
+&lt;ul>
+&lt;li>安装git(这里安装略过)&lt;/li>
+&lt;li>创建用户&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo adduser git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">su git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>复制主用户的证书，后期验证使用(git用户操作)，主用户公钥&lt;code>id_rsa.pub&lt;/code>导入到.ssh/authorized_keys&lt;/li>
+&lt;li>初始化用户仓库，并且更改仅限git用户。&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo git init --bare xxxx.git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo chown -R git:git xxxx.git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>禁用shell登录(非必须)，编辑/etc/passwd&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git:x:1001:1001:,,,:/home/git:/bin/bash
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#改为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>使用设备远程克隆仓库&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git clone git@ip:xxx.git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;p>git remote -v
+#检查现有远程连接，如果没有，则显示空
+git remote add origin [远程仓库]
+#添加远程仓库
+git push &amp;ndash;set-upstream origin master
+#推送到远程仓库
+git branch -D []
+git branch -d []
+#删除本地分支
+git push origin &amp;ndash;delete []
+#删除远程分支
+git push -u origin []
+#将本地新建的分之推到远程（远程也新建相应的分之）
+git config commit.gpgsign ture
+#添加gpg验证
+export GPG_TTY=$(tty)&lt;/p>
+&lt;h3 id="apt包管理器下禁止软件包更新">apt包管理器下禁止软件包更新&lt;/h3>
+&lt;p>设置package包的状态为 hold；&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> package hold &lt;span class="p">|&lt;/span> dpkg --set-selections
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果想恢复可以更新的状态(install)，执行下面的命令；&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> package install &lt;span class="p">|&lt;/span> dpkg --set-selections
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查询所有包的状态；&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo dpkg --get-selections &lt;span class="p">|&lt;/span> more
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查询状态为hold的所有包;&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo dpkg --get-selections &lt;span class="p">|&lt;/span> grep hold
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>FishShell基础配置指南</title><link>https://www.omoe.cc/posts/fishshell%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</link><pubDate>Fri, 11 Nov 2022 19:05:59 +0000</pubDate><guid>https://www.omoe.cc/posts/fishshell%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</guid><description>&lt;h3 id="前言">前言&lt;/h3>
 &lt;p>fish和bash脚本解释不一样，不能单纯copy&lt;code>.bashrc&lt;/code>所有的配置都需要修改。&lt;/p>
 &lt;h3 id="帮助">帮助&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">man &lt;span class="nb">set&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fish" data-lang="fish">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">man&lt;/span> set
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="颜色提示">颜色提示&lt;/h3>
 &lt;p>存在时文字蓝色，不存在时红色。&lt;/p>
 &lt;h3 id="通配符">通配符&lt;/h3>
@@ -679,9 +588,9 @@ Visit https://aria2.github.io/
 &lt;li>tab 键激活提示，包括命令、参数、路径。&lt;/li>
 &lt;/ul>
 &lt;h3 id="目录操作">目录操作&lt;/h3>
-&lt;ol>
+&lt;ul>
 &lt;li>atl + 左右箭头： 进入上一个目录或下一个目录&lt;/li>
-&lt;/ol>
+&lt;/ul>
 &lt;h3 id="脚本编程">脚本编程&lt;/h3>
 &lt;h4 id="变量">变量&lt;/h4>
 &lt;ul>
@@ -719,11 +628,11 @@ Visit https://aria2.github.io/
 &lt;h3 id="控制流程">控制流程&lt;/h3>
 &lt;p>程序是从上往下一次执行的，但是，如果只是顺序执行，程序就缺乏对环境变化的理解，因此任何成熟的程序语言，都带有控制流程的语句。如，判断语句，循环语句，函数等。&lt;/p>
 &lt;h4 id="判断语句">判断语句&lt;/h4>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 将 false 替换条件语句&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="nb">false&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="nb">false&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fish" data-lang="fish">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 将 false 替换条件语句
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="k">if&lt;/span> &lt;span class="k">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="k">false&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">end
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>if &amp;hellip; else &amp;hellip; end 语句段可以添加多个 else if 判断条件 ，条件成立时执行if 和 else 之间的语句，条件不成立时，执行 else 和 end 之间的语句。也可以省略 else 段。&lt;/p>
 &lt;p>命令执行有成功和失败，它就是一个条件语句。&lt;/p>
 &lt;p>同时，fish 使用 test 命令来提供强大的判断能力。如：&lt;code>test &amp;quot;$number&amp;quot; -gt 5&lt;/code>，判断变量 number 是否大于(-gt) 5。&lt;/p>
@@ -770,95 +679,95 @@ Visit https://aria2.github.io/
 &lt;li>-o: or&lt;/li>
 &lt;li>!: !&lt;/li>
 &lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 选项分支&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">switch &lt;span class="nv">$a&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fish" data-lang="fish">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 选项分支
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="k">switch&lt;/span> &lt;span class="nv">$a&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">case&lt;/span> a
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;$a == a&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s1">&amp;#39;$a == a&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">case&lt;/span> b
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;$a == b&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s1">&amp;#39;$a == b&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">case&lt;/span> c d
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;$a == c || $a == d&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s1">&amp;#39;$a == c || $a == d&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">case&lt;/span> &lt;span class="s1">&amp;#39;*&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;其他，默认选项&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">end
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s1">&amp;#39;其他，默认选项&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>switch &amp;hellip;case 语句，根据内容的值（$a）是否等于选项（case）来控制分支。&lt;/p>
 &lt;h4 id="循环语句">循环语句&lt;/h4>
 &lt;p>循环语句根据条件是否成立，重复的执行循环内部的代码。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 死循环，不停的输出 loop&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">while&lt;/span> &lt;span class="nb">true&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;loop&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">end
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fish" data-lang="fish">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 死循环，不停的输出 loop
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="k">while&lt;/span> &lt;span class="k">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s2">&amp;#34;loop&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># *.txt 匹配当前目录下的所有txt后缀的文件，组成一个列表&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># for file in ... 依次读取列表中的一项，保存到 $file&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># more $file 显示当前文件内容&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> file in *.txt
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> more &lt;span class="nv">$file&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">end
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># *.txt 匹配当前目录下的所有txt后缀的文件，组成一个列表
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># for file in ... 依次读取列表中的一项，保存到 $file
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># more $file 显示当前文件内容
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="k">for&lt;/span> &lt;span class="nv">file&lt;/span> &lt;span class="k">in&lt;/span> *.txt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">more&lt;/span> &lt;span class="nv">$file&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="函数">函数&lt;/h4>
 &lt;p>当遇到函数调用时，从当前流程跳转到函数内部执行。函数的作用等于将代码分割成若干功能的小片段。函数能够接受参数，并且能够返回值，很像数学上的函数概念，因此得名。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 函数 say&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 参数 argv&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">function&lt;/span> say
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> hello &lt;span class="nv">$argv&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">end
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fish" data-lang="fish">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 函数 say
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 参数 argv
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="k">function&lt;/span> &lt;span class="nf">say&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> hello &lt;span class="nv">$argv&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### 使用函数&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">say jim &lt;span class="c1"># 输出 hello jim&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="nv">$status&lt;/span> &lt;span class="c1"># 返回值输出 0&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>定义了一个函数，就可以随意调用了。之后想获得该函数的信息：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">functions say &lt;span class="c1"># 输出该函数的定义&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">functions &lt;span class="c1"># 输出所有已经定义的函数名&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="参数">参数&lt;/h5>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">### 使用函数
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nf">say&lt;/span> jim &lt;span class="c"># 输出 hello jim
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="k">echo&lt;/span> &lt;span class="nv">$status&lt;/span> &lt;span class="c"># 返回值输出 0
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>定义了一个函数，就可以随意调用了。之后想获得该函数的信息：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fish" data-lang="fish">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">functions &lt;/span>say &lt;span class="c"># 输出该函数的定义
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">functions&lt;/span> &lt;span class="c"># 输出所有已经定义的函数名
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="参数">参数&lt;/h5>
 &lt;p>函数和脚本，都可以接受参数，对参数格式的处理，可以用 argparse 函数：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="k">function&lt;/span> say
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 支持参数 -h --help -n -name -s --sooo&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 其中 -n jim --name ming 可以多次输入参数&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -s9 -9 --sooo=9 都是有效参数&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> argparse --name&lt;span class="o">=&lt;/span>myfunc &lt;span class="s1">&amp;#39;h/help&amp;#39;&lt;/span> &lt;span class="s1">&amp;#39;n/name=+&amp;#39;&lt;/span> &lt;span class="s1">&amp;#39;s#sooo&amp;#39;&lt;/span> --&lt;span class="nv">$argv&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="nb">set&lt;/span> -q _flag_h
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;say -n yourname&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;say -h help&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;say -9&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> end
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="nb">set&lt;/span> -q _flag_n
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">set&lt;/span> -l once &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> -n &lt;span class="s1">&amp;#39;hello &amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> var in &lt;span class="nv">$_flag_n&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="nb">test&lt;/span> &lt;span class="nv">$once&lt;/span> -eq &lt;span class="m">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> -n &lt;span class="s1">&amp;#39;,&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> end
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">set&lt;/span> once &lt;span class="m">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> -n &lt;span class="nv">$var&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> end
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;!&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> end
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="nb">set&lt;/span> -q _flag_s
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">set&lt;/span> -l i &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> -n &lt;span class="s2">&amp;#34;I&amp;#39;m S&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="nb">test&lt;/span> &lt;span class="nv">$i&lt;/span> -le &lt;span class="nv">$_flag_s&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> -n &lt;span class="s1">&amp;#39;o&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">set&lt;/span> i &lt;span class="o">(&lt;/span>math &lt;span class="nv">$i&lt;/span>+1&lt;span class="o">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> end
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39; happy!&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> end
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">end
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fish" data-lang="fish">&lt;span class="line">&lt;span class="cl">&lt;span class="k">function&lt;/span> &lt;span class="nf">say&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 支持参数 -h --help -n -name -s --sooo
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 其中 -n jim --name ming 可以多次输入参数
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># -s9 -9 --sooo=9 都是有效参数
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span> &lt;span class="nb">argparse&lt;/span> &lt;span class="na">--name&lt;/span>&lt;span class="o">=&lt;/span>myfunc &lt;span class="s1">&amp;#39;h/help&amp;#39;&lt;/span> &lt;span class="s1">&amp;#39;n/name=+&amp;#39;&lt;/span> &lt;span class="s1">&amp;#39;s#sooo&amp;#39;&lt;/span> &lt;span class="na">--$argv&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="k">set&lt;/span> &lt;span class="na">-q&lt;/span> &lt;span class="nv">_flag_h&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s1">&amp;#39;say -n yourname&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s1">&amp;#39;say -h help&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s1">&amp;#39;say -9&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="k">set&lt;/span> &lt;span class="na">-q&lt;/span> &lt;span class="nv">_flag_n&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">set&lt;/span> &lt;span class="na">-l&lt;/span> &lt;span class="nv">once&lt;/span> &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="na">-n&lt;/span> &lt;span class="s1">&amp;#39;hello &amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> &lt;span class="nv">var&lt;/span> &lt;span class="k">in&lt;/span> &lt;span class="nv">$_flag_n&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="k">test&lt;/span> &lt;span class="nv">$once&lt;/span> &lt;span class="na">-eq&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="na">-n&lt;/span> &lt;span class="s1">&amp;#39;,&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">set&lt;/span> &lt;span class="nv">once&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="na">-n&lt;/span> &lt;span class="nv">$var&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s1">&amp;#39;!&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="k">set&lt;/span> &lt;span class="na">-q&lt;/span> &lt;span class="nv">_flag_s&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">set&lt;/span> &lt;span class="na">-l&lt;/span> &lt;span class="nv">i&lt;/span> &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="na">-n&lt;/span> &lt;span class="s2">&amp;#34;I&amp;#39;m S&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="k">test&lt;/span> &lt;span class="nv">$i&lt;/span> &lt;span class="na">-le&lt;/span> &lt;span class="nv">$_flag_s&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="na">-n&lt;/span> &lt;span class="s1">&amp;#39;o&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">set&lt;/span> &lt;span class="nv">i&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="nb">math&lt;/span> &lt;span class="nv">$i&lt;/span>+&lt;span class="m">1&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s1">&amp;#39; happy!&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 使用例子&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">say -99 --name htqx -n xiaoming -h
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 使用例子
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nf">say&lt;/span> -&lt;span class="m">99&lt;/span> &lt;span class="na">--name&lt;/span> htqx &lt;span class="na">-n&lt;/span> xiaoming &lt;span class="na">-h&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="事件">事件&lt;/h5>
 &lt;p>函数可以处理事件。即当事件产生时，将自动调用函数。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 处理事件&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># --on-event 表示要处理的事件&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">function&lt;/span> event_say --on-event say_event
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> poker face:&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$argv&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">end
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fish" data-lang="fish">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 处理事件
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># --on-event 表示要处理的事件
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="k">function&lt;/span> &lt;span class="nf">event_say&lt;/span> &lt;span class="na">--on-event&lt;/span> say_event
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> poker face:&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$argv&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">function&lt;/span> say
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 引发事件&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> emit say_event hello,&lt;span class="nv">$argv&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">end
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">function&lt;/span> &lt;span class="nf">say&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c"># 引发事件
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span> &lt;span class="nb">emit &lt;/span>say_event hello,&lt;span class="nv">$argv&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="字符串处理">字符串处理&lt;/h3>
 &lt;p>脚本编程的一个大对象，就是针对字符串（文本）的处理。&lt;/p>
 &lt;p>string 命令：&lt;/p>
@@ -1012,7 +921,95 @@ Visit https://aria2.github.io/
 &lt;li>umask：文件创建掩码&lt;/li>
 &lt;li>vared:交互式修改变量&lt;/li>
 &lt;li>wait：等待后台任务完成&lt;/li>
-&lt;/ul></description></item><item><title>Archive</title><link>https://www.omoe.cc/archives/</link><pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate><guid>https://www.omoe.cc/archives/</guid><description/></item><item><title>About</title><link>https://www.omoe.cc/about/</link><pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate><guid>https://www.omoe.cc/about/</guid><description>&lt;p>Written in Go, Hugo is an open source static site generator available under the &lt;a href="https://github.com/gohugoio/hugo/blob/master/LICENSE"target="_blank" rel="noopener noreferrer">Apache Licence 2.0.&lt;/a>
+&lt;/ul></description></item><item><title>主题配置</title><link>https://www.omoe.cc/posts/%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</link><pubDate>Fri, 11 Nov 2022 23:28:54 +0800</pubDate><guid>https://www.omoe.cc/posts/%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>主题简约没有代码复制 自定义添加&lt;/p>
+&lt;p>博客目录下&lt;code>static/css&lt;/code>添加&lt;code>copy-to-clipboard.css&lt;/code>内容&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-css" data-lang="css">&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="nc">highlight&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">position&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">relative&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="nc">highlight&lt;/span> &lt;span class="nt">pre&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">padding-right&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">10&lt;/span>&lt;span class="kt">px&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">background-color&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mh">#f8f8f8&lt;/span> &lt;span class="cp">!important&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="nc">highlight&lt;/span> &lt;span class="nt">td&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="nd">first-child&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">user-select&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">none&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="nc">highlight-copy-btn&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">position&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">absolute&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">top&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">right&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">border&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">none&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">border-radius&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">8&lt;/span>&lt;span class="kt">px&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">padding&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">0&lt;/span> &lt;span class="mi">5&lt;/span>&lt;span class="kt">px&lt;/span> &lt;span class="mi">5&lt;/span>&lt;span class="kt">px&lt;/span> &lt;span class="mi">5&lt;/span>&lt;span class="kt">px&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">font-size&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mf">0.5&lt;/span>&lt;span class="kt">em&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">line-height&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mf">1.8&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">color&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mh">#fff&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">background-color&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mh">#888&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">min-width&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">55&lt;/span>&lt;span class="kt">px&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">text-align&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">center&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">z-index&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">transition&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mf">.1&lt;/span>&lt;span class="kt">s&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">margin&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">10&lt;/span>&lt;span class="kt">px&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">opacity&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mf">0.5&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="nc">highlight-copy-btn&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="nd">hover&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">background-color&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mh">#666&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在&lt;code>static/js&lt;/code>下添加&lt;code>copy-to-clipboard.js&lt;/code>内容&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-JavaScript" data-lang="JavaScript">&lt;span class="line">&lt;span class="cl">&lt;span class="p">(&lt;/span>&lt;span class="kd">function&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;use strict&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="nb">document&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">queryCommandSupported&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;copy&amp;#39;&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">function&lt;/span> &lt;span class="nx">flashCopyMessage&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">el&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">msg&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">el&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">textContent&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">msg&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">setTimeout&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kd">function&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">el&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">textContent&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;Copy&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},&lt;/span> &lt;span class="mi">1000&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">function&lt;/span> &lt;span class="nx">selectText&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">node&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="nx">selection&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">window&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">getSelection&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="nx">range&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">document&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">createRange&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">range&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">selectNodeContents&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">node&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">selection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">removeAllRanges&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">selection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">addRange&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">range&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="nx">selection&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">function&lt;/span> &lt;span class="nx">addCopyButton&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">containerEl&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="nx">copyBtn&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">document&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">createElement&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;button&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">copyBtn&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">className&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;highlight-copy-btn&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">copyBtn&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">textContent&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;Copy&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="nx">codeEl&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">containerEl&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">firstElementChild&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">copyBtn&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">addEventListener&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;click&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kd">function&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="nx">selection&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">selectText&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">codeEl&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">document&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">execCommand&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;copy&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">selection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">removeAllRanges&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">flashCopyMessage&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">copyBtn&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;Copied!&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">catch&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">e&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">console&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">e&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">flashCopyMessage&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">copyBtn&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;Failed :\&amp;#39;(&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">});&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">containerEl&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">appendChild&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">copyBtn&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// Add copy button to code blocks
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kd">var&lt;/span> &lt;span class="nx">highlightBlocks&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">document&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">getElementsByClassName&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;highlight&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">Array&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">prototype&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">forEach&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">call&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">highlightBlocks&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">addCopyButton&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">})();&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Archive</title><link>https://www.omoe.cc/archives/</link><pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate><guid>https://www.omoe.cc/archives/</guid><description/></item><item><title>About</title><link>https://www.omoe.cc/about/</link><pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate><guid>https://www.omoe.cc/about/</guid><description>&lt;p>Written in Go, Hugo is an open source static site generator available under the &lt;a href="https://github.com/gohugoio/hugo/blob/master/LICENSE"target="_blank" rel="noopener noreferrer">Apache Licence 2.0.&lt;/a>
 Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.&lt;/p>
 &lt;p>Hugo makes use of a variety of open source projects including:&lt;/p>
 &lt;ul>

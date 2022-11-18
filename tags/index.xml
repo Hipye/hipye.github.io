@@ -1,196 +1,76 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on 拾集</title><link>https://www.omoe.cc/tags/</link><description>Recent content in Tags on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><atom:link href="https://www.omoe.cc/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>编译aria2添加128线程下载</title><link>https://www.omoe.cc/posts/%E7%BC%96%E8%AF%91aria2%E6%B7%BB%E5%8A%A0128%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD/</link><pubDate>Fri, 11 Nov 2022 19:48:06 +0000</pubDate><guid>https://www.omoe.cc/posts/%E7%BC%96%E8%AF%91aria2%E6%B7%BB%E5%8A%A0128%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD/</guid><description>&lt;p>aria2编译细节以及error处理&lt;/p>
-&lt;p>使用文档&lt;br>
-&lt;a href="https://aria2.github.io/"target="_blank" rel="noopener noreferrer">官方文档(en)&lt;/a>
-&lt;/p>
-&lt;h3 id="编译前注意事项">编译前注意事项&lt;/h3>
-&lt;p>根据系统以及平台的不同，编译的方法大同小异。仅提供linux发行版[ubuntu]的编译方法。
-国内的网络特殊原因，在&lt;a href="https://www.github.com"target="_blank" rel="noopener noreferrer">github&lt;/a>
-上下载作者提供的&lt;a href="https://github.com/aria2/aria2/releases"target="_blank" rel="noopener noreferrer">源码&lt;/a>
-的时候会出现下载失败以及访问龟速&lt;strong>开全局代理&lt;/strong>&lt;/p>
-&lt;p>因为不是和我存在同样操作环境下可能会有不同状况发生请善用&lt;a href="https://www.google.com"target="_blank" rel="noopener noreferrer">google&lt;/a>
-或者&lt;a href="https://www.baidu.com"target="_blank" rel="noopener noreferrer">百度&lt;/a>
-&lt;/p>
-&lt;hr>
-&lt;h3 id="添加依赖">添加依赖&lt;/h3>
-&lt;p>更新系统的软件&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get update -y &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> sudo apt-get upgrade -y
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>安装编译时官方说明需要的依赖&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get install libgnutls28-dev &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>nettle-dev libgmp-dev &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libssh2-1-dev libc-ares-dev &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libxml2-dev zlib1g-dev &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libsqlite3-dev pkg-config &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libcppunit-dev autoconf &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>automake autotools-dev autopoint libtool &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>git gcc g++ libxml2-dev make quilt libtool
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>centos指令如下&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">yum install gcc-g++ gcc -y
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="源码下载">源码下载&lt;/h4>
-&lt;p>下载aria2的源码&lt;a href="https://github.com/aria2/aria2/archive/release-1.36.0.tar.gz"target="_blank" rel="noopener noreferrer">1.36&lt;/a>
-&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">wget https://github.com/aria2/aria2/archive/release-1.36.0.tar.gz
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>源码包里的文件树&lt;/p>
-&lt;pre tabindex="0">&lt;code>.
-├── ABOUT-NLS
-├── aclocal.m4
-├── android-config
-├── AUTHORS
-├── autom4te.cache
-├── ChangeLog
-├── compile
-├── config.guess
-├── config.h
-├── config.h.in
-├── config.log
-├── config.rpath
-├── config.status
-├── config.sub
-├── configure
-├── configure.ac
-├── COPYING
-├── depcomp
-├── deps
-├── doc
-├── Dockerfile.mingw
-├── Dockerfile.raspberrypi
-├── examples
-├── INSTALL
-├── install-sh
-├── lib
-├── libtool
-├── LICENSE.OpenSSL
-├── ltmain.sh
-├── m4
-├── Makefile
-├── Makefile.am
-├── Makefile.in
-├── makerelease
-├── makerelease-osx.mk
-├── mingw-build-memo
-├── mingw-config
-├── mingw-release
-├── missing
-├── NEWS
-├── osx-package
-├── po
-├── README
-├── README.html
-├── README.rst
-├── script-helper
-├── src
-├── stamp-h1
-├── test
-└── test-driver
-&lt;/code>&lt;/pre>&lt;p>需要修改的只有&lt;code>./src&lt;/code>下的文件，没有这个目录则需要执行&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">autoreconf -i
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>修改128线程&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/&amp;#34;1&amp;#34;, 1, 16/&amp;#34;128&amp;#34;, 1, -1/g&amp;#39;&lt;/span> ./src/OptionHandlerFactory.cc
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/&amp;#34;20M&amp;#34;, 1_m, 1_g/&amp;#34;4K&amp;#34;, 1_k, 1_g/g&amp;#39;&lt;/span> ./src/OptionHandlerFactory.cc
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/PREF_CONNECT_TIMEOUT, TEXT_CONNECT_TIMEOUT, &amp;#34;60&amp;#34;, 1, 600/PREF_CONNECT_TIMEOUT, TEXT_CONNECT_TIMEOUT, &amp;#34;30&amp;#34;, 1, 600/g&amp;#39;&lt;/span> ./src/OptionHandlerFactory.cc
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/PREF_PIECE_LENGTH, TEXT_PIECE_LENGTH, &amp;#34;1M&amp;#34;, 1_m, 1_g/PREF_PIECE_LENGTH, TEXT_PIECE_LENGTH, &amp;#34;4k&amp;#34;, 1_k, 1_g/g&amp;#39;&lt;/span> ./src/OptionHandlerFactory.cc
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/new NumberOptionHandler(PREF_RETRY_WAIT, TEXT_RETRY_WAIT, &amp;#34;0&amp;#34;, 0, 600/new NumberOptionHandler(PREF_RETRY_WAIT, TEXT_RETRY_WAIT, &amp;#34;2&amp;#34;, 0, 600/g&amp;#39;&lt;/span> ./src/OptionHandlerFactory.cc
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/new NumberOptionHandler(PREF_SPLIT, TEXT_SPLIT, &amp;#34;5&amp;#34;, 1, -1,/new NumberOptionHandler(PREF_SPLIT, TEXT_SPLIT, &amp;#34;8&amp;#34;, 1, -1,/g&amp;#39;&lt;/span> ./src/OptionHandlerFactory.cc
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="编译">编译&lt;/h3>
-&lt;pre tabindex="0">&lt;code>./configure --prefix=$PREFIX
-&lt;/code>&lt;/pre>&lt;p>&lt;strong>$PREFIX&lt;/strong>是变量在&lt;code>.bashrc&lt;/code>下申明，位置自定义推荐在&lt;code>/usr&lt;/code>下，也可以删去包括&lt;code>--&lt;/code>后面的内容
-需要注意的是如果使用wsl编译则需要添加以免出现嵌套win的变量导致错误
-&lt;code>PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin &lt;/code>&lt;/p>
-&lt;pre tabindex="0">&lt;code>make -j12 V=s
-#12是我的pc的线程数一般是核心数x2
-make install
-#安装
-&lt;/code>&lt;/pre></description></item><item><title>Ubuntu编译openwrt</title><link>https://www.omoe.cc/posts/ubuntu%E7%BC%96%E8%AF%91openwrt/</link><pubDate>Fri, 11 Nov 2022 19:46:09 +0000</pubDate><guid>https://www.omoe.cc/posts/ubuntu%E7%BC%96%E8%AF%91openwrt/</guid><description>&lt;p>无论是潘多拉还是openwrt还是其他固件其底包都需要编译支持由于个人比较喜欢openwrt的高自由度所以特地列举编译固件当中遇到的报错以及问题。&lt;/p>
-&lt;p>固件首先使用的是&lt;code>win10&lt;/code>的&lt;code>wsl&lt;/code>建&lt;code>ubuntu20.04&lt;/code>开始编译&lt;/p>
-&lt;h3 id="本地编译">本地编译&lt;/h3>
-&lt;p>添加依赖&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get update -y
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt-get install -y git &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>subversion &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>g++ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>zlib1g-dev &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>build-essential &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>python &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>python3 &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>python3-distutils &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libncurses5-dev &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>gawk &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>gettext &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>unzip &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>file &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libssl-dev &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libelf-dev &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>ecj &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>fastjar &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>java-propose-classpath &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>build-essential &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libncursesw5-dev &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="下载源码">下载源码&lt;/h3>
-&lt;p>clone&lt;a href="https://github.com/coolsnowwolf/lede.git"target="_blank" rel="noopener noreferrer">[lean]&lt;/a>
-源码&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git clone https://github.com/coolsnowwolf/lede.git
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="添加第三方软件包">添加第三方软件包&lt;/h3>
-&lt;p>先编辑基础配置文件
-&lt;strong>feeds.conf.default&lt;/strong> 这个文本类似软件包配置&lt;/p>
-&lt;ul>
-&lt;li>[√] kenzo是第三方基础源有想用的软件包&lt;/li>
-&lt;li>[√] small是依赖包必须要添加&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;src-git kenzo https://github.com/kenzok8/openwrt-packages&amp;#34;&lt;/span> &amp;gt;&amp;gt; feeds.conf.default
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;src-git small https://github.com/kenzok8/small&amp;#34;&lt;/span> &amp;gt;&amp;gt; feeds.conf.default
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="第三方软件更新安装">第三方软件更新&amp;amp;安装&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">./scripts/feeds clean
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./scripts/feeds update -a
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./scripts/feeds install -a
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make menuconfig
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>前两项的必须选好 第一项是选择cpu的类别 第二项是你的路由型号&lt;/p>
-&lt;h3 id="dl包">dl包&lt;/h3>
-&lt;p>&lt;del>由于国内的网络环境导致在下载所需软件包时会导致失败这里提供一个国内dl镜像
-&lt;a href="https://gitee.com/tolqy/openwrt-lede-dl"target="_blank" rel="noopener noreferrer">gitee&lt;/a>
-&lt;/del>&lt;/p>
-&lt;h3 id="修改默认网关地址">修改默认网关地址&lt;/h3>
-&lt;p>不喜欢路由器的默认地址&lt;code>192.168.1.1&lt;/code>自己修改
-有多台路由时避免网关重复，这一步多设备必修改。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vim package/base-files/files/bin/config_generate
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="修改默认wifi的选项默认wifi无密码">修改默认wifi的选项&lt;code>默认wifi无密码&lt;/code>&lt;/h3>
-&lt;p>lede/package/kernel/mac80211/files/lib/wifi&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> wireless.default_radio&lt;span class="si">${&lt;/span>&lt;span class="nv">devidx&lt;/span>&lt;span class="si">}&lt;/span>.encryption&lt;span class="o">=&lt;/span>WPA2-PSK &lt;span class="c1">#设置加密协议&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> wireless.default_radio&lt;span class="si">${&lt;/span>&lt;span class="nv">devidx&lt;/span>&lt;span class="si">}&lt;/span>.key&lt;span class="o">=&lt;/span> &lt;span class="c1">#密码&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>已经编译过的必须删除旧有文件&lt;/code>&lt;/p>
-&lt;pre tabindex="0">&lt;code>rm -rf build_dir/ &amp;amp;&amp;amp; rm -rf staging_dir/ &amp;amp;&amp;amp; rm -rf tmp/
-&lt;/code>&lt;/pre>&lt;p>ssh连接开屏提醒&lt;/p>
-&lt;pre tabindex="0">&lt;code>package/base-files/files/etc/banner
-&lt;/code>&lt;/pre>&lt;h3 id="gcc版本">gcc版本&lt;/h3>
-&lt;p>解决gcc版本过低网络条件不佳则可以将源换成&lt;code>https://launchpad.proxy.ustclug.org&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt install software-properties-common
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt update
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt install gcc-11 g++-11
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 &lt;span class="m">60&lt;/span> --slave /usr/bin/g++ g++ /usr/bin/g++-11
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="wsl编译最后一步编译必须添加前置">wsl编译最后一步编译必须添加前置&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PATH&lt;/span>&lt;span class="o">=&lt;/span>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="编译">编译&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">make download -j12
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make -j8 &lt;span class="nv">V&lt;/span>&lt;span class="o">=&lt;/span>s
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>特别提醒 国内特殊的网络条件下在使用&lt;code>make download&lt;/code>下载依赖包时建议挂上全局避免直接404导致后面编译报error
-编译好的固件在/lede/bin/targets/xxx下&lt;/p>
-&lt;h3 id="二次编译">二次编译&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">./scripts/feeds update -a
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./scripts/feeds install -a
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> make defconfig
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> make -j12 download
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> make -j8 &lt;span class="nv">V&lt;/span>&lt;span class="o">=&lt;/span>s
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>第三方编译软件包 &lt;a href="https://github.com/OpenWrt-Actions/lienol-openwrt-package"target="_blank" rel="noopener noreferrer">[Lienol/openwrt备份]&lt;/a>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on 拾集</title><link>https://www.omoe.cc/tags/</link><description>Recent content in Tags on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><atom:link href="https://www.omoe.cc/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>Dlna多设备投送or局域网互联</title><link>https://www.omoe.cc/posts/dlna%E5%A4%9A%E8%AE%BE%E5%A4%87%E6%8A%95%E9%80%81or%E5%B1%80%E5%9F%9F%E7%BD%91%E4%BA%92%E8%81%94/</link><pubDate>Fri, 18 Nov 2022 10:25:56 +0000</pubDate><guid>https://www.omoe.cc/posts/dlna%E5%A4%9A%E8%AE%BE%E5%A4%87%E6%8A%95%E9%80%81or%E5%B1%80%E5%9F%9F%E7%BD%91%E4%BA%92%E8%81%94/</guid><description>&lt;p>手上有一台斐讯R1闲置挺久平常用来听听歌，较常使用的功能就是他本身自带的蓝牙连接&lt;code>or&lt;/code>dlna投送无奈的是局限于生产日期它所能支持的的蓝牙协议只有4.1且由于客观原因它的Ai助手完全用不到，故此我说能利用它的只有本身硬件软件上的蓝牙和dlna&lt;/p>
+&lt;h3 id="硬件">硬件&lt;/h3>
+&lt;p align="left">1.斐讯R1&lt;/p>
+&lt;p align="left">2.一台旧有的Android设备(已root)|树莓派|其他(未做调试)&lt;/p>
+&lt;p align="left">3.日常使用设备(Android)&lt;/p>
+&lt;h3 id="软件安装">软件安装&lt;/h3>
+&lt;p>斐讯R1&lt;/p>
+&lt;ol>
+&lt;li>升级固件到3448&lt;/li>
+&lt;li>断电状态下长按唤醒键再通电6秒初始化升级一键优化包&lt;a href="https://gitlab.com/hipye/apps/-/blob/1eea22e6b754ce9186fdfa659b41e178fb17b5a9/r1.7z.001"target="_blank" rel="noopener noreferrer">7z.001&lt;/a>
+|&lt;a href="https://gitlab.com/hipye/apps/-/blob/1eea22e6b754ce9186fdfa659b41e178fb17b5a9/r1.7z.002"target="_blank" rel="noopener noreferrer">7z.002&lt;/a>
+&lt;img src="https://s2.loli.net/2022/11/18/dD5QvwbLMIlB19O.jpg"
+alt="IMG_20221118_230359"/>&lt;/li>
+&lt;li>安装dlna和airplay&lt;a href="https://gitlab.com/hipye/apps/-/blob/1eea22e6b754ce9186fdfa659b41e178fb17b5a9/dlna.7z"target="_blank" rel="noopener noreferrer">[app]&lt;/a>
 &lt;/li>
-&lt;li>官方原版 &lt;a href="https://github.com/openwrt/openwrt"target="_blank" rel="noopener noreferrer">[openwrt]&lt;/a>
+&lt;/ol>
+&lt;p>局域网设备&lt;/p>
+&lt;ol>
+&lt;li>旧设备安装linuxdepoly(设备需要root)&lt;a href="https://gitlab.com/hipye/apps/-/blob/c8d05ccb2bb45420400414b54218692213a2ee50/Linux%20Deploy_2.6.2.apk"target="_blank" rel="noopener noreferrer">[LinuxDeploy]&lt;/a>
 &lt;/li>
-&lt;li>第三方固件地址国内镜像&lt;a href="https://gitee.com/qmgta/lede"target="_blank" rel="noopener noreferrer">[gitee]&lt;/a>
+&lt;li>软件默认配置、proot系统安装路径、默认镜像
+&lt;img src="https://s2.loli.net/2022/11/18/3Av1lOEzk8fCHZK.jpg"
+alt="IMG_20221118_154259"/>&lt;/li>
+&lt;/ol>
+&lt;p>日常设备&lt;/p>
+&lt;ol>
+&lt;li>播放器软件安装&lt;a href="https://gitlab.com/hipye/apps/-/blob/9b18f3fc4f0641e3b5ea118af73cab8ad51ef7a7/BubbleUPnP_Pro_v3.6.10_arm64-v8a_Android5.0%20.apk"target="_blank" rel="noopener noreferrer">[BubbleUPnP]&lt;/a>
 &lt;/li>
-&lt;li>利用CI自动构建项目 &lt;a href="https://github.com/kenzok8/openwrt_Build"target="_blank" rel="noopener noreferrer">[openwrt_Build]&lt;/a>
-&lt;/li>
-&lt;li>自定义网关地址以及无线网络名称 &lt;a href="http://www.5lazy.cn/post-147.html"target="_blank" rel="noopener noreferrer">[源码修改]&lt;/a>
-&lt;/li>
-&lt;/ul></description></item><item><title>Ndk交叉编译aria2</title><link>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</link><pubDate>Fri, 11 Nov 2022 19:44:46 +0000</pubDate><guid>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</guid><description>&lt;p>交叉编译aria2&lt;/p>
+&lt;li>安装Juicessh&lt;a href="https://gitlab.com/hipye/apps/-/blob/2d455e9b467ca89a12c3dc8de4c8d4aedaeccb42/JuiceSSH%20-%20SSH%20Client_3.2.2_Apkpure.apk"target="_blank" rel="noopener noreferrer">[app]&lt;/a>
+&lt;code>or&lt;/code>termux&lt;a href="https://f-droid.org/zh_Hans/packages/com.termux/"target="_blank" rel="noopener noreferrer">[app]&lt;/a>
+有juicessh则不需要&lt;/li>
+&lt;/ol>
+&lt;h3 id="软件配置">软件配置&lt;/h3>
+&lt;p>以下使用termux
+安装基础软件&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">wget -q -O- https://gitee.com/hipye/st/raw/master/usedo.sh &lt;span class="p">|&lt;/span> bash
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>ssh连接&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ssh name@192.168.x.x
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>成功显示如下
+&lt;img src="https://s2.loli.net/2022/11/18/u9yAdGLI6bWxemi.jpg"
+alt="IMG_20221118_163414"/>
+旧设备上配置minidlna&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get install minidlna
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 安装minidlna&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo service minidlna start
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 启动minidlna&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo vim /etc/minidlna.conf
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 修改默认配置&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>默认模板&lt;/p>
+&lt;pre tabindex="0">&lt;code># * &amp;#34;A&amp;#34; for audio (eg. media_dir=A,/var/lib/minidlna/music)
+# A为音频
+# * &amp;#34;P&amp;#34; for pictures (eg. media_dir=P,/var/lib/minidlna/pictures)
+# P为图片
+# * &amp;#34;V&amp;#34; for video (eg. media_dir=V,/var/lib/minidlna/videos)
+# V为视频
+# * &amp;#34;PV&amp;#34; for pictures and video (eg. media_dir=PV,/var/lib/minidlna/digital_camera)
+# PV为视频加图片
+&lt;/code>&lt;/pre>&lt;p>所以配置为&lt;/p>
+&lt;pre tabindex="0">&lt;code>media_dir=A,/home/name/music
+# 注释掉原有的，修改为自己的音乐文件夹
+port=8200
+# 此处为默认端口，不修改
+friendly_name=m40
+# 此处为服务器设置名称
+inotify=yes
+# 往music文件夹添加新文件时更新
+&lt;/code>&lt;/pre>&lt;p>重载配置&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo service minidlna force-reload
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="播放使用">播放使用&lt;/h3>
+&lt;p>打开BubbleUnpnp，局域网出现你设置过的dlna服务器
+&lt;img src="https://s2.loli.net/2022/11/18/Wnj2mf9KCPNLFGo.jpg"
+alt="IMG_20221118_174930"/>
+接下来投屏即可&lt;/p></description></item><item><title>Ndk交叉编译aria2</title><link>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</link><pubDate>Sat, 12 Nov 2022 03:44:46 +0000</pubDate><guid>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</guid><description>&lt;p>交叉编译aria2&lt;/p>
 &lt;p>下载交叉编译工具(这里推荐r21e比较稳定且兼容)&lt;/p>
 &lt;table>
 &lt;thead>
@@ -399,6 +279,198 @@ Visit https://aria2.github.io/
 &lt;li>openssl编译问题&lt;a href="https://fucknmb.com/2017/05/24/openssl-NDK%e4%ba%a4%e5%8f%89%e7%bc%96%e8%af%91/?utm_source=tuicool&amp;amp;utm_medium=referral"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
 &lt;/li>
 &lt;li>aria2 1.36源码静态库链接编译问题&lt;a href="https://fh0.github.io/%e7%bc%96%e8%af%91/2019/12/28/android-aria2.html"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
+&lt;/li>
+&lt;/ul></description></item><item><title>编译aria2添加128线程下载</title><link>https://www.omoe.cc/posts/%E7%BC%96%E8%AF%91aria2%E6%B7%BB%E5%8A%A0128%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD/</link><pubDate>Fri, 11 Nov 2022 19:48:06 +0000</pubDate><guid>https://www.omoe.cc/posts/%E7%BC%96%E8%AF%91aria2%E6%B7%BB%E5%8A%A0128%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD/</guid><description>&lt;p>aria2编译细节以及error处理&lt;/p>
+&lt;p>使用文档&lt;br>
+&lt;a href="https://aria2.github.io/"target="_blank" rel="noopener noreferrer">官方文档(en)&lt;/a>
+&lt;/p>
+&lt;h3 id="编译前注意事项">编译前注意事项&lt;/h3>
+&lt;p>根据系统以及平台的不同，编译的方法大同小异。仅提供linux发行版[ubuntu]的编译方法。
+国内的网络特殊原因，在&lt;a href="https://www.github.com"target="_blank" rel="noopener noreferrer">github&lt;/a>
+上下载作者提供的&lt;a href="https://github.com/aria2/aria2/releases"target="_blank" rel="noopener noreferrer">源码&lt;/a>
+的时候会出现下载失败以及访问龟速&lt;strong>开全局代理&lt;/strong>&lt;/p>
+&lt;p>因为不是和我存在同样操作环境下可能会有不同状况发生请善用&lt;a href="https://www.google.com"target="_blank" rel="noopener noreferrer">google&lt;/a>
+或者&lt;a href="https://www.baidu.com"target="_blank" rel="noopener noreferrer">百度&lt;/a>
+&lt;/p>
+&lt;hr>
+&lt;h3 id="添加依赖">添加依赖&lt;/h3>
+&lt;p>更新系统的软件&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get update -y &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> sudo apt-get upgrade -y
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>安装编译时官方说明需要的依赖&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get install libgnutls28-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>nettle-dev libgmp-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libssh2-1-dev libc-ares-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libxml2-dev zlib1g-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libsqlite3-dev pkg-config &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libcppunit-dev autoconf &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>automake autotools-dev autopoint libtool &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>git gcc g++ libxml2-dev make quilt libtool
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>centos指令如下&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">yum install gcc-g++ gcc -y
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="源码下载">源码下载&lt;/h4>
+&lt;p>下载aria2的源码&lt;a href="https://github.com/aria2/aria2/archive/release-1.36.0.tar.gz"target="_blank" rel="noopener noreferrer">1.36&lt;/a>
+&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">wget https://github.com/aria2/aria2/archive/release-1.36.0.tar.gz
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>源码包里的文件树&lt;/p>
+&lt;pre tabindex="0">&lt;code>.
+├── ABOUT-NLS
+├── aclocal.m4
+├── android-config
+├── AUTHORS
+├── autom4te.cache
+├── ChangeLog
+├── compile
+├── config.guess
+├── config.h
+├── config.h.in
+├── config.log
+├── config.rpath
+├── config.status
+├── config.sub
+├── configure
+├── configure.ac
+├── COPYING
+├── depcomp
+├── deps
+├── doc
+├── Dockerfile.mingw
+├── Dockerfile.raspberrypi
+├── examples
+├── INSTALL
+├── install-sh
+├── lib
+├── libtool
+├── LICENSE.OpenSSL
+├── ltmain.sh
+├── m4
+├── Makefile
+├── Makefile.am
+├── Makefile.in
+├── makerelease
+├── makerelease-osx.mk
+├── mingw-build-memo
+├── mingw-config
+├── mingw-release
+├── missing
+├── NEWS
+├── osx-package
+├── po
+├── README
+├── README.html
+├── README.rst
+├── script-helper
+├── src
+├── stamp-h1
+├── test
+└── test-driver
+&lt;/code>&lt;/pre>&lt;p>需要修改的只有&lt;code>./src&lt;/code>下的文件，没有这个目录则需要执行&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">autoreconf -i
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>修改128线程&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/&amp;#34;1&amp;#34;, 1, 16/&amp;#34;128&amp;#34;, 1, -1/g&amp;#39;&lt;/span> ./src/OptionHandlerFactory.cc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/&amp;#34;20M&amp;#34;, 1_m, 1_g/&amp;#34;4K&amp;#34;, 1_k, 1_g/g&amp;#39;&lt;/span> ./src/OptionHandlerFactory.cc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/PREF_CONNECT_TIMEOUT, TEXT_CONNECT_TIMEOUT, &amp;#34;60&amp;#34;, 1, 600/PREF_CONNECT_TIMEOUT, TEXT_CONNECT_TIMEOUT, &amp;#34;30&amp;#34;, 1, 600/g&amp;#39;&lt;/span> ./src/OptionHandlerFactory.cc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/PREF_PIECE_LENGTH, TEXT_PIECE_LENGTH, &amp;#34;1M&amp;#34;, 1_m, 1_g/PREF_PIECE_LENGTH, TEXT_PIECE_LENGTH, &amp;#34;4k&amp;#34;, 1_k, 1_g/g&amp;#39;&lt;/span> ./src/OptionHandlerFactory.cc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/new NumberOptionHandler(PREF_RETRY_WAIT, TEXT_RETRY_WAIT, &amp;#34;0&amp;#34;, 0, 600/new NumberOptionHandler(PREF_RETRY_WAIT, TEXT_RETRY_WAIT, &amp;#34;2&amp;#34;, 0, 600/g&amp;#39;&lt;/span> ./src/OptionHandlerFactory.cc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/new NumberOptionHandler(PREF_SPLIT, TEXT_SPLIT, &amp;#34;5&amp;#34;, 1, -1,/new NumberOptionHandler(PREF_SPLIT, TEXT_SPLIT, &amp;#34;8&amp;#34;, 1, -1,/g&amp;#39;&lt;/span> ./src/OptionHandlerFactory.cc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="编译">编译&lt;/h3>
+&lt;pre tabindex="0">&lt;code>./configure --prefix=$PREFIX
+&lt;/code>&lt;/pre>&lt;p>&lt;strong>$PREFIX&lt;/strong>是变量在&lt;code>.bashrc&lt;/code>下申明，位置自定义推荐在&lt;code>/usr&lt;/code>下，也可以删去包括&lt;code>--&lt;/code>后面的内容
+需要注意的是如果使用wsl编译则需要添加以免出现嵌套win的变量导致错误
+&lt;code>PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin &lt;/code>&lt;/p>
+&lt;pre tabindex="0">&lt;code>make -j12 V=s
+#12是我的pc的线程数一般是核心数x2
+make install
+#安装
+&lt;/code>&lt;/pre></description></item><item><title>Ubuntu编译openwrt</title><link>https://www.omoe.cc/posts/ubuntu%E7%BC%96%E8%AF%91openwrt/</link><pubDate>Fri, 11 Nov 2022 19:46:09 +0000</pubDate><guid>https://www.omoe.cc/posts/ubuntu%E7%BC%96%E8%AF%91openwrt/</guid><description>&lt;p>无论是潘多拉还是openwrt还是其他固件其底包都需要编译支持由于个人比较喜欢openwrt的高自由度所以特地列举编译固件当中遇到的报错以及问题。&lt;/p>
+&lt;p>固件首先使用的是&lt;code>win10&lt;/code>的&lt;code>wsl&lt;/code>建&lt;code>ubuntu20.04&lt;/code>开始编译&lt;/p>
+&lt;h3 id="本地编译">本地编译&lt;/h3>
+&lt;p>添加依赖&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get update -y
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt-get install -y git &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>subversion &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>g++ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>zlib1g-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>build-essential &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>python &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>python3 &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>python3-distutils &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libncurses5-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>gawk &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>gettext &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>unzip &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>file &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libssl-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libelf-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>ecj &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>fastjar &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>java-propose-classpath &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>build-essential &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libncursesw5-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="下载源码">下载源码&lt;/h3>
+&lt;p>clone&lt;a href="https://github.com/coolsnowwolf/lede.git"target="_blank" rel="noopener noreferrer">[lean]&lt;/a>
+源码&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git clone https://github.com/coolsnowwolf/lede.git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="添加第三方软件包">添加第三方软件包&lt;/h3>
+&lt;p>先编辑基础配置文件
+&lt;strong>feeds.conf.default&lt;/strong> 这个文本类似软件包配置&lt;/p>
+&lt;ul>
+&lt;li>[√] kenzo是第三方基础源有想用的软件包&lt;/li>
+&lt;li>[√] small是依赖包必须要添加&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;src-git kenzo https://github.com/kenzok8/openwrt-packages&amp;#34;&lt;/span> &amp;gt;&amp;gt; feeds.conf.default
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;src-git small https://github.com/kenzok8/small&amp;#34;&lt;/span> &amp;gt;&amp;gt; feeds.conf.default
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="第三方软件更新安装">第三方软件更新&amp;amp;安装&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">./scripts/feeds clean
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./scripts/feeds update -a
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./scripts/feeds install -a
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make menuconfig
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>前两项的必须选好 第一项是选择cpu的类别 第二项是你的路由型号&lt;/p>
+&lt;h3 id="dl包">dl包&lt;/h3>
+&lt;p>&lt;del>由于国内的网络环境导致在下载所需软件包时会导致失败这里提供一个国内dl镜像
+&lt;a href="https://gitee.com/tolqy/openwrt-lede-dl"target="_blank" rel="noopener noreferrer">gitee&lt;/a>
+&lt;/del>&lt;/p>
+&lt;h3 id="修改默认网关地址">修改默认网关地址&lt;/h3>
+&lt;p>不喜欢路由器的默认地址&lt;code>192.168.1.1&lt;/code>自己修改
+有多台路由时避免网关重复，这一步多设备必修改。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vim package/base-files/files/bin/config_generate
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="修改默认wifi的选项默认wifi无密码">修改默认wifi的选项&lt;code>默认wifi无密码&lt;/code>&lt;/h3>
+&lt;p>lede/package/kernel/mac80211/files/lib/wifi&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> wireless.default_radio&lt;span class="si">${&lt;/span>&lt;span class="nv">devidx&lt;/span>&lt;span class="si">}&lt;/span>.encryption&lt;span class="o">=&lt;/span>WPA2-PSK &lt;span class="c1">#设置加密协议&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> wireless.default_radio&lt;span class="si">${&lt;/span>&lt;span class="nv">devidx&lt;/span>&lt;span class="si">}&lt;/span>.key&lt;span class="o">=&lt;/span> &lt;span class="c1">#密码&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>已经编译过的必须删除旧有文件&lt;/code>&lt;/p>
+&lt;pre tabindex="0">&lt;code>rm -rf build_dir/ &amp;amp;&amp;amp; rm -rf staging_dir/ &amp;amp;&amp;amp; rm -rf tmp/
+&lt;/code>&lt;/pre>&lt;p>ssh连接开屏提醒&lt;/p>
+&lt;pre tabindex="0">&lt;code>package/base-files/files/etc/banner
+&lt;/code>&lt;/pre>&lt;h3 id="gcc版本">gcc版本&lt;/h3>
+&lt;p>解决gcc版本过低网络条件不佳则可以将源换成&lt;code>https://launchpad.proxy.ustclug.org&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt install software-properties-common
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt update
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt install gcc-11 g++-11
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 &lt;span class="m">60&lt;/span> --slave /usr/bin/g++ g++ /usr/bin/g++-11
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="wsl编译最后一步编译必须添加前置">wsl编译最后一步编译必须添加前置&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PATH&lt;/span>&lt;span class="o">=&lt;/span>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="编译">编译&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">make download -j12
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make -j8 &lt;span class="nv">V&lt;/span>&lt;span class="o">=&lt;/span>s
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>特别提醒 国内特殊的网络条件下在使用&lt;code>make download&lt;/code>下载依赖包时建议挂上全局避免直接404导致后面编译报error
+编译好的固件在/lede/bin/targets/xxx下&lt;/p>
+&lt;h3 id="二次编译">二次编译&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">./scripts/feeds update -a
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./scripts/feeds install -a
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> make defconfig
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> make -j12 download
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> make -j8 &lt;span class="nv">V&lt;/span>&lt;span class="o">=&lt;/span>s
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>第三方编译软件包 &lt;a href="https://github.com/OpenWrt-Actions/lienol-openwrt-package"target="_blank" rel="noopener noreferrer">[Lienol/openwrt备份]&lt;/a>
+&lt;/li>
+&lt;li>官方原版 &lt;a href="https://github.com/openwrt/openwrt"target="_blank" rel="noopener noreferrer">[openwrt]&lt;/a>
+&lt;/li>
+&lt;li>第三方固件地址国内镜像&lt;a href="https://gitee.com/qmgta/lede"target="_blank" rel="noopener noreferrer">[gitee]&lt;/a>
+&lt;/li>
+&lt;li>利用CI自动构建项目 &lt;a href="https://github.com/kenzok8/openwrt_Build"target="_blank" rel="noopener noreferrer">[openwrt_Build]&lt;/a>
+&lt;/li>
+&lt;li>自定义网关地址以及无线网络名称 &lt;a href="http://www.5lazy.cn/post-147.html"target="_blank" rel="noopener noreferrer">[源码修改]&lt;/a>
 &lt;/li>
 &lt;/ul></description></item><item><title>Shell脚本编写指南</title><link>https://www.omoe.cc/posts/shell%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97/</link><pubDate>Fri, 11 Nov 2022 19:39:26 +0000</pubDate><guid>https://www.omoe.cc/posts/shell%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97/</guid><description>&lt;h3 id="if判断实例">if判断实例&lt;/h3>
 &lt;pre tabindex="0">&lt;code>if [ ! -d $变量 ];then

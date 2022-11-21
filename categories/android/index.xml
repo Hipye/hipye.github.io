@@ -17,14 +17,17 @@ ubuntu2004 config &amp;ndash;default-user Username&lt;/p>
 del d:\wsl-ubuntu20.04.tar&lt;/p></description></item><item><title>Win10ltsc安装winget</title><link>https://www.omoe.cc/posts/win10ltsc%E5%AE%89%E8%A3%85winget/</link><pubDate>Sun, 20 Nov 2022 06:37:41 +0000</pubDate><guid>https://www.omoe.cc/posts/win10ltsc%E5%AE%89%E8%A3%85winget/</guid><description>&lt;h3 id="准备依赖">准备依赖&lt;/h3>
 &lt;p>VCLibs 的安装文件
 &lt;a href="https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"target="_blank" rel="noopener noreferrer">https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx&lt;/a>
-UI.Xaml 的安装文件&lt;a href="https://store.rg-adguard.net/"target="_blank" rel="noopener noreferrer">store.rg-adguard.net&lt;/a>
-输入框左面的选择框选择 ProductFamilyName，再输入 Microsoft.UI.Xaml.2.7_8wekyb3d8bbwe 。
-&lt;a href="http://tlu.dl.delivery.mp.microsoft.com/filestreamingservice/files/cadae296-3389-40c2-b927-605f7b399b78?P1=1668846877&amp;amp;P2=404&amp;amp;P3=2&amp;amp;P4=BLqLZQMcSMvoP08DZhmrdnNSz06NBdyp%2fz8g3KueZ%2fShTGos5NhOd26C4rcFCP9F6UzVa0giQRB5DqWZXYBPRQ%3d%3d"target="_blank" rel="noopener noreferrer">UI.Xaml&lt;/a>
-winget安装文件
+&lt;/p>
+&lt;p>UI.Xaml 的安装文件&lt;a href="https://store.rg-adguard.net/"target="_blank" rel="noopener noreferrer">store.rg-adguard.net&lt;/a>
+输入框左面的选择框选择 ProductFamilyName，再输入 Microsoft.UI.Xaml.2.7_8wekyb3d8bbwe 。&lt;/p>
+&lt;p>&lt;a href="http://tlu.dl.delivery.mp.microsoft.com/filestreamingservice/files/cadae296-3389-40c2-b927-605f7b399b78?P1=1668846877&amp;amp;P2=404&amp;amp;P3=2&amp;amp;P4=BLqLZQMcSMvoP08DZhmrdnNSz06NBdyp%2fz8g3KueZ%2fShTGos5NhOd26C4rcFCP9F6UzVa0giQRB5DqWZXYBPRQ%3d%3d"target="_blank" rel="noopener noreferrer">UI.Xaml&lt;/a>
+&lt;/p>
+&lt;p>winget安装文件
 &lt;a href="https://github.com/microsoft/winget-cli/releases/download/v1.3.2691/7bcb1a0ab33340daa57fa5b81faec616_License1.xml"target="_blank" rel="noopener noreferrer">xml&lt;/a>
 &lt;a href="https://github.com/microsoft/winget-cli/releases/download/v1.3.2691/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"target="_blank" rel="noopener noreferrer">msixbundle
 &lt;/a>
-依赖安装(必须要管理员权限)&lt;/p>
+&lt;/p>
+&lt;p>依赖安装(必须要管理员权限)&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">Add-AppxProvisionedPackage -Online -PackagePath &lt;span class="s2">&amp;#34;C:\Microsoft.VCLibs.x64.14.00.Desktop.appx&amp;#34;&lt;/span> -SkipLicense
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Add-AppxProvisionedPackage -Online -PackagePath &lt;span class="s2">&amp;#34;C:\Microsoft.UI.Xaml.2.7_7.2208.15002.0_x64__8wekyb3d8bbwe.Appx&amp;#34;&lt;/span> -SkipLicense
@@ -33,9 +36,9 @@ winget安装文件
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>软件包列表&lt;a href="https://winstall.app/apps"target="_blank" rel="noopener noreferrer">winstall.app&lt;/a>
 &lt;/p>
 &lt;h3 id="安装软件">安装软件&lt;/h3>
-&lt;p>winget install 软件名称或ID：默认安装路径（目录），一般在&amp;quot;C:\Program Files&amp;quot;目录下面。
-winget install 软件名称或ID -l 指定路径：可自定义安装路径（目录），但是需要软件本身支持这种操作。
-winget install 软件名称或ID -i：交互式软件安装，即在软件下载完成后，需要用户手动进行安装（①②命令无需人工干预）。&lt;/p></description></item><item><title>Dlna多设备投送or局域网互联</title><link>https://www.omoe.cc/posts/dlna%E5%A4%9A%E8%AE%BE%E5%A4%87%E6%8A%95%E9%80%81or%E5%B1%80%E5%9F%9F%E7%BD%91%E4%BA%92%E8%81%94/</link><pubDate>Fri, 18 Nov 2022 10:25:56 +0000</pubDate><guid>https://www.omoe.cc/posts/dlna%E5%A4%9A%E8%AE%BE%E5%A4%87%E6%8A%95%E9%80%81or%E5%B1%80%E5%9F%9F%E7%BD%91%E4%BA%92%E8%81%94/</guid><description>&lt;p>手上有一台斐讯R1闲置挺久平常用来听听歌，较常使用的功能就是他本身自带的蓝牙连接&lt;code>or&lt;/code>dlna投送无奈的是局限于生产日期它所能支持的的蓝牙协议只有4.1且由于客观原因它的Ai助手完全用不到，故此我说能利用它的只有本身硬件软件上的蓝牙和dlna&lt;/p>
+&lt;p>winget install 软件名称或ID：默认安装路径（目录），一般在&amp;quot;C:\Program Files&amp;quot;目录下面。&lt;/p>
+&lt;p>winget install 软件名称或ID -l 指定路径：可自定义安装路径（目录），但是需要软件本身支持这种操作。&lt;/p>
+&lt;p>winget install 软件名称或ID -i：交互式软件安装，即在软件下载完成后，需要用户手动进行安装（①②命令无需人工干预）。&lt;/p></description></item><item><title>Dlna多设备投送or局域网互联</title><link>https://www.omoe.cc/posts/dlna%E5%A4%9A%E8%AE%BE%E5%A4%87%E6%8A%95%E9%80%81or%E5%B1%80%E5%9F%9F%E7%BD%91%E4%BA%92%E8%81%94/</link><pubDate>Fri, 18 Nov 2022 10:25:56 +0000</pubDate><guid>https://www.omoe.cc/posts/dlna%E5%A4%9A%E8%AE%BE%E5%A4%87%E6%8A%95%E9%80%81or%E5%B1%80%E5%9F%9F%E7%BD%91%E4%BA%92%E8%81%94/</guid><description>&lt;p>手上有一台斐讯R1闲置挺久平常用来听听歌，较常使用的功能就是他本身自带的蓝牙连接&lt;code>or&lt;/code>dlna投送无奈的是局限于生产日期它所能支持的的蓝牙协议只有4.1且由于客观原因它的Ai助手完全用不到，故此我说能利用它的只有本身硬件软件上的蓝牙和dlna&lt;/p>
 &lt;h3 id="硬件">硬件&lt;/h3>
 &lt;p align="left">1.斐讯R1&lt;/p>
 &lt;p align="left">2.一台旧有的Android设备(已root)|树莓派|其他(未做调试)&lt;/p>

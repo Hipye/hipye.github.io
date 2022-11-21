@@ -29,7 +29,7 @@ a.file &gt; c.file
 <code>curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null</code></li><li>or
 <code>echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list</code></li><li>or
 <code>sudo apt-get update && sudo apt-get install yarn</code>
-npm</li></ul><pre tabindex=0><code>npm config set registry https://r.cnpmjs.org/
+cnpm</li></ul><pre tabindex=0><code>npm install -g cnpm --registry=http://registry.npm.taobao.org
 </code></pre><p>error: cnpm - 解决 " cnpm : 无法加载文件 C:\Users?\AppData\Roaming\npm\cnpm.ps1，因为在此系统上禁止运行脚本。</p><pre tabindex=0><code>set-ExecutionPolicy RemoteSigned #A
 </code></pre><hr><h3 id=tar解压>tar解压</h3><ul><li>压缩（-c，compress）：对文档，目录进行打包操作，并没有压缩</li><li>解压（-x，extract）：对文档，目录进行解包操作</li><li>查看（-t，list）：查看压缩包或普通包里的文件名</li><li>gzip（-z）：后缀名为.tar.gz，后缀名非硬性要求，建议这么做，下同。压缩率最低，速度快，常用</li><li>bzip2（-j）：后缀名为.tar.bz2，压缩率高，速度较慢</li><li>xz（-J）：后缀名为.tar.xz，压缩率超高，速度很慢，看情况使用</li><li>-v：在处理的时候，显示正在处理的文件名</li><li>-f：用于指定压缩后的文档名，或者是欲解压的文档名</li></ul><h3 id=搭建简易git服务>搭建简易git服务</h3><ul><li>安装git(这里安装略过)</li><li>创建用户</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo adduser git
 </span></span><span class=line><span class=cl>su git
@@ -40,13 +40,19 @@ npm</li></ul><pre tabindex=0><code>npm config set registry https://r.cnpmjs.org/
 </span></span><span class=line><span class=cl>git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
 </span></span></code></pre></div><ul><li>使用设备远程克隆仓库</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>git clone git@ip:xxx.git
 </span></span></code></pre></div><hr><p>git remote -v
-#检查现有远程连接，如果没有，则显示空</p><p>git remote add origin [远程仓库]
-#添加远程仓库</p><p>git push &ndash;set-upstream origin master
-#推送到远程仓库</p><p>git branch -D []
+#检查现有远程连接，如果没有，则显示空
+git remote add origin [远程仓库]
+#添加远程仓库
+git push &ndash;set-upstream origin master
+#推送到远程仓库
+git branch -D []
 git branch -d []
-#删除本地分支</p><p>git push origin &ndash;delete []
-#删除远程分支</p><p>git push -u origin []
-#将本地新建的分之推到远程（远程也新建相应的分之）</p><p>git config commit.gpgsign ture
+#删除本地分支
+git push origin &ndash;delete []
+#删除远程分支
+git push -u origin []
+#将本地新建的分之推到远程（远程也新建相应的分之）
+git config commit.gpgsign ture
 #添加gpg验证
 export GPG_TTY=$(tty)</p><h3 id=apt包管理器下禁止软件包更新>apt包管理器下禁止软件包更新</h3><p>设置package包的状态为 hold；</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nb>echo</span> package hold <span class=p>|</span> dpkg --set-selections
 </span></span></code></pre></div><p>如果想恢复可以更新的状态(install)，执行下面的命令；</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nb>echo</span> package install <span class=p>|</span> dpkg --set-selections

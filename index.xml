@@ -624,12 +624,19 @@ a.file &amp;gt; c.file
 &lt;code>echo &amp;quot;deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main&amp;quot; | sudo tee /etc/apt/sources.list.d/yarn.list&lt;/code>&lt;/li>
 &lt;li>or
 &lt;code>sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install yarn&lt;/code>
-cnpm&lt;/li>
+npm&lt;/li>
 &lt;/ul>
-&lt;pre tabindex="0">&lt;code>npm install -g cnpm --registry=http://registry.npm.taobao.org
+&lt;pre tabindex="0">&lt;code>npm config set registry https://r.cnpmjs.org/
 &lt;/code>&lt;/pre>&lt;p>error: cnpm - 解决 &amp;quot; cnpm : 无法加载文件 C:\Users?\AppData\Roaming\npm\cnpm.ps1，因为在此系统上禁止运行脚本。&lt;/p>
 &lt;pre tabindex="0">&lt;code>set-ExecutionPolicy RemoteSigned #A
-&lt;/code>&lt;/pre>&lt;hr>
+npm install --legacy-peer-deps element-ui --save
+vue ui创建项目时，出现如下错误：
+ERROR Failed to get response from http://registry.npmjs.org/vue-cli-version-marker找到$HOME/.vuerc
+&lt;/code>&lt;/pre>&lt;p>{
+&amp;ldquo;useTaobaoRegistry&amp;rdquo;: false,
+&amp;ldquo;packageManager&amp;rdquo;: &amp;ldquo;yarn&amp;rdquo;
+}&lt;/p>
+&lt;pre tabindex="0">&lt;code>&lt;/code>&lt;/pre>&lt;hr>
 &lt;h3 id="tar解压">tar解压&lt;/h3>
 &lt;ul>
 &lt;li>压缩（-c，compress）：对文档，目录进行打包操作，并没有压缩&lt;/li>
@@ -666,19 +673,19 @@ cnpm&lt;/li>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git clone git@ip:xxx.git
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
 &lt;p>git remote -v
-#检查现有远程连接，如果没有，则显示空
-git remote add origin [远程仓库]
-#添加远程仓库
-git push &amp;ndash;set-upstream origin master
-#推送到远程仓库
-git branch -D []
+#检查现有远程连接，如果没有，则显示空&lt;/p>
+&lt;p>git remote add origin [远程仓库]
+#添加远程仓库&lt;/p>
+&lt;p>git push &amp;ndash;set-upstream origin master
+#推送到远程仓库&lt;/p>
+&lt;p>git branch -D []
 git branch -d []
-#删除本地分支
-git push origin &amp;ndash;delete []
-#删除远程分支
-git push -u origin []
-#将本地新建的分之推到远程（远程也新建相应的分之）
-git config commit.gpgsign ture
+#删除本地分支&lt;/p>
+&lt;p>git push origin &amp;ndash;delete []
+#删除远程分支&lt;/p>
+&lt;p>git push -u origin []
+#将本地新建的分之推到远程（远程也新建相应的分之）&lt;/p>
+&lt;p>git config commit.gpgsign ture
 #添加gpg验证
 export GPG_TTY=$(tty)&lt;/p>
 &lt;h3 id="apt包管理器下禁止软件包更新">apt包管理器下禁止软件包更新&lt;/h3>

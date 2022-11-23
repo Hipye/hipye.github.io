@@ -1,4 +1,31 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Categories on 拾集</title><link>https://www.omoe.cc/categories/</link><description>Recent content in Categories on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><lastBuildDate>Fri, 18 Nov 2022 10:25:56 +0000</lastBuildDate><atom:link href="https://www.omoe.cc/categories/index.xml" rel="self" type="application/rss+xml"/><item><title>Vue3+vite2+router路由初始化配置</title><link>https://www.omoe.cc/posts/vue3+vite2+router%E8%B7%AF%E7%94%B1%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE/</link><pubDate>Wed, 23 Nov 2022 21:15:36 +0000</pubDate><guid>https://www.omoe.cc/posts/vue3+vite2+router%E8%B7%AF%E7%94%B1%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE/</guid><description>&lt;h3 id="安装npm">安装npm&lt;/h3>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Categories on 拾集</title><link>https://www.omoe.cc/categories/</link><description>Recent content in Categories on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><lastBuildDate>Fri, 18 Nov 2022 10:25:56 +0000</lastBuildDate><atom:link href="https://www.omoe.cc/categories/index.xml" rel="self" type="application/rss+xml"/><item><title>Npm安装以及使用流程</title><link>https://www.omoe.cc/posts/npm%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/</link><pubDate>Wed, 23 Nov 2022 22:06:07 +0000</pubDate><guid>https://www.omoe.cc/posts/npm%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/</guid><description>&lt;h3 id="nodejs安装">nodejs安装&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">curl -sL https://deb.nodesource.com/setup_14.x &lt;span class="p">|&lt;/span> sudo -E bash -
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>允许 &lt;code>sudo apt-get install -y nodejs&lt;/code> 来安装 Node.js 14.x 和 npm&lt;/li>
+&lt;li>使用开发者工具箱来编译添加插件
+&lt;code>sudo apt-get install gcc g++ make&lt;/code>&lt;/li>
+&lt;li>使用yarn包管理器安装
+&lt;code>curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg &amp;gt;/dev/null&lt;/code>&lt;/li>
+&lt;li>or
+&lt;code>echo &amp;quot;deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main&amp;quot; | sudo tee /etc/apt/sources.list.d/yarn.list&lt;/code>&lt;/li>
+&lt;li>or
+&lt;code>sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install yarn&lt;/code>
+npm&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>npm config set registry https://r.cnpmjs.org/
+&lt;/code>&lt;/pre>&lt;p>error: cnpm - 解决 &amp;quot; cnpm : 无法加载文件 C:\Users?\AppData\Roaming\npm\cnpm.ps1，因为在此系统上禁止运行脚本。&lt;/p>
+&lt;pre tabindex="0">&lt;code>set-ExecutionPolicy RemoteSigned #A
+npm install --legacy-peer-deps element-ui --save
+vue ui创建项目时，出现如下错误：
+ERROR Failed to get response from http://registry.npmjs.org/vue-cli-version-marker找到$HOME/.vuerc
+&lt;/code>&lt;/pre>&lt;p>{
+&amp;ldquo;useTaobaoRegistry&amp;rdquo;: false,
+&amp;ldquo;packageManager&amp;rdquo;: &amp;ldquo;yarn&amp;rdquo;
+}&lt;/p>
+&lt;pre tabindex="0">&lt;code>
+npm ERR! ERESOLVE unable to resolve dependency tree
+&lt;/code>&lt;/pre>&lt;p>npx -p npm@6 npm i &amp;ndash;legacy-peer-deps&lt;/p>
+&lt;pre tabindex="0">&lt;code>&lt;/code>&lt;/pre></description></item><item><title>Vue3+vite2+router路由初始化配置</title><link>https://www.omoe.cc/posts/vue3+vite2+router%E8%B7%AF%E7%94%B1%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE/</link><pubDate>Wed, 23 Nov 2022 22:04:59 +0000</pubDate><guid>https://www.omoe.cc/posts/vue3+vite2+router%E8%B7%AF%E7%94%B1%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE/</guid><description>&lt;h3 id="安装npm">安装npm&lt;/h3>
 &lt;p>过程不赘述了网上一大把&lt;/p>
 &lt;h3 id="npm安装组件">npm安装组件&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">npm install vue@next
@@ -71,23 +98,26 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">template&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>修改默认body pading 8px的边框只需在根目录下的index.html文件里的body右边添加&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">style=&amp;#34;padding: 0px; margin: 0px;&amp;#34;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>修改wsl默认安装位置</title><link>https://www.omoe.cc/posts/%E4%BF%AE%E6%94%B9wsl%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE/</link><pubDate>Sun, 20 Nov 2022 11:46:00 +0000</pubDate><guid>https://www.omoe.cc/posts/%E4%BF%AE%E6%94%B9wsl%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE/</guid><description>&lt;p>WSL修改默认安装目录到其他位置
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;a href="https://www.cnblogs.com/wsn1203/p/16778475.html"target="_blank" rel="noopener noreferrer">link&lt;/a>
+&lt;a href="https://www.bilibili.com/read/cv16895193?spm_id_from=333.999.0.0"target="_blank" rel="noopener noreferrer">link2&lt;/a>
+&lt;/p></description></item><item><title>修改wsl默认安装位置</title><link>https://www.omoe.cc/posts/%E4%BF%AE%E6%94%B9wsl%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE/</link><pubDate>Sun, 20 Nov 2022 11:46:00 +0000</pubDate><guid>https://www.omoe.cc/posts/%E4%BF%AE%E6%94%B9wsl%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE/</guid><description>&lt;p>WSL修改默认安装目录到其他位置
 1.查看WSL分发版本
 在Windows PowerShell中输入如下命令:&lt;/p>
-&lt;p>wsl -l &amp;ndash;all -v&lt;/p>
-&lt;p>结果如下:&lt;/p>
+&lt;pre tabindex="0">&lt;code>wsl -l --all -v
+&lt;/code>&lt;/pre>&lt;p>结果如下:&lt;/p>
 &lt;p> NAME STATE VERSION
  * Ubuntu-20.04 Running 2&lt;/p>
-&lt;p>2.导出分发版为tar文件到d盘
-wsl &amp;ndash;export Ubuntu-20.04 d:\wsl-ubuntu20.04.tar&lt;/p>
-&lt;p>3.注销当前分发版
-wsl &amp;ndash;unregister Ubuntu-20.04&lt;/p>
-&lt;p>4.重新导入并安装WSL在d:\wsl-ubuntu20.04
-wsl &amp;ndash;import Ubuntu-20.04 d:\wsl-ubuntu20.04 d:\wsl-ubuntu20.04.tar &amp;ndash;version 2# &amp;ndash;version2标识wsl2 没有则可以不加&lt;/p>
-&lt;p>5.设置默认登陆用户为安装时用户名
-ubuntu2004 config &amp;ndash;default-user Username&lt;/p>
-&lt;p>6.删除tar文件(可选)
-del d:\wsl-ubuntu20.04.tar&lt;/p></description></item><item><title>Win10ltsc安装winget</title><link>https://www.omoe.cc/posts/win10ltsc%E5%AE%89%E8%A3%85winget/</link><pubDate>Sun, 20 Nov 2022 06:37:41 +0000</pubDate><guid>https://www.omoe.cc/posts/win10ltsc%E5%AE%89%E8%A3%85winget/</guid><description>&lt;h3 id="准备依赖">准备依赖&lt;/h3>
+&lt;p>2.导出分发版为tar文件到d盘&lt;/p>
+&lt;pre tabindex="0">&lt;code>wsl --export Ubuntu-20.04 d:\wsl-ubuntu20.04.tar
+&lt;/code>&lt;/pre>&lt;p>3.注销当前分发版&lt;/p>
+&lt;pre tabindex="0">&lt;code>wsl --unregister Ubuntu-20.04
+&lt;/code>&lt;/pre>&lt;p>4.重新导入并安装WSL在d:\wsl-ubuntu20.04&lt;/p>
+&lt;pre tabindex="0">&lt;code>wsl --import Ubuntu-20.04 d:\wsl-ubuntu20.04 d:\wsl-ubuntu20.04.tar --version 2# --version2标识wsl2 没有则可以不加
+&lt;/code>&lt;/pre>&lt;p>5.设置默认登陆用户为安装时用户名&lt;/p>
+&lt;pre tabindex="0">&lt;code>ubuntu2004 config --default-user Username
+&lt;/code>&lt;/pre>&lt;p>6.删除tar文件(可选)&lt;/p>
+&lt;pre tabindex="0">&lt;code>del d:\wsl-ubuntu20.04.tar
+&lt;/code>&lt;/pre></description></item><item><title>Win10ltsc安装winget</title><link>https://www.omoe.cc/posts/win10ltsc%E5%AE%89%E8%A3%85winget/</link><pubDate>Sun, 20 Nov 2022 06:37:41 +0000</pubDate><guid>https://www.omoe.cc/posts/win10ltsc%E5%AE%89%E8%A3%85winget/</guid><description>&lt;h3 id="准备依赖">准备依赖&lt;/h3>
 &lt;p>VCLibs 的安装文件
 &lt;a href="https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"target="_blank" rel="noopener noreferrer">https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx&lt;/a>
 &lt;/p>
@@ -685,50 +715,23 @@ a.file &amp;gt; a.file
 &lt;pre tabindex="0">&lt;code>sed -i &amp;#39;/regex/ r b.txt&amp;#39; a.txt # regex是正则表达式
 awk &amp;#39;/target/{system(&amp;#34;cat b.file&amp;#34;)}&amp;#39;
 a.file &amp;gt; c.file
-&lt;/code>&lt;/pre>&lt;h3 id="nodejs安装">nodejs安装&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">curl -sL https://deb.nodesource.com/setup_14.x &lt;span class="p">|&lt;/span> sudo -E bash -
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>允许 &lt;code>sudo apt-get install -y nodejs&lt;/code> 来安装 Node.js 14.x 和 npm&lt;/li>
-&lt;li>使用开发者工具箱来编译添加插件
-&lt;code>sudo apt-get install gcc g++ make&lt;/code>&lt;/li>
-&lt;li>使用yarn包管理器安装
-&lt;code>curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg &amp;gt;/dev/null&lt;/code>&lt;/li>
-&lt;li>or
-&lt;code>echo &amp;quot;deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main&amp;quot; | sudo tee /etc/apt/sources.list.d/yarn.list&lt;/code>&lt;/li>
-&lt;li>or
-&lt;code>sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install yarn&lt;/code>
-npm&lt;/li>
-&lt;/ul>
-&lt;pre tabindex="0">&lt;code>npm config set registry https://r.cnpmjs.org/
-&lt;/code>&lt;/pre>&lt;p>error: cnpm - 解决 &amp;quot; cnpm : 无法加载文件 C:\Users?\AppData\Roaming\npm\cnpm.ps1，因为在此系统上禁止运行脚本。&lt;/p>
-&lt;pre tabindex="0">&lt;code>set-ExecutionPolicy RemoteSigned #A
-npm install --legacy-peer-deps element-ui --save
-vue ui创建项目时，出现如下错误：
-ERROR Failed to get response from http://registry.npmjs.org/vue-cli-version-marker找到$HOME/.vuerc
-&lt;/code>&lt;/pre>&lt;p>{
-&amp;ldquo;useTaobaoRegistry&amp;rdquo;: false,
-&amp;ldquo;packageManager&amp;rdquo;: &amp;ldquo;yarn&amp;rdquo;
-}&lt;/p>
-&lt;pre tabindex="0">&lt;code>&lt;/code>&lt;/pre>&lt;hr>
-&lt;h3 id="tar解压">tar解压&lt;/h3>
-&lt;ul>
-&lt;li>压缩（-c，compress）：对文档，目录进行打包操作，并没有压缩&lt;/li>
-&lt;li>解压（-x，extract）：对文档，目录进行解包操作&lt;/li>
-&lt;li>查看（-t，list）：查看压缩包或普通包里的文件名&lt;/li>
-&lt;li>gzip（-z）：后缀名为.tar.gz，后缀名非硬性要求，建议这么做，下同。压缩率最低，速度快，常用&lt;/li>
-&lt;li>bzip2（-j）：后缀名为.tar.bz2，压缩率高，速度较慢&lt;/li>
-&lt;li>xz（-J）：后缀名为.tar.xz，压缩率超高，速度很慢，看情况使用&lt;/li>
-&lt;li>-v：在处理的时候，显示正在处理的文件名&lt;/li>
-&lt;li>-f：用于指定压缩后的文档名，或者是欲解压的文档名&lt;/li>
-&lt;/ul>
-&lt;h3 id="搭建简易git服务">搭建简易git服务&lt;/h3>
-&lt;ul>
-&lt;li>安装git(这里安装略过)&lt;/li>
-&lt;li>创建用户&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo adduser git
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">su git
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>---
+### tar解压
+* 压缩（-c，compress）：对文档，目录进行打包操作，并没有压缩
+* 解压（-x，extract）：对文档，目录进行解包操作
+* 查看（-t，list）：查看压缩包或普通包里的文件名
+* gzip（-z）：后缀名为.tar.gz，后缀名非硬性要求，建议这么做，下同。压缩率最低，速度快，常用
+* bzip2（-j）：后缀名为.tar.bz2，压缩率高，速度较慢
+* xz（-J）：后缀名为.tar.xz，压缩率超高，速度很慢，看情况使用
+* -v：在处理的时候，显示正在处理的文件名
+* -f：用于指定压缩后的文档名，或者是欲解压的文档名
+### 搭建简易git服务
+* 安装git(这里安装略过)
+* 创建用户
+```bash
+sudo adduser git
+su git
+&lt;/code>&lt;/pre>&lt;ul>
 &lt;li>复制主用户的证书，后期验证使用(git用户操作)，主用户公钥&lt;code>id_rsa.pub&lt;/code>导入到.ssh/authorized_keys&lt;/li>
 &lt;li>初始化用户仓库，并且更改仅限git用户。&lt;/li>
 &lt;/ul>
@@ -1125,92 +1128,4 @@ export GPG_TTY=$(tty)&lt;/p>
 &lt;li>umask：文件创建掩码&lt;/li>
 &lt;li>vared:交互式修改变量&lt;/li>
 &lt;li>wait：等待后台任务完成&lt;/li>
-&lt;/ul></description></item><item><title>主题配置</title><link>https://www.omoe.cc/posts/%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</link><pubDate>Fri, 11 Nov 2022 23:28:54 +0800</pubDate><guid>https://www.omoe.cc/posts/%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>主题简约没有代码复制 自定义添加&lt;/p>
-&lt;p>博客目录下&lt;code>static/css&lt;/code>添加&lt;code>copy-to-clipboard.css&lt;/code>内容&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-css" data-lang="css">&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="nc">highlight&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">position&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">relative&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="nc">highlight&lt;/span> &lt;span class="nt">pre&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">padding-right&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">10&lt;/span>&lt;span class="kt">px&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">background-color&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mh">#f8f8f8&lt;/span> &lt;span class="cp">!important&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="nc">highlight&lt;/span> &lt;span class="nt">td&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="nd">first-child&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">user-select&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">none&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="nc">highlight-copy-btn&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">position&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">absolute&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">top&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">right&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">border&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">none&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">border-radius&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">8&lt;/span>&lt;span class="kt">px&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">padding&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">0&lt;/span> &lt;span class="mi">5&lt;/span>&lt;span class="kt">px&lt;/span> &lt;span class="mi">5&lt;/span>&lt;span class="kt">px&lt;/span> &lt;span class="mi">5&lt;/span>&lt;span class="kt">px&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">font-size&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mf">0.5&lt;/span>&lt;span class="kt">em&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">line-height&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mf">1.8&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">color&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mh">#fff&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">background-color&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mh">#888&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">min-width&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">55&lt;/span>&lt;span class="kt">px&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">text-align&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">center&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">z-index&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">transition&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mf">.1&lt;/span>&lt;span class="kt">s&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">margin&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">10&lt;/span>&lt;span class="kt">px&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">opacity&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mf">0.5&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="nc">highlight-copy-btn&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="nd">hover&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">background-color&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mh">#666&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在&lt;code>static/js&lt;/code>下添加&lt;code>copy-to-clipboard.js&lt;/code>内容&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-JavaScript" data-lang="JavaScript">&lt;span class="line">&lt;span class="cl">&lt;span class="p">(&lt;/span>&lt;span class="kd">function&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;use strict&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="nb">document&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">queryCommandSupported&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;copy&amp;#39;&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">function&lt;/span> &lt;span class="nx">flashCopyMessage&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">el&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">msg&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">el&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">textContent&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">msg&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">setTimeout&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kd">function&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">el&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">textContent&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;Copy&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},&lt;/span> &lt;span class="mi">1000&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">function&lt;/span> &lt;span class="nx">selectText&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">node&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="nx">selection&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">window&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">getSelection&lt;/span>&lt;span class="p">();&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="nx">range&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">document&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">createRange&lt;/span>&lt;span class="p">();&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">range&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">selectNodeContents&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">node&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">selection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">removeAllRanges&lt;/span>&lt;span class="p">();&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">selection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">addRange&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">range&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="nx">selection&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">function&lt;/span> &lt;span class="nx">addCopyButton&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">containerEl&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="nx">copyBtn&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">document&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">createElement&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;button&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">copyBtn&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">className&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;highlight-copy-btn&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">copyBtn&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">textContent&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;Copy&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="nx">codeEl&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">containerEl&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">firstElementChild&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">copyBtn&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">addEventListener&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;click&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kd">function&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="nx">selection&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">selectText&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">codeEl&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">document&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">execCommand&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;copy&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">selection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">removeAllRanges&lt;/span>&lt;span class="p">();&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">flashCopyMessage&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">copyBtn&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;Copied!&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">catch&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">e&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">console&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">e&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">flashCopyMessage&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">copyBtn&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;Failed :\&amp;#39;(&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">});&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">containerEl&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">appendChild&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">copyBtn&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// Add copy button to code blocks
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kd">var&lt;/span> &lt;span class="nx">highlightBlocks&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">document&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">getElementsByClassName&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;highlight&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">Array&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">prototype&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">forEach&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">call&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">highlightBlocks&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">addCopyButton&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">})();&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
+&lt;/ul></description></item></channel></rss>

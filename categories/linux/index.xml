@@ -43,7 +43,8 @@ npm ERR! ERESOLVE unable to resolve dependency tree
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">createApp&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">App&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="nx">use&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">ElementPlus&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="nx">mount&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;#app&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在需要使用时单独引用&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-js" data-lang="js">&lt;span class="line">&lt;span class="cl">&lt;span class="kr">import&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="nx">CirclePlus&lt;/span> &lt;span class="p">}&lt;/span> &lt;span class="nx">from&lt;/span> &lt;span class="s1">&amp;#39;element-plus/icons&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="集成vue-router路由-创建一个文件夹src两个文件indexjs-routesjs">集成vue-router路由 创建一个文件夹&lt;code>src&lt;/code>两个文件&lt;code>index.js&lt;/code> &lt;code>routes.js&lt;/code>&lt;/h3>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="集成vue-router路由">集成vue-router路由&lt;/h3>
+&lt;p>创建一个文件夹&lt;code>src&lt;/code>两个文件&lt;code>index.js&lt;/code> &lt;code>routes.js&lt;/code>&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mkdir src/router
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">touch src/router/index.js
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">touch src/router/routes.js
@@ -98,8 +99,25 @@ npm ERR! ERESOLVE unable to resolve dependency tree
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">template&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>修改默认body pading 8px的边框只需在根目录下的index.html文件里的body右边添加&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">style=&amp;#34;padding: 0px; margin: 0px;&amp;#34;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;a href="https://www.cnblogs.com/wsn1203/p/16778475.html"target="_blank" rel="noopener noreferrer">link&lt;/a>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="flex布局">flex布局&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-css" data-lang="css">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">justify-content&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nt">flex-start&lt;/span> &lt;span class="o">|&lt;/span> &lt;span class="nt">flex-end&lt;/span> &lt;span class="o">|&lt;/span> &lt;span class="nt">center&lt;/span> &lt;span class="o">|&lt;/span> &lt;span class="nt">space-between&lt;/span> &lt;span class="o">|&lt;/span> &lt;span class="nt">space-around&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c">/*主轴对齐方式：左对齐（默认） | 右对齐 | 居中对齐 | 两端对齐 | 平均分布*/&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-css" data-lang="css">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">align-items&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nt">flex-start&lt;/span> &lt;span class="o">|&lt;/span> &lt;span class="nt">flex-end&lt;/span> &lt;span class="o">|&lt;/span> &lt;span class="nt">center&lt;/span> &lt;span class="o">|&lt;/span> &lt;span class="nt">baseline&lt;/span> &lt;span class="o">|&lt;/span> &lt;span class="nt">stretch&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">/*交叉轴对齐方式：顶部对齐（默认） | 底部对齐 | 居中对齐 | 文本基线对齐 | 上下对齐并铺满*/&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>盒子兼容&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-css" data-lang="css">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">display&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="nd">-webkit-flex&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>属性兼容&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-css" data-lang="css">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">-webkit-align-items&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="nd">center&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>flex布局多个子元素垂直居中&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-css" data-lang="css">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">display&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nt">flex&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">display&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nt">-webkit-flex&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">flex-wrap&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nt">wrap&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">justify-content&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nt">center&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">flex-direction&lt;/span> &lt;span class="o">:&lt;/span> &lt;span class="nt">column&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;p>&lt;a href="https://www.cnblogs.com/wsn1203/p/16778475.html"target="_blank" rel="noopener noreferrer">link&lt;/a>
 &lt;a href="https://www.bilibili.com/read/cv16895193?spm_id_from=333.999.0.0"target="_blank" rel="noopener noreferrer">link2&lt;/a>
+&lt;a href="https://www.jianshu.com/p/2f019e8c2191"target="_blank" rel="noopener noreferrer">link3&lt;/a>
 &lt;/p></description></item><item><title>修改wsl默认安装位置</title><link>https://www.omoe.cc/posts/%E4%BF%AE%E6%94%B9wsl%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE/</link><pubDate>Sun, 20 Nov 2022 11:46:00 +0000</pubDate><guid>https://www.omoe.cc/posts/%E4%BF%AE%E6%94%B9wsl%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE/</guid><description>&lt;p>WSL修改默认安装目录到其他位置
 1.查看WSL分发版本
 在Windows PowerShell中输入如下命令:&lt;/p>

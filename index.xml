@@ -1119,7 +1119,26 @@ make install
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> make defconfig
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> make -j12 download
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> make -j8 &lt;span class="nv">V&lt;/span>&lt;span class="o">=&lt;/span>s
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>编译出现&lt;code>dial tcp 142.251.42.241:443: connect: connection refused&lt;/code>
+更换一个国内能访问的代理地址：https://goproxy.cn&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">go env -w &lt;span class="nv">GOPROXY&lt;/span>&lt;span class="o">=&lt;/span>https://goproxy.cn
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h3 id="更换软件源开机后">更换软件源(开机后)&lt;/h3>
+&lt;p>vim /etc/opkg/distfeeds.conf&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">src/gz openwrt_core https://mirrors.hit.edu.cn/openwrt/snapshots/targets/ipq40xx/generic/packages
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">src/gz openwrt_base https://mirrors.hit.edu.cn/openwrt/snapshots/packages/arm_cortex-a7_neon-vfpv4/base
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#src/gz openwrt_kenzo https://mirrors.hit.edu.cn/openwrt/snapshots/packages/arm_cortex-a7_neon-vfpv4/kenzo&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">src/gz openwrt_luci https://mirrors.hit.edu.cn/openwrt/releases/22.03.2/packages/arm_cortex-a7_neon-vfpv4/luci
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#src/gz openwrt_oui https://mirrors.hit.edu.cn/openwrt/snapshots/packages/arm_cortex-a7_neon-vfpv4/oui&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">src/gz openwrt_packages https://mirrors.hit.edu.cn/openwrt/snapshots/packages/arm_cortex-a7_neon-vfpv4/packages
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">src/gz openwrt_routing https://mirrors.hit.edu.cn/openwrt/snapshots/packages/arm_cortex-a7_neon-vfpv4/routing
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">src/gz openwrt_telephony https://mirrors.hit.edu.cn/openwrt/snapshots/packages/arm_cortex-a7_neon-vfpv4/telephony
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="查找已安装包">查找已安装包&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">opkg list-installed
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#卸载包和依赖&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">opkg remkve xxxx --force-removal-of-dependent-packages
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;ul>
 &lt;li>第三方编译软件包 &lt;a href="https://github.com/OpenWrt-Actions/lienol-openwrt-package"target="_blank" rel="noopener noreferrer">[Lienol/openwrt备份]&lt;/a>
 &lt;/li>
 &lt;li>官方原版 &lt;a href="https://github.com/openwrt/openwrt"target="_blank" rel="noopener noreferrer">[openwrt]&lt;/a>

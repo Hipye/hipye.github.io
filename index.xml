@@ -1,4 +1,281 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>拾集</title><link>https://www.omoe.cc/</link><description>Recent content on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><lastBuildDate>Wed, 23 Nov 2022 22:06:07 +0000</lastBuildDate><atom:link href="https://www.omoe.cc/index.xml" rel="self" type="application/rss+xml"/><item><title>Npm安装以及使用流程</title><link>https://www.omoe.cc/posts/npm%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/</link><pubDate>Wed, 23 Nov 2022 22:06:07 +0000</pubDate><guid>https://www.omoe.cc/posts/npm%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/</guid><description>&lt;h3 id="nodejs安装">nodejs安装&lt;/h3>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>拾集</title><link>https://www.omoe.cc/</link><description>Recent content on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><lastBuildDate>Fri, 02 Dec 2022 10:34:41 +0000</lastBuildDate><atom:link href="https://www.omoe.cc/index.xml" rel="self" type="application/rss+xml"/><item><title>Ndk交叉编译aria2</title><link>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</link><pubDate>Fri, 02 Dec 2022 10:34:41 +0000</pubDate><guid>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</guid><description>&lt;p>交叉编译aria2&lt;/p>
+&lt;p>下载交叉编译工具(这里推荐r21e比较稳定且兼容)&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:center">系统版本&lt;/th>
+&lt;th style="text-align:center">链接&lt;/th>
+&lt;th style="text-align:center">sha1&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:center">linux&lt;/td>
+&lt;td style="text-align:center">&lt;a href="https://dl.google.com/android/repository/android-ndk-r21e-linux-x86_64.zip"target="_blank" rel="noopener noreferrer">https://dl.google.com/android/repository/android-ndk-r21e-linux-x86_64.zip&lt;/a>
+&lt;/td>
+&lt;td style="text-align:center">c3ebc83c96a4d7f539bd72c241b2be9dcd29bda9&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">win&lt;/td>
+&lt;td style="text-align:center">&lt;a href="https://dl.google.com/android/repository/android-ndk-r21e-windows-x86_64.zip"target="_blank" rel="noopener noreferrer">https://dl.google.com/android/repository/android-ndk-r21e-windows-x86_64.zip&lt;/a>
+&lt;/td>
+&lt;td style="text-align:center">fc44fea8bb3f5a6789821f40f41dce2d2cd5dc30&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">mac&lt;/td>
+&lt;td style="text-align:center">&lt;a href="https://dl.google.com/android/repository/android-ndk-r21e-darwin-x86_64.zip"target="_blank" rel="noopener noreferrer">https://dl.google.com/android/repository/android-ndk-r21e-darwin-x86_64.zip&lt;/a>
+&lt;/td>
+&lt;td style="text-align:center">3f15c23a1c247ad17c7c271806848dbd40434738&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>导入交叉编译工具&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">PATH&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">$PATH&lt;/span>:/opt/android-ndk-r21e/toolchains/llvm/prebuilt/linux-x86_64/bin
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>自带sdk管理器&lt;/code>下载&lt;/p>
+&lt;pre tabindex="0">&lt;code>sdkmanager \
+&amp;#34;platform-tools&amp;#34; \
+&amp;#34;build-tools;28.0.3&amp;#34; \
+&amp;#34;platforms;android-33&amp;#34; \
+&amp;#34;platforms;android-28&amp;#34; \
+&amp;#34;platforms;android-24&amp;#34; \
+&amp;#34;platforms;android-21&amp;#34;
+&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>PKG_CONFIG_PATH=/data/data/com.termux/files/usr/lib/pkgconfig/ LD_LIBRARY_PATH=/data/data/com.termux/files/usr/lib
+export CROSS_COMPILE=armv7a-linux-androideabi- --prefix=/data/data/com.termux/files/usr android
+&lt;/code>&lt;/pre>&lt;p>&lt;code>zlib&lt;/code>静态库文件&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure --prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr --static
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>expat&lt;/code>静态库&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--host&lt;span class="o">=&lt;/span>aarch64-linux-android &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--build&lt;span class="o">=&lt;/span>&lt;span class="sb">`&lt;/span>dpkg-architecture -qDEB_BUILD_GNU_TYPE&lt;span class="sb">`&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--enable-static&lt;span class="o">=&lt;/span>yes &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--enable-shared&lt;span class="o">=&lt;/span>no
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>c-ares&lt;/code>静态库&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--host&lt;span class="o">=&lt;/span>aarch64-linux-android &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--build&lt;span class="o">=&lt;/span>&lt;span class="sb">`&lt;/span>dpkg-architecture -qDEB_BUILD_GNU_TYPE&lt;span class="sb">`&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--enable-static &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--disable-shared
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>openssl&lt;/code>静态库&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./Configure &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>android-arm64 -march&lt;span class="o">=&lt;/span>armv8-a -mtune&lt;span class="o">=&lt;/span>cortex-a53 &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>shared zlib zlib-dynamic -D_GNU_SOURCE -D_BSD_SOURCE &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-zlib-lib&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-zlib-include&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/include
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>libssh2&lt;/code>静态库&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CPPFLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-I,/data/data/com.termux/files/usr/include&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LDFLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-Wl,-rpath-link,/data/data/com.termux/files/usr/lib&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/data/data/com.termux/files/usr&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libssl-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libz-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--host&lt;span class="o">=&lt;/span>aarch64-linux-android
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>sqlite&lt;/code>静态库&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure --host&lt;span class="o">=&lt;/span>aarch64-linux-android &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ --enable-static &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--enable-shared &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--build&lt;span class="o">=&lt;/span>&lt;span class="sb">`&lt;/span>dpkg-architecture -qDEB_BUILD_GNU_TYPE&lt;span class="sb">`&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在编译 aria2时因为1.36相比1.35有修改所以必须修改到源码部分才能顺利编译&lt;/p>
+&lt;p>&lt;strong>这一步必须↓操作，不然进行&lt;code>ARIA2_STATIC=yes&lt;/code>链接会失败&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s|-lrt||g;s|-lpthread||g&amp;#39;&lt;/span> &lt;span class="k">$(&lt;/span>grep -rEl &lt;span class="s1">&amp;#39;\-lrt|\-lpthread&amp;#39;&lt;/span> .&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s|timegm(|timegm_(|g&amp;#39;&lt;/span> &lt;span class="k">$(&lt;/span>grep -rl &lt;span class="s1">&amp;#39;timegm(&amp;#39;&lt;/span> .&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>开始编译&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--host&lt;span class="o">=&lt;/span>aarch64-linux-android &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--build&lt;span class="o">=&lt;/span>&lt;span class="sb">`&lt;/span>dpkg-architecture -qDEB_BUILD_GNU_TYPE&lt;span class="sb">`&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--disable-nls &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--without-gnutls &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-openssl &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--without-libxml2 &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libz --with-libz-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libexpat --with-libexpat-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-slite3 --with-sqlite3-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libcares --with-libcares-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-ca-bundle&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;/data/data/com.termux/files/usr/ssl/certs/ca-certificates.crt&amp;#39;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LDFLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-L/data/data/com.termux/files/usr/lib&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/data/data/com.termux/files/usr/lib/pkgconfig&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">ARIA2_STATIC&lt;/span>&lt;span class="o">=&lt;/span>yes
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>aria2编译&lt;/code>&lt;/p>
+&lt;h3 id="系统自带工具打包">系统自带工具打包&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo checkinstall -D --install&lt;span class="o">=&lt;/span>no
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>打包过程中提示&lt;/p>
+&lt;pre tabindex="0">&lt;code>The package documentation directory ./doc-pak does not exist.
+Should I create a default set of package docs? [y]:n #不需要创建doc文档
+&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>0 - Maintainer: [ root@DESKTOP-U5H0M22 ]#编译设备
+1 - Summary: [ moriz build aria2 ]#自定义信息
+2 - Name: [ aria2 ]#文件名&amp;amp;卸载用
+3 - Version: [ 1.36.0 ]#版本
+4 - Release: [ 1 ]#发布
+5 - License: [ GPL ]#协议
+6 - Group: [ checkinstall ]#可忽略
+7 - Architecture: [ aarch64 ]#编译目标的cpu架构
+8 - Source location: [ aria2-release-1.36.0 ]#可忽略
+9 - Alternate source location: [ ]#可忽略
+10 - Requires: [ libc++, c-ares, openssl, libxml2, zlib ]#软件所需依赖包
+11 - Recommends: [ ]#可忽略
+12 - Suggests: [ ]#可忽略
+13 - Provides: [ aria2-release ]#可忽略
+14 - Conflicts: [ ]#可忽略
+15 - Replaces: [ ]#可忽略
+&lt;/code>&lt;/pre>&lt;p>&lt;font color="#C12414">注意选项7必须修改目标设备的cpu架构&lt;/font>
+成功后显示内容如下，文件所在文件夹和安装过程提示，后面安装过程略过
+新建文件夹解包&lt;/p>
+&lt;pre tabindex="0">&lt;code>dpkg-deb -R xxxxx.deb .
+#非必须
+&lt;/code>&lt;/pre>&lt;p>重新打包&lt;code>命令不一样&lt;/code>&lt;/p>
+&lt;pre tabindex="0">&lt;code>dpkg -b xxx new_deb_name.deb
+#非必须
+&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>**********************************************************************
+Done. The new package has been saved to
+$HOME/aria2-release-1.36.0/aria2-release_1.36.0-1_aarch64.deb
+You can install it in your system anytime using:
+dpkg -i aria2-release_1.36.0-1_aarch64.deb
+**********************************************************************
+&lt;/code>&lt;/pre>&lt;p>安装使用&lt;code>dpkg -i&lt;/code>，使用&lt;code>aria2c --v&lt;/code>，出现如下内容成功需要多线程则&lt;code>aria2c -x 128 +链接&lt;/code>即可&lt;/p>
+&lt;pre tabindex="0">&lt;code>aria2 version 1.36.0
+Copyright (C) 2006, 2019 Tatsuhiro Tsujikawa
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+** Configuration **
+Enabled Features: Async DNS, BitTorrent, Firefox3 Cookie, GZip, HTTPS, Message Digest, Metalink, XML-RPC, SFTP
+Hash Algorithms: sha-1, sha-224, sha-256, sha-384, sha-512, md5, adler32
+Libraries: zlib/1.2.13 expat/2.5.0 sqlite3/3.39.4 OpenSSL/1.1.1s c-ares/1.18.1 libssh2/1.10.0
+Compiler: clang 9.0.9 (https://android.googlesource.com/toolchain/llvm-project a2a1e703c0edb03ba29944e529ccbf457742737b)
+built by x86_64-pc-linux-gnu
+targeting aarch64-unknown-linux-android
+on Nov 10 2022 15:30:40
+System: Linux 4.19.113-perf-g4a878ec38421 #1 SMP PREEMPT Tue May 11 02:13:41 CST 2021 aarch64
+Report bugs to https://github.com/aria2/aria2/issues
+Visit https://aria2.github.io/
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>群晖交叉编译&lt;a href="https://stray.love/itshou-zha/da-jian-qun-hui-jiao-cha-bian-yi-huan-jing-bing-bian-yi-aria2"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
+&lt;/li>
+&lt;li>openssl编译问题&lt;a href="https://fucknmb.com/2017/05/24/openssl-NDK%e4%ba%a4%e5%8f%89%e7%bc%96%e8%af%91/?utm_source=tuicool&amp;amp;utm_medium=referral"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
+&lt;/li>
+&lt;li>aria2 1.36源码静态库链接编译问题&lt;a href="https://fh0.github.io/%e7%bc%96%e8%af%91/2019/12/28/android-aria2.html"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
+&lt;/li>
+&lt;/ul></description></item><item><title>Node邮件发送</title><link>https://www.omoe.cc/posts/node%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/</link><pubDate>Fri, 02 Dec 2022 02:41:22 +0000</pubDate><guid>https://www.omoe.cc/posts/node%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/</guid><description>&lt;pre tabindex="0">&lt;code>npm install nodemailer --save
+&lt;/code>&lt;/pre>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-js" data-lang="js">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 这里举简单例子，也可以封装成service来调用
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 引入nodemailer
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kr">const&lt;/span> &lt;span class="nx">nodemailer&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">require&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;nodemailer&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 封装发送者信息
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kr">const&lt;/span> &lt;span class="nx">transporter&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">nodemailer&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">createTransport&lt;/span>&lt;span class="p">({&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">host&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;smtp.qq.com&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1">// 调用qq服务器
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="nx">secureConnection&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="kc">true&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1">// 启动SSL
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="nx">port&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="mi">465&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1">// 端口就是465
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="nx">auth&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">user&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;mrcdh@qq.com&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1">// 账号
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="nx">pass&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;xxxxxxxxxx&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1">// 授权码,
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="p">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">});&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 邮件参数及内容
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kr">const&lt;/span> &lt;span class="nx">mailOptions&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">from&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;mrcdh@qq.com&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1">// 发送者,与上面的user一致
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="c1">// 可以指定发送者的名字，和发送邮箱用空格隔开
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="c1">//from: &amp;#39;mrcdh mrcdh@qq.com&amp;#39;,
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="nx">to&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;xxxx@xxx.com&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1">// 接收者,可以同时发送多个,以逗号隔开
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="nx">subject&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;测试的邮件&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1">// 标题
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="c1">// text: &amp;#39;测试内容&amp;#39;, // 文本
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="nx">html&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;&amp;lt;h2&amp;gt;测试一下:&amp;lt;/h2&amp;gt;&amp;lt;a href=&amp;#34;https://baidu.com&amp;#34;&amp;gt;测试链接&amp;lt;/a&amp;gt;&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 调用函数，发送邮件
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kr">await&lt;/span> &lt;span class="nx">transporter&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">sendMail&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">mailOptions&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kd">function&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">err&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">info&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">err&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">err&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">info&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">});&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-js" data-lang="js">&lt;span class="line">&lt;span class="cl">&lt;span class="kr">const&lt;/span> &lt;span class="nx">mailOptions&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">from&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s1">&amp;#39;mrcdh@qq.com&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">to&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;xxxxxxxxx@163.com&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">subject&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;hello&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">html&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s2">&amp;#34;&amp;lt;img src=&amp;#39;cid:01&amp;#39; style=&amp;#39;width:200px;height:auto&amp;#39;&amp;gt;&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">attachments&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="p">[{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;filename&amp;#34;&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s2">&amp;#34;好歌.mp3&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;path&amp;#34;&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s2">&amp;#34;./haoge.mp3&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;filename&amp;#34;&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s2">&amp;#34;test.txt&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;content&amp;#34;&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s2">&amp;#34;测试可写的文件&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;filename&amp;#34;&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s2">&amp;#34;test.JPG&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;path&amp;#34;&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s2">&amp;#34;./test.JPG&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;cid&amp;#34;&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s2">&amp;#34;01&amp;#34;&lt;/span> &lt;span class="c1">// 插在邮件正文中的图片
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="p">}]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-js" data-lang="js">&lt;span class="line">&lt;span class="cl">&lt;span class="kr">const&lt;/span> &lt;span class="nx">mailOptions&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">from&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s1">&amp;#39;mrcdh@qq.com&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">to&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;xxxxxxxxx@163.com&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">subject&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;hello&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">html&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s2">&amp;#34;&amp;lt;img src=&amp;#39;cid:01&amp;#39; style=&amp;#39;width:200px;height:auto&amp;#39;&amp;gt;&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">attachments&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="p">[{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;filename&amp;#34;&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s2">&amp;#34;好歌.mp3&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;path&amp;#34;&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s2">&amp;#34;./haoge.mp3&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;filename&amp;#34;&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s2">&amp;#34;test.txt&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;content&amp;#34;&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s2">&amp;#34;测试可写的文件&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;filename&amp;#34;&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s2">&amp;#34;test.JPG&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;path&amp;#34;&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s2">&amp;#34;./test.JPG&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;cid&amp;#34;&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s2">&amp;#34;01&amp;#34;&lt;/span> &lt;span class="c1">// 插在邮件正文中的图片
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="p">}]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Npm安装以及使用流程</title><link>https://www.omoe.cc/posts/npm%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/</link><pubDate>Wed, 23 Nov 2022 22:06:07 +0000</pubDate><guid>https://www.omoe.cc/posts/npm%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/</guid><description>&lt;h3 id="nodejs安装">nodejs安装&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">curl -sL https://deb.nodesource.com/setup_14.x &lt;span class="p">|&lt;/span> sudo -E bash -
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
 &lt;li>允许 &lt;code>sudo apt-get install -y nodejs&lt;/code> 来安装 Node.js 14.x 和 npm&lt;/li>
@@ -9,23 +286,23 @@
 &lt;li>or
 &lt;code>echo &amp;quot;deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main&amp;quot; | sudo tee /etc/apt/sources.list.d/yarn.list&lt;/code>&lt;/li>
 &lt;li>or
-&lt;code>sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install yarn&lt;/code>
-npm&lt;/li>
+&lt;code>sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install yarn&lt;/code>&lt;/li>
 &lt;/ul>
+&lt;p>npm换源解决网络问题&lt;/p>
 &lt;pre tabindex="0">&lt;code>npm config set registry https://r.cnpmjs.org/
 &lt;/code>&lt;/pre>&lt;p>error: cnpm - 解决 &amp;quot; cnpm : 无法加载文件 C:\Users?\AppData\Roaming\npm\cnpm.ps1，因为在此系统上禁止运行脚本。&lt;/p>
 &lt;pre tabindex="0">&lt;code>set-ExecutionPolicy RemoteSigned #A
-npm install --legacy-peer-deps element-ui --save
+&lt;/code>&lt;/pre>&lt;p>npm install &amp;ndash;legacy-peer-deps element-ui &amp;ndash;save
 vue ui创建项目时，出现如下错误：
-ERROR Failed to get response from http://registry.npmjs.org/vue-cli-version-marker找到$HOME/.vuerc
-&lt;/code>&lt;/pre>&lt;p>{
-&amp;ldquo;useTaobaoRegistry&amp;rdquo;: false,
-&amp;ldquo;packageManager&amp;rdquo;: &amp;ldquo;yarn&amp;rdquo;
-}&lt;/p>
-&lt;pre tabindex="0">&lt;code>
-npm ERR! ERESOLVE unable to resolve dependency tree
-&lt;/code>&lt;/pre>&lt;p>npx -p npm@6 npm i &amp;ndash;legacy-peer-deps&lt;/p>
-&lt;pre tabindex="0">&lt;code>&lt;/code>&lt;/pre></description></item><item><title>Vue3+vite2+router路由初始化配置</title><link>https://www.omoe.cc/posts/vue3+vite2+router%E8%B7%AF%E7%94%B1%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE/</link><pubDate>Wed, 23 Nov 2022 22:04:59 +0000</pubDate><guid>https://www.omoe.cc/posts/vue3+vite2+router%E8%B7%AF%E7%94%B1%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE/</guid><description>&lt;h3 id="安装npm">安装npm&lt;/h3>
+ERROR Failed to get response from &lt;a href="http://registry.npmjs.org/vue-cli-version-marker"target="_blank" rel="noopener noreferrer">http://registry.npmjs.org/vue-cli-version-marker&lt;/a>
+找到$HOME/.vuerc&lt;/p>
+&lt;pre tabindex="0">&lt;code>{
+&amp;#34;useTaobaoRegistry&amp;#34;: false,
+&amp;#34;packageManager&amp;#34;: &amp;#34;yarn&amp;#34;
+}
+&lt;/code>&lt;/pre>&lt;p>npm ERR! ERESOLVE unable to resolve dependency tree&lt;/p>
+&lt;pre tabindex="0">&lt;code>npx -p npm@6 npm i --legacy-peer-deps
+&lt;/code>&lt;/pre></description></item><item><title>Vue3+vite2+router路由初始化配置</title><link>https://www.omoe.cc/posts/vue3+vite2+router%E8%B7%AF%E7%94%B1%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE/</link><pubDate>Wed, 23 Nov 2022 22:04:59 +0000</pubDate><guid>https://www.omoe.cc/posts/vue3+vite2+router%E8%B7%AF%E7%94%B1%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE/</guid><description>&lt;h3 id="安装npm">安装npm&lt;/h3>
 &lt;p>过程不赘述了网上一大把&lt;/p>
 &lt;h3 id="npm安装组件">npm安装组件&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">npm install vue@next
@@ -728,217 +1005,7 @@ inotify=yes
 &lt;p>打开BubbleUnpnp，局域网出现你设置过的dlna服务器
 &lt;img src="https://s2.loli.net/2022/11/18/Wnj2mf9KCPNLFGo.jpg"
 alt="IMG_20221118_174930"/>
-接下来投送即可&lt;/p></description></item><item><title>Ndk交叉编译aria2</title><link>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</link><pubDate>Sat, 12 Nov 2022 03:44:46 +0000</pubDate><guid>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</guid><description>&lt;p>交叉编译aria2&lt;/p>
-&lt;p>下载交叉编译工具(这里推荐r21e比较稳定且兼容)&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:center">系统版本&lt;/th>
-&lt;th style="text-align:center">链接&lt;/th>
-&lt;th style="text-align:center">sha1&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:center">linux&lt;/td>
-&lt;td style="text-align:center">&lt;a href="https://dl.google.com/android/repository/android-ndk-r21e-linux-x86_64.zip"target="_blank" rel="noopener noreferrer">https://dl.google.com/android/repository/android-ndk-r21e-linux-x86_64.zip&lt;/a>
-&lt;/td>
-&lt;td style="text-align:center">c3ebc83c96a4d7f539bd72c241b2be9dcd29bda9&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">win&lt;/td>
-&lt;td style="text-align:center">&lt;a href="https://dl.google.com/android/repository/android-ndk-r21e-windows-x86_64.zip"target="_blank" rel="noopener noreferrer">https://dl.google.com/android/repository/android-ndk-r21e-windows-x86_64.zip&lt;/a>
-&lt;/td>
-&lt;td style="text-align:center">fc44fea8bb3f5a6789821f40f41dce2d2cd5dc30&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">mac&lt;/td>
-&lt;td style="text-align:center">&lt;a href="https://dl.google.com/android/repository/android-ndk-r21e-darwin-x86_64.zip"target="_blank" rel="noopener noreferrer">https://dl.google.com/android/repository/android-ndk-r21e-darwin-x86_64.zip&lt;/a>
-&lt;/td>
-&lt;td style="text-align:center">3f15c23a1c247ad17c7c271806848dbd40434738&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>导入交叉编译工具&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">PATH&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">$PATH&lt;/span>:/opt/android-ndk-r21e/toolchains/llvm/prebuilt/linux-x86_64/bin
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>自带sdk管理器&lt;/code>下载&lt;/p>
-&lt;pre tabindex="0">&lt;code>sdkmanager \
-&amp;#34;platform-tools&amp;#34; \
-&amp;#34;build-tools;28.0.3&amp;#34; \
-&amp;#34;platforms;android-33&amp;#34; \
-&amp;#34;platforms;android-28&amp;#34; \
-&amp;#34;platforms;android-24&amp;#34; \
-&amp;#34;platforms;android-21&amp;#34;
-&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>PKG_CONFIG_PATH=/data/data/com.termux/files/usr/lib/pkgconfig/ LD_LIBRARY_PATH=/data/data/com.termux/files/usr/lib
-export CROSS_COMPILE=armv7a-linux-androideabi- --prefix=/data/data/com.termux/files/usr android
-&lt;/code>&lt;/pre>&lt;p>交叉编译&lt;code>openssl&lt;/code>lib库&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="nv">LD&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ld
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ./Configure android-arm64 -D__ANDROID_API__&lt;span class="o">=&lt;/span>&lt;span class="m">21&lt;/span> --prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>zlib&lt;/code>静态库文件&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure --prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr --static
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>expat&lt;/code>静态库&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--host&lt;span class="o">=&lt;/span>aarch64-linux-android &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--build&lt;span class="o">=&lt;/span>&lt;span class="sb">`&lt;/span>dpkg-architecture -qDEB_BUILD_GNU_TYPE&lt;span class="sb">`&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--enable-static&lt;span class="o">=&lt;/span>yes &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--enable-shared&lt;span class="o">=&lt;/span>no
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>c-ares&lt;/code>静态库&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--host&lt;span class="o">=&lt;/span>aarch64-linux-android &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--build&lt;span class="o">=&lt;/span>&lt;span class="sb">`&lt;/span>dpkg-architecture -qDEB_BUILD_GNU_TYPE&lt;span class="sb">`&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--enable-static &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--disable-shared
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>openssl&lt;/code>静态库&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./Configure &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>android-arm64 -march&lt;span class="o">=&lt;/span>armv8-a -mtune&lt;span class="o">=&lt;/span>cortex-a53 &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>shared zlib zlib-dynamic -D_GNU_SOURCE -D_BSD_SOURCE &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-zlib-lib&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-zlib-include&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/include
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>libssh2&lt;/code>静态库&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CPPFLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-I,/data/data/com.termux/files/usr/include&amp;#34;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LDFLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-Wl,-rpath-link,/data/data/com.termux/files/usr/lib&amp;#34;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/data/data/com.termux/files/usr&amp;#34;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libssl-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libz-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--host&lt;span class="o">=&lt;/span>aarch64-linux-android
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>sqlite&lt;/code>静态库&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure --host&lt;span class="o">=&lt;/span>aarch64-linux-android &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ --enable-static &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--enable-shared &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--build&lt;span class="o">=&lt;/span>&lt;span class="sb">`&lt;/span>dpkg-architecture -qDEB_BUILD_GNU_TYPE&lt;span class="sb">`&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在编译 aria2时因为1.36相比1.35有修改所以必须修改到源码部分才能顺利编译&lt;/p>
-&lt;p>&lt;strong>这一步必须↓操作，不然进行&lt;code>ARIA2_STATIC=yes&lt;/code>链接会失败&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s|-lrt||g;s|-lpthread||g&amp;#39;&lt;/span> &lt;span class="k">$(&lt;/span>grep -rEl &lt;span class="s1">&amp;#39;\-lrt|\-lpthread&amp;#39;&lt;/span> .&lt;span class="k">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s|timegm(|timegm_(|g&amp;#39;&lt;/span> &lt;span class="k">$(&lt;/span>grep -rl &lt;span class="s1">&amp;#39;timegm(&amp;#39;&lt;/span> .&lt;span class="k">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>开始编译&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--host&lt;span class="o">=&lt;/span>aarch64-linux-android &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--build&lt;span class="o">=&lt;/span>&lt;span class="sb">`&lt;/span>dpkg-architecture -qDEB_BUILD_GNU_TYPE&lt;span class="sb">`&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--disable-nls &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--without-gnutls &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-openssl &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--without-libxml2 &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libz --with-libz-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libexpat --with-libexpat-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-slite3 --with-sqlite3-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libcares --with-libcares-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-ca-bundle&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;/data/data/com.termux/files/usr/ssl/certs/ca-certificates.crt&amp;#39;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LDFLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-L/data/data/com.termux/files/usr/lib&amp;#34;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/data/data/com.termux/files/usr/lib/pkgconfig&amp;#34;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">ARIA2_STATIC&lt;/span>&lt;span class="o">=&lt;/span>yes
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>aria2编译&lt;/code>&lt;/p>
-&lt;h3 id="系统自带工具打包">系统自带工具打包&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo checkinstall -D --install&lt;span class="o">=&lt;/span>no
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>打包过程中提示&lt;/p>
-&lt;pre tabindex="0">&lt;code>The package documentation directory ./doc-pak does not exist.
-Should I create a default set of package docs? [y]:n #不需要创建doc文档
-&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>0 - Maintainer: [ root@DESKTOP-U5H0M22 ]#编译设备
-1 - Summary: [ moriz build aria2 ]#自定义信息
-2 - Name: [ aria2 ]#文件名&amp;amp;卸载用
-3 - Version: [ 1.36.0 ]#版本
-4 - Release: [ 1 ]#发布
-5 - License: [ GPL ]#协议
-6 - Group: [ checkinstall ]#可忽略
-7 - Architecture: [ aarch64 ]#编译目标的cpu架构
-8 - Source location: [ aria2-release-1.36.0 ]#可忽略
-9 - Alternate source location: [ ]#可忽略
-10 - Requires: [ libc++, c-ares, openssl, libxml2, zlib ]#软件所需依赖包
-11 - Recommends: [ ]#可忽略
-12 - Suggests: [ ]#可忽略
-13 - Provides: [ aria2-release ]#可忽略
-14 - Conflicts: [ ]#可忽略
-15 - Replaces: [ ]#可忽略
-&lt;/code>&lt;/pre>&lt;p>&lt;font color="#C12414">注意选项7必须修改目标设备的cpu架构&lt;/font>
-成功后显示内容如下，文件所在文件夹和安装过程提示，后面安装过程略过
-新建文件夹解包&lt;/p>
-&lt;pre tabindex="0">&lt;code>dpkg-deb -R xxxxx.deb .
-#非必须
-&lt;/code>&lt;/pre>&lt;p>重新打包&lt;code>命令不一样&lt;/code>&lt;/p>
-&lt;pre tabindex="0">&lt;code>dpkg -b xxx new_deb_name.deb
-#非必须
-&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>**********************************************************************
-Done. The new package has been saved to
-$HOME/aria2-release-1.36.0/aria2-release_1.36.0-1_aarch64.deb
-You can install it in your system anytime using:
-dpkg -i aria2-release_1.36.0-1_aarch64.deb
-**********************************************************************
-&lt;/code>&lt;/pre>&lt;p>安装使用&lt;code>dpkg -i&lt;/code>，使用&lt;code>aria2c --v&lt;/code>，出现如下内容成功需要多线程则&lt;code>aria2c -x 128 +链接&lt;/code>即可&lt;/p>
-&lt;pre tabindex="0">&lt;code>aria2 version 1.36.0
-Copyright (C) 2006, 2019 Tatsuhiro Tsujikawa
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-** Configuration **
-Enabled Features: Async DNS, BitTorrent, Firefox3 Cookie, GZip, HTTPS, Message Digest, Metalink, XML-RPC, SFTP
-Hash Algorithms: sha-1, sha-224, sha-256, sha-384, sha-512, md5, adler32
-Libraries: zlib/1.2.13 expat/2.5.0 sqlite3/3.39.4 OpenSSL/1.1.1s c-ares/1.18.1 libssh2/1.10.0
-Compiler: clang 9.0.9 (https://android.googlesource.com/toolchain/llvm-project a2a1e703c0edb03ba29944e529ccbf457742737b)
-built by x86_64-pc-linux-gnu
-targeting aarch64-unknown-linux-android
-on Nov 10 2022 15:30:40
-System: Linux 4.19.113-perf-g4a878ec38421 #1 SMP PREEMPT Tue May 11 02:13:41 CST 2021 aarch64
-Report bugs to https://github.com/aria2/aria2/issues
-Visit https://aria2.github.io/
-&lt;/code>&lt;/pre>&lt;ul>
-&lt;li>群晖交叉编译&lt;a href="https://stray.love/itshou-zha/da-jian-qun-hui-jiao-cha-bian-yi-huan-jing-bing-bian-yi-aria2"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
-&lt;/li>
-&lt;li>openssl编译问题&lt;a href="https://fucknmb.com/2017/05/24/openssl-NDK%e4%ba%a4%e5%8f%89%e7%bc%96%e8%af%91/?utm_source=tuicool&amp;amp;utm_medium=referral"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
-&lt;/li>
-&lt;li>aria2 1.36源码静态库链接编译问题&lt;a href="https://fh0.github.io/%e7%bc%96%e8%af%91/2019/12/28/android-aria2.html"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
-&lt;/li>
-&lt;/ul></description></item><item><title>编译aria2添加128线程下载</title><link>https://www.omoe.cc/posts/%E7%BC%96%E8%AF%91aria2%E6%B7%BB%E5%8A%A0128%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD/</link><pubDate>Fri, 11 Nov 2022 19:48:06 +0000</pubDate><guid>https://www.omoe.cc/posts/%E7%BC%96%E8%AF%91aria2%E6%B7%BB%E5%8A%A0128%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD/</guid><description>&lt;p>aria2编译细节以及error处理&lt;/p>
+接下来投送即可&lt;/p></description></item><item><title>编译aria2添加128线程下载</title><link>https://www.omoe.cc/posts/%E7%BC%96%E8%AF%91aria2%E6%B7%BB%E5%8A%A0128%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD/</link><pubDate>Fri, 11 Nov 2022 19:48:06 +0000</pubDate><guid>https://www.omoe.cc/posts/%E7%BC%96%E8%AF%91aria2%E6%B7%BB%E5%8A%A0128%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD/</guid><description>&lt;p>aria2编译细节以及error处理&lt;/p>
 &lt;p>使用文档&lt;br>
 &lt;a href="https://aria2.github.io/"target="_blank" rel="noopener noreferrer">官方文档(en)&lt;/a>
 &lt;/p>
@@ -1091,21 +1158,34 @@ make install
 &lt;p>不喜欢路由器的默认地址&lt;code>192.168.1.1&lt;/code>自己修改
 有多台路由时避免网关重复，这一步多设备必修改。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vim package/base-files/files/bin/config_generate
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="修改默认wifi的选项默认wifi无密码">修改默认wifi的选项&lt;code>默认wifi无密码&lt;/code>&lt;/h3>
-&lt;p>lede/package/kernel/mac80211/files/lib/wifi&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> wireless.default_radio&lt;span class="si">${&lt;/span>&lt;span class="nv">devidx&lt;/span>&lt;span class="si">}&lt;/span>.encryption&lt;span class="o">=&lt;/span>WPA2-PSK &lt;span class="c1">#设置加密协议&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="修改默认wifi的选项">修改默认wifi的选项&lt;/h3>
+&lt;p>&lt;code>默认wifi无密码&lt;/code>
+lede/package/kernel/mac80211/files/lib/wifi&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> wireless.default_radio&lt;span class="si">${&lt;/span>&lt;span class="nv">devidx&lt;/span>&lt;span class="si">}&lt;/span>.encryption&lt;span class="o">=&lt;/span>psk2 &lt;span class="c1">#设置加密协议&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> wireless.default_radio&lt;span class="si">${&lt;/span>&lt;span class="nv">devidx&lt;/span>&lt;span class="si">}&lt;/span>.key&lt;span class="o">=&lt;/span> &lt;span class="c1">#密码&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>已经编译过的必须删除旧有文件&lt;/code>&lt;/p>
 &lt;pre tabindex="0">&lt;code>rm -rf build_dir/ &amp;amp;&amp;amp; rm -rf staging_dir/ &amp;amp;&amp;amp; rm -rf tmp/
 &lt;/code>&lt;/pre>&lt;p>ssh连接开屏提醒&lt;/p>
 &lt;pre tabindex="0">&lt;code>package/base-files/files/etc/banner
-&lt;/code>&lt;/pre>&lt;h3 id="gcc版本">gcc版本&lt;/h3>
+&lt;/code>&lt;/pre>&lt;p>默认root密码&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">package/base-files/files/etc/shadow
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">root:&lt;span class="nv">$1$wEehtjxj$YBu4quNfVUjzfv8p&lt;/span>/PBo5.:0:0:99999:7:::
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="gcc版本">gcc版本&lt;/h3>
 &lt;p>解决gcc版本过低网络条件不佳则可以将源换成&lt;code>https://launchpad.proxy.ustclug.org&lt;/code>&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt install software-properties-common
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt update
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt install gcc-11 g++-11
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 &lt;span class="m">60&lt;/span> --slave /usr/bin/g++ g++ /usr/bin/g++-11
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="添加第三方源码">添加第三方源码&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#把第三方ipk源码的package包放进source/feeds/packages目录&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#把第三方ipk源码的luci包放进source/feeds/luci/applications目录&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#主题放入source/feeds/luci/themes&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#然后运行下面的命令:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./scripts/feeds update luci
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./scripts/feeds install -a -p luci
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./scripts/feeds update packages
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./scripts/feeds install -a -p packages
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="wsl编译最后一步编译必须添加前置">wsl编译最后一步编译必须添加前置&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PATH&lt;/span>&lt;span class="o">=&lt;/span>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="编译">编译&lt;/h3>
@@ -1116,9 +1196,9 @@ make install
 &lt;h3 id="二次编译">二次编译&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">./scripts/feeds update -a
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./scripts/feeds install -a
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> make defconfig
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> make -j12 download
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> make -j8 &lt;span class="nv">V&lt;/span>&lt;span class="o">=&lt;/span>s
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make defconfig
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make -j12 download
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make -j8 &lt;span class="nv">V&lt;/span>&lt;span class="o">=&lt;/span>s
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>编译出现&lt;code>dial tcp 142.251.42.241:443: connect: connection refused&lt;/code>
 更换一个国内能访问的代理地址：https://goproxy.cn&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">go env -w &lt;span class="nv">GOPROXY&lt;/span>&lt;span class="o">=&lt;/span>https://goproxy.cn
@@ -1308,359 +1388,4 @@ export GPG_TTY=$(tty)&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo dpkg --get-selections &lt;span class="p">|&lt;/span> more
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查询状态为hold的所有包;&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo dpkg --get-selections &lt;span class="p">|&lt;/span> grep hold
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>FishShell基础配置指南</title><link>https://www.omoe.cc/posts/fishshell%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</link><pubDate>Fri, 11 Nov 2022 19:05:59 +0000</pubDate><guid>https://www.omoe.cc/posts/fishshell%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</guid><description>&lt;h3 id="前言">前言&lt;/h3>
-&lt;p>fish和bash脚本解释不一样，不能单纯copy&lt;code>.bashrc&lt;/code>所有的配置都需要修改。&lt;/p>
-&lt;h3 id="帮助">帮助&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fish" data-lang="fish">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">man&lt;/span> set
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="颜色提示">颜色提示&lt;/h3>
-&lt;p>存在时文字蓝色，不存在时红色。&lt;/p>
-&lt;h3 id="通配符">通配符&lt;/h3>
-&lt;ul>
-&lt;li>&lt;code>*&lt;/code>: 匹配文件名的全部或者一部分&lt;/li>
-&lt;li>&lt;code>**&lt;/code>: 匹配当前目录下的所有路径的全部或一部分&lt;/li>
-&lt;/ul>
-&lt;h3 id="管道和重定向">管道和重定向&lt;/h3>
-&lt;ul>
-&lt;li>&lt;code>|&lt;/code>： 左命令通过标准输出(/dev/stdout)重定向到右命令的标准输入(/dev/stdin)&lt;/li>
-&lt;li>&lt;code>&amp;gt;&lt;/code>、&lt;code>&amp;lt;&lt;/code>： 重定向输出到右侧文件、读取右侧文件。&lt;code>&amp;gt;&lt;/code>左侧默认是命令的标准输出，&lt;code>2&amp;gt;&lt;/code>指定标准错误输出(/dev/stderr)。&lt;code>&amp;gt;&amp;amp;1&lt;/code>表示输出到标准输出。&lt;/li>
-&lt;/ul>
-&lt;h3 id="自动完成词语">自动完成词语&lt;/h3>
-&lt;ul>
-&lt;li>当你敲击命令时，fish 会提示补充完整的词，在出现提示词时，按 ctrl + f 完成单词（或按 -&amp;gt; 右箭头)。局部完成：alt + -&amp;gt;&lt;/li>
-&lt;li>tab 键激活提示，包括命令、参数、路径。&lt;/li>
-&lt;/ul>
-&lt;h3 id="目录操作">目录操作&lt;/h3>
-&lt;ul>
-&lt;li>atl + 左右箭头： 进入上一个目录或下一个目录&lt;/li>
-&lt;/ul>
-&lt;h3 id="脚本编程">脚本编程&lt;/h3>
-&lt;h4 id="变量">变量&lt;/h4>
-&lt;ul>
-&lt;li>&lt;code>$变量名&lt;/code>: 读取变量值&lt;/li>
-&lt;li>&lt;code>set 变量名 变量值&lt;/code>: 设置变量值
-双引号内可以使用变量，单引号内不能。他们都代表字符串。&lt;/li>
-&lt;li>&lt;code>set -e 变量名&lt;/code>： 撤销变量&lt;/li>
-&lt;li>&lt;code>set -x 变量名 变量值&lt;/code>： 设置导出变量。即子脚本可以读取的变量。&lt;/li>
-&lt;li>&lt;code>set -u 变量名&lt;/code>： 撤销导出变量
-变量是一个列表，&lt;code>set a $a b&lt;/code> 往 $a 添加新的列表项 b&lt;/li>
-&lt;li>&lt;code>count $a&lt;/code>: 列表长度&lt;/li>
-&lt;li>&lt;code>$a[1]&lt;/code>: 列表第 1 项，&lt;code>$a[-1]&lt;/code>: 列表末尾项&lt;/li>
-&lt;li>&lt;code>$a[1..2]&lt;/code>: 列表的第 1 项到第 2 项（包括）的范围切片&lt;/li>
-&lt;li>&lt;code>$a&amp;quot;x&amp;quot;$a&lt;/code>: 列表将和相连的内容计算笛卡尔积，如$a = 1 2 3，那么结果是：1x1 2x1 3x1 1x2 2x2 3x2 1x3 2x3 3x3。当在双引号内不会计算。&lt;/li>
-&lt;li>&lt;code>set -g 变量名 变量值&lt;/code>： 设置全局变量，即当前脚本有效&lt;/li>
-&lt;li>&lt;code>set -l 变量名 变量值&lt;/code>： 设置局部变量&lt;/li>
-&lt;li>&lt;code>set -U 变量名 变量值&lt;/code>： 设置通用变量，在所有 fish 脚本内有效&lt;/li>
-&lt;li>&lt;code>string join \n $变量&lt;/code>： 变量转化为字符串，通常是用空格连接，string join 命令可以指定连接的字符(\n 即换行)。&lt;/li>
-&lt;/ul>
-&lt;h3 id="执行命令">执行命令&lt;/h3>
-&lt;ul>
-&lt;li>&lt;code>(命令)&lt;/code>: 执行括号内的命令，输出作为参数内容插入，如 &lt;code>echo (uname)&lt;/code> 等价于 &lt;code>echo Linux&lt;/code>&lt;/li>
-&lt;li>&lt;code>set a (命令|string split0)&lt;/code>: 命令替换通常会根据换行来建立变量的多个表项，用 &lt;code>string split0&lt;/code> 根据空字符划分表项，即最多只有一个项。&lt;/li>
-&lt;li>&lt;code>命令;命令&lt;/code>： 在同一行可以用分号并列两个命令&lt;/li>
-&lt;li>&lt;code>$status&lt;/code>: 上一个命令的返回值，0 为成功，非 0 为失败&lt;/li>
-&lt;li>&lt;code>&amp;amp;&amp;amp;&lt;/code>、&lt;code>||&lt;/code>、&lt;code>!&lt;/code>、&lt;code>and&lt;/code>、&lt;code>or&lt;/code>、&lt;code>not&lt;/code> ： 与，或，非，如 &lt;code>true &amp;amp;&amp;amp; false&lt;/code> 根据上一个命令(true)执行状态执行下一个命令(false)。与，是上个命令成功，执行下个命令，两个命令都成功，结果成功。或，是上个命令失败，执行下个命令，其中一个成功，结果成功。非，只有一个命令，如果成功，结果失败，如果失败，结果成功。and 等版本作用于上一条语句（而不是同一行的命令）。&lt;/li>
-&lt;li>数字运算： 例 &lt;code>math -s0 1+1&lt;/code>，math 函数支持整数和小数的加(+)、减(-)、乘(x)、除(/)、幂（^）、模(%)等数学运算。&lt;code>-s0&lt;/code>保留 0 位小数，即保留整数。&lt;/li>
-&lt;li>&lt;code>begin ... end&lt;/code>: 包含在 begin 和 end 间的语句，形成一个是局部段落，可以设置局部变量，可以将内部语句的输出一起重定向。&lt;/li>
-&lt;li>&lt;code>builtin 命令&lt;/code>：强制使用内部命令，而不使用同名的自定义函数&lt;/li>
-&lt;li>&lt;code>command 命令&lt;/code>：调用外部命令，而不使用内部命令和自定义函数&lt;/li>
-&lt;li>&lt;code>eval &amp;quot;命令&amp;quot;&lt;/code>： 将参数转化为命令执行&lt;/li>
-&lt;li>&lt;code>exec 命令&lt;/code>： 以指定命令替换掉当前的shell，当前shell关闭，即该命令永不返回。&lt;/li>
-&lt;li>&lt;code>命令 (命令 | psub)&lt;/code>： 进程替换。命令替换和管道的结合，和普通命令替换的区别是最终以命名管道（文件）的方式作为参数输入，而不是文本&lt;/li>
-&lt;/ul>
-&lt;h3 id="控制流程">控制流程&lt;/h3>
-&lt;p>程序是从上往下一次执行的，但是，如果只是顺序执行，程序就缺乏对环境变化的理解，因此任何成熟的程序语言，都带有控制流程的语句。如，判断语句，循环语句，函数等。&lt;/p>
-&lt;h4 id="判断语句">判断语句&lt;/h4>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fish" data-lang="fish">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 将 false 替换条件语句
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="k">if&lt;/span> &lt;span class="k">false&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="k">false&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>if &amp;hellip; else &amp;hellip; end 语句段可以添加多个 else if 判断条件 ，条件成立时执行if 和 else 之间的语句，条件不成立时，执行 else 和 end 之间的语句。也可以省略 else 段。&lt;/p>
-&lt;p>命令执行有成功和失败，它就是一个条件语句。&lt;/p>
-&lt;p>同时，fish 使用 test 命令来提供强大的判断能力。如：&lt;code>test &amp;quot;$number&amp;quot; -gt 5&lt;/code>，判断变量 number 是否大于(-gt) 5。&lt;/p>
-&lt;p>数字判断：&lt;/p>
-&lt;ul>
-&lt;li>-gt: &amp;gt;&lt;/li>
-&lt;li>-lt: &amp;lt;&lt;/li>
-&lt;li>-ge: &amp;gt;=&lt;/li>
-&lt;li>-le: &amp;lt;=&lt;/li>
-&lt;li>-eq: =&lt;/li>
-&lt;li>-ne: !=&lt;/li>
-&lt;/ul>
-&lt;p>文件判断：&lt;/p>
-&lt;ul>
-&lt;li>-b：设备文件&lt;/li>
-&lt;li>-c: 字符设备&lt;/li>
-&lt;li>-d： 目录&lt;/li>
-&lt;li>-e： 文件存在&lt;/li>
-&lt;li>-f: 常规文件&lt;/li>
-&lt;li>-g: 文件设置了组id&lt;/li>
-&lt;li>-G: 文件属于当前用户的组&lt;/li>
-&lt;li>-k：文件设置了粘滞位&lt;/li>
-&lt;li>-L: 符号链接文件&lt;/li>
-&lt;li>-O： 文件属于当前用户&lt;/li>
-&lt;li>-p： 管道文件&lt;/li>
-&lt;li>-r： 可读&lt;/li>
-&lt;li>-w： 可写&lt;/li>
-&lt;li>-x： 可执行&lt;/li>
-&lt;li>-s： 非零文件&lt;/li>
-&lt;li>-S： 套接字文件&lt;/li>
-&lt;li>-t： 终端&lt;/li>
-&lt;li>-u： 设置用户位&lt;/li>
-&lt;/ul>
-&lt;p>字符串判断：&lt;/p>
-&lt;ul>
-&lt;li>=: 两字符串是否相等&lt;/li>
-&lt;li>!=: 两字符串是否不等&lt;/li>
-&lt;li>-n: 非空字符串&lt;/li>
-&lt;li>-z: 空字符串&lt;/li>
-&lt;/ul>
-&lt;p>条件组合：&lt;/p>
-&lt;ul>
-&lt;li>-a: and&lt;/li>
-&lt;li>-o: or&lt;/li>
-&lt;li>!: !&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fish" data-lang="fish">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 选项分支
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="k">switch&lt;/span> &lt;span class="nv">$a&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">case&lt;/span> a
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s1">&amp;#39;$a == a&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">case&lt;/span> b
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s1">&amp;#39;$a == b&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">case&lt;/span> c d
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s1">&amp;#39;$a == c || $a == d&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">case&lt;/span> &lt;span class="s1">&amp;#39;*&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s1">&amp;#39;其他，默认选项&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>switch &amp;hellip;case 语句，根据内容的值（$a）是否等于选项（case）来控制分支。&lt;/p>
-&lt;h4 id="循环语句">循环语句&lt;/h4>
-&lt;p>循环语句根据条件是否成立，重复的执行循环内部的代码。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fish" data-lang="fish">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 死循环，不停的输出 loop
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="k">while&lt;/span> &lt;span class="k">true&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s2">&amp;#34;loop&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># *.txt 匹配当前目录下的所有txt后缀的文件，组成一个列表
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># for file in ... 依次读取列表中的一项，保存到 $file
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># more $file 显示当前文件内容
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="k">for&lt;/span> &lt;span class="nv">file&lt;/span> &lt;span class="k">in&lt;/span> *.txt
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">more&lt;/span> &lt;span class="nv">$file&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="函数">函数&lt;/h4>
-&lt;p>当遇到函数调用时，从当前流程跳转到函数内部执行。函数的作用等于将代码分割成若干功能的小片段。函数能够接受参数，并且能够返回值，很像数学上的函数概念，因此得名。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fish" data-lang="fish">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 函数 say
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 参数 argv
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="k">function&lt;/span> &lt;span class="nf">say&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> hello &lt;span class="nv">$argv&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">### 使用函数
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nf">say&lt;/span> jim &lt;span class="c"># 输出 hello jim
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="k">echo&lt;/span> &lt;span class="nv">$status&lt;/span> &lt;span class="c"># 返回值输出 0
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>定义了一个函数，就可以随意调用了。之后想获得该函数的信息：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fish" data-lang="fish">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">functions &lt;/span>say &lt;span class="c"># 输出该函数的定义
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">functions&lt;/span> &lt;span class="c"># 输出所有已经定义的函数名
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="参数">参数&lt;/h5>
-&lt;p>函数和脚本，都可以接受参数，对参数格式的处理，可以用 argparse 函数：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fish" data-lang="fish">&lt;span class="line">&lt;span class="cl">&lt;span class="k">function&lt;/span> &lt;span class="nf">say&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 支持参数 -h --help -n -name -s --sooo
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 其中 -n jim --name ming 可以多次输入参数
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># -s9 -9 --sooo=9 都是有效参数
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span> &lt;span class="nb">argparse&lt;/span> &lt;span class="na">--name&lt;/span>&lt;span class="o">=&lt;/span>myfunc &lt;span class="s1">&amp;#39;h/help&amp;#39;&lt;/span> &lt;span class="s1">&amp;#39;n/name=+&amp;#39;&lt;/span> &lt;span class="s1">&amp;#39;s#sooo&amp;#39;&lt;/span> &lt;span class="na">--$argv&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="k">set&lt;/span> &lt;span class="na">-q&lt;/span> &lt;span class="nv">_flag_h&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s1">&amp;#39;say -n yourname&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s1">&amp;#39;say -h help&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s1">&amp;#39;say -9&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="k">set&lt;/span> &lt;span class="na">-q&lt;/span> &lt;span class="nv">_flag_n&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">set&lt;/span> &lt;span class="na">-l&lt;/span> &lt;span class="nv">once&lt;/span> &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="na">-n&lt;/span> &lt;span class="s1">&amp;#39;hello &amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> &lt;span class="nv">var&lt;/span> &lt;span class="k">in&lt;/span> &lt;span class="nv">$_flag_n&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="k">test&lt;/span> &lt;span class="nv">$once&lt;/span> &lt;span class="na">-eq&lt;/span> &lt;span class="m">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="na">-n&lt;/span> &lt;span class="s1">&amp;#39;,&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">set&lt;/span> &lt;span class="nv">once&lt;/span> &lt;span class="m">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="na">-n&lt;/span> &lt;span class="nv">$var&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s1">&amp;#39;!&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="k">set&lt;/span> &lt;span class="na">-q&lt;/span> &lt;span class="nv">_flag_s&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">set&lt;/span> &lt;span class="na">-l&lt;/span> &lt;span class="nv">i&lt;/span> &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="na">-n&lt;/span> &lt;span class="s2">&amp;#34;I&amp;#39;m S&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="k">test&lt;/span> &lt;span class="nv">$i&lt;/span> &lt;span class="na">-le&lt;/span> &lt;span class="nv">$_flag_s&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="na">-n&lt;/span> &lt;span class="s1">&amp;#39;o&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">set&lt;/span> &lt;span class="nv">i&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="nb">math&lt;/span> &lt;span class="nv">$i&lt;/span>+&lt;span class="m">1&lt;/span>&lt;span class="o">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> &lt;span class="s1">&amp;#39; happy!&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 使用例子
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nf">say&lt;/span> -&lt;span class="m">99&lt;/span> &lt;span class="na">--name&lt;/span> htqx &lt;span class="na">-n&lt;/span> xiaoming &lt;span class="na">-h&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="事件">事件&lt;/h5>
-&lt;p>函数可以处理事件。即当事件产生时，将自动调用函数。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fish" data-lang="fish">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 处理事件
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># --on-event 表示要处理的事件
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="k">function&lt;/span> &lt;span class="nf">event_say&lt;/span> &lt;span class="na">--on-event&lt;/span> say_event
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">echo&lt;/span> poker face:&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$argv&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">function&lt;/span> &lt;span class="nf">say&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c"># 引发事件
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span> &lt;span class="nb">emit &lt;/span>say_event hello,&lt;span class="nv">$argv&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="字符串处理">字符串处理&lt;/h3>
-&lt;p>脚本编程的一个大对象，就是针对字符串（文本）的处理。&lt;/p>
-&lt;p>string 命令：&lt;/p>
-&lt;ul>
-&lt;li>collect: 不拆分多行字符串，-N 不修剪多余的换行
-&lt;code>echo a\nb\nc | string collect -N&lt;/code>&lt;/li>
-&lt;li>escape: 转义字符串。 -n 不带引号
-&amp;ndash;type=: var 变量转义，url 网址转义，regex 正则转义
-&lt;code>echo &amp;quot;a\nb\nc&amp;quot; | escape ...&lt;/code> 分别输出：var: a_5C_nb_5C_nc; url:a%5Cnb%5Cnc; regex:&lt;code>a\\nb\\nc&lt;/code>&lt;/li>
-&lt;li>unescape：转义还原。 &amp;ndash;type=var,url&lt;/li>
-&lt;li>join：联接字符串，指定联接符
-&lt;code>echo a\nb\nc | string jion ' '&lt;/code>：输出 a b c&lt;/li>
-&lt;li>join0:联接字符串
-&lt;code>echo a\nb\nc | string jion0&lt;/code>：输出abc&lt;/li>
-&lt;li>split:拆分字符串，指定字符结尾。-r 从右到左，-n 过滤空串，-m 最多拆分次数，-f 指定列。&lt;/li>
-&lt;li>split0:拆分字符串，拆分符 \0 （但不要使用 split \0 代替）。&lt;/li>
-&lt;li>length：长度，-q 只判断&lt;/li>
-&lt;li>lower：小写, -q 只判断&lt;/li>
-&lt;li>upper：大写，-q 只判断&lt;/li>
-&lt;li>pad：填充。-r 右侧填充，-c 填充字符，-w 总宽度。
-&lt;code>echo ab\nc |string pad -c x&lt;/code>&lt;/li>
-&lt;li>repeat：重复字符串。-n 重复次数，-m 最大字数，-N 最后不换行。&lt;/li>
-&lt;li>replace：替换匹配内容。用 $1 捕获相应组。&lt;/li>
-&lt;li>trim：修剪空格，-l 左空格，-r 右空格，-c 修剪符。&lt;/li>
-&lt;li>sub： 字串。-s 开始位置，-e 结束位置，-l 长度。&lt;/li>
-&lt;li>match：多组字符串进行匹配，默认是完全匹配某一项才输出对应项。
-&lt;ol>
-&lt;li>-a：全部测试匹配性，而不是匹配一个就结束&lt;/li>
-&lt;li>-e: 某一项匹配一部分，输出整个项。&lt;/li>
-&lt;li>-i：忽略大小写&lt;/li>
-&lt;li>-n：输出匹配项的匹配位置的范围，如输出：1 6&lt;/li>
-&lt;li>-r：正则匹配，输出匹配的部分,而不是整项。正则支持 perl 模式。&lt;/li>
-&lt;li>-v：反转匹配&lt;/li>
-&lt;/ol>
-&lt;/li>
-&lt;/ul>
-&lt;h3 id="内置函数">内置函数&lt;/h3>
-&lt;ul>
-&lt;li>&lt;code>abbr -ag ll ls -l&lt;/code>: 将 ls -l 用 ll 缩写代替&lt;/li>
-&lt;li>&lt;code>alias ll=&amp;quot;ls -l&amp;quot;&lt;/code>： 用 ll 函数包装 ls -l&lt;/li>
-&lt;li>argparse: 对参数文本进行解析，包括三部分，选项，规范，参数。
-&lt;ol>
-&lt;li>-n： 函数名（用于错误输出）&lt;/li>
-&lt;li>-x： 独占&lt;/li>
-&lt;li>-N： 最小参数个数&lt;/li>
-&lt;li>-X： 最大参数个数&lt;/li>
-&lt;li>-i： 忽略未知参数&lt;/li>
-&lt;li>-s： 遇到未知参数立即停止&lt;/li>
-&lt;li>规范：从参数中搜索，找到并生成规范对应的局部变量_flag_x。
-&lt;ol>
-&lt;li>&amp;rsquo;n/name&amp;rsquo;: 生成局部变量_flag_n 和 _flag_name，能处理选项 -n 和 &amp;ndash;name&lt;/li>
-&lt;li>&amp;rsquo;n/name=&amp;rsquo;: 接受选项值，如 -n9 和 &amp;ndash;name 9 和 &amp;ndash;name=9&lt;/li>
-&lt;li>&amp;rsquo;n/name=?&amp;rsquo;: 选项值可选&lt;/li>
-&lt;li>‘n/name=+&amp;rsquo;: 可多次使用选项，保存多个值&lt;/li>
-&lt;li>&lt;code>'n#max'&lt;/code>: -99 等&lt;/li>
-&lt;li>&amp;rsquo;n/name=!验证函数`：对参数值进行验证
-&lt;ol>
-&lt;li>_argparse_cmd : 被验证的函数名&lt;/li>
-&lt;li>_flag_name: 当前验证的选项&lt;/li>
-&lt;li>_flag_value: 当前参数值&lt;/li>
-&lt;/ol>
-&lt;/li>
-&lt;/ol>
-&lt;/li>
-&lt;/ol>
-&lt;/li>
-&lt;li>bg、fg、jobs、disown： 任务放后台、转到前台、任务状态、分离任务&lt;/li>
-&lt;li>bind：快捷键绑定，ctrl(\c),alt(Meta),esc(\e)等&lt;/li>
-&lt;li>block：屏蔽事件&lt;/li>
-&lt;li>breakpoint: 调试断点&lt;/li>
-&lt;li>&lt;code>cd&lt;/code> 改变目录、&lt;code>cdh&lt;/code> 通过最近访问目录列表改变目录、&lt;code>dirh&lt;/code> 目录记录、&lt;code>prevd&lt;/code> 上一个目录、&lt;code>netxd&lt;/code> 下一个目录、&lt;code>pushd&lt;/code> 入栈当前目录并进去指定目录、&lt;code>popd&lt;/code> 出栈目录、&lt;code>pwd&lt;/code> 显示当前目录&lt;/li>
-&lt;li>complete： 定义自动完成词（补全）
-&lt;ol>
-&lt;li>-c / -p: 命令或者路径，没有其他参数时返回当前补全定义&lt;/li>
-&lt;li>-s / -l: 短选项和长选项&lt;/li>
-&lt;li>-a: 参数&lt;/li>
-&lt;li>-F / -f: 文件名参数 或 非文件名&lt;/li>
-&lt;li>-r： 需要参数&lt;/li>
-&lt;li>-w： 别名&lt;/li>
-&lt;li>-n ： 判断条件&lt;/li>
-&lt;li>-C ： 搜索相关补全&lt;/li>
-&lt;li>-d ： 说明描述&lt;/li>
-&lt;li>-e ： 删除补全&lt;/li>
-&lt;li>-x : -r -f 的组合&lt;/li>
-&lt;/ol>
-&lt;/li>
-&lt;li>&lt;code>contains key I have key&lt;/code>：查询列表中（I have key）是否包含指定项（key）&lt;/li>
-&lt;li>count: 列表（即变量）的项总数&lt;/li>
-&lt;li>exit: 退出当前 shell&lt;/li>
-&lt;li>fish_add_path: 添加搜索路径，即 $PATH&lt;/li>
-&lt;li>fish_config: 启动 fish 配置网页&lt;/li>
-&lt;li>fish_is_root_user: 检查当前用户是否 root&lt;/li>
-&lt;li>fish_key_reader: 交互式输出按键的 bind 绑定形式&lt;/li>
-&lt;li>fish_update_completions: 解析系统自带的补全&lt;/li>
-&lt;li>funcsave: 保存自定义函数 ~/.config/fish/functions/xxx.fish&lt;/li>
-&lt;li>isatty: 文件描述符是否终端&lt;/li>
-&lt;li>open: 类似 xdg-open ，用关联的程序打开不同类型的文件&lt;/li>
-&lt;li>printf： 打印格式化文本
-&lt;ol>
-&lt;li>%d、%s：数字、文本&lt;/li>
-&lt;li>%o、%x：八进制、十六进制&lt;/li>
-&lt;li>%f、%g、%e: 六位小数浮点、浮点、科学计数&lt;/li>
-&lt;/ol>
-&lt;/li>
-&lt;li>&lt;code>echo -n -e “a\nb”&lt;/code>： 输出文本，-n 结束不换行，-e 识别转义(\n)&lt;/li>
-&lt;li>random: 0~32767 的随机数&lt;/li>
-&lt;li>read : 读取用户输入
-&lt;ol>
-&lt;li>-g、-l、-u、-x、-U：存储的变量的范围
-2〔方案選單〕 . -d、-t、-a、-L：指定分隔符、按toke、列表、多行列表&lt;/li>
-&lt;li>-s、-S：密码模式、语法高亮&lt;/li>
-&lt;li>-n、-z：行标记、空字符行标记&lt;/li>
-&lt;/ol>
-&lt;/li>
-&lt;li>&lt;code>realpath -s txt&lt;/code>：将相对路径转换为绝对路径，-s 保留符号链接文件&lt;/li>
-&lt;li>set：显示和设置变量，变量是列表，可以多个值
-&lt;ol>
-&lt;li>-a、-p：添加值到末尾、添加到头部&lt;/li>
-&lt;li>-l：局部变量（可屏蔽更大范围的同名变量）&lt;/li>
-&lt;li>-g：全局变量&lt;/li>
-&lt;li>-U: 通用变量（多个 fish shell 共享）&lt;/li>
-&lt;li>-x：导出变量（环境变量）&lt;/li>
-&lt;li>-u：取消导出&lt;/li>
-&lt;li>&amp;ndash;path：路径变量（以:分隔列表项，而不是空格）&lt;/li>
-&lt;li>&amp;ndash;unpath：取消路径模式&lt;/li>
-&lt;li>-e：取消变量&lt;/li>
-&lt;li>-q: 判断是否定义了变量&lt;/li>
-&lt;li>-n：所有已经定义的变量名的列表&lt;/li>
-&lt;li>-S: 显示变量的定义信息&lt;/li>
-&lt;li>&lt;code>变量[2]&lt;/code>:可以使用下标对变量的表项进行操作&lt;/li>
-&lt;/ol>
-&lt;/li>
-&lt;li>set_color:设置颜色
-&lt;ol>
-&lt;li>-b：背景色&lt;/li>
-&lt;li>-c：输出安全颜色名&lt;/li>
-&lt;li>-o：粗体&lt;/li>
-&lt;li>-d：黯淡&lt;/li>
-&lt;li>-i：斜体&lt;/li>
-&lt;li>-r：反转前景和背景色&lt;/li>
-&lt;li>-u：下划线&lt;/li>
-&lt;/ol>
-&lt;/li>
-&lt;li>source:导入脚本&lt;/li>
-&lt;li>status： 查询运行时状态&lt;/li>
-&lt;li>suspend: 挂起 shell&lt;/li>
-&lt;li>time：命令运行需要的时间，$CMD_DURATION 结果。&lt;/li>
-&lt;li>trap: 收到外部信号响应&lt;/li>
-&lt;li>type: 返回名称的类型&lt;/li>
-&lt;li>ulimit：限制资源&lt;/li>
-&lt;li>umask：文件创建掩码&lt;/li>
-&lt;li>vared:交互式修改变量&lt;/li>
-&lt;li>wait：等待后台任务完成&lt;/li>
-&lt;/ul></description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

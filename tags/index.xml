@@ -1,203 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on 拾集</title><link>https://www.omoe.cc/tags/</link><description>Recent content in Tags on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><atom:link href="https://www.omoe.cc/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>内核编译</title><link>https://www.omoe.cc/posts/%E5%86%85%E6%A0%B8%E7%BC%96%E8%AF%91/</link><pubDate>Mon, 05 Dec 2022 15:49:23 +0000</pubDate><guid>https://www.omoe.cc/posts/%E5%86%85%E6%A0%B8%E7%BC%96%E8%AF%91/</guid><description>&lt;p>鸽了很久的内核开启docker教程来了 我又来炒冷饭了
-〔如又不对大佬轻喷指正，我是菜鸡〕
-为小米mix2s〔polaris〕的内核开启docker支持
-手机📱需要root，**上网条件，基本Linux知识
-本用一加8t为小mix2s编译支持docker内核
-1.linux环境部署 kali nethunter
-&lt;a href="https://store.nethunter.com/"target="_blank" rel="noopener noreferrer">https://store.nethunter.com/&lt;/a>
-kali的rootfs下载 kalifs-amm64-full.tar.xz 这个文件，填写好路径，等待安装完成。可参照我以前动态
-&lt;a href="https://www.coolapk.com/feed/30854896?shareKey=YTBhNjYwMmFiNTFmNjJlYjU0YjI~&amp;amp;shareUid=1378604&amp;amp;shareFrom=com.coolapk.market_10.5"target="_blank" rel="noopener noreferrer">https://www.coolapk.com/feed/30854896?shareKey=YTBhNjYwMmFiNTFmNjJlYjU0YjI~&amp;shareUid=1378604&amp;shareFrom=com.coolapk.market_10.5&lt;/a>
-&lt;/p>
-&lt;p>kalinethunter的rootfs下载
-&lt;a href="https://kali.download/nethunter-images/kali-2022.1/rootfs/"target="_blank" rel="noopener noreferrer">https://kali.download/nethunter-images/kali-2022.1/rootfs/&lt;/a>
-&lt;/p>
-&lt;p>以下2个app也可部署linux环境，请自行搜索🔍
-1.1 termux
-&lt;a href="https://f-droid.org/en/packages/com.termux/"target="_blank" rel="noopener noreferrer">https://f-droid.org/en/packages/com.termux/&lt;/a>
-&lt;/p>
-&lt;p>1.2 linuxdeploy
-&lt;a href="https://github.com/meefik/linuxdeploy"target="_blank" rel="noopener noreferrer">https://github.com/meefik/linuxdeploy&lt;/a>
-&lt;/p>
-&lt;p>1.3 编译工具链 clang官方 &lt;a href="https://github.com/llvm/llvm-project/releases"target="_blank" rel="noopener noreferrer">https://github.com/llvm/llvm-project/releases&lt;/a>
-&lt;/p>
-&lt;p>2.个人习惯用kali,如何安装可看我以前的动态 或者自行搜索相关教&amp;gt;程。开启ssh服务。安装termux,并打开终端 键入 apt install -y openssh ssh连接kali ssh root@localhost 密码 toor&lt;/p>
-&lt;p>2.1 更新一下
-apt update &amp;amp;&amp;amp; apt upgrade -y
-2.2 安装依赖环境
-apt install -y git libssl-dev gcc-arm-linux-gnueabi clang build-essential libncurses5-dev bzip2 make python-is-python3 gcc g++ grep bc curl bison flex openssl lzop ccache unzip libssl-dev zlib1g-dev ninja-build texinfo file ca-certificates ccache wget cmake texinfo ca-certificates zlib1 g-dev xz-utils libelf-dev&lt;/p>
-&lt;p>2.3 然后（非必须，自带的clang也可，主要是想用最新的，实测编译时间快了5分钟，还是有很大提升的，以前30mins,现在25mins 在865测试的，听说开启ccache还可以更快[受虐滑稽]）
-cd ~ &amp;amp;&amp;amp; wget &lt;a href="https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/clang&amp;#43;llvm-14.0.6-aarch64-linux-gnu.tar.xz"target="_blank" rel="noopener noreferrer">https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/clang+llvm-14.0.6-aarch64-linux-gnu.tar.xz&lt;/a>
-&amp;amp;&amp;amp; tar -xvf clang+llvm-14.0.6-aarch64-linux-gnu.tar.xz &amp;amp;&amp;amp; rm -rf clang+llvm-14.0.6-aarch64-linux-gnu.tar.xz&lt;/p>
-&lt;p>2.4 克隆内核源码
-如何找？xda按🐔型话题带rom kernel的就是 直达 &lt;a href="https://forum.xda-developers.com/"target="_blank" rel="noopener noreferrer">https://forum.xda-developers.com/&lt;/a>
-&lt;/p>
-&lt;p>克隆mix2s arrow11内核
-git clone &lt;a href="https://github.com/ArrowOS-Devices/android_kernel_xiaomi_sdm845.git"target="_blank" rel="noopener noreferrer">https://github.com/ArrowOS-Devices/android_kernel_xiaomi_sdm845.git&lt;/a>
-然后打开源码目录
-cd android_kernel_xiaomi_sdm845&lt;/p>
-&lt;p>2.5 编辑xxx_defconfig内核配置文件开启docker支持
-一般是编辑xxxx_defcofig
-vim arch/arm64/configs/xxxx_defcofig
-小米mix2s的为
-vim arch/arm64/configs/polaris_defcofig
-加入以下内容（注意不是以下中文内容哈[受虐滑稽][受虐滑稽][受虐滑稽]
-｛〔此法为垃圾配置法，不要学啦，主要是好偷懒[流汗滑稽][流汗滑稽]，大佬轻喷。标准方法是make menuconfig然后逐一开启〕但有的是 vim arch/arm64/configs/vendor/xxxx_defcofig
-看自己机型情况了。以下内容有亿点长[流汗滑稽][流汗滑稽],反正就是复制粘贴完事，其实就是原作者的那个检测脚本上所有的配置选项全部启用，管它是绿还是红，全部加进去就完了还有就是在make menuconfig时开启cgroup , namespace内所有选项。我反正就是这么搞的当然你们如果怕出问题那就自己检测一翻，将报红的加进去就行了,如果编译之后内核还是无法运行的docker，可以向我这样搞一下，大概就是这样了其他的要靠你们自己了[流汗滑稽][流汗滑稽][流汗滑稽]，我只是个小白，不是搞编程的只懂一丢丢，大多数情况下也帮助不了你们[流汗滑稽][流汗滑稽][流汗滑稽]，好了说了这么多，搞就玩事了，“只要思想不滑坡，办法总比困难多”
-废话有点多了[流汗滑稽]，更改的内容放在下一篇中吧｝&lt;/p>
-&lt;p>就像以下内容全部加到xxx_defconfig文件中并保存&lt;/p>
-&lt;p>安卓开启docker🔗
-&lt;a href="https://gist.github.com/tomxi1997/f1f8692342e57272d7aa8a1e9829c978"target="_blank" rel="noopener noreferrer">https://gist.github.com/tomxi1997/f1f8692342e57272d7aa8a1e9829c978&lt;/a>
-自行先研究一下吧主要参照&lt;/p>
-&lt;p>还有就是华中科大的github也有相关的
-&lt;a href="https://github.com/CGCL-codes/Android-Container"target="_blank" rel="noopener noreferrer">https://github.com/CGCL-codes/Android-Container&lt;/a>
-就参考着搞吧，相信你也可以
-下集更精彩，休息一下马上回来[受虐滑稽][受虐滑稽][受虐滑稽]
-（等我肝好了再发)&lt;/p>
-&lt;p>可以先吃一下冷🥶饭，先冷静冷静[受虐滑稽][受虐滑稽]{以下内容为相关补充，大佬请无视，不懂的可以温习一下，步骤都差不多}
-冷饭合集
-内核编译使用顺序,请你认真阅读,已经详细记录所有用到的工具和软件
-链接: &lt;a href="https://pan.baidu.com/s/1QVysyw8C3Ra4Q_BsIXbRXw"target="_blank" rel="noopener noreferrer">https://pan.baidu.com/s/1QVysyw8C3Ra4Q_BsIXbRXw&lt;/a>
- 
-提取码:38o5&lt;/p>
-&lt;p>kali,busybox,AKI
-&lt;a href="https://wwp.lanzouh.com/b021bfv6h"target="_blank" rel="noopener noreferrer">https://wwp.lanzouh.com/b021bfv6h&lt;/a>
-密码：azcz&lt;/p>
-&lt;p>❶ &lt;a href="https://www.coolapk.com/feed/35736543?shareKey=ODFjMzMzMjA5MDEzNjI3OWUzOTU~&amp;amp;shareUid=1378604&amp;amp;shareFrom=com.coolapk.market_12.2.1"target="_blank" rel="noopener noreferrer">https://www.coolapk.com/feed/35736543?shareKey=ODFjMzMzMjA5MDEzNjI3OWUzOTU~&amp;shareUid=1378604&amp;shareFrom=com.coolapk.market_12.2.1&lt;/a>
-&lt;/p>
-&lt;p>❷ &lt;a href="https://www.coolapk.com/feed/35738263?shareKey=ZGJmZTEyOWZkMDZiNjI3OWU0NDg~&amp;amp;shareUid=1378604&amp;amp;shareFrom=com.coolapk.market_12.2.1"target="_blank" rel="noopener noreferrer">https://www.coolapk.com/feed/35738263?shareKey=ZGJmZTEyOWZkMDZiNjI3OWU0NDg~&amp;shareUid=1378604&amp;shareFrom=com.coolapk.market_12.2.1&lt;/a>
-&lt;/p>
-&lt;p>❸ &lt;a href="https://www.coolapk.com/feed/35760157?shareKey=YmZ"target="_blank" rel="noopener noreferrer">https://www.coolapk.com/feed/35760157?shareKey=YmZ&lt;/a>
-&lt;/p>
-&lt;p>2.5 编辑xxx_defconfig内核配置文件开启docker支持
-一般是编辑xxxx_defcofig
-vim arch/arm64/configs/xxxx_defcofig
-小米mix2s的为
-vim arch/arm64/configs/polaris_defcofig
-加入以下内容，并保存。&lt;/p>
-&lt;p>CONFIG_NAMESPACES=y
-CONFIG_NET_NS=y
-CONFIG_PID_NS=y
-CONFIG_IPC_NS=y
-CONFIG_UTS_NS=y
-CONFIG_CGROUPS=y
-CONFIG_CGROUP_CPUACCT=y
-CONFIG_CGROUP_DEVICE=y
-CONFIG_CGROUP_FREEZER=y
-CONFIG_CGROUP_SCHED=y
-CONFIG_CPUSETS=y
-CONFIG_MEMCG=y
-CONFIG_KEYS=y
-CONFIG_VETH=y
-CONFIG_BRIDGE=y
-CONFIG_BRIDGE_NETFILTER=y
-CONFIG_IP_NF_FILTER=y
-CONFIG_IP_NF_TARGET_MASQUERADE=y
-CONFIG_NETFILTER_XT_MATCH_ADDRTYPE=y
-CONFIG_NETFILTER_XT_MATCH_CONNTRACK=y
-CONFIG_NETFILTER_XT_MATCH_IPVS=y
-CONFIG_NETFILTER_XT_MARK=y
-CONFIG_IP_NF_NAT=y
-CONFIG_NF_NAT=y
-CONFIG_POSIX_MQUEUE=y
-CONFIG_NF_NAT_IPV4=y
-CONFIG_NF_NAT_NEEDED=y
-CONFIG_CGROUP_BPF=y
-CONFIG_USER_NS=y
-CONFIG_SECCOMP=y
-CONFIG_SECCOMP_FILTER=y
-CONFIG_CGROUP_PIDS=y
-CONFIG_MEMCG_SWAP=y
-CONFIG_MEMCG_SWAP_ENABLED=y
-CONFIG_IOSCHED_CFQ=y
-CONFIG_CFQ_GROUP_IOSCHED=y
-CONFIG_BLK_CGROUP=y
-CONFIG_BLK_DEV_THROTTLING=y
-CONFIG_CGROUP_PERF=y
-CONFIG_CGROUP_HUGETLB=y
-CONFIG_NET_CLS_CGROUP=y
-CONFIG_CGROUP_NET_PRIO=y
-CONFIG_CFS_BANDWIDTH=y
-CONFIG_FAIR_GROUP_SCHED=y
-CONFIG_RT_GROUP_SCHED=y
-CONFIG_IP_NF_TARGET_REDIRECT=y
-CONFIG_IP_VS=y
-CONFIG_IP_VS_NFCT=y
-CONFIG_IP_VS_PROTO_TCP=y
-CONFIG_IP_VS_PROTO_UDP=y
-CONFIG_IP_VS_RR=y
-CONFIG_SECURITY_SELINUX=y
-CONFIG_SECURITY_APPARMOR=y
-CONFIG_EXT4_FS=y
-CONFIG_EXT4_FS_POSIX_ACL=y
-CONFIG_EXT4_FS_SECURITY=y
-CONFIG_VXLAN=y CONFIG_BRIDGE_VLAN_FILTERING=y
-CONFIG_CRYPTO=y CONFIG_CRYPTO_AEAD=y
-CONFIG_CRYPTO_GCM=y
-CONFIG_CRYPTO_SEQIV=y
-CONFIG_CRYPTO_GHASH=y CONFIG_XFRM=y
-CONFIG_XFRM_USER=y
-CONFIG_XFRM_ALGO=y
-CONFIG_INET_ESP=y
-CONFIG_INET_XFRM_MODE_TRANSPORT=y
-CONFIG_IPVLAN=y
-CONFIG_MACVLAN=y
-CONFIG_DUMMY=y
-CONFIG_NF_NAT_FTP=y
-CONFIG_NF_CONNTRACK_FTP=y
-CONFIG_NF_NAT_TFTP=y
-CONFIG_NF_CONNTRACK_TFTP=y
-CONFIG_AUFS_FS=y
-CONFIG_BTRFS_FS=y
-CONFIG_BTRFS_FS_POSIX_ACL=y
-CONFIG_BLK_DEV_DM=y
-CONFIG_DM_THIN_PROVISIONING=y
-CONFIG_OVERLAY_FS=y&lt;/p>
-&lt;p>2.6 编译内核
-创建个构建脚本 build.sh并写下以下内容
-vim build.sh&lt;/p>
-&lt;p>#!/bin/bash
-make clean &amp;amp;&amp;amp; make mrproper &amp;amp;&amp;amp; rm -rf out
-mkdir -p out
-export ARCH=arm64
-export SUBARCH=arm64
-PATH=&amp;quot;/root/clang+llvm-14.0.6-aarch64-linux-gnu/bin/:$PATH&amp;quot;
-make O=out CC=clang polaris_defconfig ARCH=arm64
-make mrproper
-make -j$(nproc &amp;ndash;all) O=out \ CROSS_COMPILE=aarch64-linux-gnu- \ CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
-CC=clang &lt;br>
-AR=llvm-ar &lt;br>
-OBJDUMP=llvm-objdump &lt;br>
-STRIP=llvm-strip &lt;br>
-NM=llvm-nm &lt;br>
-OBJCOPY=llvm-objcopy &lt;br>
-LD=ld.lld &lt;br>
-2&amp;gt;&amp;amp;1 | tee error.log&lt;/p>
-&lt;p>给予执行权限&lt;/p>
-&lt;p>chmod +x build.sh&lt;/p>
-&lt;p>开始跑编译，做好散热，可以去喝茶了或睡一觉，中间省略无数场景[doge笑哭][doge笑哭][doge笑哭]，最后在
-out/arch/arm64/boot/下获得内核文件Image.gz-dtb&lt;/p>
-&lt;p>./build.sh&lt;/p>
-&lt;p>2.7 打包内核
-用 anykernel3 对内核打包
-可看这个
-大佬LibXZR
-&lt;a href="https://www.akr-developers.com/d/125"target="_blank" rel="noopener noreferrer">https://www.akr-developers.com/d/125&lt;/a>
-&lt;/p>
-&lt;p>cd ~ &amp;amp;&amp;amp; git clone &lt;a href="https://github.com/osm0sis/AnyKernel3.git"target="_blank" rel="noopener noreferrer">https://github.com/osm0sis/AnyKernel3.git&lt;/a>
-anykernel&lt;/p>
-&lt;p>cd anykernel &amp;amp;&amp;amp; rm -rf ramdisk &amp;amp;&amp;amp;
-cp -r Image.gz-dtb /root/anykernel
-vim anykernel.sh&lt;/p>
-&lt;p>着重改以下内容
-do.devicecheck=0 是否开启设备验证 值为0。
-block=/dev/block/bootdevice/by-name/boot; 改成这样别动
-is_slot_device=0 是否是ab分区设备 是就写1 反之则0。
-改好后保存。&lt;/p>
-&lt;p>小米mix2s的我改成这样，不是AB分区设备所以is_slot_device=0; 其他别动
-压缩成 zip，就可以通过twrp或ex内核管理器刷入
-zip -r polaris_dockerkernel.zip anykernel.sh Image.gz-dtb LICENSE META-INF modules patch tools README.md&lt;/p>
-&lt;p>还有一种是大佬所说的造轮子[doge笑哭][doge笑哭]，打包内核 就是解包boot,替换内核。说实话这种成功性非常高，用那种看你自己了。可看我以前动态 这 &lt;a href="https://www.coolapk.com/feed/35761035?shareKey=MTllMWNlNWJiNTdiNjJlYjczMDU~&amp;amp;shareUid=1378604&amp;amp;shareFrom=com.coolapk.market_10.5"target="_blank" rel="noopener noreferrer">https://www.coolapk.com/feed/35761035?shareKey=MTllMWNlNWJiNTdiNjJlYjczMDU~&amp;shareUid=1378604&amp;shareFrom=com.coolapk.market_10.5&lt;/a>
-&lt;/p></description></item><item><title>Ndk交叉编译aria2</title><link>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</link><pubDate>Fri, 02 Dec 2022 10:34:41 +0000</pubDate><guid>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</guid><description>&lt;p>交叉编译aria2&lt;/p>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on 拾集</title><link>https://www.omoe.cc/tags/</link><description>Recent content in Tags on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><atom:link href="https://www.omoe.cc/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>Ndk交叉编译aria2</title><link>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</link><pubDate>Fri, 02 Dec 2022 10:34:41 +0000</pubDate><guid>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</guid><description>&lt;p>交叉编译aria2&lt;/p>
 &lt;p>下载交叉编译工具(这里推荐r21e比较稳定且兼容)&lt;/p>
 &lt;table>
 &lt;thead>
@@ -1428,4 +1229,163 @@ lede/package/kernel/mac80211/files/lib/wifi&lt;/p>
 &lt;/li>
 &lt;li>自定义网关地址以及无线网络名称 &lt;a href="http://www.5lazy.cn/post-147.html"target="_blank" rel="noopener noreferrer">[源码修改]&lt;/a>
 &lt;/li>
-&lt;/ul></description></item></channel></rss>
+&lt;/ul></description></item><item><title>Shell脚本编写指南</title><link>https://www.omoe.cc/posts/shell%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97/</link><pubDate>Fri, 11 Nov 2022 19:39:26 +0000</pubDate><guid>https://www.omoe.cc/posts/shell%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97/</guid><description>&lt;h3 id="if判断实例">if判断实例&lt;/h3>
+&lt;pre tabindex="0">&lt;code>if [ ! -d $变量 ];then
+#command
+else
+fi
+&lt;/code>&lt;/pre>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:center">&lt;/th>
+&lt;th style="text-align:center">&lt;/th>
+&lt;th style="text-align:center">&lt;/th>
+&lt;th style="text-align:center">&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:center">1&lt;/td>
+&lt;td style="text-align:center">-e&lt;/td>
+&lt;td style="text-align:center">判断文件目录&lt;/td>
+&lt;td style="text-align:center">不可和-f组合&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">2&lt;/td>
+&lt;td style="text-align:center">-f&lt;/td>
+&lt;td style="text-align:center">判断文件&lt;/td>
+&lt;td style="text-align:center">不可和-e组合&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">3&lt;/td>
+&lt;td style="text-align:center">-r&lt;/td>
+&lt;td style="text-align:center">检查文件夹或者文件是否可写&lt;/td>
+&lt;td style="text-align:center">可组合&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">4&lt;/td>
+&lt;td style="text-align:center">-w&lt;/td>
+&lt;td style="text-align:center">检查文件夹或者文件是否可写&lt;/td>
+&lt;td style="text-align:center">可组合&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">5&lt;/td>
+&lt;td style="text-align:center">-x&lt;/td>
+&lt;td style="text-align:center">检查文件夹或者文件是否可执行&lt;/td>
+&lt;td style="text-align:center">可组合&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">6&lt;/td>
+&lt;td style="text-align:center">-s&lt;/td>
+&lt;td style="text-align:center">检查文件长度&lt;/td>
+&lt;td style="text-align:center">none&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">7&lt;/td>
+&lt;td style="text-align:center">-h&lt;/td>
+&lt;td style="text-align:center">检查文件是否软链接&lt;/td>
+&lt;td style="text-align:center">ln -s生成&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">8&lt;/td>
+&lt;td style="text-align:center">-L&lt;/td>
+&lt;td style="text-align:center">检查文件是否符号链接&lt;/td>
+&lt;td style="text-align:center">none&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="获取当前用户的绝对路径">获取当前用户的绝对路径&lt;/h3>
+&lt;pre tabindex="0">&lt;code>USE_DIR=$(pwd)
+&lt;/code>&lt;/pre>&lt;p>&lt;strong>获得shell脚本所在的绝对路径&lt;/strong>&lt;/p>
+&lt;pre tabindex="0">&lt;code>#实例
+CURRENT_DIR=$(cd $(dirname $0); pwd)
+#or
+#实例
+CURRENT_DIR=$(cd `dirname $0`; pwd)
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>&lt;code>dirname $0&lt;/code>: 取得当前执行的脚本文件所在的目录；&lt;/li>
+&lt;li>&lt;code>cd&lt;/code>: 进入当前工作目录；&lt;/li>
+&lt;li>&lt;code>pwd&lt;/code>: 显示当前工作目录；
+将当前工作目录输出给变量&lt;code>CURRENT_DIR&lt;/code>。
+&lt;strong>获得shell脚本所在目录的父级目录的绝对路径&lt;/strong>
+由于能获得shell脚本所在的绝对路径，那么同理，就可以获得脚本所在目录的父级目录的绝对路径。&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>#实例
+PARENT_DIR=$(cd $(dirname $0);cd ..; pwd)
+&lt;/code>&lt;/pre>&lt;p>只是在pwd命令之前添加了cd ..到父级目录。&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>$()&lt;/code>与&lt;code>``&lt;/code>作用一样，用于shell命令的执行。&lt;/li>
+&lt;li>&lt;code>dirname&lt;/code>: 显示最后一个结点前的路径;&lt;/li>
+&lt;li>&lt;code>basename&lt;/code>: 显示最后一个结点的名称。&lt;/li>
+&lt;li>&lt;code>$0&lt;/code>: 脚本的路径名称，包含脚本本身的名称。&lt;/li>
+&lt;/ul>
+&lt;h3 id="sed命令文件写入">sed命令文件写入&lt;/h3>
+&lt;p>如果知道行号可以用下面的方法&lt;/p>
+&lt;pre tabindex="0">&lt;code>sed -i &amp;#39;88 r b.file&amp;#39; a.file
+&lt;/code>&lt;/pre>&lt;p>在a.txt的第88行插入文件b.txt&lt;/p>
+&lt;pre tabindex="0">&lt;code>awk &amp;#39;1;NR==88{system(&amp;#34;cat b.file&amp;#34;)}&amp;#39;
+a.file &amp;gt; a.file
+&lt;/code>&lt;/pre>&lt;p>如果不知道行号，可以用正則匹配&lt;/p>
+&lt;pre tabindex="0">&lt;code>sed -i &amp;#39;/regex/ r b.txt&amp;#39; a.txt # regex是正则表达式
+awk &amp;#39;/target/{system(&amp;#34;cat b.file&amp;#34;)}&amp;#39;
+a.file &amp;gt; c.file
+&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>---
+### tar解压
+* 压缩（-c，compress）：对文档，目录进行打包操作，并没有压缩
+* 解压（-x，extract）：对文档，目录进行解包操作
+* 查看（-t，list）：查看压缩包或普通包里的文件名
+* gzip（-z）：后缀名为.tar.gz，后缀名非硬性要求，建议这么做，下同。压缩率最低，速度快，常用
+* bzip2（-j）：后缀名为.tar.bz2，压缩率高，速度较慢
+* xz（-J）：后缀名为.tar.xz，压缩率超高，速度很慢，看情况使用
+* -v：在处理的时候，显示正在处理的文件名
+* -f：用于指定压缩后的文档名，或者是欲解压的文档名
+### 搭建简易git服务
+* 安装git(这里安装略过)
+* 创建用户
+```bash
+sudo adduser git
+su git
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>复制主用户的证书，后期验证使用(git用户操作)，主用户公钥&lt;code>id_rsa.pub&lt;/code>导入到.ssh/authorized_keys&lt;/li>
+&lt;li>初始化用户仓库，并且更改仅限git用户。&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo git init --bare xxxx.git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo chown -R git:git xxxx.git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>禁用shell登录(非必须)，编辑/etc/passwd&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git:x:1001:1001:,,,:/home/git:/bin/bash
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#改为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>使用设备远程克隆仓库&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git clone git@ip:xxx.git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;p>git remote -v
+#检查现有远程连接，如果没有，则显示空&lt;/p>
+&lt;p>git remote add origin [远程仓库]
+#添加远程仓库&lt;/p>
+&lt;p>git push &amp;ndash;set-upstream origin master
+#推送到远程仓库&lt;/p>
+&lt;p>git branch -D []
+git branch -d []
+#删除本地分支&lt;/p>
+&lt;p>git push origin &amp;ndash;delete []
+#删除远程分支&lt;/p>
+&lt;p>git push -u origin []
+#将本地新建的分之推到远程（远程也新建相应的分之）&lt;/p>
+&lt;p>git config commit.gpgsign ture
+#添加gpg验证
+export GPG_TTY=$(tty)&lt;/p>
+&lt;h3 id="apt包管理器下禁止软件包更新">apt包管理器下禁止软件包更新&lt;/h3>
+&lt;p>设置package包的状态为 hold；&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> package hold &lt;span class="p">|&lt;/span> dpkg --set-selections
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果想恢复可以更新的状态(install)，执行下面的命令；&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> package install &lt;span class="p">|&lt;/span> dpkg --set-selections
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查询所有包的状态；&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo dpkg --get-selections &lt;span class="p">|&lt;/span> more
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查询状态为hold的所有包;&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo dpkg --get-selections &lt;span class="p">|&lt;/span> grep hold
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

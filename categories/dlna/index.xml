@@ -1,4 +1,27 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dlna on 拾集</title><link>https://www.omoe.cc/categories/dlna/</link><description>Recent content in Dlna on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><lastBuildDate>Fri, 18 Nov 2022 10:25:56 +0000</lastBuildDate><atom:link href="https://www.omoe.cc/categories/dlna/index.xml" rel="self" type="application/rss+xml"/><item><title>Ndk交叉编译aria2</title><link>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</link><pubDate>Fri, 02 Dec 2022 10:34:41 +0000</pubDate><guid>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</guid><description>&lt;p>交叉编译aria2&lt;/p>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dlna on 拾集</title><link>https://www.omoe.cc/categories/dlna/</link><description>Recent content in Dlna on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><lastBuildDate>Fri, 18 Nov 2022 10:25:56 +0000</lastBuildDate><atom:link href="https://www.omoe.cc/categories/dlna/index.xml" rel="self" type="application/rss+xml"/><item><title>Gradle下载龟速问题</title><link>https://www.omoe.cc/posts/gradle%E4%B8%8B%E8%BD%BD%E9%BE%9F%E9%80%9F%E9%97%AE%E9%A2%98/</link><pubDate>Sun, 19 Feb 2023 16:44:49 +0800</pubDate><guid>https://www.omoe.cc/posts/gradle%E4%B8%8B%E8%BD%BD%E9%BE%9F%E9%80%9F%E9%97%AE%E9%A2%98/</guid><description>&lt;p>在项目下的settings.gradle修改&lt;/p>
+&lt;pre tabindex="0">&lt;code>pluginManagement {
+repositories {
+maven { url &amp;#39;https://plugins.gradle.org/m2/&amp;#39; }
+maven { url &amp;#39;https://maven.aliyun.com/nexus/content/repositories/google&amp;#39; }
+maven { url &amp;#39;https://maven.aliyun.com/nexus/content/groups/public&amp;#39; }
+maven { url &amp;#39;https://maven.aliyun.com/nexus/content/repositories/jcenter&amp;#39;}
+google()
+mavenCentral()
+gradlePluginPortal()
+}
+}
+dependencyResolutionManagement {
+repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+repositories {
+maven { url &amp;#39;https://plugins.gradle.org/m2/&amp;#39; }
+maven { url &amp;#39;https://maven.aliyun.com/nexus/content/repositories/google&amp;#39; }
+maven { url &amp;#39;https://maven.aliyun.com/nexus/content/groups/public&amp;#39; }
+maven { url &amp;#39;https://maven.aliyun.com/nexus/content/repositories/jcenter&amp;#39;}
+google()
+mavenCentral()
+}
+}
+&lt;/code>&lt;/pre></description></item><item><title>Ndk交叉编译aria2</title><link>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</link><pubDate>Fri, 02 Dec 2022 10:34:41 +0000</pubDate><guid>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</guid><description>&lt;p>交叉编译aria2&lt;/p>
 &lt;p>下载交叉编译工具(这里推荐r21e比较稳定且兼容)&lt;/p>
 &lt;table>
 &lt;thead>
@@ -1229,163 +1252,4 @@ lede/package/kernel/mac80211/files/lib/wifi&lt;/p>
 &lt;/li>
 &lt;li>自定义网关地址以及无线网络名称 &lt;a href="http://www.5lazy.cn/post-147.html"target="_blank" rel="noopener noreferrer">[源码修改]&lt;/a>
 &lt;/li>
-&lt;/ul></description></item><item><title>Shell脚本编写指南</title><link>https://www.omoe.cc/posts/shell%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97/</link><pubDate>Fri, 11 Nov 2022 19:39:26 +0000</pubDate><guid>https://www.omoe.cc/posts/shell%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97/</guid><description>&lt;h3 id="if判断实例">if判断实例&lt;/h3>
-&lt;pre tabindex="0">&lt;code>if [ ! -d $变量 ];then
-#command
-else
-fi
-&lt;/code>&lt;/pre>&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:center">&lt;/th>
-&lt;th style="text-align:center">&lt;/th>
-&lt;th style="text-align:center">&lt;/th>
-&lt;th style="text-align:center">&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:center">1&lt;/td>
-&lt;td style="text-align:center">-e&lt;/td>
-&lt;td style="text-align:center">判断文件目录&lt;/td>
-&lt;td style="text-align:center">不可和-f组合&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">2&lt;/td>
-&lt;td style="text-align:center">-f&lt;/td>
-&lt;td style="text-align:center">判断文件&lt;/td>
-&lt;td style="text-align:center">不可和-e组合&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">3&lt;/td>
-&lt;td style="text-align:center">-r&lt;/td>
-&lt;td style="text-align:center">检查文件夹或者文件是否可写&lt;/td>
-&lt;td style="text-align:center">可组合&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">4&lt;/td>
-&lt;td style="text-align:center">-w&lt;/td>
-&lt;td style="text-align:center">检查文件夹或者文件是否可写&lt;/td>
-&lt;td style="text-align:center">可组合&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">5&lt;/td>
-&lt;td style="text-align:center">-x&lt;/td>
-&lt;td style="text-align:center">检查文件夹或者文件是否可执行&lt;/td>
-&lt;td style="text-align:center">可组合&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">6&lt;/td>
-&lt;td style="text-align:center">-s&lt;/td>
-&lt;td style="text-align:center">检查文件长度&lt;/td>
-&lt;td style="text-align:center">none&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">7&lt;/td>
-&lt;td style="text-align:center">-h&lt;/td>
-&lt;td style="text-align:center">检查文件是否软链接&lt;/td>
-&lt;td style="text-align:center">ln -s生成&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">8&lt;/td>
-&lt;td style="text-align:center">-L&lt;/td>
-&lt;td style="text-align:center">检查文件是否符号链接&lt;/td>
-&lt;td style="text-align:center">none&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;hr>
-&lt;h3 id="获取当前用户的绝对路径">获取当前用户的绝对路径&lt;/h3>
-&lt;pre tabindex="0">&lt;code>USE_DIR=$(pwd)
-&lt;/code>&lt;/pre>&lt;p>&lt;strong>获得shell脚本所在的绝对路径&lt;/strong>&lt;/p>
-&lt;pre tabindex="0">&lt;code>#实例
-CURRENT_DIR=$(cd $(dirname $0); pwd)
-#or
-#实例
-CURRENT_DIR=$(cd `dirname $0`; pwd)
-&lt;/code>&lt;/pre>&lt;ul>
-&lt;li>&lt;code>dirname $0&lt;/code>: 取得当前执行的脚本文件所在的目录；&lt;/li>
-&lt;li>&lt;code>cd&lt;/code>: 进入当前工作目录；&lt;/li>
-&lt;li>&lt;code>pwd&lt;/code>: 显示当前工作目录；
-将当前工作目录输出给变量&lt;code>CURRENT_DIR&lt;/code>。
-&lt;strong>获得shell脚本所在目录的父级目录的绝对路径&lt;/strong>
-由于能获得shell脚本所在的绝对路径，那么同理，就可以获得脚本所在目录的父级目录的绝对路径。&lt;/li>
-&lt;/ul>
-&lt;pre tabindex="0">&lt;code>#实例
-PARENT_DIR=$(cd $(dirname $0);cd ..; pwd)
-&lt;/code>&lt;/pre>&lt;p>只是在pwd命令之前添加了cd ..到父级目录。&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>$()&lt;/code>与&lt;code>``&lt;/code>作用一样，用于shell命令的执行。&lt;/li>
-&lt;li>&lt;code>dirname&lt;/code>: 显示最后一个结点前的路径;&lt;/li>
-&lt;li>&lt;code>basename&lt;/code>: 显示最后一个结点的名称。&lt;/li>
-&lt;li>&lt;code>$0&lt;/code>: 脚本的路径名称，包含脚本本身的名称。&lt;/li>
-&lt;/ul>
-&lt;h3 id="sed命令文件写入">sed命令文件写入&lt;/h3>
-&lt;p>如果知道行号可以用下面的方法&lt;/p>
-&lt;pre tabindex="0">&lt;code>sed -i &amp;#39;88 r b.file&amp;#39; a.file
-&lt;/code>&lt;/pre>&lt;p>在a.txt的第88行插入文件b.txt&lt;/p>
-&lt;pre tabindex="0">&lt;code>awk &amp;#39;1;NR==88{system(&amp;#34;cat b.file&amp;#34;)}&amp;#39;
-a.file &amp;gt; a.file
-&lt;/code>&lt;/pre>&lt;p>如果不知道行号，可以用正則匹配&lt;/p>
-&lt;pre tabindex="0">&lt;code>sed -i &amp;#39;/regex/ r b.txt&amp;#39; a.txt # regex是正则表达式
-awk &amp;#39;/target/{system(&amp;#34;cat b.file&amp;#34;)}&amp;#39;
-a.file &amp;gt; c.file
-&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>---
-### tar解压
-* 压缩（-c，compress）：对文档，目录进行打包操作，并没有压缩
-* 解压（-x，extract）：对文档，目录进行解包操作
-* 查看（-t，list）：查看压缩包或普通包里的文件名
-* gzip（-z）：后缀名为.tar.gz，后缀名非硬性要求，建议这么做，下同。压缩率最低，速度快，常用
-* bzip2（-j）：后缀名为.tar.bz2，压缩率高，速度较慢
-* xz（-J）：后缀名为.tar.xz，压缩率超高，速度很慢，看情况使用
-* -v：在处理的时候，显示正在处理的文件名
-* -f：用于指定压缩后的文档名，或者是欲解压的文档名
-### 搭建简易git服务
-* 安装git(这里安装略过)
-* 创建用户
-```bash
-sudo adduser git
-su git
-&lt;/code>&lt;/pre>&lt;ul>
-&lt;li>复制主用户的证书，后期验证使用(git用户操作)，主用户公钥&lt;code>id_rsa.pub&lt;/code>导入到.ssh/authorized_keys&lt;/li>
-&lt;li>初始化用户仓库，并且更改仅限git用户。&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo git init --bare xxxx.git
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo chown -R git:git xxxx.git
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>禁用shell登录(非必须)，编辑/etc/passwd&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git:x:1001:1001:,,,:/home/git:/bin/bash
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#改为&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>使用设备远程克隆仓库&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git clone git@ip:xxx.git
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
-&lt;p>git remote -v
-#检查现有远程连接，如果没有，则显示空&lt;/p>
-&lt;p>git remote add origin [远程仓库]
-#添加远程仓库&lt;/p>
-&lt;p>git push &amp;ndash;set-upstream origin master
-#推送到远程仓库&lt;/p>
-&lt;p>git branch -D []
-git branch -d []
-#删除本地分支&lt;/p>
-&lt;p>git push origin &amp;ndash;delete []
-#删除远程分支&lt;/p>
-&lt;p>git push -u origin []
-#将本地新建的分之推到远程（远程也新建相应的分之）&lt;/p>
-&lt;p>git config commit.gpgsign ture
-#添加gpg验证
-export GPG_TTY=$(tty)&lt;/p>
-&lt;h3 id="apt包管理器下禁止软件包更新">apt包管理器下禁止软件包更新&lt;/h3>
-&lt;p>设置package包的状态为 hold；&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> package hold &lt;span class="p">|&lt;/span> dpkg --set-selections
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果想恢复可以更新的状态(install)，执行下面的命令；&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> package install &lt;span class="p">|&lt;/span> dpkg --set-selections
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查询所有包的状态；&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo dpkg --get-selections &lt;span class="p">|&lt;/span> more
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查询状态为hold的所有包;&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo dpkg --get-selections &lt;span class="p">|&lt;/span> grep hold
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
+&lt;/ul></description></item></channel></rss>

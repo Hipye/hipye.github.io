@@ -228,7 +228,8 @@ Visit https://aria2.github.io/
 &lt;/li>
 &lt;li>aria2 1.36源码静态库链接编译问题&lt;a href="https://fh0.github.io/%e7%bc%96%e8%af%91/2019/12/28/android-aria2.html"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
 &lt;/li>
-&lt;/ul></description></item><item><title>Node邮件发送</title><link>https://www.omoe.cc/posts/node%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/</link><pubDate>Fri, 02 Dec 2022 02:41:22 +0000</pubDate><guid>https://www.omoe.cc/posts/node%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/</guid><description>&lt;pre tabindex="0">&lt;code>npm install nodemailer --save
+&lt;/ul></description></item><item><title>Node邮件发送</title><link>https://www.omoe.cc/posts/node%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/</link><pubDate>Fri, 02 Dec 2022 02:41:22 +0000</pubDate><guid>https://www.omoe.cc/posts/node%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/</guid><description>&lt;p>node相关&lt;/p>
+&lt;pre tabindex="0">&lt;code>npm install nodemailer --save
 &lt;/code>&lt;/pre>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-js" data-lang="js">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 这里举简单例子，也可以封装成service来调用
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 引入nodemailer
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kr">const&lt;/span> &lt;span class="nx">nodemailer&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">require&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;nodemailer&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
@@ -298,7 +299,8 @@ Visit https://aria2.github.io/
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;cid&amp;#34;&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s2">&amp;#34;01&amp;#34;&lt;/span> &lt;span class="c1">// 插在邮件正文中的图片
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="p">}]&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Npm安装以及使用流程</title><link>https://www.omoe.cc/posts/npm%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/</link><pubDate>Wed, 23 Nov 2022 22:06:07 +0000</pubDate><guid>https://www.omoe.cc/posts/npm%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/</guid><description>&lt;h3 id="nodejs安装">nodejs安装&lt;/h3>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Npm安装以及使用流程</title><link>https://www.omoe.cc/posts/npm%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/</link><pubDate>Wed, 23 Nov 2022 22:06:07 +0000</pubDate><guid>https://www.omoe.cc/posts/npm%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/</guid><description>&lt;p>npm相关&lt;/p>
+&lt;h3 id="nodejs安装">nodejs安装&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">curl -sL https://deb.nodesource.com/setup_14.x &lt;span class="p">|&lt;/span> sudo -E bash -
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
 &lt;li>允许 &lt;code>sudo apt-get install -y nodejs&lt;/code> 来安装 Node.js 14.x 和 npm&lt;/li>
@@ -325,7 +327,8 @@ ERROR Failed to get response from &lt;a href="http://registry.npmjs.org/vue-cli-
 }
 &lt;/code>&lt;/pre>&lt;p>npm ERR! ERESOLVE unable to resolve dependency tree&lt;/p>
 &lt;pre tabindex="0">&lt;code>npx -p npm@6 npm i --legacy-peer-deps
-&lt;/code>&lt;/pre></description></item><item><title>Vue3+vite2+router路由初始化配置</title><link>https://www.omoe.cc/posts/vue3+vite2+router%E8%B7%AF%E7%94%B1%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE/</link><pubDate>Wed, 23 Nov 2022 22:04:59 +0000</pubDate><guid>https://www.omoe.cc/posts/vue3+vite2+router%E8%B7%AF%E7%94%B1%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE/</guid><description>&lt;h3 id="安装npm">安装npm&lt;/h3>
+&lt;/code>&lt;/pre></description></item><item><title>Vue3+vite2+router路由初始化配置</title><link>https://www.omoe.cc/posts/vue3+vite2+router%E8%B7%AF%E7%94%B1%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE/</link><pubDate>Wed, 23 Nov 2022 22:04:59 +0000</pubDate><guid>https://www.omoe.cc/posts/vue3+vite2+router%E8%B7%AF%E7%94%B1%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>制作导航页相关&lt;/p>
+&lt;h3 id="安装npm">安装npm&lt;/h3>
 &lt;p>过程不赘述了网上一大把&lt;/p>
 &lt;h3 id="npm安装组件">npm安装组件&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">npm install vue@next
@@ -916,8 +919,8 @@ ERROR Failed to get response from &lt;a href="http://registry.npmjs.org/vue-cli-
 &lt;a href="https://www.jianshu.com/p/2f019e8c2191"target="_blank" rel="noopener noreferrer">link3&lt;/a>
 &lt;a href="https://blog.csdn.net/weixin_44037364/article/details/121952035"target="_blank" rel="noopener noreferrer">link4&lt;/a>
 &lt;a href="https://juejin.cn/post/6881429197542785031"target="_blank" rel="noopener noreferrer">link5&lt;/a>
-&lt;/p></description></item><item><title>修改wsl默认安装位置</title><link>https://www.omoe.cc/posts/%E4%BF%AE%E6%94%B9wsl%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE/</link><pubDate>Sun, 20 Nov 2022 11:46:00 +0000</pubDate><guid>https://www.omoe.cc/posts/%E4%BF%AE%E6%94%B9wsl%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE/</guid><description>&lt;p>WSL修改默认安装目录到其他位置
-1.查看WSL分发版本
+&lt;/p></description></item><item><title>修改wsl默认安装位置</title><link>https://www.omoe.cc/posts/%E4%BF%AE%E6%94%B9wsl%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE/</link><pubDate>Sun, 20 Nov 2022 11:46:00 +0000</pubDate><guid>https://www.omoe.cc/posts/%E4%BF%AE%E6%94%B9wsl%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE/</guid><description>&lt;p>WSL修改默认安装目录到其他位置&lt;/p>
+&lt;p>1.查看WSL分发版本
 在Windows PowerShell中输入如下命令:&lt;/p>
 &lt;pre tabindex="0">&lt;code>wsl -l --all -v
 &lt;/code>&lt;/pre>&lt;p>结果如下:&lt;/p>
@@ -933,7 +936,8 @@ ERROR Failed to get response from &lt;a href="http://registry.npmjs.org/vue-cli-
 &lt;pre tabindex="0">&lt;code>ubuntu2004 config --default-user Username
 &lt;/code>&lt;/pre>&lt;p>6.删除tar文件(可选)&lt;/p>
 &lt;pre tabindex="0">&lt;code>del d:\wsl-ubuntu20.04.tar
-&lt;/code>&lt;/pre></description></item><item><title>Win10ltsc安装winget</title><link>https://www.omoe.cc/posts/win10ltsc%E5%AE%89%E8%A3%85winget/</link><pubDate>Sun, 20 Nov 2022 06:37:41 +0000</pubDate><guid>https://www.omoe.cc/posts/win10ltsc%E5%AE%89%E8%A3%85winget/</guid><description>&lt;h3 id="准备依赖">准备依赖&lt;/h3>
+&lt;/code>&lt;/pre></description></item><item><title>Win10ltsc安装winget</title><link>https://www.omoe.cc/posts/win10ltsc%E5%AE%89%E8%A3%85winget/</link><pubDate>Sun, 20 Nov 2022 06:37:41 +0000</pubDate><guid>https://www.omoe.cc/posts/win10ltsc%E5%AE%89%E8%A3%85winget/</guid><description>&lt;p>winget在windows上相关&lt;/p>
+&lt;h3 id="准备依赖">准备依赖&lt;/h3>
 &lt;p>VCLibs 的安装文件
 &lt;a href="https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"target="_blank" rel="noopener noreferrer">https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx&lt;/a>
 &lt;/p>

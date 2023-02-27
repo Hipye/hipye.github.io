@@ -1,4 +1,187 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 拾集</title><link>https://www.omoe.cc/posts/</link><description>Recent content in Posts on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><lastBuildDate>Sun, 19 Feb 2023 16:44:49 +0800</lastBuildDate><atom:link href="https://www.omoe.cc/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Gradle下载龟速问题</title><link>https://www.omoe.cc/posts/gradle%E4%B8%8B%E8%BD%BD%E9%BE%9F%E9%80%9F%E9%97%AE%E9%A2%98/</link><pubDate>Sun, 19 Feb 2023 16:44:49 +0800</pubDate><guid>https://www.omoe.cc/posts/gradle%E4%B8%8B%E8%BD%BD%E9%BE%9F%E9%80%9F%E9%97%AE%E9%A2%98/</guid><description>&lt;p>在项目下的settings.gradle修改&lt;/p>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 拾集</title><link>https://www.omoe.cc/posts/</link><description>Recent content in Posts on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><lastBuildDate>Sat, 25 Feb 2023 19:37:28 +0800</lastBuildDate><atom:link href="https://www.omoe.cc/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Openwrt切换nginx</title><link>https://www.omoe.cc/posts/openwrt%E5%88%87%E6%8D%A2nginx/</link><pubDate>Sat, 25 Feb 2023 19:37:28 +0800</pubDate><guid>https://www.omoe.cc/posts/openwrt%E5%88%87%E6%8D%A2nginx/</guid><description>&lt;p>nginx -t -c /etc/nginx/uci.conf #测试配置文件
+nginx -T -c /etc/nginx/uci.conf #详细测试配置文件&lt;/p>
+&lt;p>/etc/nginx/conf.d 目录下新建subweb.conf&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="err">server&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">listen&lt;/span> &lt;span class="err">10088;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">listen&lt;/span> &lt;span class="err">[::]:10088;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">server_name&lt;/span> &lt;span class="err">_;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">charset&lt;/span> &lt;span class="err">utf-8;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">location&lt;/span> &lt;span class="err">/&lt;/span> &lt;span class="err">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">root&lt;/span> &lt;span class="err">/storage/data/share;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">index&lt;/span> &lt;span class="err">index.html;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">autoindex&lt;/span> &lt;span class="err">on;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">autoindex_exact_size&lt;/span> &lt;span class="err">off;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">autoindex_localtime&lt;/span> &lt;span class="err">on;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">add_header&lt;/span> &lt;span class="err">Cache-Control&lt;/span> &lt;span class="err">no-store;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>/etc/init.d/nginx reload #重新读取配置&lt;/p>
+&lt;p>/etc/init.d/nginx restart #重启nginx服务&lt;/p>
+&lt;p>netstat -anutp |grep 10088 #查看10088端口监听&lt;/p></description></item><item><title>安卓kotlin文件读取</title><link>https://www.omoe.cc/posts/%E5%AE%89%E5%8D%93kotlin%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96/</link><pubDate>Sat, 25 Feb 2023 14:00:23 +0800</pubDate><guid>https://www.omoe.cc/posts/%E5%AE%89%E5%8D%93kotlin%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">MainActivityB&lt;/span> &lt;span class="p">:&lt;/span> &lt;span class="n">AppCompatActivity&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">var&lt;/span> &lt;span class="py">filePath&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">?&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">null&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">var&lt;/span> &lt;span class="py">fileName&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">?&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">null&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">var&lt;/span> &lt;span class="py">textView&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">TextView&lt;/span>&lt;span class="p">?&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">null&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">var&lt;/span> &lt;span class="py">inputStreamRawTxt&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">InputStream&lt;/span>&lt;span class="p">?&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">null&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">var&lt;/span> &lt;span class="py">handler&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Handler&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">object&lt;/span> &lt;span class="err">: &lt;/span>&lt;span class="nc">Handler&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">override&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">handleMessage&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">msg&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Message&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">super&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">handleMessage&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">msg&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">textView&lt;/span>&lt;span class="o">!!&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">text&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">msg&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">obj&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">toString&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">override&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">onCreate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">savedInstanceState&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Bundle&lt;/span>&lt;span class="p">?)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">super&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">onCreate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">savedInstanceState&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">setContentView&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nc">R&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">layout&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">activity_main&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">initView&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">initData&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">initEvent&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">private&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">initView&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">textView&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">findViewById&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nc">R&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">id&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">filelisttv&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">private&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">initData&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">filePath&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nc">Environment&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">getExternalStoragePublicDirectory&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nc">Environment&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">DIRECTORY_DOCUMENTS&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">absolutePath&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">+&lt;/span> &lt;span class="s2">&amp;#34;/&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fileName&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;flname.txt&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nc">L&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">d&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${filePath}${fileName}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// inputStreamRawTxt =getResources().openRawResource(R.raw.printf);
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">private&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">initEvent&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//判断是否有该文件夹，没有则创建一个，生成文件夹之后，再生成文件，不然会出错
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">makeDirectory&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filePath&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//在线程中执行耗时操作
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">Thread&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="c1">//判断是否有该文件，没有则创建一个,并返回true
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">createNewFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filePath&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">fileName&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//返回true说明创建了新的文件，则写入预设内容，
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="c1">//返回false，则说明文件已存在，不需要写入（也不会进入该判断）
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//将输入流转换成字符串，写入文件
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">val&lt;/span> &lt;span class="py">rawTxtString&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">Stream2String&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">inputStreamRawTxt&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">writeTxtToFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">rawTxtString&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">filePath&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">fileName&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//再将文件读取为字符串
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">val&lt;/span> &lt;span class="py">text&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">ReadTxtFromSDCard&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">fileName&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//显示出来
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">val&lt;/span> &lt;span class="py">message&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="nc">Message&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">obtain&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">handler&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">message&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">obj&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">text&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">handler&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">sendMessage&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">message&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}.&lt;/span>&lt;span class="n">start&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 生成文件
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">createNewFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filePath&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">?,&lt;/span> &lt;span class="n">fileName&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">?):&lt;/span> &lt;span class="n">Boolean&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">var&lt;/span> &lt;span class="py">file&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">File&lt;/span>&lt;span class="p">?&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">null&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">file&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">File&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filePath&lt;/span> &lt;span class="p">+&lt;/span> &lt;span class="n">fileName&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(!&lt;/span>&lt;span class="k">file&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">exists&lt;/span>&lt;span class="p">())&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">file&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">createNewFile&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">catch&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Exception&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">e&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">printStackTrace&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="k">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 将字符串写入到文本文件中
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">writeTxtToFile&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">stringContent&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">filePath&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">?,&lt;/span> &lt;span class="n">fileName&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">?&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">val&lt;/span> &lt;span class="py">strFilePath&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">filePath&lt;/span> &lt;span class="p">+&lt;/span> &lt;span class="n">fileName&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 每次写入时，都换行写
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">val&lt;/span> &lt;span class="py">strContent&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s">&amp;#34;&amp;#34;&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"> &lt;/span>&lt;span class="si">$stringContent&lt;/span>&lt;span class="s">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"> &amp;#34;&amp;#34;&amp;#34;&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">trimIndent&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">val&lt;/span> &lt;span class="py">file&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">File&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">strFilePath&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">val&lt;/span> &lt;span class="py">raf&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">RandomAccessFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">file&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;rwd&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">raf&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">seek&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">file&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">length&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">raf&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">write&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">strContent&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">toByteArray&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">raf&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">close&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">catch&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Exception&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nc">Log&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;TestFile&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;Error on write File:&lt;/span>&lt;span class="si">$e&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">private&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">Stream2String&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">`is`&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">InputStream&lt;/span>&lt;span class="p">?):&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//强制缓存大小为16KB，一般Java类默认为8KB
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">val&lt;/span> &lt;span class="py">reader&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">BufferedReader&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">InputStreamReader&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">`is`&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="m">16&lt;/span> &lt;span class="p">*&lt;/span> &lt;span class="m">1024&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">val&lt;/span> &lt;span class="py">sb&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">StringBuilder&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">var&lt;/span> &lt;span class="py">line&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">?&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">null&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">reader&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">readLine&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="n">also&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">line&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">it&lt;/span> &lt;span class="p">}&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="k">null&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="c1">//处理换行符
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">sb&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">append&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">&amp;#34;&amp;#34;&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"> &lt;/span>&lt;span class="si">$line&lt;/span>&lt;span class="s">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"> &amp;#34;&amp;#34;&amp;#34;&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">trimIndent&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">catch&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">IOException&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">e&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">printStackTrace&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">finally&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">`is`&lt;/span>&lt;span class="o">!!&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">close&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">catch&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">IOException&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">e&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">printStackTrace&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">sb&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">toString&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//这是这篇的重点，按ctrl+f关注input的操作
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">private&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">ReadTxtFromSDCard&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filename&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">?):&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">val&lt;/span> &lt;span class="py">sb&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">StringBuilder&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//判断是否有读取权限
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nc">Environment&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">getExternalStorageState&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="nc">Environment&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">MEDIA_MOUNTED&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//打开文件输入流
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">try&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">val&lt;/span> &lt;span class="py">input&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">FileInputStream&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filePath&lt;/span> &lt;span class="p">+&lt;/span> &lt;span class="n">filename&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">val&lt;/span> &lt;span class="py">temp&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">ByteArray&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">1024&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">var&lt;/span> &lt;span class="py">len&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//读取文件内容:
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">while&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">input&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">read&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">temp&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">also&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">len&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">it&lt;/span> &lt;span class="p">}&lt;/span> &lt;span class="p">&amp;gt;&lt;/span> &lt;span class="m">0&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">sb&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">temp&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">len&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nc">L&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">d&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sb&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">toString&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//关闭输入流
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">input&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">close&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">catch&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">IOException&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nc">Log&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;ReadTxtFromSDCard&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;ReadTxtFromSDCard&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">e&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">printStackTrace&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">sb&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">toString&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">companion&lt;/span> &lt;span class="k">object&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 生成文件夹
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">makeDirectory&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filePath&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">?)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">var&lt;/span> &lt;span class="py">file&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">File&lt;/span>&lt;span class="p">?&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">null&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">file&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">File&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filePath&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(!&lt;/span>&lt;span class="k">file&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">exists&lt;/span>&lt;span class="p">())&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">file&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">mkdir&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">catch&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Exception&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nc">Log&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;error:&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">toString&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">+&lt;/span> &lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Gradle下载龟速问题</title><link>https://www.omoe.cc/posts/gradle%E4%B8%8B%E8%BD%BD%E9%BE%9F%E9%80%9F%E9%97%AE%E9%A2%98/</link><pubDate>Sun, 19 Feb 2023 16:44:49 +0800</pubDate><guid>https://www.omoe.cc/posts/gradle%E4%B8%8B%E8%BD%BD%E9%BE%9F%E9%80%9F%E9%97%AE%E9%A2%98/</guid><description>&lt;p>在项目下的settings.gradle修改&lt;/p>
 &lt;pre tabindex="0">&lt;code>pluginManagement {
 repositories {
 maven { url &amp;#39;https://plugins.gradle.org/m2/&amp;#39; }
@@ -1032,228 +1215,4 @@ inotify=yes
 &lt;p>打开BubbleUnpnp，局域网出现你设置过的dlna服务器
 &lt;img src="https://s2.loli.net/2022/11/18/Wnj2mf9KCPNLFGo.jpg"
 alt="IMG_20221118_174930"/>
-接下来投送即可&lt;/p></description></item><item><title>编译aria2添加128线程下载</title><link>https://www.omoe.cc/posts/%E7%BC%96%E8%AF%91aria2%E6%B7%BB%E5%8A%A0128%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD/</link><pubDate>Fri, 11 Nov 2022 19:48:06 +0000</pubDate><guid>https://www.omoe.cc/posts/%E7%BC%96%E8%AF%91aria2%E6%B7%BB%E5%8A%A0128%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD/</guid><description>&lt;p>aria2编译细节以及error处理&lt;/p>
-&lt;p>使用文档&lt;br>
-&lt;a href="https://aria2.github.io/"target="_blank" rel="noopener noreferrer">官方文档(en)&lt;/a>
-&lt;/p>
-&lt;h3 id="编译前注意事项">编译前注意事项&lt;/h3>
-&lt;p>根据系统以及平台的不同，编译的方法大同小异。仅提供linux发行版[ubuntu]的编译方法。
-国内的网络特殊原因，在&lt;a href="https://www.github.com"target="_blank" rel="noopener noreferrer">github&lt;/a>
-上下载作者提供的&lt;a href="https://github.com/aria2/aria2/releases"target="_blank" rel="noopener noreferrer">源码&lt;/a>
-的时候会出现下载失败以及访问龟速&lt;strong>开全局代理&lt;/strong>&lt;/p>
-&lt;p>因为不是和我存在同样操作环境下可能会有不同状况发生请善用&lt;a href="https://www.google.com"target="_blank" rel="noopener noreferrer">google&lt;/a>
-或者&lt;a href="https://www.baidu.com"target="_blank" rel="noopener noreferrer">百度&lt;/a>
-&lt;/p>
-&lt;hr>
-&lt;h3 id="添加依赖">添加依赖&lt;/h3>
-&lt;p>更新系统的软件&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get update -y &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> sudo apt-get upgrade -y
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>安装编译时官方说明需要的依赖&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get install libgnutls28-dev &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>nettle-dev libgmp-dev &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libssh2-1-dev libc-ares-dev &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libxml2-dev zlib1g-dev &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libsqlite3-dev pkg-config &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libcppunit-dev autoconf &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>automake autotools-dev autopoint libtool &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>git gcc g++ libxml2-dev make quilt libtool
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>centos指令如下&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">yum install gcc-g++ gcc -y
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="源码下载">源码下载&lt;/h4>
-&lt;p>下载aria2的源码&lt;a href="https://github.com/aria2/aria2/archive/release-1.36.0.tar.gz"target="_blank" rel="noopener noreferrer">1.36&lt;/a>
-&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">wget https://github.com/aria2/aria2/archive/release-1.36.0.tar.gz
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>源码包里的文件树&lt;/p>
-&lt;pre tabindex="0">&lt;code>.
-├── ABOUT-NLS
-├── aclocal.m4
-├── android-config
-├── AUTHORS
-├── autom4te.cache
-├── ChangeLog
-├── compile
-├── config.guess
-├── config.h
-├── config.h.in
-├── config.log
-├── config.rpath
-├── config.status
-├── config.sub
-├── configure
-├── configure.ac
-├── COPYING
-├── depcomp
-├── deps
-├── doc
-├── Dockerfile.mingw
-├── Dockerfile.raspberrypi
-├── examples
-├── INSTALL
-├── install-sh
-├── lib
-├── libtool
-├── LICENSE.OpenSSL
-├── ltmain.sh
-├── m4
-├── Makefile
-├── Makefile.am
-├── Makefile.in
-├── makerelease
-├── makerelease-osx.mk
-├── mingw-build-memo
-├── mingw-config
-├── mingw-release
-├── missing
-├── NEWS
-├── osx-package
-├── po
-├── README
-├── README.html
-├── README.rst
-├── script-helper
-├── src
-├── stamp-h1
-├── test
-└── test-driver
-&lt;/code>&lt;/pre>&lt;p>需要修改的只有&lt;code>./src&lt;/code>下的文件，没有这个目录则需要执行&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">autoreconf -i
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>修改128线程&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/&amp;#34;1&amp;#34;, 1, 16/&amp;#34;128&amp;#34;, 1, -1/g&amp;#39;&lt;/span> ./src/OptionHandlerFactory.cc
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/&amp;#34;20M&amp;#34;, 1_m, 1_g/&amp;#34;4K&amp;#34;, 1_k, 1_g/g&amp;#39;&lt;/span> ./src/OptionHandlerFactory.cc
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/PREF_CONNECT_TIMEOUT, TEXT_CONNECT_TIMEOUT, &amp;#34;60&amp;#34;, 1, 600/PREF_CONNECT_TIMEOUT, TEXT_CONNECT_TIMEOUT, &amp;#34;30&amp;#34;, 1, 600/g&amp;#39;&lt;/span> ./src/OptionHandlerFactory.cc
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/PREF_PIECE_LENGTH, TEXT_PIECE_LENGTH, &amp;#34;1M&amp;#34;, 1_m, 1_g/PREF_PIECE_LENGTH, TEXT_PIECE_LENGTH, &amp;#34;4k&amp;#34;, 1_k, 1_g/g&amp;#39;&lt;/span> ./src/OptionHandlerFactory.cc
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/new NumberOptionHandler(PREF_RETRY_WAIT, TEXT_RETRY_WAIT, &amp;#34;0&amp;#34;, 0, 600/new NumberOptionHandler(PREF_RETRY_WAIT, TEXT_RETRY_WAIT, &amp;#34;2&amp;#34;, 0, 600/g&amp;#39;&lt;/span> ./src/OptionHandlerFactory.cc
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/new NumberOptionHandler(PREF_SPLIT, TEXT_SPLIT, &amp;#34;5&amp;#34;, 1, -1,/new NumberOptionHandler(PREF_SPLIT, TEXT_SPLIT, &amp;#34;8&amp;#34;, 1, -1,/g&amp;#39;&lt;/span> ./src/OptionHandlerFactory.cc
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="编译">编译&lt;/h3>
-&lt;pre tabindex="0">&lt;code>./configure --prefix=$PREFIX
-&lt;/code>&lt;/pre>&lt;p>&lt;strong>$PREFIX&lt;/strong>是变量在&lt;code>.bashrc&lt;/code>下申明，位置自定义推荐在&lt;code>/usr&lt;/code>下，也可以删去包括&lt;code>--&lt;/code>后面的内容
-需要注意的是如果使用wsl编译则需要添加以免出现嵌套win的变量导致错误
-&lt;code>PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin &lt;/code>&lt;/p>
-&lt;pre tabindex="0">&lt;code>make -j12 V=s
-#12是我的pc的线程数一般是核心数x2
-make install
-#安装
-&lt;/code>&lt;/pre></description></item><item><title>Ubuntu编译openwrt</title><link>https://www.omoe.cc/posts/ubuntu%E7%BC%96%E8%AF%91openwrt/</link><pubDate>Fri, 11 Nov 2022 19:46:09 +0000</pubDate><guid>https://www.omoe.cc/posts/ubuntu%E7%BC%96%E8%AF%91openwrt/</guid><description>&lt;p>无论是潘多拉还是openwrt还是其他固件其底包都需要编译支持由于个人比较喜欢openwrt的高自由度所以特地列举编译固件当中遇到的报错以及问题。&lt;/p>
-&lt;p>固件首先使用的是&lt;code>win10&lt;/code>的&lt;code>wsl&lt;/code>建&lt;code>ubuntu20.04&lt;/code>开始编译&lt;/p>
-&lt;h3 id="本地编译">本地编译&lt;/h3>
-&lt;p>添加依赖&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get update -y
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt-get install -y git &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>subversion &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>g++ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>zlib1g-dev &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>build-essential &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>python &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>python3 &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>python3-distutils &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libncurses5-dev &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>gawk &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>gettext &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>unzip &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>file &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libssl-dev &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libelf-dev &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>ecj &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>fastjar &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>java-propose-classpath &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>build-essential &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libncursesw5-dev &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="下载源码">下载源码&lt;/h3>
-&lt;p>clone&lt;a href="https://github.com/coolsnowwolf/lede.git"target="_blank" rel="noopener noreferrer">[lean]&lt;/a>
-源码&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git clone https://github.com/coolsnowwolf/lede.git
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="添加第三方软件包">添加第三方软件包&lt;/h3>
-&lt;p>先编辑基础配置文件
-&lt;strong>feeds.conf.default&lt;/strong> 这个文本类似软件包配置&lt;/p>
-&lt;ul>
-&lt;li>[√] kenzo是第三方基础源有想用的软件包&lt;/li>
-&lt;li>[√] small是依赖包必须要添加&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;src-git kenzo https://github.com/kenzok8/openwrt-packages&amp;#34;&lt;/span> &amp;gt;&amp;gt; feeds.conf.default
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;src-git small https://github.com/kenzok8/small&amp;#34;&lt;/span> &amp;gt;&amp;gt; feeds.conf.default
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="第三方软件更新安装">第三方软件更新&amp;amp;安装&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">./scripts/feeds clean
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./scripts/feeds update -a
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./scripts/feeds install -a
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make menuconfig
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>前两项的必须选好 第一项是选择cpu的类别 第二项是你的路由型号&lt;/p>
-&lt;h3 id="dl包">dl包&lt;/h3>
-&lt;p>&lt;del>由于国内的网络环境导致在下载所需软件包时会导致失败这里提供一个国内dl镜像
-&lt;a href="https://gitee.com/tolqy/openwrt-lede-dl"target="_blank" rel="noopener noreferrer">gitee&lt;/a>
-&lt;/del>&lt;/p>
-&lt;h3 id="修改默认网关地址">修改默认网关地址&lt;/h3>
-&lt;p>不喜欢路由器的默认地址&lt;code>192.168.1.1&lt;/code>自己修改
-有多台路由时避免网关重复，这一步多设备必修改。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vim package/base-files/files/bin/config_generate
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="修改默认wifi的选项">修改默认wifi的选项&lt;/h3>
-&lt;p>&lt;code>默认wifi无密码&lt;/code>
-lede/package/kernel/mac80211/files/lib/wifi&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> wireless.default_radio&lt;span class="si">${&lt;/span>&lt;span class="nv">devidx&lt;/span>&lt;span class="si">}&lt;/span>.encryption&lt;span class="o">=&lt;/span>psk2 &lt;span class="c1">#设置加密协议&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> wireless.default_radio&lt;span class="si">${&lt;/span>&lt;span class="nv">devidx&lt;/span>&lt;span class="si">}&lt;/span>.key&lt;span class="o">=&lt;/span> &lt;span class="c1">#密码&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>已经编译过的必须删除旧有文件&lt;/code>&lt;/p>
-&lt;pre tabindex="0">&lt;code>rm -rf build_dir/ &amp;amp;&amp;amp; rm -rf staging_dir/ &amp;amp;&amp;amp; rm -rf tmp/
-&lt;/code>&lt;/pre>&lt;p>ssh连接开屏提醒&lt;/p>
-&lt;pre tabindex="0">&lt;code>package/base-files/files/etc/banner
-&lt;/code>&lt;/pre>&lt;p>默认root密码&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">package/base-files/files/etc/shadow
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">root:&lt;span class="nv">$1$wEehtjxj$YBu4quNfVUjzfv8p&lt;/span>/PBo5.:0:0:99999:7:::
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="gcc版本">gcc版本&lt;/h3>
-&lt;p>解决gcc版本过低网络条件不佳则可以将源换成&lt;code>https://launchpad.proxy.ustclug.org&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt install software-properties-common
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt update
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt install gcc-11 g++-11
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 &lt;span class="m">60&lt;/span> --slave /usr/bin/g++ g++ /usr/bin/g++-11
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="添加第三方源码">添加第三方源码&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#把第三方ipk源码的package包放进source/feeds/packages目录&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#把第三方ipk源码的luci包放进source/feeds/luci/applications目录&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#主题放入source/feeds/luci/themes&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#然后运行下面的命令:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./scripts/feeds update luci
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./scripts/feeds install -a -p luci
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./scripts/feeds update packages
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./scripts/feeds install -a -p packages
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="wsl编译最后一步编译必须添加前置">wsl编译最后一步编译必须添加前置&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PATH&lt;/span>&lt;span class="o">=&lt;/span>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="编译">编译&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">make download -j12
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make -j8 &lt;span class="nv">V&lt;/span>&lt;span class="o">=&lt;/span>s
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>特别提醒 国内特殊的网络条件下在使用&lt;code>make download&lt;/code>下载依赖包时建议挂上全局避免直接404导致后面编译报error
-编译好的固件在/lede/bin/targets/xxx下&lt;/p>
-&lt;h3 id="二次编译">二次编译&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">./scripts/feeds update -a
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./scripts/feeds install -a
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make defconfig
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make -j12 download
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make -j8 &lt;span class="nv">V&lt;/span>&lt;span class="o">=&lt;/span>s
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>编译出现&lt;code>dial tcp 142.251.42.241:443: connect: connection refused&lt;/code>
-更换一个国内能访问的代理地址：https://goproxy.cn&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">go env -w &lt;span class="nv">GOPROXY&lt;/span>&lt;span class="o">=&lt;/span>https://goproxy.cn
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
-&lt;h3 id="更换软件源开机后">更换软件源(开机后)&lt;/h3>
-&lt;p>vim /etc/opkg/distfeeds.conf&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">src/gz openwrt_core https://mirrors.hit.edu.cn/openwrt/snapshots/targets/ipq40xx/generic/packages
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">src/gz openwrt_base https://mirrors.hit.edu.cn/openwrt/snapshots/packages/arm_cortex-a7_neon-vfpv4/base
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#src/gz openwrt_kenzo https://mirrors.hit.edu.cn/openwrt/snapshots/packages/arm_cortex-a7_neon-vfpv4/kenzo&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">src/gz openwrt_luci https://mirrors.hit.edu.cn/openwrt/releases/22.03.2/packages/arm_cortex-a7_neon-vfpv4/luci
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#src/gz openwrt_oui https://mirrors.hit.edu.cn/openwrt/snapshots/packages/arm_cortex-a7_neon-vfpv4/oui&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">src/gz openwrt_packages https://mirrors.hit.edu.cn/openwrt/snapshots/packages/arm_cortex-a7_neon-vfpv4/packages
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">src/gz openwrt_routing https://mirrors.hit.edu.cn/openwrt/snapshots/packages/arm_cortex-a7_neon-vfpv4/routing
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">src/gz openwrt_telephony https://mirrors.hit.edu.cn/openwrt/snapshots/packages/arm_cortex-a7_neon-vfpv4/telephony
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="查找已安装包">查找已安装包&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">opkg list-installed
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#卸载包和依赖&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">opkg remkve xxxx --force-removal-of-dependent-packages
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
-&lt;ul>
-&lt;li>第三方编译软件包 &lt;a href="https://github.com/OpenWrt-Actions/lienol-openwrt-package"target="_blank" rel="noopener noreferrer">[Lienol/openwrt备份]&lt;/a>
-&lt;/li>
-&lt;li>官方原版 &lt;a href="https://github.com/openwrt/openwrt"target="_blank" rel="noopener noreferrer">[openwrt]&lt;/a>
-&lt;/li>
-&lt;li>第三方固件地址国内镜像&lt;a href="https://gitee.com/qmgta/lede"target="_blank" rel="noopener noreferrer">[gitee]&lt;/a>
-&lt;/li>
-&lt;li>利用CI自动构建项目 &lt;a href="https://github.com/kenzok8/openwrt_Build"target="_blank" rel="noopener noreferrer">[openwrt_Build]&lt;/a>
-&lt;/li>
-&lt;li>自定义网关地址以及无线网络名称 &lt;a href="http://www.5lazy.cn/post-147.html"target="_blank" rel="noopener noreferrer">[源码修改]&lt;/a>
-&lt;/li>
-&lt;/ul></description></item></channel></rss>
+接下来投送即可&lt;/p></description></item></channel></rss>

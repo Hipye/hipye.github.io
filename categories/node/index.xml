@@ -1,4 +1,26 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>node on 拾集</title><link>https://www.omoe.cc/categories/node/</link><description>Recent content in node on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><lastBuildDate>Fri, 02 Dec 2022 02:41:22 +0000</lastBuildDate><atom:link href="https://www.omoe.cc/categories/node/index.xml" rel="self" type="application/rss+xml"/><item><title>Kotlin要点记录</title><link>https://www.omoe.cc/posts/kotlin%E8%A6%81%E7%82%B9%E8%AE%B0%E5%BD%95/</link><pubDate>Thu, 02 Mar 2023 20:33:12 +0800</pubDate><guid>https://www.omoe.cc/posts/kotlin%E8%A6%81%E7%82%B9%E8%AE%B0%E5%BD%95/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@Override&lt;/span>&lt;span class="c1">//重写覆盖
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>node on 拾集</title><link>https://www.omoe.cc/categories/node/</link><description>Recent content in node on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><lastBuildDate>Fri, 02 Dec 2022 02:41:22 +0000</lastBuildDate><atom:link href="https://www.omoe.cc/categories/node/index.xml" rel="self" type="application/rss+xml"/><item><title>Alpine安装mysql服务</title><link>https://www.omoe.cc/posts/alpine%E5%AE%89%E8%A3%85mysql%E6%9C%8D%E5%8A%A1/</link><pubDate>Thu, 09 Mar 2023 16:50:19 +0000</pubDate><guid>https://www.omoe.cc/posts/alpine%E5%AE%89%E8%A3%85mysql%E6%9C%8D%E5%8A%A1/</guid><description>&lt;h1 id="alpine-中mysql-用的就是mariadb">alpine 中MySQL 用的就是MariaDB&lt;/h1>
+&lt;p>apk add mysql mysql-client&lt;/p>
+&lt;h1 id="或">或&lt;/h1>
+&lt;p>apk add mariadb mariadb-client&lt;/p>
+&lt;p>配置&lt;/p>
+&lt;h1 id="创建运行mysqld-后台进程必须的目录并赋给mysql-组和mysql-用户">创建运行mysqld 后台进程必须的目录并赋给mysql 组和mysql 用户&lt;/h1>
+&lt;p>mkdir -p /run/mysqld&lt;/p>
+&lt;p>chown -R mysql:mysql /run/mysqld&lt;/p>
+&lt;h1 id="加载数据库文件">加载数据库文件&lt;/h1>
+&lt;p>chown -R mysql:mysql /var/lib/mysql&lt;/p>
+&lt;p>mysql_install_db &amp;ndash;user=mysql &amp;ndash;ldata=/var/lib/mysql&lt;/p>
+&lt;p>检验&lt;/p>
+&lt;h1 id="启动mysqld注意加个-后台运行否则只能ctrlpctrlq-退出再docker-exec-进来了">启动mysqld，注意加个&amp;amp; 后台运行，否则只能Ctrl+p，Ctrl+q 退出再docker exec 进来了&lt;/h1>
+&lt;p>/usr/bin/mysqld_safe &amp;ndash;datadir=&amp;rsquo;/var/lib/mysql&amp;rsquo; &amp;amp;&lt;/p>
+&lt;h1 id="设置root-密码">设置root 密码&lt;/h1>
+&lt;p>mysqladmin -u root password &amp;ldquo;root&amp;rdquo;&lt;/p>
+&lt;p>客户端检验&lt;/p>
+&lt;h1 id="客户端登录注意-p-后面直接跟密码不能有空格">客户端登录，注意-p 后面直接跟密码不能有空格&lt;/h1>
+&lt;p>mysql -u root -p&amp;quot;root&amp;quot;&lt;/p>
+&lt;p>使用内置的mysql数据库，测试SQL语句&lt;/p>
+&lt;p>use mysql&lt;/p>
+&lt;p>select count(*) from user;&lt;/p>
+&lt;p>exit&lt;/p></description></item><item><title>Kotlin要点记录</title><link>https://www.omoe.cc/posts/kotlin%E8%A6%81%E7%82%B9%E8%AE%B0%E5%BD%95/</link><pubDate>Thu, 02 Mar 2023 20:33:12 +0800</pubDate><guid>https://www.omoe.cc/posts/kotlin%E8%A6%81%E7%82%B9%E8%AE%B0%E5%BD%95/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@Override&lt;/span>&lt;span class="c1">//重写覆盖
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">public&lt;/span> &lt;span class="n">void&lt;/span> &lt;span class="n">onResume&lt;/span>&lt;span class="p">(){&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">super&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">onResume&lt;/span>&lt;span class="p">();&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//获取焦点，界面可见时候执行刷新
@@ -1151,29 +1173,4 @@ ERROR Failed to get response from &lt;a href="http://registry.npmjs.org/vue-cli-
 &lt;pre tabindex="0">&lt;code>ubuntu2004 config --default-user Username
 &lt;/code>&lt;/pre>&lt;p>6.删除tar文件(可选)&lt;/p>
 &lt;pre tabindex="0">&lt;code>del d:\wsl-ubuntu20.04.tar
-&lt;/code>&lt;/pre></description></item><item><title>Win10ltsc安装winget</title><link>https://www.omoe.cc/posts/win10ltsc%E5%AE%89%E8%A3%85winget/</link><pubDate>Sun, 20 Nov 2022 06:37:41 +0000</pubDate><guid>https://www.omoe.cc/posts/win10ltsc%E5%AE%89%E8%A3%85winget/</guid><description>&lt;p>winget在windows上相关&lt;/p>
-&lt;h3 id="准备依赖">准备依赖&lt;/h3>
-&lt;p>VCLibs 的安装文件
-&lt;a href="https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"target="_blank" rel="noopener noreferrer">https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx&lt;/a>
-&lt;/p>
-&lt;p>UI.Xaml 的安装文件&lt;a href="https://store.rg-adguard.net/"target="_blank" rel="noopener noreferrer">store.rg-adguard.net&lt;/a>
-输入框左面的选择框选择 ProductFamilyName，再输入 Microsoft.UI.Xaml.2.7_8wekyb3d8bbwe 。&lt;/p>
-&lt;p>&lt;a href="http://tlu.dl.delivery.mp.microsoft.com/filestreamingservice/files/cadae296-3389-40c2-b927-605f7b399b78?P1=1668846877&amp;amp;P2=404&amp;amp;P3=2&amp;amp;P4=BLqLZQMcSMvoP08DZhmrdnNSz06NBdyp%2fz8g3KueZ%2fShTGos5NhOd26C4rcFCP9F6UzVa0giQRB5DqWZXYBPRQ%3d%3d"target="_blank" rel="noopener noreferrer">UI.Xaml&lt;/a>
-&lt;/p>
-&lt;p>winget安装文件
-&lt;a href="https://github.com/microsoft/winget-cli/releases/download/v1.3.2691/7bcb1a0ab33340daa57fa5b81faec616_License1.xml"target="_blank" rel="noopener noreferrer">xml&lt;/a>
-&lt;a href="https://github.com/microsoft/winget-cli/releases/download/v1.3.2691/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"target="_blank" rel="noopener noreferrer">msixbundle
-&lt;/a>
-&lt;/p>
-&lt;p>依赖安装(必须要管理员权限)&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">Add-AppxProvisionedPackage -Online -PackagePath &lt;span class="s2">&amp;#34;C:\Microsoft.VCLibs.x64.14.00.Desktop.appx&amp;#34;&lt;/span> -SkipLicense
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Add-AppxProvisionedPackage -Online -PackagePath &lt;span class="s2">&amp;#34;C:\Microsoft.UI.Xaml.2.7_7.2208.15002.0_x64__8wekyb3d8bbwe.Appx&amp;#34;&lt;/span> -SkipLicense
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>winget安装(必须要管理员权限)&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">Add-AppxProvisionedPackage -Online -PackagePath &lt;span class="s2">&amp;#34;C:\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle&amp;#34;&lt;/span> -LicensePath &lt;span class="s2">&amp;#34;C:\7bcb1a0ab33340daa57fa5b81faec616_License1.xml&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>软件包列表&lt;a href="https://winstall.app/apps"target="_blank" rel="noopener noreferrer">winstall.app&lt;/a>
-&lt;/p>
-&lt;h3 id="安装软件">安装软件&lt;/h3>
-&lt;p>winget install 软件名称或ID：默认安装路径（目录），一般在&amp;quot;C:\Program Files&amp;quot;目录下面。&lt;/p>
-&lt;p>winget install 软件名称或ID -l 指定路径：可自定义安装路径（目录），但是需要软件本身支持这种操作。&lt;/p>
-&lt;p>winget install 软件名称或ID -i：交互式软件安装，即在软件下载完成后，需要用户手动进行安装（①②命令无需人工干预）。&lt;/p></description></item></channel></rss>
+&lt;/code>&lt;/pre></description></item></channel></rss>

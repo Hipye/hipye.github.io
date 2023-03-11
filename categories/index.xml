@@ -1157,13 +1157,15 @@ ERROR Failed to get response from &lt;a href="http://registry.npmjs.org/vue-cli-
 &lt;a href="https://blog.csdn.net/weixin_44037364/article/details/121952035"target="_blank" rel="noopener noreferrer">link4&lt;/a>
 &lt;a href="https://juejin.cn/post/6881429197542785031"target="_blank" rel="noopener noreferrer">link5&lt;/a>
 &lt;/p></description></item><item><title>修改wsl默认安装位置</title><link>https://www.omoe.cc/posts/%E4%BF%AE%E6%94%B9wsl%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE/</link><pubDate>Sun, 20 Nov 2022 11:46:00 +0000</pubDate><guid>https://www.omoe.cc/posts/%E4%BF%AE%E6%94%B9wsl%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE/</guid><description>&lt;p>WSL修改默认安装目录到其他位置&lt;/p>
+&lt;p>查看当前支持的发行版&lt;/p>
+&lt;pre tabindex="0">&lt;code>wsl --list --online
+&lt;/code>&lt;/pre>&lt;p>出现 0x800701bc 错误
+&lt;a href="https://gitlab.com/hipye/apps/-/blob/74f2d1479d2ccca903a7dcfe183f328e0a62a7a9/win-linux/wsl_update_x64.msi"target="_blank" rel="noopener noreferrer">https://gitlab.com/hipye/apps/-/blob/74f2d1479d2ccca903a7dcfe183f328e0a62a7a9/win-linux/wsl_update_x64.msi&lt;/a>
+&lt;/p>
 &lt;p>1.查看WSL分发版本
 在Windows PowerShell中输入如下命令:&lt;/p>
 &lt;pre tabindex="0">&lt;code>wsl -l --all -v
-&lt;/code>&lt;/pre>&lt;p>结果如下:&lt;/p>
-&lt;p> NAME STATE VERSION
- * Ubuntu-20.04 Running 2&lt;/p>
-&lt;p>2.导出分发版为tar文件到d盘&lt;/p>
+&lt;/code>&lt;/pre>&lt;p>2.导出分发版为tar文件到d盘&lt;/p>
 &lt;pre tabindex="0">&lt;code>wsl --export Ubuntu-20.04 d:\wsl-ubuntu20.04.tar
 &lt;/code>&lt;/pre>&lt;p>3.注销当前分发版&lt;/p>
 &lt;pre tabindex="0">&lt;code>wsl --unregister Ubuntu-20.04
@@ -1173,4 +1175,8 @@ ERROR Failed to get response from &lt;a href="http://registry.npmjs.org/vue-cli-
 &lt;pre tabindex="0">&lt;code>ubuntu2004 config --default-user Username
 &lt;/code>&lt;/pre>&lt;p>6.删除tar文件(可选)&lt;/p>
 &lt;pre tabindex="0">&lt;code>del d:\wsl-ubuntu20.04.tar
-&lt;/code>&lt;/pre></description></item></channel></rss>
+&lt;/code>&lt;/pre>&lt;p>![屏幕截图 2023-03-11 192640](&lt;a href="http://pic.omoe.cc/"target="_blank" rel="noopener noreferrer">http://pic.omoe.cc/&lt;/a>
+屏幕截图 2023-03-11
+192640.png)&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ubuntu2004.exe config --default-user root
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

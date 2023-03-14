@@ -1,4 +1,5 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Windows on 拾集</title><link>https://www.omoe.cc/categories/windows/</link><description>Recent content in Windows on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><lastBuildDate>Sun, 20 Nov 2022 11:46:00 +0000</lastBuildDate><atom:link href="https://www.omoe.cc/categories/windows/index.xml" rel="self" type="application/rss+xml"/><item><title>Mysql基础命令</title><link>https://www.omoe.cc/posts/mysql%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</link><pubDate>Tue, 14 Mar 2023 11:24:16 +0000</pubDate><guid>https://www.omoe.cc/posts/mysql%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</guid><description>&lt;p>先登入数据库&lt;/p>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Windows on 拾集</title><link>https://www.omoe.cc/categories/windows/</link><description>Recent content in Windows on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><lastBuildDate>Sun, 20 Nov 2022 11:46:00 +0000</lastBuildDate><atom:link href="https://www.omoe.cc/categories/windows/index.xml" rel="self" type="application/rss+xml"/><item><title>Java基础</title><link>https://www.omoe.cc/posts/java%E5%9F%BA%E7%A1%80/</link><pubDate>Tue, 14 Mar 2023 14:59:34 +0000</pubDate><guid>https://www.omoe.cc/posts/java%E5%9F%BA%E7%A1%80/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">CLASSPATH&lt;/span>&lt;span class="o">=&lt;/span>.:&lt;span class="nv">$JAVA_HOME&lt;/span>/lib/mysql-connector-java-8.0.16.jar
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Mysql基础命令</title><link>https://www.omoe.cc/posts/mysql%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</link><pubDate>Tue, 14 Mar 2023 11:24:16 +0000</pubDate><guid>https://www.omoe.cc/posts/mysql%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</guid><description>&lt;p>先登入数据库&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#使用mysql&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">use mysql
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#查询&lt;/span>
@@ -9,13 +10,28 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">grant all privileges on *.* to &lt;span class="s1">&amp;#39;root&amp;#39;&lt;/span>@&lt;span class="s1">&amp;#39;%&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#刷新&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">FLUSH PRIVILEGES&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Mvn基础配置</title><link>https://www.omoe.cc/posts/mvn/</link><pubDate>Tue, 14 Mar 2023 09:25:02 +0000</pubDate><guid>https://www.omoe.cc/posts/mvn/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="err">&amp;lt;project&lt;/span> &lt;span class="err">xmlns=&lt;/span>&lt;span class="s2">&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34;&lt;/span> &lt;span class="err">xmlns:xsi=&lt;/span>&lt;span class="s2">&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#创建数据库&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">create DATABASE RUNOOB&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#删除数据库&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">drop database RUNOOB&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#使用数据库&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">use RUNOOB&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#添加数据表&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">CREATE TABLE &lt;span class="sb">`&lt;/span>websites&lt;span class="sb">`&lt;/span> &lt;span class="o">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="sb">`&lt;/span>id&lt;span class="sb">`&lt;/span> int&lt;span class="o">(&lt;/span>11&lt;span class="o">)&lt;/span> NOT NULL AUTO_INCREMENT,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="sb">`&lt;/span>name&lt;span class="sb">`&lt;/span> char&lt;span class="o">(&lt;/span>20&lt;span class="o">)&lt;/span> NOT NULL DEFAULT &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span> COMMENT &lt;span class="s1">&amp;#39;站点名称&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="sb">`&lt;/span>url&lt;span class="sb">`&lt;/span> varchar&lt;span class="o">(&lt;/span>255&lt;span class="o">)&lt;/span> NOT NULL DEFAULT &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="sb">`&lt;/span>alexa&lt;span class="sb">`&lt;/span> int&lt;span class="o">(&lt;/span>11&lt;span class="o">)&lt;/span> NOT NULL DEFAULT &lt;span class="s1">&amp;#39;0&amp;#39;&lt;/span> COMMENT &lt;span class="s1">&amp;#39;Alexa 排名&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="sb">`&lt;/span>country&lt;span class="sb">`&lt;/span> char&lt;span class="o">(&lt;/span>10&lt;span class="o">)&lt;/span> NOT NULL DEFAULT &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span> COMMENT &lt;span class="s1">&amp;#39;国家&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> PRIMARY KEY &lt;span class="o">(&lt;/span>&lt;span class="sb">`&lt;/span>id&lt;span class="sb">`&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">)&lt;/span> &lt;span class="nv">ENGINE&lt;/span>&lt;span class="o">=&lt;/span>InnoDB &lt;span class="nv">AUTO_INCREMENT&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">10&lt;/span> DEFAULT &lt;span class="nv">CHARSET&lt;/span>&lt;span class="o">=&lt;/span>utf8&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">INSERT INTO &lt;span class="sb">`&lt;/span>websites&lt;span class="sb">`&lt;/span> VALUES &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;1&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;Google&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;https://www.google.cm/&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;1&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;USA&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>, &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;2&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;淘宝&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;https://www.taobao.com/&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;13&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;CN&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>, &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;3&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;菜鸟教程&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;http://www.runoob.com&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;5892&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>, &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;4&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;微博&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;http://weibo.com/&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;20&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;CN&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>, &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;5&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;Facebook&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;https://www.facebook.com/&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;3&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;USA&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Maven基础配置</title><link>https://www.omoe.cc/posts/mvn/</link><pubDate>Tue, 14 Mar 2023 09:25:02 +0000</pubDate><guid>https://www.omoe.cc/posts/mvn/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="err">&amp;lt;project&lt;/span> &lt;span class="err">xmlns=&lt;/span>&lt;span class="s2">&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34;&lt;/span> &lt;span class="err">xmlns:xsi=&lt;/span>&lt;span class="s2">&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">xsi:schemaLocation=&lt;/span>&lt;span class="s2">&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&amp;#34;&lt;/span>&lt;span class="err">&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;modelVersion&amp;gt;&lt;/span>&lt;span class="mf">4.0&lt;/span>&lt;span class="err">.&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="err">&amp;lt;/modelVersion&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;groupId&amp;gt;io.test.moriz&amp;lt;/groupId&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;artifactId&amp;gt;testm&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;packaging&amp;gt;jar&amp;lt;/packaging&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;version&amp;gt;&lt;/span>&lt;span class="mf">1.0&lt;/span>&lt;span class="err">-SNAPSHOT&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;packaging&amp;gt;jar&amp;lt;/packaging&amp;gt;&lt;/span> &lt;span class="err">&amp;lt;version&amp;gt;&lt;/span>&lt;span class="mf">1.0&lt;/span>&lt;span class="err">-SNAPSHOT&amp;lt;/version&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;name&amp;gt;testm&amp;lt;/name&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;url&amp;gt;http:&lt;/span>&lt;span class="c1">//maven.apache.org&amp;lt;/url&amp;gt;
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
@@ -28,13 +44,9 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;/dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;!--&lt;/span> &lt;span class="err">https:&lt;/span>&lt;span class="c1">//mvnrepository.com/artifact/javax.mail/mail --&amp;gt;
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="err">&amp;lt;dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;groupId&amp;gt;javax.mail&amp;lt;/groupId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;artifactId&amp;gt;mail&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;version&amp;gt;&lt;/span>&lt;span class="mf">1.5&lt;/span>&lt;span class="err">.&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="err">-b&lt;/span>&lt;span class="mi">01&lt;/span>&lt;span class="err">&amp;lt;/version&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;/dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;!--&lt;/span> &lt;span class="err">https:&lt;/span>&lt;span class="c1">//mvnrepository.com/artifact/javax.activation/activation --&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="err">&amp;lt;dependency&amp;gt;&lt;/span> &lt;span class="err">&amp;lt;groupId&amp;gt;javax.mail&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;artifactId&amp;gt;mail&amp;lt;/artifactId&amp;gt;&lt;/span> &lt;span class="err">&amp;lt;version&amp;gt;&lt;/span>&lt;span class="mf">1.5&lt;/span>&lt;span class="err">.&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="err">-b&lt;/span>&lt;span class="mi">01&lt;/span>&lt;span class="err">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;/dependency&amp;gt;&lt;/span> &lt;span class="err">&amp;lt;!--&lt;/span> &lt;span class="err">https:&lt;/span>&lt;span class="c1">//mvnrepository.com/artifact/javax.activation/activation --&amp;gt;
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="err">&amp;lt;dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;groupId&amp;gt;javax.activation&amp;lt;/groupId&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;artifactId&amp;gt;activation&amp;lt;/artifactId&amp;gt;&lt;/span>
@@ -43,16 +55,14 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;!--&lt;/span> &lt;span class="err">https:&lt;/span>&lt;span class="c1">//mvnrepository.com/artifact/mysql/mysql-connector-java --&amp;gt;
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="err">&amp;lt;dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;version&amp;gt;&lt;/span>&lt;span class="mf">8.0&lt;/span>&lt;span class="err">.&lt;/span>&lt;span class="mi">28&lt;/span>&lt;span class="err">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt;&lt;/span> &lt;span class="err">&amp;lt;version&amp;gt;&lt;/span>&lt;span class="mf">8.0&lt;/span>&lt;span class="err">.&lt;/span>&lt;span class="mi">28&lt;/span>&lt;span class="err">&amp;lt;/version&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;/dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;/dependencies&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;build&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;!--&lt;/span> &lt;span class="err">项目最终打包成的名字&lt;/span> &lt;span class="err">--&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;finalName&amp;gt;&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="err">&amp;lt;/finalName&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;finalName&amp;gt;&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="err">&amp;lt;/finalName&amp;gt;&lt;/span> &lt;span class="err">&amp;lt;!--&lt;/span> &lt;span class="err">用于打包的依赖&lt;/span> &lt;span class="err">--&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;plugins&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;plugin&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;&lt;/span>
@@ -81,7 +91,6 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;/execution&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;/executions&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;/plugin&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;/plugins&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;/build&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
@@ -624,32 +633,4 @@ Visit https://aria2.github.io/
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;cid&amp;#34;&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s2">&amp;#34;01&amp;#34;&lt;/span> &lt;span class="c1">// 插在邮件正文中的图片
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="p">}]&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Npm安装以及使用流程</title><link>https://www.omoe.cc/posts/npm%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/</link><pubDate>Wed, 23 Nov 2022 22:06:07 +0000</pubDate><guid>https://www.omoe.cc/posts/npm%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/</guid><description>&lt;p>npm相关&lt;/p>
-&lt;h3 id="nodejs安装">nodejs安装&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">curl -sL https://deb.nodesource.com/setup_14.x &lt;span class="p">|&lt;/span> sudo -E bash -
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>允许 &lt;code>sudo apt-get install -y nodejs&lt;/code> 来安装 Node.js 14.x 和 npm&lt;/li>
-&lt;li>使用开发者工具箱来编译添加插件
-&lt;code>sudo apt-get install gcc g++ make&lt;/code>&lt;/li>
-&lt;li>使用yarn包管理器安装
-&lt;code>curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg &amp;gt;/dev/null&lt;/code>&lt;/li>
-&lt;li>or
-&lt;code>echo &amp;quot;deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main&amp;quot; | sudo tee /etc/apt/sources.list.d/yarn.list&lt;/code>&lt;/li>
-&lt;li>or
-&lt;code>sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install yarn&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;p>npm换源解决网络问题&lt;/p>
-&lt;pre tabindex="0">&lt;code>npm config set registry https://r.cnpmjs.org/
-&lt;/code>&lt;/pre>&lt;p>error: cnpm - 解决 &amp;quot; cnpm : 无法加载文件 C:\Users?\AppData\Roaming\npm\cnpm.ps1，因为在此系统上禁止运行脚本。&lt;/p>
-&lt;pre tabindex="0">&lt;code>set-ExecutionPolicy RemoteSigned #A
-&lt;/code>&lt;/pre>&lt;p>npm install &amp;ndash;legacy-peer-deps element-ui &amp;ndash;save
-vue ui创建项目时，出现如下错误：
-ERROR Failed to get response from &lt;a href="http://registry.npmjs.org/vue-cli-version-marker"target="_blank" rel="noopener noreferrer">http://registry.npmjs.org/vue-cli-version-marker&lt;/a>
-找到$HOME/.vuerc&lt;/p>
-&lt;pre tabindex="0">&lt;code>{
-&amp;#34;useTaobaoRegistry&amp;#34;: false,
-&amp;#34;packageManager&amp;#34;: &amp;#34;yarn&amp;#34;
-}
-&lt;/code>&lt;/pre>&lt;p>npm ERR! ERESOLVE unable to resolve dependency tree&lt;/p>
-&lt;pre tabindex="0">&lt;code>npx -p npm@6 npm i --legacy-peer-deps
-&lt;/code>&lt;/pre></description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

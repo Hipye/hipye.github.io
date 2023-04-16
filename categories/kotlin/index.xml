@@ -1,4 +1,13 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kotlin on 拾集</title><link>https://www.omoe.cc/categories/kotlin/</link><description>Recent content in Kotlin on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><lastBuildDate>Thu, 02 Mar 2023 20:33:12 +0800</lastBuildDate><atom:link href="https://www.omoe.cc/categories/kotlin/index.xml" rel="self" type="application/rss+xml"/><item><title>Linuxdepoly部署</title><link>https://www.omoe.cc/posts/linuxdepoly%E9%83%A8%E7%BD%B2/</link><pubDate>Tue, 14 Mar 2023 16:15:48 +0000</pubDate><guid>https://www.omoe.cc/posts/linuxdepoly%E9%83%A8%E7%BD%B2/</guid><description>&lt;p>${ENV_DIR}/rootfs/linux&lt;/p>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kotlin on 拾集</title><link>https://www.omoe.cc/categories/kotlin/</link><description>Recent content in Kotlin on 拾集</description><generator>Hugo -- gohugo.io</generator><copyright>©2019 Moriz.</copyright><lastBuildDate>Thu, 02 Mar 2023 20:33:12 +0800</lastBuildDate><atom:link href="https://www.omoe.cc/categories/kotlin/index.xml" rel="self" type="application/rss+xml"/><item><title>Andord线刷包img文件解包</title><link>https://www.omoe.cc/posts/andord%E7%BA%BF%E5%88%B7%E5%8C%85img%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8C%85/</link><pubDate>Sun, 16 Apr 2023 18:11:12 +0000</pubDate><guid>https://www.omoe.cc/posts/andord%E7%BA%BF%E5%88%B7%E5%8C%85img%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8C%85/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get install simg2img
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>git clone &lt;a href="https://github.com/LonelyFool/lpunpack_and_lpmake"target="_blank" rel="noopener noreferrer">https://github.com/LonelyFool/lpunpack_and_lpmake&lt;/a>
+sudo apt-get install clang
+编译出现
+fatal error: &amp;lsquo;zlib.h&amp;rsquo; file not found
+缺少依赖包&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get install zlib1g-dev
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;pre tabindex="0">&lt;code>fastboot flash system system.img
+&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>fastboot flash vbmeta vbmeta.img --disable-verity --disable-verification
+&lt;/code>&lt;/pre></description></item><item><title>Linuxdepoly部署</title><link>https://www.omoe.cc/posts/linuxdepoly%E9%83%A8%E7%BD%B2/</link><pubDate>Tue, 14 Mar 2023 16:15:48 +0000</pubDate><guid>https://www.omoe.cc/posts/linuxdepoly%E9%83%A8%E7%BD%B2/</guid><description>&lt;p>${ENV_DIR}/rootfs/linux&lt;/p>
 &lt;h2 id="自定义路径">自定义路径&lt;/h2></description></item><item><title>Java基础</title><link>https://www.omoe.cc/posts/java%E5%9F%BA%E7%A1%80/</link><pubDate>Tue, 14 Mar 2023 14:59:34 +0000</pubDate><guid>https://www.omoe.cc/posts/java%E5%9F%BA%E7%A1%80/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">CLASSPATH&lt;/span>&lt;span class="o">=&lt;/span>.:&lt;span class="nv">$JAVA_HOME&lt;/span>/lib/mysql-connector-java-8.0.16.jar
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Mysql基础命令</title><link>https://www.omoe.cc/posts/mysql%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</link><pubDate>Tue, 14 Mar 2023 11:24:16 +0000</pubDate><guid>https://www.omoe.cc/posts/mysql%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</guid><description>&lt;p>当您在使用 “UPDATE user SET password=PASSWORD(‘newpassword’) WHERE User=‘root’;” 命令时提示 “ERROR 1356 (HY000): View ‘mysql.user’ references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them”，表明在您的 MariaDB 版本中，‘user’ 表已经不存在，由于版本不同的MariaDB解决方案也不同。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#&amp;gt;10.4.4&lt;/span>
@@ -32,7 +41,10 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> PRIMARY KEY &lt;span class="o">(&lt;/span>&lt;span class="sb">`&lt;/span>id&lt;span class="sb">`&lt;/span>&lt;span class="o">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">)&lt;/span> &lt;span class="nv">ENGINE&lt;/span>&lt;span class="o">=&lt;/span>InnoDB &lt;span class="nv">AUTO_INCREMENT&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">10&lt;/span> DEFAULT &lt;span class="nv">CHARSET&lt;/span>&lt;span class="o">=&lt;/span>utf8&lt;span class="p">;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">INSERT INTO &lt;span class="sb">`&lt;/span>websites&lt;span class="sb">`&lt;/span> VALUES &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;1&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;Google&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;https://www.google.cm/&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;1&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;USA&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>, &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;2&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;淘宝&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;https://www.taobao.com/&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;13&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;CN&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>, &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;3&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;菜鸟教程&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;http://www.runoob.com&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;5892&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>, &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;4&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;微博&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;http://weibo.com/&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;20&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;CN&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>, &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;5&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;Facebook&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;https://www.facebook.com/&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;3&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;USA&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Maven基础配置</title><link>https://www.omoe.cc/posts/mvn/</link><pubDate>Tue, 14 Mar 2023 09:25:02 +0000</pubDate><guid>https://www.omoe.cc/posts/mvn/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="err">&amp;lt;project&lt;/span> &lt;span class="err">xmlns=&lt;/span>&lt;span class="s2">&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34;&lt;/span> &lt;span class="err">xmlns:xsi=&lt;/span>&lt;span class="s2">&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>意外退出导致数据库不能运行&lt;/p>
+&lt;pre tabindex="0">&lt;code>cd ../usr/var/lib/mysql/
+rm -rf ibdata1 ib_logfile0 ib_logfile1
+&lt;/code>&lt;/pre></description></item><item><title>Maven基础配置</title><link>https://www.omoe.cc/posts/mvn/</link><pubDate>Tue, 14 Mar 2023 09:25:02 +0000</pubDate><guid>https://www.omoe.cc/posts/mvn/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="err">&amp;lt;project&lt;/span> &lt;span class="err">xmlns=&lt;/span>&lt;span class="s2">&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34;&lt;/span> &lt;span class="err">xmlns:xsi=&lt;/span>&lt;span class="s2">&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">xsi:schemaLocation=&lt;/span>&lt;span class="s2">&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&amp;#34;&lt;/span>&lt;span class="err">&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;modelVersion&amp;gt;&lt;/span>&lt;span class="mf">4.0&lt;/span>&lt;span class="err">.&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="err">&amp;lt;/modelVersion&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;groupId&amp;gt;io.test.moriz&amp;lt;/groupId&amp;gt;&lt;/span>
@@ -361,211 +373,4 @@ google()
 mavenCentral()
 }
 }
-&lt;/code>&lt;/pre></description></item><item><title>Ndk交叉编译aria2</title><link>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</link><pubDate>Fri, 02 Dec 2022 10:34:41 +0000</pubDate><guid>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</guid><description>&lt;p>交叉编译aria2&lt;/p>
-&lt;p>下载交叉编译工具(这里推荐r21e比较稳定且兼容)&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:center">系统版本&lt;/th>
-&lt;th style="text-align:center">链接&lt;/th>
-&lt;th style="text-align:center">sha1&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:center">linux&lt;/td>
-&lt;td style="text-align:center">&lt;a href="https://dl.google.com/android/repository/android-ndk-r21e-linux-x86_64.zip"target="_blank" rel="noopener noreferrer">https://dl.google.com/android/repository/android-ndk-r21e-linux-x86_64.zip&lt;/a>
-&lt;/td>
-&lt;td style="text-align:center">c3ebc83c96a4d7f539bd72c241b2be9dcd29bda9&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">win&lt;/td>
-&lt;td style="text-align:center">&lt;a href="https://dl.google.com/android/repository/android-ndk-r21e-windows-x86_64.zip"target="_blank" rel="noopener noreferrer">https://dl.google.com/android/repository/android-ndk-r21e-windows-x86_64.zip&lt;/a>
-&lt;/td>
-&lt;td style="text-align:center">fc44fea8bb3f5a6789821f40f41dce2d2cd5dc30&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">mac&lt;/td>
-&lt;td style="text-align:center">&lt;a href="https://dl.google.com/android/repository/android-ndk-r21e-darwin-x86_64.zip"target="_blank" rel="noopener noreferrer">https://dl.google.com/android/repository/android-ndk-r21e-darwin-x86_64.zip&lt;/a>
-&lt;/td>
-&lt;td style="text-align:center">3f15c23a1c247ad17c7c271806848dbd40434738&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>导入交叉编译工具&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">PATH&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">$PATH&lt;/span>:/opt/android-ndk-r21e/toolchains/llvm/prebuilt/linux-x86_64/bin
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>自带sdk管理器&lt;/code>下载&lt;/p>
-&lt;pre tabindex="0">&lt;code>sdkmanager \
-&amp;#34;platform-tools&amp;#34; \
-&amp;#34;build-tools;28.0.3&amp;#34; \
-&amp;#34;platforms;android-33&amp;#34; \
-&amp;#34;platforms;android-28&amp;#34; \
-&amp;#34;platforms;android-24&amp;#34; \
-&amp;#34;platforms;android-21&amp;#34;
-&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>PKG_CONFIG_PATH=/data/data/com.termux/files/usr/lib/pkgconfig/ LD_LIBRARY_PATH=/data/data/com.termux/files/usr/lib
-export CROSS_COMPILE=armv7a-linux-androideabi- --prefix=/data/data/com.termux/files/usr android
-&lt;/code>&lt;/pre>&lt;p>&lt;code>zlib&lt;/code>静态库文件&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure --prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr --static
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>expat&lt;/code>静态库&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--host&lt;span class="o">=&lt;/span>aarch64-linux-android &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--build&lt;span class="o">=&lt;/span>&lt;span class="sb">`&lt;/span>dpkg-architecture -qDEB_BUILD_GNU_TYPE&lt;span class="sb">`&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--enable-static&lt;span class="o">=&lt;/span>yes &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--enable-shared&lt;span class="o">=&lt;/span>no
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>c-ares&lt;/code>静态库&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--host&lt;span class="o">=&lt;/span>aarch64-linux-android &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--build&lt;span class="o">=&lt;/span>&lt;span class="sb">`&lt;/span>dpkg-architecture -qDEB_BUILD_GNU_TYPE&lt;span class="sb">`&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--enable-static &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--disable-shared
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>openssl&lt;/code>静态库&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./Configure &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>android-arm64 -march&lt;span class="o">=&lt;/span>armv8-a -mtune&lt;span class="o">=&lt;/span>cortex-a53 &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>shared zlib zlib-dynamic -D_GNU_SOURCE -D_BSD_SOURCE &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-zlib-lib&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-zlib-include&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/include
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>libssh2&lt;/code>静态库&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CPPFLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-I,/data/data/com.termux/files/usr/include&amp;#34;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LDFLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-Wl,-rpath-link,/data/data/com.termux/files/usr/lib&amp;#34;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/data/data/com.termux/files/usr&amp;#34;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libssl-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libz-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--host&lt;span class="o">=&lt;/span>aarch64-linux-android
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>sqlite&lt;/code>静态库&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure --host&lt;span class="o">=&lt;/span>aarch64-linux-android &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ --enable-static &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--enable-shared &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--build&lt;span class="o">=&lt;/span>&lt;span class="sb">`&lt;/span>dpkg-architecture -qDEB_BUILD_GNU_TYPE&lt;span class="sb">`&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在编译 aria2时因为1.36相比1.35有修改所以必须修改到源码部分才能顺利编译&lt;/p>
-&lt;p>&lt;strong>这一步必须↓操作，不然进行&lt;code>ARIA2_STATIC=yes&lt;/code>链接会失败&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s|-lrt||g;s|-lpthread||g&amp;#39;&lt;/span> &lt;span class="k">$(&lt;/span>grep -rEl &lt;span class="s1">&amp;#39;\-lrt|\-lpthread&amp;#39;&lt;/span> .&lt;span class="k">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s|timegm(|timegm_(|g&amp;#39;&lt;/span> &lt;span class="k">$(&lt;/span>grep -rl &lt;span class="s1">&amp;#39;timegm(&amp;#39;&lt;/span> .&lt;span class="k">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>开始编译&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang++ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android29-clang &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ar &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android-ranlib &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--host&lt;span class="o">=&lt;/span>aarch64-linux-android &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--build&lt;span class="o">=&lt;/span>&lt;span class="sb">`&lt;/span>dpkg-architecture -qDEB_BUILD_GNU_TYPE&lt;span class="sb">`&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--disable-nls &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--without-gnutls &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-openssl &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--without-libxml2 &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libz --with-libz-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libexpat --with-libexpat-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-slite3 --with-sqlite3-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libcares --with-libcares-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-ca-bundle&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;/data/data/com.termux/files/usr/ssl/certs/ca-certificates.crt&amp;#39;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LDFLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-L/data/data/com.termux/files/usr/lib&amp;#34;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/data/data/com.termux/files/usr/lib/pkgconfig&amp;#34;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">ARIA2_STATIC&lt;/span>&lt;span class="o">=&lt;/span>yes
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>aria2编译&lt;/code>&lt;/p>
-&lt;h3 id="系统自带工具打包">系统自带工具打包&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo checkinstall -D --install&lt;span class="o">=&lt;/span>no
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>打包过程中提示&lt;/p>
-&lt;pre tabindex="0">&lt;code>The package documentation directory ./doc-pak does not exist.
-Should I create a default set of package docs? [y]:n #不需要创建doc文档
-&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>0 - Maintainer: [ root@DESKTOP-U5H0M22 ]#编译设备
-1 - Summary: [ moriz build aria2 ]#自定义信息
-2 - Name: [ aria2 ]#文件名&amp;amp;卸载用
-3 - Version: [ 1.36.0 ]#版本
-4 - Release: [ 1 ]#发布
-5 - License: [ GPL ]#协议
-6 - Group: [ checkinstall ]#可忽略
-7 - Architecture: [ aarch64 ]#编译目标的cpu架构
-8 - Source location: [ aria2-release-1.36.0 ]#可忽略
-9 - Alternate source location: [ ]#可忽略
-10 - Requires: [ libc++, c-ares, openssl, libxml2, zlib ]#软件所需依赖包
-11 - Recommends: [ ]#可忽略
-12 - Suggests: [ ]#可忽略
-13 - Provides: [ aria2-release ]#可忽略
-14 - Conflicts: [ ]#可忽略
-15 - Replaces: [ ]#可忽略
-&lt;/code>&lt;/pre>&lt;p>&lt;font color="#C12414">注意选项7必须修改目标设备的cpu架构&lt;/font>
-成功后显示内容如下，文件所在文件夹和安装过程提示，后面安装过程略过
-新建文件夹解包&lt;/p>
-&lt;pre tabindex="0">&lt;code>dpkg-deb -R xxxxx.deb .
-#非必须
-&lt;/code>&lt;/pre>&lt;p>重新打包&lt;code>命令不一样&lt;/code>&lt;/p>
-&lt;pre tabindex="0">&lt;code>dpkg -b xxx new_deb_name.deb
-#非必须
-&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>**********************************************************************
-Done. The new package has been saved to
-$HOME/aria2-release-1.36.0/aria2-release_1.36.0-1_aarch64.deb
-You can install it in your system anytime using:
-dpkg -i aria2-release_1.36.0-1_aarch64.deb
-**********************************************************************
-&lt;/code>&lt;/pre>&lt;p>安装使用&lt;code>dpkg -i&lt;/code>，使用&lt;code>aria2c --v&lt;/code>，出现如下内容成功需要多线程则&lt;code>aria2c -x 128 +链接&lt;/code>即可&lt;/p>
-&lt;pre tabindex="0">&lt;code>aria2 version 1.36.0
-Copyright (C) 2006, 2019 Tatsuhiro Tsujikawa
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-** Configuration **
-Enabled Features: Async DNS, BitTorrent, Firefox3 Cookie, GZip, HTTPS, Message Digest, Metalink, XML-RPC, SFTP
-Hash Algorithms: sha-1, sha-224, sha-256, sha-384, sha-512, md5, adler32
-Libraries: zlib/1.2.13 expat/2.5.0 sqlite3/3.39.4 OpenSSL/1.1.1s c-ares/1.18.1 libssh2/1.10.0
-Compiler: clang 9.0.9 (https://android.googlesource.com/toolchain/llvm-project a2a1e703c0edb03ba29944e529ccbf457742737b)
-built by x86_64-pc-linux-gnu
-targeting aarch64-unknown-linux-android
-on Nov 10 2022 15:30:40
-System: Linux 4.19.113-perf-g4a878ec38421 #1 SMP PREEMPT Tue May 11 02:13:41 CST 2021 aarch64
-Report bugs to https://github.com/aria2/aria2/issues
-Visit https://aria2.github.io/
-&lt;/code>&lt;/pre>&lt;ul>
-&lt;li>群晖交叉编译&lt;a href="https://stray.love/itshou-zha/da-jian-qun-hui-jiao-cha-bian-yi-huan-jing-bing-bian-yi-aria2"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
-&lt;/li>
-&lt;li>openssl编译问题&lt;a href="https://fucknmb.com/2017/05/24/openssl-NDK%e4%ba%a4%e5%8f%89%e7%bc%96%e8%af%91/?utm_source=tuicool&amp;amp;utm_medium=referral"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
-&lt;/li>
-&lt;li>aria2 1.36源码静态库链接编译问题&lt;a href="https://fh0.github.io/%e7%bc%96%e8%af%91/2019/12/28/android-aria2.html"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
-&lt;/li>
-&lt;/ul></description></item></channel></rss>
+&lt;/code>&lt;/pre></description></item></channel></rss>

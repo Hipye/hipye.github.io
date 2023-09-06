@@ -1,5 +1,61 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>node on 拾集</title><link>https://www.omoe.cc/categories/node/</link><description>Recent content in node on 拾集</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>©2019 Moriz.</copyright><lastBuildDate>Fri, 02 Dec 2022 02:41:22 +0000</lastBuildDate><atom:link href="https://www.omoe.cc/categories/node/index.xml" rel="self" type="application/rss+xml"/><item><title>Linux快捷键指南</title><link>https://www.omoe.cc/posts/linux%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97/</link><pubDate>Wed, 06 Sep 2023 16:06:12 +0000</pubDate><guid>https://www.omoe.cc/posts/linux%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97/</guid><description>&lt;p>&lt;img src="https://www.helloimg.com/images/2023/09/07/oi6rcY.jpg"
-alt="IMG_20230907_002144"/>&lt;/p></description></item><item><title>Andord线刷包img文件解包</title><link>https://www.omoe.cc/posts/andord%E7%BA%BF%E5%88%B7%E5%8C%85img%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8C%85/</link><pubDate>Sun, 16 Apr 2023 18:11:12 +0000</pubDate><guid>https://www.omoe.cc/posts/andord%E7%BA%BF%E5%88%B7%E5%8C%85img%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8C%85/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get install simg2img
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>node on 拾集</title><link>https://www.omoe.cc/categories/node/</link><description>Recent content in node on 拾集</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>©2019 Moriz.</copyright><lastBuildDate>Fri, 02 Dec 2022 02:41:22 +0000</lastBuildDate><atom:link href="https://www.omoe.cc/categories/node/index.xml" rel="self" type="application/rss+xml"/><item><title>Linux快捷键指南</title><link>https://www.omoe.cc/posts/linux%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97/</link><pubDate>Wed, 06 Sep 2023 16:06:12 +0000</pubDate><guid>https://www.omoe.cc/posts/linux%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">1. 基本操作：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + C：中断当前正在运行的程序。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + D：结束当前会话或退出终端。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Z：将当前程序置于后台运行。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + L：清屏。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Tab：自动补全命令或文件名。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2. 光标移动：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + A：将光标移至行首。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + E：将光标移至行尾。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + B：向后移动一个字符。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + F：向前移动一个字符。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Alt + B：向后按单词移动。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Alt + F：向前按单词移动。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">3. 命令历史：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + P：查看上一条命令。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + N：查看下一条命令。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + R：在历史命令中进行反向搜索。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + G：退出历史命令搜索模式。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - !!：执行上一条命令。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - !n：执行历史命令中的第n条命令。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">4. 文本编辑：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + U：删除光标之前的所有字符。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + K：删除光标之后的所有字符。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + W：删除光标之前的一个单词。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Y：粘贴最近删除的文本。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + T：交换光标前两个字符。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">5. 窗口管理：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Alt + Tab：在打开的窗口之间切换。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Alt + F4：关闭当前窗口。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Alt + L：锁定屏幕。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">6. 文件操作：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + N：新建文件或文件夹。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + O：打开文件。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + S：保存文件。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + X：剪切选中的文件或文本。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + C：复制选中的文件或文本。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + V：粘贴剪切或复制的文件或文本。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Z：撤销上一步操作。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Y：重做上一步撤销的操作。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">7. 终端操作：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Shift + T：打开新终端选项卡。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Shift + W：关闭当前终端选项卡。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Alt + F1~F6：切换至虚拟终端。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Alt + F7：返回图形界面虚拟终端。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">8. 进程管理：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Z：将前台运行的程序放入后台。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - jobs：查看当前所有作业。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - &lt;span class="nb">fg&lt;/span> %n：将作业 n 切换至前台运行。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - &lt;span class="nb">bg&lt;/span> %n：将作业 n 切换至后台运行。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Andord线刷包img文件解包</title><link>https://www.omoe.cc/posts/andord%E7%BA%BF%E5%88%B7%E5%8C%85img%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8C%85/</link><pubDate>Sun, 16 Apr 2023 18:11:12 +0000</pubDate><guid>https://www.omoe.cc/posts/andord%E7%BA%BF%E5%88%B7%E5%8C%85img%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8C%85/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get install simg2img
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>git clone &lt;a href="https://github.com/LonelyFool/lpunpack_and_lpmake"target="_blank" rel="noopener noreferrer">https://github.com/LonelyFool/lpunpack_and_lpmake&lt;/a>
 sudo apt-get install clang
 编译出现

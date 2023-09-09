@@ -1,61 +1,299 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 拾集</title><link>https://www.omoe.cc/posts/</link><description>Recent content in Posts on 拾集</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>©2019 Moriz.</copyright><lastBuildDate>Wed, 06 Sep 2023 16:06:12 +0000</lastBuildDate><atom:link href="https://www.omoe.cc/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Linux快捷键指南</title><link>https://www.omoe.cc/posts/linux%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97/</link><pubDate>Wed, 06 Sep 2023 16:06:12 +0000</pubDate><guid>https://www.omoe.cc/posts/linux%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">1. 基本操作：
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + C：中断当前正在运行的程序。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + D：结束当前会话或退出终端。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Z：将当前程序置于后台运行。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + L：清屏。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Tab：自动补全命令或文件名。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2. 光标移动：
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + A：将光标移至行首。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + E：将光标移至行尾。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + B：向后移动一个字符。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + F：向前移动一个字符。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Alt + B：向后按单词移动。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Alt + F：向前按单词移动。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">3. 命令历史：
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + P：查看上一条命令。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + N：查看下一条命令。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + R：在历史命令中进行反向搜索。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + G：退出历史命令搜索模式。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - !!：执行上一条命令。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - !n：执行历史命令中的第n条命令。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">4. 文本编辑：
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + U：删除光标之前的所有字符。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + K：删除光标之后的所有字符。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + W：删除光标之前的一个单词。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Y：粘贴最近删除的文本。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + T：交换光标前两个字符。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">5. 窗口管理：
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Alt + Tab：在打开的窗口之间切换。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Alt + F4：关闭当前窗口。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Alt + L：锁定屏幕。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">6. 文件操作：
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + N：新建文件或文件夹。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + O：打开文件。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + S：保存文件。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + X：剪切选中的文件或文本。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + C：复制选中的文件或文本。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + V：粘贴剪切或复制的文件或文本。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Z：撤销上一步操作。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Y：重做上一步撤销的操作。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">7. 终端操作：
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Shift + T：打开新终端选项卡。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Shift + W：关闭当前终端选项卡。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Alt + F1~F6：切换至虚拟终端。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Alt + F7：返回图形界面虚拟终端。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">8. 进程管理：
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Ctrl + Z：将前台运行的程序放入后台。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - jobs：查看当前所有作业。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - &lt;span class="nb">fg&lt;/span> %n：将作业 n 切换至前台运行。
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - &lt;span class="nb">bg&lt;/span> %n：将作业 n 切换至后台运行。
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Andord线刷包img文件解包</title><link>https://www.omoe.cc/posts/andord%E7%BA%BF%E5%88%B7%E5%8C%85img%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8C%85/</link><pubDate>Sun, 16 Apr 2023 18:11:12 +0000</pubDate><guid>https://www.omoe.cc/posts/andord%E7%BA%BF%E5%88%B7%E5%8C%85img%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8C%85/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get install simg2img
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 拾集</title><link>https://www.omoe.cc/posts/</link><description>Recent content in Posts on 拾集</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>©2019 Moriz.</copyright><lastBuildDate>Sat, 09 Sep 2023 09:45:41 +0000</lastBuildDate><atom:link href="https://www.omoe.cc/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>bashrc和vimec配置以及详细</title><link>https://www.omoe.cc/posts/bashrc%E5%92%8Cvimrc%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E8%AF%A6%E7%BB%86/</link><pubDate>Sat, 09 Sep 2023 09:45:41 +0000</pubDate><guid>https://www.omoe.cc/posts/bashrc%E5%92%8Cvimrc%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E8%AF%A6%E7%BB%86/</guid><description>&lt;pre tabindex="0">&lt;code>if [ &amp;#34;$TERM&amp;#34; == &amp;#34;xterm&amp;#34; ]; then
+export TERM=xterm-256color
+fi
+alias vi=&amp;#39;vim&amp;#39;
+alias ls=&amp;#39;ls --color=auto&amp;#39;
+alias ll=&amp;#39;ls -lh&amp;#39;
+alias rm=&amp;#39;rm -f&amp;#39;
+alias rr=&amp;#39;rm -rf&amp;#39;
+alias le=&amp;#34;less&amp;#34;
+#给history记录添加上时间戳
+export HISTTIMEFORMAT=&amp;#34;%F %T &amp;#34;
+export PS1=&amp;#34;\[\033]2;\h:\u \w\007\033[33;1m\]\u \033[35;1m\t\033[0m \[\033[36;1m\]\w\[\033[0m\]\n\[\e[32;1m\]$ \[\e[0m\]&amp;#34;
+&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>set nocompatible &amp;#34; 关闭 vi 兼容模式
+syntax on &amp;#34; 自动语法高亮
+colorscheme evening &amp;#34; 设定配色方案
+set number &amp;#34; 显示行号
+set cursorline &amp;#34; 突出显示当前行
+set ruler &amp;#34; 打开状态栏标尺
+set shiftwidth=4 &amp;#34; 设定 &amp;lt;&amp;lt; 和 &amp;gt;&amp;gt; 命令移动时的宽度为 4
+set softtabstop=4 &amp;#34; 使得按退格键时可以一次删掉 4 个空格
+set tabstop=4 &amp;#34; 设定 tab 长度为 4
+set nobackup &amp;#34; 覆盖文件时不备份
+set autochdir &amp;#34; 自动切换当前目录为当前文件所在的目录
+filetype plugin indent on &amp;#34; 开启插件
+set backupcopy=yes &amp;#34; 设置备份时的行为为覆盖
+set ignorecase smartcase &amp;#34; 搜索时忽略大小写，但在有一个或以上大写字母时仍保持对大小写敏感
+set nowrapscan &amp;#34; 禁止在搜索到文件两端时重新搜索
+set incsearch &amp;#34; 输入搜索内容时就显示搜索结果
+set hlsearch &amp;#34; 搜索时高亮显示被找到的文本
+set noerrorbells &amp;#34; 关闭错误信息响铃
+set novisualbell &amp;#34; 关闭使用可视响铃代替呼叫
+set t_vb= &amp;#34; 置空错误铃声的终端代码
+&amp;#34; set showmatch &amp;#34; 插入括号时，短暂地跳转到匹配的对应括号
+&amp;#34; set matchtime=2 &amp;#34; 短暂跳转到匹配括号的时间
+set magic &amp;#34; 设置魔术
+set hidden &amp;#34; 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
+set guioptions-=T &amp;#34; 隐藏工具栏
+set guioptions-=m &amp;#34; 隐藏菜单栏
+set smartindent &amp;#34; 开启新行时使用智能自动缩进
+set backspace=indent,eol,start
+&amp;#34; 不设定在插入状态无法用退格键和 Delete 键删除回车符
+set cmdheight=1 &amp;#34; 设定命令行的行数为 1
+set laststatus=2 &amp;#34; 显示状态栏 (默认值为 1, 无法显示状态栏)
+set statusline=\ %&amp;lt;%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&amp;amp;fileformat}\ %{&amp;amp;encoding}\ %c:%l/%L%)\
+&amp;#34; 设置在状态行显示的信息
+set foldenable &amp;#34; 开始折叠
+set foldmethod=syntax &amp;#34; 设置语法折叠
+set foldcolumn=0 &amp;#34; 设置折叠区域的宽度
+setlocal foldlevel=1 &amp;#34; 设置折叠层数为
+&amp;#34; set foldclose=all &amp;#34; 设置为自动关闭折叠
+&amp;#34; nnoremap &amp;lt;space&amp;gt; @=((foldclosed(line(&amp;#39;.&amp;#39;)) &amp;lt; 0) ? &amp;#39;zc&amp;#39; : &amp;#39;zo&amp;#39;)&amp;lt;CR&amp;gt;
+&amp;#34; 用空格键来开关折叠
+&amp;#34; return OS type, eg: windows, or linux, mac, et.st..
+function! MySys()
+if has(&amp;#34;win16&amp;#34;) || has(&amp;#34;win32&amp;#34;) || has(&amp;#34;win64&amp;#34;) || has(&amp;#34;win95&amp;#34;)
+return &amp;#34;windows&amp;#34;
+elseif has(&amp;#34;unix&amp;#34;)
+return &amp;#34;linux&amp;#34;
+endif
+endfunction
+&amp;#34; 用户目录变量$VIMFILES
+if MySys() == &amp;#34;windows&amp;#34;
+let $VIMFILES = $VIM.&amp;#39;/vimfiles&amp;#39;
+elseif MySys() == &amp;#34;linux&amp;#34;
+let $VIMFILES = $HOME.&amp;#39;/.vim&amp;#39;
+endif
+&amp;#34; 设定doc文档目录
+let helptags=$VIMFILES.&amp;#39;/doc&amp;#39;
+&amp;#34; 设置字体 以及中文支持
+if has(&amp;#34;win32&amp;#34;)
+set guifont=Inconsolata:h12:cANSI
+endif
+&amp;#34; 配置多语言环境
+if has(&amp;#34;multi_byte&amp;#34;)
+&amp;#34; UTF-8 编码
+set encoding=utf-8
+set termencoding=utf-8
+set formatoptions+=mM
+set fencs=utf-8,gbk &amp;#34;here can add argment to spurt the chinese
+if v:lang =~? &amp;#39;^\(zh\)\|\(ja\)\|\(ko\)&amp;#39;
+set ambiwidth=double
+endif
+if has(&amp;#34;win32&amp;#34;)
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+language messages zh_CN.utf-8
+endif
+else
+echoerr &amp;#34;Sorry, this version of (g)vim was not compiled with +multi_byte&amp;#34;
+endif
+&amp;#34; Buffers操作快捷方式!
+nnoremap &amp;lt;C-RETURN&amp;gt; :bnext&amp;lt;CR&amp;gt;
+nnoremap &amp;lt;C-S-RETURN&amp;gt; :bprevious&amp;lt;CR&amp;gt;
+&amp;#34; Tab操作快捷方式!
+nnoremap &amp;lt;C-TAB&amp;gt; :tabnext&amp;lt;CR&amp;gt;
+nnoremap &amp;lt;C-S-TAB&amp;gt; :tabprev&amp;lt;CR&amp;gt;
+&amp;#34;关于tab的快捷键
+&amp;#34; map tn :tabnext&amp;lt;cr&amp;gt;
+&amp;#34; map tp :tabprevious&amp;lt;cr&amp;gt;
+&amp;#34; map td :tabnew .&amp;lt;cr&amp;gt;
+&amp;#34; map te :tabedit
+&amp;#34; map tc :tabclose&amp;lt;cr&amp;gt;
+&amp;#34;窗口分割时,进行切换的按键热键需要连接两次,比如从下方窗口移动
+&amp;#34;光标到上方窗口,需要&amp;lt;c-w&amp;gt;&amp;lt;c-w&amp;gt;k,非常麻烦,现在重映射为&amp;lt;c-k&amp;gt;,切换的
+&amp;#34;时候会变得非常方便.
+nnoremap &amp;lt;C-h&amp;gt; &amp;lt;C-w&amp;gt;h
+nnoremap &amp;lt;C-j&amp;gt; &amp;lt;C-w&amp;gt;j
+nnoremap &amp;lt;C-k&amp;gt; &amp;lt;C-w&amp;gt;k
+nnoremap &amp;lt;C-l&amp;gt; &amp;lt;C-w&amp;gt;l
+&amp;#34;一些不错的映射转换语法（如果在一个文件中混合了不同语言时有用）
+nnoremap &amp;lt;leader&amp;gt;1 :set filetype=xhtml&amp;lt;CR&amp;gt;
+nnoremap &amp;lt;leader&amp;gt;2 :set filetype=css&amp;lt;CR&amp;gt;
+nnoremap &amp;lt;leader&amp;gt;3 :set filetype=javascript&amp;lt;CR&amp;gt;
+nnoremap &amp;lt;leader&amp;gt;4 :set filetype=php&amp;lt;CR&amp;gt;
+&amp;#34; set fileformats=unix,dos,mac
+&amp;#34; nmap &amp;lt;leader&amp;gt;fd :se fileformat=dos&amp;lt;CR&amp;gt;
+&amp;#34; nmap &amp;lt;leader&amp;gt;fu :se fileformat=unix&amp;lt;CR&amp;gt;
+&amp;#34; use Ctrl+[l|n|p|cc] to list|next|previous|jump to count the result
+&amp;#34; map &amp;lt;C-x&amp;gt;l &amp;lt;ESC&amp;gt;:cl&amp;lt;CR&amp;gt;
+&amp;#34; map &amp;lt;C-x&amp;gt;n &amp;lt;ESC&amp;gt;:cn&amp;lt;CR&amp;gt;
+&amp;#34; map &amp;lt;C-x&amp;gt;p &amp;lt;ESC&amp;gt;:cp&amp;lt;CR&amp;gt;
+&amp;#34; map &amp;lt;C-x&amp;gt;c &amp;lt;ESC&amp;gt;:cc&amp;lt;CR&amp;gt;
+&amp;#34; 让 Tohtml 产生有 CSS 语法的 html
+&amp;#34; syntax/2html.vim，可以用:runtime! syntax/2html.vim
+let html_use_css=1
+&amp;#34; Python 文件的一般设置，比如不要 tab 等
+autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
+autocmd FileType python map &amp;lt;F12&amp;gt; :!python %&amp;lt;CR&amp;gt;
+&amp;#34; 选中状态下 Ctrl+c 复制
+vmap &amp;lt;C-c&amp;gt; &amp;#34;+y
+&amp;#34; 打开javascript折叠
+let b:javascript_fold=1
+&amp;#34; 打开javascript对dom、html和css的支持
+let javascript_enable_domhtmlcss=1
+&amp;#34; 设置字典 ~/.vim/dict/文件的路径
+autocmd filetype javascript set dictionary=$VIMFILES/dict/javascript.dict
+autocmd filetype css set dictionary=$VIMFILES/dict/css.dict
+autocmd filetype php set dictionary=$VIMFILES/dict/php.dict
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin - bufexplorer.vim Buffers切换
+&amp;#34; \be 全屏方式查看全部打开的文件列表
+&amp;#34; \bv 左右方式查看 \bs 上下方式查看
+&amp;#34;-----------------------------------------------------------------
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin - taglist.vim 查看函数列表，需要ctags程序
+&amp;#34; F4 打开隐藏taglist窗口
+&amp;#34;-----------------------------------------------------------------
+if MySys() == &amp;#34;windows&amp;#34; &amp;#34; 设定windows系统中ctags程序的位置
+let Tlist_Ctags_Cmd = &amp;#39;&amp;#34;&amp;#39;.$VIMRUNTIME.&amp;#39;/ctags.exe&amp;#34;&amp;#39;
+elseif MySys() == &amp;#34;linux&amp;#34; &amp;#34; 设定windows系统中ctags程序的位置
+let Tlist_Ctags_Cmd = &amp;#39;/usr/bin/ctags&amp;#39;
+endif
+nnoremap &amp;lt;silent&amp;gt;&amp;lt;F4&amp;gt; :TlistToggle&amp;lt;CR&amp;gt;
+let Tlist_Show_One_File = 1 &amp;#34; 不同时显示多个文件的tag，只显示当前文件的
+let Tlist_Exit_OnlyWindow = 1 &amp;#34; 如果taglist窗口是最后一个窗口，则退出vim
+let Tlist_Use_Right_Window = 1 &amp;#34; 在右侧窗口中显示taglist窗口
+let Tlist_File_Fold_Auto_Close=1 &amp;#34; 自动折叠当前非编辑文件的方法列表
+let Tlist_Auto_Open = 0
+let Tlist_Auto_Update = 1
+let Tlist_Hightlight_Tag_On_BufEnter = 1
+let Tlist_Enable_Fold_Column = 0
+let Tlist_Process_File_Always = 1
+let Tlist_Display_Prototype = 0
+let Tlist_Compact_Format = 1
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin - mark.vim 给各种tags标记不同的颜色，便于观看调式的插件。
+&amp;#34; \m mark or unmark the word under (or before) the cursor
+&amp;#34; \r manually input a regular expression. 用于搜索.
+&amp;#34; \n clear this mark (i.e. the mark under the cursor), or clear all highlighted marks .
+&amp;#34; \* 当前MarkWord的下一个 \# 当前MarkWord的上一个
+&amp;#34; \/ 所有MarkWords的下一个 \? 所有MarkWords的上一个
+&amp;#34;-----------------------------------------------------------------
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin - NERD_tree.vim 以树状方式浏览系统中的文件和目录
+&amp;#34; :ERDtree 打开NERD_tree :NERDtreeClose 关闭NERD_tree
+&amp;#34; o 打开关闭文件或者目录 t 在标签页中打开
+&amp;#34; T 在后台标签页中打开 ! 执行此文件
+&amp;#34; p 到上层目录 P 到根目录
+&amp;#34; K 到第一个节点 J 到最后一个节点
+&amp;#34; u 打开上层目录 m 显示文件系统菜单（添加、删除、移动操作）
+&amp;#34; r 递归刷新当前目录 R 递归刷新当前根目录
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; F3 NERDTree 切换
+map &amp;lt;F3&amp;gt; :NERDTreeToggle&amp;lt;CR&amp;gt;
+imap &amp;lt;F3&amp;gt; &amp;lt;ESC&amp;gt;:NERDTreeToggle&amp;lt;CR&amp;gt;
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin - NERD_commenter.vim 注释代码用的，
+&amp;#34; [count],cc 光标以下count行逐行添加注释(7,cc)
+&amp;#34; [count],cu 光标以下count行逐行取消注释(7,cu)
+&amp;#34; [count],cm 光标以下count行尝试添加块注释(7,cm)
+&amp;#34; ,cA 在行尾插入 /* */,并且进入插入模式。 这个命令方便写注释。
+&amp;#34; 注：count参数可选，无则默认为选中行或当前行
+&amp;#34;-----------------------------------------------------------------
+let NERDSpaceDelims=1 &amp;#34; 让注释符与语句之间留一个空格
+let NERDCompactSexyComs=1 &amp;#34; 多行注释时样子更好看
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin - DoxygenToolkit.vim 由注释生成文档，并且能够快速生成函数标准注释
+&amp;#34;-----------------------------------------------------------------
+let g:DoxygenToolkit_authorName=&amp;#34;Asins - asinsimple AT gmail DOT com&amp;#34;
+let g:DoxygenToolkit_briefTag_funcName=&amp;#34;yes&amp;#34;
+map &amp;lt;leader&amp;gt;da :DoxAuthor&amp;lt;CR&amp;gt;
+map &amp;lt;leader&amp;gt;df :Dox&amp;lt;CR&amp;gt;
+map &amp;lt;leader&amp;gt;db :DoxBlock&amp;lt;CR&amp;gt;
+map &amp;lt;leader&amp;gt;dc a /* */&amp;lt;LEFT&amp;gt;&amp;lt;LEFT&amp;gt;&amp;lt;LEFT&amp;gt;
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin – ZenCoding.vim 很酷的插件，HTML代码生成
+&amp;#34; 插件最新版：http://github.com/mattn/zencoding-vim
+&amp;#34; 常用命令可看：http://nootn.com/blog/Tool/23/
+&amp;#34;-----------------------------------------------------------------
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin – checksyntax.vim JavaScript常见语法错误检查
+&amp;#34; 默认快捷方式为 F5
+&amp;#34;-----------------------------------------------------------------
+let g:checksyntax_auto = 0 &amp;#34; 不自动检查
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin - NeoComplCache.vim 自动补全插件
+&amp;#34;-----------------------------------------------------------------
+let g:AutoComplPop_NotEnableAtStartup = 1
+let g:NeoComplCache_EnableAtStartup = 1
+let g:NeoComplCache_SmartCase = 1
+let g:NeoComplCache_TagsAutoUpdate = 1
+let g:NeoComplCache_EnableInfo = 1
+let g:NeoComplCache_EnableCamelCaseCompletion = 1
+let g:NeoComplCache_MinSyntaxLength = 3
+let g:NeoComplCache_EnableSkipCompletion = 1
+let g:NeoComplCache_SkipInputTime = &amp;#39;0.5&amp;#39;
+let g:NeoComplCache_SnippetsDir = $VIMFILES.&amp;#39;/snippets&amp;#39;
+&amp;#34; &amp;lt;TAB&amp;gt; completion.
+inoremap &amp;lt;expr&amp;gt;&amp;lt;TAB&amp;gt; pumvisible() ? &amp;#34;\&amp;lt;C-n&amp;gt;&amp;#34; : &amp;#34;\&amp;lt;TAB&amp;gt;&amp;#34;
+&amp;#34; snippets expand key
+imap &amp;lt;silent&amp;gt; &amp;lt;C-e&amp;gt; &amp;lt;Plug&amp;gt;(neocomplcache_snippets_expand)
+smap &amp;lt;silent&amp;gt; &amp;lt;C-e&amp;gt; &amp;lt;Plug&amp;gt;(neocomplcache_snippets_expand)
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin - matchit.vim 对%命令进行扩展使得能在嵌套标签和语句之间跳转
+&amp;#34; % 正向匹配 g% 反向匹配
+&amp;#34; [% 定位块首 ]% 定位块尾
+&amp;#34;-----------------------------------------------------------------
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin - vcscommand.vim 对%命令进行扩展使得能在嵌套标签和语句之间跳转
+&amp;#34; SVN/git管理工具
+&amp;#34;-----------------------------------------------------------------
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin – a.vim
+&amp;#34;-----------------------------------------------------------------
+set mouse-=a
+&lt;/code>&lt;/pre></description></item><item><title>Linux快捷键指南</title><link>https://www.omoe.cc/posts/linux%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97/</link><pubDate>Wed, 06 Sep 2023 16:06:12 +0000</pubDate><guid>https://www.omoe.cc/posts/linux%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97/</guid><description>&lt;pre tabindex="0">&lt;code>
+1. 基本操作：
+- Ctrl + C：中断当前正在运行的程序。
+- Ctrl + D：结束当前会话或退出终端。
+- Ctrl + Z：将当前程序置于后台运行。
+- Ctrl + L：清屏。
+- Tab：自动补全命令或文件名。
+2. 光标移动：
+- Ctrl + A：将光标移至行首。
+- Ctrl + E：将光标移至行尾。
+- Ctrl + B：向后移动一个字符。
+- Ctrl + F：向前移动一个字符。
+- Alt + B：向后按单词移动。
+- Alt + F：向前按单词移动。
+3. 命令历史：
+- Ctrl + P：查看上一条命令。
+- Ctrl + N：查看下一条命令。
+- Ctrl + R：在历史命令中进行反向搜索。
+- Ctrl + G：退出历史命令搜索模式。
+- !!：执行上一条命令。
+- !n：执行历史命令中的第n条命令。
+4. 文本编辑：
+- Ctrl + U：删除光标之前的所有字符。
+- Ctrl + K：删除光标之后的所有字符。
+- Ctrl + W：删除光标之前的一个单词。
+- Ctrl + Y：粘贴最近删除的文本。
+- Ctrl + T：交换光标前两个字符。
+5. 窗口管理：
+- Alt + Tab：在打开的窗口之间切换。
+- Alt + F4：关闭当前窗口。
+- Ctrl + Alt + L：锁定屏幕。
+6. 文件操作：
+- Ctrl + N：新建文件或文件夹。
+- Ctrl + O：打开文件。
+- Ctrl + S：保存文件。
+- Ctrl + X：剪切选中的文件或文本。
+- Ctrl + C：复制选中的文件或文本。
+- Ctrl + V：粘贴剪切或复制的文件或文本。
+- Ctrl + Z：撤销上一步操作。
+- Ctrl + Y：重做上一步撤销的操作。
+7. 终端操作：
+- Ctrl + Shift + T：打开新终端选项卡。
+- Ctrl + Shift + W：关闭当前终端选项卡。
+- Ctrl + Alt + F1~F6：切换至虚拟终端。
+- Ctrl + Alt + F7：返回图形界面虚拟终端。
+8. 进程管理：
+- Ctrl + Z：将前台运行的程序放入后台。
+- jobs：查看当前所有作业。
+- fg %n：将作业 n 切换至前台运行。
+- bg %n：将作业 n 切换至后台运行。
+&lt;/code>&lt;/pre></description></item><item><title>Andord线刷包img文件解包</title><link>https://www.omoe.cc/posts/andord%E7%BA%BF%E5%88%B7%E5%8C%85img%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8C%85/</link><pubDate>Sun, 16 Apr 2023 18:11:12 +0000</pubDate><guid>https://www.omoe.cc/posts/andord%E7%BA%BF%E5%88%B7%E5%8C%85img%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8C%85/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get install simg2img
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>git clone &lt;a href="https://github.com/LonelyFool/lpunpack_and_lpmake"target="_blank" rel="noopener noreferrer">https://github.com/LonelyFool/lpunpack_and_lpmake&lt;/a>
 sudo apt-get install clang
 编译出现
@@ -254,168 +492,4 @@ nginx -T -c /etc/nginx/uci.conf #详细测试配置文件&lt;/p>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>/etc/init.d/nginx reload #重新读取配置&lt;/p>
 &lt;p>/etc/init.d/nginx restart #重启nginx服务&lt;/p>
-&lt;p>netstat -anutp |grep 10088 #查看10088端口监听&lt;/p></description></item><item><title>安卓kotlin文件读取</title><link>https://www.omoe.cc/posts/%E5%AE%89%E5%8D%93kotlin%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96/</link><pubDate>Sat, 25 Feb 2023 14:00:23 +0800</pubDate><guid>https://www.omoe.cc/posts/%E5%AE%89%E5%8D%93kotlin%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">MainActivityB&lt;/span> &lt;span class="p">:&lt;/span> &lt;span class="n">AppCompatActivity&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">var&lt;/span> &lt;span class="py">filePath&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">?&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">null&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">var&lt;/span> &lt;span class="py">fileName&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">?&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">null&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">var&lt;/span> &lt;span class="py">textView&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">TextView&lt;/span>&lt;span class="p">?&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">null&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">var&lt;/span> &lt;span class="py">inputStreamRawTxt&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">InputStream&lt;/span>&lt;span class="p">?&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">null&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">var&lt;/span> &lt;span class="py">handler&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Handler&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">object&lt;/span> &lt;span class="err">: &lt;/span>&lt;span class="nc">Handler&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">override&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">handleMessage&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">msg&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Message&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">super&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">handleMessage&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">msg&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">textView&lt;/span>&lt;span class="o">!!&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">text&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">msg&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">obj&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">toString&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">override&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">onCreate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">savedInstanceState&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Bundle&lt;/span>&lt;span class="p">?)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">super&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">onCreate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">savedInstanceState&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">setContentView&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nc">R&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">layout&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">activity_main&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">initView&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">initData&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">initEvent&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">private&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">initView&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">textView&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">findViewById&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nc">R&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">id&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">filelisttv&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">private&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">initData&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">filePath&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nc">Environment&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">getExternalStoragePublicDirectory&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nc">Environment&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">DIRECTORY_DOCUMENTS&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">absolutePath&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">+&lt;/span> &lt;span class="s2">&amp;#34;/&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fileName&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;flname.txt&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nc">L&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">d&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${filePath}${fileName}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// inputStreamRawTxt =getResources().openRawResource(R.raw.printf);
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">private&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">initEvent&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//判断是否有该文件夹，没有则创建一个，生成文件夹之后，再生成文件，不然会出错
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">makeDirectory&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filePath&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//在线程中执行耗时操作
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">Thread&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="c1">//判断是否有该文件，没有则创建一个,并返回true
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">createNewFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filePath&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">fileName&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//返回true说明创建了新的文件，则写入预设内容，
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="c1">//返回false，则说明文件已存在，不需要写入（也不会进入该判断）
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//将输入流转换成字符串，写入文件
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">val&lt;/span> &lt;span class="py">rawTxtString&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">Stream2String&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">inputStreamRawTxt&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">writeTxtToFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">rawTxtString&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">filePath&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">fileName&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//再将文件读取为字符串
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">val&lt;/span> &lt;span class="py">text&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">ReadTxtFromSDCard&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">fileName&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//显示出来
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">val&lt;/span> &lt;span class="py">message&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="nc">Message&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">obtain&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">handler&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">message&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">obj&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">text&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">handler&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">sendMessage&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">message&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}.&lt;/span>&lt;span class="n">start&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 生成文件
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">createNewFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filePath&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">?,&lt;/span> &lt;span class="n">fileName&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">?):&lt;/span> &lt;span class="n">Boolean&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">var&lt;/span> &lt;span class="py">file&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">File&lt;/span>&lt;span class="p">?&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">null&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">file&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">File&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filePath&lt;/span> &lt;span class="p">+&lt;/span> &lt;span class="n">fileName&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(!&lt;/span>&lt;span class="k">file&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">exists&lt;/span>&lt;span class="p">())&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">file&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">createNewFile&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">true&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">false&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">catch&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Exception&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">e&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">printStackTrace&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="k">false&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 将字符串写入到文本文件中
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">writeTxtToFile&lt;/span>&lt;span class="p">(&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">stringContent&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">filePath&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">?,&lt;/span> &lt;span class="n">fileName&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">?&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">val&lt;/span> &lt;span class="py">strFilePath&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">filePath&lt;/span> &lt;span class="p">+&lt;/span> &lt;span class="n">fileName&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 每次写入时，都换行写
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">val&lt;/span> &lt;span class="py">strContent&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s">&amp;#34;&amp;#34;&amp;#34;
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"> &lt;/span>&lt;span class="si">$stringContent&lt;/span>&lt;span class="s">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"> &amp;#34;&amp;#34;&amp;#34;&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">trimIndent&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">val&lt;/span> &lt;span class="py">file&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">File&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">strFilePath&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">val&lt;/span> &lt;span class="py">raf&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">RandomAccessFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">file&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;rwd&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">raf&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">seek&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">file&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">length&lt;/span>&lt;span class="p">())&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">raf&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">write&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">strContent&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">toByteArray&lt;/span>&lt;span class="p">())&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">raf&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">close&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">catch&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Exception&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nc">Log&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;TestFile&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;Error on write File:&lt;/span>&lt;span class="si">$e&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">private&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">Stream2String&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">`is`&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">InputStream&lt;/span>&lt;span class="p">?):&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//强制缓存大小为16KB，一般Java类默认为8KB
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">val&lt;/span> &lt;span class="py">reader&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">BufferedReader&lt;/span>&lt;span class="p">(&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">InputStreamReader&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">`is`&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="m">16&lt;/span> &lt;span class="p">*&lt;/span> &lt;span class="m">1024&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">val&lt;/span> &lt;span class="py">sb&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">StringBuilder&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">var&lt;/span> &lt;span class="py">line&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">?&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">null&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">reader&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">readLine&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="n">also&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">line&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">it&lt;/span> &lt;span class="p">}&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="k">null&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="c1">//处理换行符
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">sb&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">append&lt;/span>&lt;span class="p">(&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">&amp;#34;&amp;#34;&amp;#34;
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"> &lt;/span>&lt;span class="si">$line&lt;/span>&lt;span class="s">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"> &amp;#34;&amp;#34;&amp;#34;&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">trimIndent&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">catch&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">IOException&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">e&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">printStackTrace&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">finally&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">`is`&lt;/span>&lt;span class="o">!!&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">close&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">catch&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">IOException&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">e&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">printStackTrace&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">sb&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">toString&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//这是这篇的重点，按ctrl+f关注input的操作
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">private&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">ReadTxtFromSDCard&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filename&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">?):&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">val&lt;/span> &lt;span class="py">sb&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">StringBuilder&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//判断是否有读取权限
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nc">Environment&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">getExternalStorageState&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="nc">Environment&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">MEDIA_MOUNTED&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//打开文件输入流
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">try&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">val&lt;/span> &lt;span class="py">input&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">FileInputStream&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filePath&lt;/span> &lt;span class="p">+&lt;/span> &lt;span class="n">filename&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">val&lt;/span> &lt;span class="py">temp&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">ByteArray&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">1024&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">var&lt;/span> &lt;span class="py">len&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="m">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//读取文件内容:
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">while&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">input&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">read&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">temp&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">also&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">len&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">it&lt;/span> &lt;span class="p">}&lt;/span> &lt;span class="p">&amp;gt;&lt;/span> &lt;span class="m">0&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">sb&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">temp&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">len&lt;/span>&lt;span class="p">))&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nc">L&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">d&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sb&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">toString&lt;/span>&lt;span class="p">())&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//关闭输入流
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">input&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">close&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">catch&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">IOException&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nc">Log&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;ReadTxtFromSDCard&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;ReadTxtFromSDCard&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">e&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">printStackTrace&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">sb&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">toString&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">companion&lt;/span> &lt;span class="k">object&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 生成文件夹
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">fun&lt;/span> &lt;span class="nf">makeDirectory&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filePath&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">?)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">var&lt;/span> &lt;span class="py">file&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">File&lt;/span>&lt;span class="p">?&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">null&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">file&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">File&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filePath&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(!&lt;/span>&lt;span class="k">file&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">exists&lt;/span>&lt;span class="p">())&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">file&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">mkdir&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">catch&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Exception&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nc">Log&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;error:&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">toString&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">+&lt;/span> &lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
+&lt;p>netstat -anutp |grep 10088 #查看10088端口监听&lt;/p></description></item></channel></rss>

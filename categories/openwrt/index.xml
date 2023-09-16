@@ -1,42 +1,29 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OpenWrt on 拾集</title><link>https://www.omoe.cc/categories/openwrt/</link><description>Recent content in OpenWrt on 拾集</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>©2019 Moriz.</copyright><lastBuildDate>Sat, 25 Feb 2023 19:37:28 +0800</lastBuildDate><atom:link href="https://www.omoe.cc/categories/openwrt/index.xml" rel="self" type="application/rss+xml"/><item><title>Sed命令细节</title><link>https://www.omoe.cc/posts/sed%E5%91%BD%E4%BB%A4%E7%BB%86%E8%8A%82/</link><pubDate>Sat, 16 Sep 2023 05:49:22 +0000</pubDate><guid>https://www.omoe.cc/posts/sed%E5%91%BD%E4%BB%A4%E7%BB%86%E8%8A%82/</guid><description>&lt;ol>
-&lt;li>sed替换的基本语法为:&lt;/li>
-&lt;/ol>
-&lt;p>sed &amp;rsquo;s/原字符串/替换字符串/&amp;rsquo;
-单引号里面,s表示替换,三根斜线中间是替换的样式,特殊字符需要使用反斜线”\”进行转义。&lt;/p>
-&lt;ol start="2">
-&lt;li>单引号” ‘ ’”是没有办法用反斜线”\”转义的,这时候只要把命令中的单引号改为双引号就行了,格式如下：&lt;/li>
-&lt;/ol>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OpenWrt on 拾集</title><link>https://www.omoe.cc/categories/openwrt/</link><description>Recent content in OpenWrt on 拾集</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>©2019 Moriz.</copyright><lastBuildDate>Sat, 25 Feb 2023 19:37:28 +0800</lastBuildDate><atom:link href="https://www.omoe.cc/categories/openwrt/index.xml" rel="self" type="application/rss+xml"/><item><title>Sed命令细节</title><link>https://www.omoe.cc/posts/sed%E5%91%BD%E4%BB%A4%E7%BB%86%E8%8A%82/</link><pubDate>Sat, 16 Sep 2023 05:49:22 +0000</pubDate><guid>https://www.omoe.cc/posts/sed%E5%91%BD%E4%BB%A4%E7%BB%86%E8%8A%82/</guid><description>&lt;h1 id="sed替换的基本语法为">sed替换的基本语法为:&lt;/h1>
+&lt;p>sed &amp;rsquo;s/原字符串/替换字符串/&amp;rsquo; &lt;br>
+特殊字符需要使用反斜线”\”进行转义。&lt;/p>
+&lt;p>单引号” ‘ ’”是没有办法用反斜线”\”转义的,这时候只要把命令中的单引号改为双引号就行了,格式如下：&lt;/p>
 &lt;h1 id="要处理的字符包含单引号">要处理的字符包含单引号&lt;/h1>
-&lt;p>sed &amp;ldquo;s/原字符串包含&amp;rsquo;/替换字符串包含&amp;rsquo;/&amp;rdquo;
-3. 命令中的三根斜线分隔符可以换成别的符号,有时候替换目录字符串的时候有较多斜线，这个时候换成其它的分割符是较为方便,只需要紧跟s定义即可。&lt;/p>
-&lt;h1 id="将分隔符换成问号">将分隔符换成问号”?”:&lt;/h1>
-&lt;p>sed &amp;rsquo;s?原字符串?替换字符串?'&lt;/p>
-&lt;ol start="4">
-&lt;li>可以在末尾加g替换每一个匹配的关键字,否则只替换每行的第一个,例如:&lt;/li>
-&lt;/ol>
+&lt;p>sed &amp;ldquo;s/原字符串包含&amp;rsquo;/替换字符串包含&amp;rsquo;/&amp;rdquo; &lt;br>
+命令中的三根斜线分隔符可以换成别的符号,有时候替换目录字符串的时候有较多斜线，这个时候换成其它的分割符是较为方便,只需要紧跟s定义即可。&lt;/p>
 &lt;h1 id="替换所有匹配关键字">替换所有匹配关键字&lt;/h1>
-&lt;p>sed &amp;rsquo;s/原字符串/替换字符串/g&amp;rsquo;
-5. 一些特殊字符的使用&lt;/p>
+&lt;p>sed &amp;rsquo;s/原字符串/替换字符串/g&amp;rsquo;&lt;br>
+&lt;code>一些特殊字符的使用&lt;/code>&lt;/p>
 &lt;p>　　”^”表示行首&lt;/p>
-&lt;p>　　”$”符号如果在引号中表示行尾，但是在引号外却表示末行(最后一行)
+&lt;p>　　”$”符号如果在引号中表示行尾，但是在引号外却表示末行(最后一行)&lt;br>
 　　&lt;/p>
-&lt;p>复制代码&lt;/p>
 &lt;h1 id="注意这里的----符号如果没有-就会直接将匹配到的字符串替换掉">注意这里的 &amp;quot; &amp;amp; &amp;quot; 符号，如果没有 “&amp;amp;”，就会直接将匹配到的字符串替换掉&lt;/h1>
-&lt;p>sed &amp;rsquo;s/^/添加的头部&amp;amp;/g&amp;rsquo; 　　　　 #在所有行首添加
-sed &amp;rsquo;s/$/&amp;amp;添加的尾部/g&amp;rsquo; 　　　　 #在所有行末添加
+&lt;p>sed &amp;rsquo;s/^/添加的头部&amp;amp;/g&amp;rsquo; 　　　　 #在所有行首添加 &lt;br>
+sed &amp;rsquo;s/$/&amp;amp;添加的尾部/g&amp;rsquo; 　　　　 #在所有行末添加 &lt;br>
 sed &amp;lsquo;2s/原字符串/替换字符串/g&amp;rsquo;　 #替换第2行
-sed &amp;lsquo;$s/原字符串/替换字符串/g&amp;rsquo; #替换最后一行
-sed &amp;lsquo;2,5s/原字符串/替换字符串/g&amp;rsquo; #替换2到5行
-sed &amp;lsquo;2,$s/原字符串/替换字符串/g&amp;rsquo; #替换2到最后一行
-复制代码&lt;/p>
-&lt;p>6.批量替换字符串&lt;/p>
-&lt;p>sed -i &amp;ldquo;s/查找字段/替换字段/g&amp;rdquo; &lt;code>grep 查找字段 -rl 路径&lt;/code>
-sed -i &amp;ldquo;s/oldstring/newstring/g&amp;rdquo; `grep oldstring -rl yourdir&lt;/p>
-&lt;ol start="7">
-&lt;li>sed处理过的输出是直接输出到屏幕上的,使用参数”i”直接在文件中替换。&lt;/li>
-&lt;/ol>
+sed &amp;lsquo;$s/原字符串/替换字符串/g&amp;rsquo; #替换最后一行&lt;br>
+sed &amp;lsquo;2,5s/原字符串/替换字符串/g&amp;rsquo; #替换2到5行 &lt;br>
+sed &amp;lsquo;2,$s/原字符串/替换字符串/g&amp;rsquo; #替换2到最后一行&lt;/p>
+&lt;h1 id="批量替换字符串">批量替换字符串&lt;/h1>
+&lt;pre tabindex="0">&lt;code>sed -i &amp;#34;s/查找字段/替换字段/g&amp;#34; `grep 查找字段 -rl 路径`
+sed -i &amp;#34;s/oldstring/newstring/g&amp;#34; `grep oldstring -rl yourdir
+&lt;/code>&lt;/pre>&lt;h1 id="sed处理过的输出是直接输出到屏幕上的使用参数i直接在文件中替换">sed处理过的输出是直接输出到屏幕上的,使用参数”i”直接在文件中替换。&lt;/h1>
 &lt;h1 id="替换文件中的所有匹配项">替换文件中的所有匹配项&lt;/h1>
-&lt;p>sed -i &amp;rsquo;s/原字符串/替换字符串/g&amp;rsquo; filename
+&lt;p>sed -i &amp;rsquo;s/原字符串/替换字符串/g&amp;rsquo; filename&lt;br>
 8. 多个替换可以在同一条命令中执行,用分号”;”分隔，其格式为:&lt;/p>
 &lt;h1 id="同时执行两个替换规则">同时执行两个替换规则&lt;/h1>
 &lt;p>sed &amp;rsquo;s/^/添加的头部&amp;amp;/g；s/$/&amp;amp;添加的尾部/g&amp;rsquo;&lt;/p>
@@ -44,27 +31,27 @@ sed -i &amp;ldquo;s/oldstring/newstring/g&amp;rdquo; `grep oldstring -rl yourdir
 sed “s/查找字段/替换字段/g”&lt;/p>
 &lt;p>echo helloworld|sed ‘s/hello/world/g’&lt;/p>
 &lt;p>sed 替换字符串以变量形式&lt;/p>
-&lt;p>1、sed命令使用双引号的情况下，可以使用$var（变量）直接引用：
-　　echo | sed &amp;ldquo;s/^/$RANDOM.rmvb_/g&amp;rdquo;
-　　13562.rmvb_
-　　2、sed命令使用单引号的情况下，可以使用&amp;rsquo;&amp;quot;$var&amp;quot;&amp;lsquo;引用（单引号，然后双引号，变量）：
-　　echo | sed &amp;rsquo;s/^/&amp;rsquo;&amp;quot;$RANDOM&amp;quot;&amp;rsquo;.rmvb_/g&amp;rsquo;
-　　2442.rmvb_
-　　sed中执行外部命令。
-　　1、sed命令使用单引号的情况下使用&amp;rsquo;&lt;code>shell command&lt;/code>&amp;lsquo;或者&amp;rsquo;$(shell command)&amp;lsquo;引用命令执行的结果：
-　　echo | sed &amp;rsquo;s/^/&amp;rsquo;&lt;code>echo $RANDOM&lt;/code>&amp;rsquo;.rmvb_/g&amp;rsquo;
-　　7700.rmvb_# 结果
-　　# 上面的命令使用了旧式的命令替换，也可以采用新式的命令替换方法，如下：
-　　echo | sed &amp;rsquo;s/^/&amp;rsquo;$(echo $RANDOM)&amp;rsquo;.rmvb_/g&amp;rsquo;
-　　13856.rmvb_# 结果
-　　# 下面例子取用当前日期作为结果的一部分，如下：
-　　echo | sed &amp;rsquo;s/^/&amp;rsquo;$(date +&amp;quot;%Y%m%d&amp;quot;)&amp;rsquo;.rmvb_/g&amp;rsquo;
-　　20130401.rmvb_ # 结果
-　　2、sed命令中使用双引号的情况下，直接&lt;code>shell command&lt;/code>或者$(shell command)引用命令执行。
-　　echo | sed &amp;ldquo;s/^/$(date +&amp;quot;%Y%m%d&amp;rdquo;).rmvb_/g&amp;quot;
-　　20130401.rmvb_# 结果
-　　# 使用环境变量$RANDOM以及旧式命令替换的例子：
-　　echo | sed &amp;ldquo;s/^/&lt;code>echo $RANDOM&lt;/code>.rmvb_/g&amp;rdquo;&lt;/p></description></item><item><title>bashrc和vimec配置以及详细</title><link>https://www.omoe.cc/posts/bashrc%E5%92%8Cvimrc%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E8%AF%A6%E7%BB%86/</link><pubDate>Sat, 09 Sep 2023 09:45:41 +0000</pubDate><guid>https://www.omoe.cc/posts/bashrc%E5%92%8Cvimrc%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E8%AF%A6%E7%BB%86/</guid><description>&lt;pre tabindex="0">&lt;code>if [ &amp;#34;$TERM&amp;#34; == &amp;#34;xterm&amp;#34; ]; then
+&lt;h1 id="sed命令使用双引号的情况下可以使用var变量直接引用">sed命令使用双引号的情况下，可以使用$var（变量）直接引用：&lt;/h1>
+&lt;p>echo | sed &amp;ldquo;s/^/$RANDOM.rmvb_/g&amp;rdquo; &lt;br>
+13562.rmvb_
+sed命令使用单引号的情况下，可以使用&amp;rsquo;&amp;quot;$var&amp;quot;&amp;lsquo;引用（单引号，然后双引号，变量）：&lt;br>
+echo | sed &amp;rsquo;s/^/&amp;rsquo;&amp;quot;$RANDOM&amp;quot;&amp;rsquo;.rmvb_/g&amp;rsquo; &lt;br>
+2442.rmvb_&lt;br>
+sed中执行外部命令。
+sed命令使用单引号的情况下使用&amp;rsquo;&lt;code>shell command&lt;/code>&amp;lsquo;或者&amp;rsquo;$(shell command)&amp;lsquo;引用命令执行的结果： &lt;br>
+echo | sed &amp;rsquo;s/^/&amp;rsquo;&lt;code>echo $RANDOM&lt;/code>&amp;rsquo;.rmvb_/g&amp;rsquo;&lt;br>
+7700.rmvb_# 结果&lt;/p>
+&lt;h1 id="上面的命令使用了旧式的命令替换也可以采用新式的命令替换方法如下">上面的命令使用了旧式的命令替换，也可以采用新式的命令替换方法，如下：&lt;/h1>
+&lt;p>echo | sed &amp;rsquo;s/^/&amp;rsquo;$(echo $RANDOM)&amp;rsquo;.rmvb_/g&amp;rsquo;&lt;br>
+13856.rmvb_# 结果&lt;/p>
+&lt;h1 id="下面例子取用当前日期作为结果的一部分如下">下面例子取用当前日期作为结果的一部分，如下：&lt;/h1>
+&lt;p>echo | sed &amp;rsquo;s/^/&amp;rsquo;$(date +&amp;quot;%Y%m%d&amp;quot;)&amp;rsquo;.rmvb_/g&amp;rsquo; &lt;br>
+20130401.rmvb_ # 结果&lt;br>
+sed命令中使用双引号的情况下，直接&lt;code>shell command&lt;/code>或者$(shell command)引用命令执行。&lt;br>
+echo | sed &amp;ldquo;s/^/$(date +&amp;quot;%Y%m%d&amp;rdquo;).rmvb_/g&amp;quot;&lt;br>
+20130401.rmvb_# 结果&lt;/p>
+&lt;h1 id="使用环境变量random以及旧式命令替换的例子">使用环境变量$RANDOM以及旧式命令替换的例子：&lt;/h1>
+&lt;p>echo | sed &amp;ldquo;s/^/&lt;code>echo $RANDOM&lt;/code>.rmvb_/g&amp;rdquo;&lt;/p></description></item><item><title>bashrc和vimec配置以及详细</title><link>https://www.omoe.cc/posts/bashrc%E5%92%8Cvimrc%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E8%AF%A6%E7%BB%86/</link><pubDate>Sat, 09 Sep 2023 09:45:41 +0000</pubDate><guid>https://www.omoe.cc/posts/bashrc%E5%92%8Cvimrc%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E8%AF%A6%E7%BB%86/</guid><description>&lt;pre tabindex="0">&lt;code>if [ &amp;#34;$TERM&amp;#34; == &amp;#34;xterm&amp;#34; ]; then
 export TERM=xterm-256color
 fi
 alias vi=&amp;#39;vim&amp;#39;
@@ -313,67 +300,67 @@ set mouse-=a
 &lt;/code>&lt;/pre></description></item><item><title>Linux快捷键指南</title><link>https://www.omoe.cc/posts/linux%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97/</link><pubDate>Wed, 06 Sep 2023 16:06:12 +0000</pubDate><guid>https://www.omoe.cc/posts/linux%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97/</guid><description>&lt;ol>
 &lt;li>
 &lt;p>基本操作
-Ctrl + C：中断当前正在运行的程序。
-Ctrl + D：结束当前会话或退出终端。
-Ctrl + Z：将当前程序置于后台运行。
-Ctrl + L：清屏。
+Ctrl + C：中断当前正在运行的程序。 &lt;br>
+Ctrl + D：结束当前会话或退出终端。 &lt;br>
+Ctrl + Z：将当前程序置于后台运行。 &lt;br>
+Ctrl + L：清屏。 &lt;br>
 Tab：自动补全命令或文件名。&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>光标移动
-Ctrl + A：将光标移至行首。
-Ctrl + E：将光标移至行尾。
-Ctrl + B：向后移动一个字符。
-Ctrl + F：向前移动一个字符。
-Alt + B：向后按单词移动。
+Ctrl + A：将光标移至行首。 &lt;br>
+Ctrl + E：将光标移至行尾。 &lt;br>
+Ctrl + B：向后移动一个字符。 &lt;br>
+Ctrl + F：向前移动一个字符。 &lt;br>
+Alt + B：向后按单词移动。 &lt;br>
 Alt + F：向前按单词移动。&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>命令历史：
-Ctrl + P：查看上一条命令。
-Ctrl + N：查看下一条命令。
-Ctrl + R：在历史命令中进行反向搜索。
-Ctrl + G：退出历史命令搜索模式。
-!!：执行上一条命令。
+Ctrl + P：查看上一条命令。 &lt;br>
+Ctrl + N：查看下一条命令。 &lt;br>
+Ctrl + R：在历史命令中进行反向搜索。 &lt;br>
+Ctrl + G：退出历史命令搜索模式。 &lt;br>
+!!：执行上一条命令。 &lt;br>
 !n：执行历史命令中的第n条命令。&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>文本编辑：
-Ctrl + U：删除光标之前的所有字符。
-Ctrl + K：删除光标之后的所有字符。
-Ctrl + W：删除光标之前的一个单词。
-Ctrl + Y：粘贴最近删除的文本。
+Ctrl + U：删除光标之前的所有字符。 &lt;br>
+Ctrl + K：删除光标之后的所有字符。 &lt;br>
+Ctrl + W：删除光标之前的一个单词。 &lt;br>
+Ctrl + Y：粘贴最近删除的文本。 &lt;br>
 Ctrl + T：交换光标前两个字符。&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>窗口管理：
-Alt + Tab：在打开的窗口之间切换。
-Alt + F4：关闭当前窗口。
+Alt + Tab：在打开的窗口之间切换。 &lt;br>
+Alt + F4：关闭当前窗口。 &lt;br>
 Ctrl + Alt + L：锁定屏幕。&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>文件操作：
-Ctrl + N：新建文件或文件夹。
-Ctrl + O：打开文件。
-Ctrl + S：保存文件。
-Ctrl + X：剪切选中的文件或文本。
-Ctrl + C：复制选中的文件或文本。
-Ctrl + V：粘贴剪切或复制的文件或文本。
-Ctrl + Z：撤销上一步操作。
+Ctrl + N：新建文件或文件夹。 &lt;br>
+Ctrl + O：打开文件。 &lt;br>
+Ctrl + S：保存文件。 &lt;br>
+Ctrl + X：剪切选中的文件或文本。 &lt;br>
+Ctrl + C：复制选中的文件或文本。 &lt;br>
+Ctrl + V：粘贴剪切或复制的文件或文本。 &lt;br>
+Ctrl + Z：撤销上一步操作。 &lt;br>
 Ctrl + Y：重做上一步撤销的操作。&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>终端操作：
-Ctrl + Shift + T：打开新终端选项卡。
-Ctrl + Shift + W：关闭当前终端选项卡。
-Ctrl + Alt + F1~F6：切换至虚拟终端。
+Ctrl + Shift + T：打开新终端选项卡。 &lt;br>
+Ctrl + Shift + W：关闭当前终端选项卡。 &lt;br>
+Ctrl + Alt + F1~F6：切换至虚拟终端。 &lt;br>
 Ctrl + Alt + F7：返回图形界面虚拟终端。&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>进程管理：
-Ctrl + Z：将前台运行的程序放入后台。
-jobs：查看当前所有作业。
-fg %n：将作业 n 切换至前台运行。
+Ctrl + Z：将前台运行的程序放入后台。 &lt;br>
+jobs：查看当前所有作业。 &lt;br>
+fg %n：将作业 n 切换至前台运行。 &lt;br>
 bg %n：将作业 n 切换至后台运行。&lt;/p>
 &lt;/li>
 &lt;/ol></description></item><item><title>Andord线刷包img文件解包</title><link>https://www.omoe.cc/posts/andord%E7%BA%BF%E5%88%B7%E5%8C%85img%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8C%85/</link><pubDate>Sun, 16 Apr 2023 18:11:12 +0000</pubDate><guid>https://www.omoe.cc/posts/andord%E7%BA%BF%E5%88%B7%E5%8C%85img%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8C%85/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get install simg2img

@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>dlna on 拾集</title><link>https://www.omoe.cc/categories/dlna/</link><description>Recent content in dlna on 拾集</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>©2019 Moriz.</copyright><lastBuildDate>Fri, 18 Nov 2022 10:25:56 +0000</lastBuildDate><atom:link href="https://www.omoe.cc/categories/dlna/index.xml" rel="self" type="application/rss+xml"/><item><title>Ndk交叉编译aria2</title><link>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</link><pubDate>Thu, 21 Sep 2023 20:24:41 +0000</pubDate><guid>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</guid><description>&lt;h3 id="交叉编译aria2">交叉编译aria2&lt;/h3>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>dlna on 拾集</title><link>https://www.omoe.cc/categories/dlna/</link><description>Recent content in dlna on 拾集</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>©2019 Moriz.</copyright><lastBuildDate>Fri, 18 Nov 2022 10:25:56 +0000</lastBuildDate><atom:link href="https://www.omoe.cc/categories/dlna/index.xml" rel="self" type="application/rss+xml"/><item><title>Ndk交叉编译aria2</title><link>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</link><pubDate>Sat, 23 Sep 2023 00:04:52 +0000</pubDate><guid>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</guid><description>&lt;h3 id="交叉编译aria2">交叉编译aria2&lt;/h3>
 &lt;p>下载交叉编译工具(这里推荐r21e比较稳定且兼容)&lt;/p>
 &lt;table>
 &lt;thead>
@@ -30,7 +30,12 @@
 &lt;/tbody>
 &lt;/table>
 &lt;h3 id="安装依赖">安装依赖&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt install autoconf automake autopoint autotools-dev libxml2-dev libcppunit-dev libtool libffi-dev libgnutls28-dev nettle-dev libgmp-dev libssh2-1-dev libc-ares-dev zlib1g-dev libsqlite3-dev pkg-config make quilt
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt install autoconf automake &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>autopoint autotools-dev libxml2-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libcppunit-dev libtool libffi-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libgnutls28-dev nettle-dev libgmp-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libssh2-1-dev libc-ares-dev zlib1g-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libsqlite3-dev pkg-config make quilt checkinstall
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="导入交叉编译工具">导入交叉编译工具&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">PATH&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">$PATH&lt;/span>:/opt/android-ndk-r21e/toolchains/llvm/prebuilt/linux-x86_64/bin
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>自带sdk管理器&lt;/code>下载&lt;/p>
@@ -41,8 +46,10 @@
 &amp;#34;platforms;android-28&amp;#34; \
 &amp;#34;platforms;android-24&amp;#34; \
 &amp;#34;platforms;android-21&amp;#34;
-&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>PKG_CONFIG_PATH=/data/data/com.termux/files/usr/lib/pkgconfig/ LD_LIBRARY_PATH=/data/data/com.termux/files/usr/lib
-export CROSS_COMPILE=armv7a-linux-androideabi- --prefix=/data/data/com.termux/files/usr android
+&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>PKG_CONFIG_PATH=/data/data/com.termux/files/usr/lib/pkgconfig/ \
+LD_LIBRARY_PATH=/data/data/com.termux/files/usr/lib/ \
+export CROSS_COMPILE=armv7a-linux-androideabi- \
+--prefix=/data/data/com.termux/files/usr android
 &lt;/code>&lt;/pre>&lt;p>&lt;code>zlib&lt;/code>静态库文件&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
@@ -189,14 +196,8 @@ Should I create a default set of package docs? [y]:n #不需要创建doc文档&l
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>非必须&lt;/strong>
 重新打包&lt;code>命令不一样&lt;/code>&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">dpkg -b xxx new_deb_name.deb
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;pre tabindex="0">&lt;code>**********************************************************************
-Done. The new package has been saved to
-$HOME/aria2-release-1.36.0/aria2-release_1.36.0-1_aarch64.deb
-You can install it in your system anytime using:
-dpkg -i aria2-release_1.36.0-1_aarch64.deb
-**********************************************************************
-&lt;/code>&lt;/pre>&lt;hr>
-&lt;p>安装使用&lt;code>dpkg -i&lt;/code>，使用&lt;code>aria2c --v&lt;/code>，出现如下内容成功需要多线程则&lt;code>aria2c -x 128 +链接&lt;/code>即可&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;p>安装使用&lt;code>sudo apt-get install ./.deb&lt;/code>，使用&lt;code>aria2c --v&lt;/code>，出现如下内容成功需要多线程则&lt;code>aria2c -x 128 +链接&lt;/code>即可&lt;/p>
 &lt;pre tabindex="0">&lt;code>aria2 version 1.36.0
 Copyright (C) 2006, 2019 Tatsuhiro Tsujikawa
 This program is free software; you can redistribute it and/or modify
@@ -226,7 +227,35 @@ openssl编译问题&lt;a href="https://fucknmb.com/2017/05/24/openssl-NDK%e4%ba%
 aria2 1.36源码静态库链接编译问题&lt;a href="https://fh0.github.io/%e7%bc%96%e8%af%91/2019/12/28/android-aria2.html"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
 &lt;br>
 Aria2介绍 与 Linux下编译 Window,Linux,Android 产物&lt;a href="https://aheadsnail.github.io/2018/08/23/aria2-jie-shao/"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
-&lt;/p></description></item><item><title>Sed命令细节</title><link>https://www.omoe.cc/posts/sed%E5%91%BD%E4%BB%A4%E7%BB%86%E8%8A%82/</link><pubDate>Sat, 16 Sep 2023 05:49:22 +0000</pubDate><guid>https://www.omoe.cc/posts/sed%E5%91%BD%E4%BB%A4%E7%BB%86%E8%8A%82/</guid><description>&lt;h1 id="sed替换的基本语法为">sed替换的基本语法为:&lt;/h1>
+&lt;/p></description></item><item><title>Ubuntu上构建clang|llvm</title><link>https://www.omoe.cc/posts/ubuntu%E4%B8%8A%E6%9E%84%E5%BB%BAclangllvm/</link><pubDate>Fri, 22 Sep 2023 13:00:14 +0000</pubDate><guid>https://www.omoe.cc/posts/ubuntu%E4%B8%8A%E6%9E%84%E5%BB%BAclangllvm/</guid><description>&lt;p>gcc和g++经常使用但是clang的趋势慢慢上来，所以这里单独构建一个llvm包&lt;a href="https://github.com/llvm/llvm-project/releases/tag/llvmorg-15.0.7"target="_blank" rel="noopener noreferrer">LLVM 15.0.7&lt;/a>
+&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get install build-essential ninja-build python3 cmake
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>下载源码&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">wget https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/llvm-project-15.0.7.src.tar.xz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/clang-15.0.7.src.tar.xz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/cmake-15.0.7.src.tar.xz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/llvm-15.0.7.src.tar.xz
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">tar -xf clang-15.0.7.src.tar.xz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">tar -xf cmake-15.0.7.src.tar.xz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">tar -xf llvm-15.0.7.src.tar.xz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mv llvm-15.0.7.src llvm
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mv clang-15.0.7.src clang
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mv clang llvm/tools/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cp cmake-15.0.7.src/Modules/* llvm/cmake/modules/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> llvm
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkdir build
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="line">&lt;span class="cl">&lt;span class="n">cmake&lt;/span> &lt;span class="n">-G&lt;/span> &lt;span class="n">Ninja&lt;/span> &lt;span class="n">-DCMAKE_BUILD_TYPE&lt;/span>&lt;span class="p">=&lt;/span>&lt;span class="s2">&amp;#34;Release&amp;#34;&lt;/span> &lt;span class="n">-DLLVM_ENABLE_PROJECTS&lt;/span>&lt;span class="p">=&lt;/span>&lt;span class="s2">&amp;#34;llvm&amp;#34;&lt;/span> &lt;span class="p">\&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">-DLLVM_ENABLE_RUNTIMES&lt;/span>&lt;span class="p">=&lt;/span>&lt;span class="s2">&amp;#34;clang;libcxx;libcxxabi&amp;#34;&lt;/span> &lt;span class="p">\&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">-DCMAKE_INSTALL_PREFIX&lt;/span>&lt;span class="p">=/&lt;/span>&lt;span class="n">inspack&lt;/span>&lt;span class="p">/&lt;/span>&lt;span class="n">compiler&lt;/span> &lt;span class="p">../&lt;/span>&lt;span class="n">llvm&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cmake -S clang -B build -G &lt;span class="s2">&amp;#34;Unix Makefiles&amp;#34;&lt;/span> -DCMAKE_BUILD_TYPE&lt;span class="o">=&lt;/span>MinSizeRel &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-DLLVM_LINK_LLVM_DYLIB&lt;span class="o">=&lt;/span>ON &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-DCMAKE_INSTALL_PREFIX&lt;span class="o">=&lt;/span>/inspack/compiler &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-DLLVM_ENABLE_LIBCXX&lt;span class="o">=&lt;/span>OFF -DLLVM_INCLUDE_BENCHMARKS&lt;span class="o">=&lt;/span>OFF &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-DCMAKE_MODULE_LINKER_FLAGS_RELEASE&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-Wl,-z,relro,-z,now,-z,noexecstack -fstack-protector-strong&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-DCMAKE_SHARED_LINKER_FLAGS_RELEASE&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-Wl,-z,relro,-z,now,-z,noexecstack -fstack-protector-strong&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-DCMAKE_EXE_LINKER_FLAGS_RELEASE&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-pie -Wl,-z,relro,-z,now,-z,noexecstack -fstack-protector-strong&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-DCMAKE_CXX_FLAGS_RELEASE&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-O3 -fPIE -fstack-protector-strong&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Sed命令细节</title><link>https://www.omoe.cc/posts/sed%E5%91%BD%E4%BB%A4%E7%BB%86%E8%8A%82/</link><pubDate>Sat, 16 Sep 2023 05:49:22 +0000</pubDate><guid>https://www.omoe.cc/posts/sed%E5%91%BD%E4%BB%A4%E7%BB%86%E8%8A%82/</guid><description>&lt;h1 id="sed替换的基本语法为">sed替换的基本语法为:&lt;/h1>
 &lt;p>sed &amp;rsquo;s/原字符串/替换字符串/&amp;rsquo; &lt;br>
 特殊字符需要使用反斜线”\”进行转义。&lt;/p>
 &lt;p>单引号” ‘ ’”是没有办法用反斜线”\”转义的,这时候只要把命令中的单引号改为双引号就行了,格式如下：&lt;/p>
@@ -717,26 +746,4 @@ rm -rf ibdata1 ib_logfile0 ib_logfile1
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;lt;/build&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&amp;lt;/project&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Alpine安装mysql服务</title><link>https://www.omoe.cc/posts/alpine%E5%AE%89%E8%A3%85mysql%E6%9C%8D%E5%8A%A1/</link><pubDate>Thu, 09 Mar 2023 16:50:19 +0000</pubDate><guid>https://www.omoe.cc/posts/alpine%E5%AE%89%E8%A3%85mysql%E6%9C%8D%E5%8A%A1/</guid><description>&lt;h1 id="alpine-中mysql-用的就是mariadb">alpine 中MySQL 用的就是MariaDB&lt;/h1>
-&lt;p>apk add mysql mysql-client&lt;/p>
-&lt;h1 id="或">或&lt;/h1>
-&lt;p>apk add mariadb mariadb-client&lt;/p>
-&lt;p>配置&lt;/p>
-&lt;h1 id="创建运行mysqld-后台进程必须的目录并赋给mysql-组和mysql-用户">创建运行mysqld 后台进程必须的目录并赋给mysql 组和mysql 用户&lt;/h1>
-&lt;p>mkdir -p /run/mysqld&lt;/p>
-&lt;p>chown -R mysql:mysql /run/mysqld&lt;/p>
-&lt;h1 id="加载数据库文件">加载数据库文件&lt;/h1>
-&lt;p>chown -R mysql:mysql /var/lib/mysql&lt;/p>
-&lt;p>mysql_install_db &amp;ndash;user=mysql &amp;ndash;ldata=/var/lib/mysql&lt;/p>
-&lt;p>检验&lt;/p>
-&lt;h1 id="启动mysqld注意加个-后台运行否则只能ctrlpctrlq-退出再docker-exec-进来了">启动mysqld，注意加个&amp;amp; 后台运行，否则只能Ctrl+p，Ctrl+q 退出再docker exec 进来了&lt;/h1>
-&lt;p>/usr/bin/mysqld_safe &amp;ndash;datadir=&amp;rsquo;/var/lib/mysql&amp;rsquo; &amp;amp;&lt;/p>
-&lt;h1 id="设置root-密码">设置root 密码&lt;/h1>
-&lt;p>mysqladmin -u root password &amp;ldquo;root&amp;rdquo;&lt;/p>
-&lt;p>客户端检验&lt;/p>
-&lt;h1 id="客户端登录注意-p-后面直接跟密码不能有空格">客户端登录，注意-p 后面直接跟密码不能有空格&lt;/h1>
-&lt;p>mysql -u root -p&amp;quot;root&amp;quot;&lt;/p>
-&lt;p>使用内置的mysql数据库，测试SQL语句&lt;/p>
-&lt;p>use mysql&lt;/p>
-&lt;p>select count(*) from user;&lt;/p>
-&lt;p>exit&lt;/p></description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

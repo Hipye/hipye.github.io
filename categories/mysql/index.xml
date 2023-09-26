@@ -235,26 +235,14 @@ Aria2介绍 与 Linux下编译 Window,Linux,Android 产物&lt;a href="https://ah
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/clang-15.0.7.src.tar.xz
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/cmake-15.0.7.src.tar.xz
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/llvm-15.0.7.src.tar.xz
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">tar -xf clang-15.0.7.src.tar.xz
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">tar -xf cmake-15.0.7.src.tar.xz
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">tar -xf llvm-15.0.7.src.tar.xz
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mv llvm-15.0.7.src llvm
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mv clang-15.0.7.src clang
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mv clang llvm/tools/
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cp cmake-15.0.7.src/Modules/* llvm/cmake/modules/
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> llvm
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkdir build
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="line">&lt;span class="cl">&lt;span class="n">cmake&lt;/span> &lt;span class="n">-G&lt;/span> &lt;span class="n">Ninja&lt;/span> &lt;span class="n">-DCMAKE_BUILD_TYPE&lt;/span>&lt;span class="p">=&lt;/span>&lt;span class="s2">&amp;#34;Release&amp;#34;&lt;/span> &lt;span class="n">-DLLVM_ENABLE_PROJECTS&lt;/span>&lt;span class="p">=&lt;/span>&lt;span class="s2">&amp;#34;llvm&amp;#34;&lt;/span> &lt;span class="p">\&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">-DLLVM_ENABLE_RUNTIMES&lt;/span>&lt;span class="p">=&lt;/span>&lt;span class="s2">&amp;#34;clang;libcxx;libcxxabi&amp;#34;&lt;/span> &lt;span class="p">\&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">-DCMAKE_INSTALL_PREFIX&lt;/span>&lt;span class="p">=/&lt;/span>&lt;span class="n">inspack&lt;/span>&lt;span class="p">/&lt;/span>&lt;span class="n">compiler&lt;/span> &lt;span class="p">../&lt;/span>&lt;span class="n">llvm&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cmake -S clang -B build -G &lt;span class="s2">&amp;#34;Unix Makefiles&amp;#34;&lt;/span> -DCMAKE_BUILD_TYPE&lt;span class="o">=&lt;/span>MinSizeRel &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-DLLVM_LINK_LLVM_DYLIB&lt;span class="o">=&lt;/span>ON &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-DCMAKE_INSTALL_PREFIX&lt;span class="o">=&lt;/span>/inspack/compiler &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-DLLVM_ENABLE_LIBCXX&lt;span class="o">=&lt;/span>OFF -DLLVM_INCLUDE_BENCHMARKS&lt;span class="o">=&lt;/span>OFF &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-DCMAKE_MODULE_LINKER_FLAGS_RELEASE&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-Wl,-z,relro,-z,now,-z,noexecstack -fstack-protector-strong&amp;#34;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-DCMAKE_SHARED_LINKER_FLAGS_RELEASE&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-Wl,-z,relro,-z,now,-z,noexecstack -fstack-protector-strong&amp;#34;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-DCMAKE_EXE_LINKER_FLAGS_RELEASE&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-pie -Wl,-z,relro,-z,now,-z,noexecstack -fstack-protector-strong&amp;#34;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-DCMAKE_CXX_FLAGS_RELEASE&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-O3 -fPIE -fstack-protector-strong&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>使用ninja构建，编译速度优化
+ninja必须先创建build文件夹 &lt;code>../llvm&lt;/code>是llvm所在目录&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cmake ../llvm -G Ninja -DCMAKE_BUILD_TYPE&lt;span class="o">=&lt;/span>RELEASE &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-DLLVM_ENABLE_PROJECTS&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;clang;lld;libcxx;libcxxabi&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-DCMAKE_INSTALL_PREFIX&lt;span class="o">=&lt;/span>/inspack/compiler -DLLVM_OPTIMIZED_TABLEGEN&lt;span class="o">=&lt;/span>ON
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Sed命令细节</title><link>https://www.omoe.cc/posts/sed%E5%91%BD%E4%BB%A4%E7%BB%86%E8%8A%82/</link><pubDate>Sat, 16 Sep 2023 05:49:22 +0000</pubDate><guid>https://www.omoe.cc/posts/sed%E5%91%BD%E4%BB%A4%E7%BB%86%E8%8A%82/</guid><description>&lt;h1 id="sed替换的基本语法为">sed替换的基本语法为:&lt;/h1>
 &lt;p>sed &amp;rsquo;s/原字符串/替换字符串/&amp;rsquo; &lt;br>
 特殊字符需要使用反斜线”\”进行转义。&lt;/p>

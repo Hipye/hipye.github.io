@@ -1,0 +1,698 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python on 拾集</title><link>https://www.omoe.cc/tags/python/</link><description>Recent content in Python on 拾集</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>©2019 Moriz.</copyright><lastBuildDate>Tue, 24 Sep 2024 18:55:35 +0000</lastBuildDate><atom:link href="https://www.omoe.cc/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Ndk交叉编译aria2</title><link>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</link><pubDate>Wed, 25 Sep 2024 03:07:35 +0000</pubDate><guid>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</guid><description>&lt;h3 id="交叉编译aria2">交叉编译aria2&lt;/h3>
+&lt;p>下载交叉编译工具(这里推荐r21e比较稳定且兼容)&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:center">系统版本&lt;/th>
+&lt;th style="text-align:center">链接&lt;/th>
+&lt;th style="text-align:center">sha1&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:center">linux&lt;/td>
+&lt;td style="text-align:center">&lt;a href="https://dl.google.com/android/repository/android-ndk-r21e-linux-x86_64.zip"target="_blank" rel="noopener noreferrer">https://dl.google.com/android/repository/android-ndk-r21e-linux-x86_64.zip&lt;/a>
+&lt;/td>
+&lt;td style="text-align:center">c3ebc83c96a4d7f539bd72c241b2be9dcd29bda9&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">win&lt;/td>
+&lt;td style="text-align:center">&lt;a href="https://dl.google.com/android/repository/android-ndk-r21e-windows-x86_64.zip"target="_blank" rel="noopener noreferrer">https://dl.google.com/android/repository/android-ndk-r21e-windows-x86_64.zip&lt;/a>
+&lt;/td>
+&lt;td style="text-align:center">fc44fea8bb3f5a6789821f40f41dce2d2cd5dc30&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">mac&lt;/td>
+&lt;td style="text-align:center">&lt;a href="https://dl.google.com/android/repository/android-ndk-r21e-darwin-x86_64.zip"target="_blank" rel="noopener noreferrer">https://dl.google.com/android/repository/android-ndk-r21e-darwin-x86_64.zip&lt;/a>
+&lt;/td>
+&lt;td style="text-align:center">3f15c23a1c247ad17c7c271806848dbd40434738&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="安装依赖">安装依赖&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt install autoconf automake &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>autopoint autotools-dev libxml2-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libcppunit-dev libtool libffi-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libgnutls28-dev nettle-dev libgmp-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libssh2-1-dev libc-ares-dev zlib1g-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>libsqlite3-dev pkg-config make quilt checkinstall
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="导入交叉编译工具">导入交叉编译工具&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">PATH&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">$PATH&lt;/span>:/opt/android-ndk-r21e/toolchains/llvm/prebuilt/linux-x86_64/bin
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>自带sdk管理器&lt;/code>下载&lt;/p>
+&lt;pre tabindex="0">&lt;code>sdkmanager \
+&amp;#34;platform-tools&amp;#34; \
+&amp;#34;build-tools;28.0.3&amp;#34; \
+&amp;#34;platforms;android-33&amp;#34; \
+&amp;#34;platforms;android-28&amp;#34; \
+&amp;#34;platforms;android-24&amp;#34; \
+&amp;#34;platforms;android-21&amp;#34;
+&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>PKG_CONFIG_PATH=/data/data/com.termux/files/usr/lib/pkgconfig/ \
+LD_LIBRARY_PATH=/data/data/com.termux/files/usr/lib/ \
+export CROSS_COMPILE=armv7a-linux-androideabi- \
+--prefix=/data/data/com.termux/files/usr android
+&lt;/code>&lt;/pre>&lt;p>&lt;code>zlib&lt;/code>静态库文件&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android21-clang++ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android21-clang &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>llvm-ar &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>llvm-ranlib &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure --prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr --static
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>expat&lt;/code>静态库&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android21-clang++ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android21-clang &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>llvm-ar &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>llvm-ranlib &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--host&lt;span class="o">=&lt;/span>aarch64-linux-android &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--build&lt;span class="o">=&lt;/span>&lt;span class="sb">`&lt;/span>dpkg-architecture -qDEB_BUILD_GNU_TYPE&lt;span class="sb">`&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--enable-static&lt;span class="o">=&lt;/span>yes &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--enable-shared&lt;span class="o">=&lt;/span>no
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>c-ares&lt;/code>静态库&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android21-clang++ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android21-clang &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>llvm-ar &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>llvm-ranlib &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--host&lt;span class="o">=&lt;/span>aarch64-linux-android &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--build&lt;span class="o">=&lt;/span>&lt;span class="sb">`&lt;/span>dpkg-architecture -qDEB_BUILD_GNU_TYPE&lt;span class="sb">`&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--enable-static &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--disable-shared
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>openssl&lt;/code>静态库&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android21-clang++ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android21-clang &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>llvm-ar &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>llvm-ranlib &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./Configure &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>android-arm64 -march&lt;span class="o">=&lt;/span>armv8-a -mtune&lt;span class="o">=&lt;/span>cortex-a53 &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LDFLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-L/data/data/com.termux/files/usr/lib&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CFLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-I/data/data/com.termux/files/usr/include&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>libssh2&lt;/code>静态库&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android21-clang++ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android21-clang &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>llvm-ar &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>llvm-ranlib &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CPPFLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-I,/data/data/com.termux/files/usr/include&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LDFLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-Wl,-rpath-link,/data/data/com.termux/files/usr/lib&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/data/data/com.termux/files/usr&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libssl-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libz-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--host&lt;span class="o">=&lt;/span>aarch64-linux-android
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>sqlite&lt;/code>静态库&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android21-clang++ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android21-clang &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>llvm-ar &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>llvm-ranlib &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>./configure --host&lt;span class="o">=&lt;/span>aarch64-linux-android &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ --enable-static &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--enable-shared &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--build&lt;span class="o">=&lt;/span>&lt;span class="sb">`&lt;/span>dpkg-architecture -qDEB_BUILD_GNU_TYPE&lt;span class="sb">`&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在编译 aria2时因为1.36相比1.35有修改所以必须修改到源码部分才能顺利编译&lt;br>
+这一步必须↓操作，不然进行&lt;code>ARIA2_STATIC=yes&lt;/code>链接会失败&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s|-lrt||g;s|-lpthread||g&amp;#39;&lt;/span> &lt;span class="k">$(&lt;/span>grep -rEl &lt;span class="s1">&amp;#39;\-lrt|\-lpthread&amp;#39;&lt;/span> .&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s|timegm(|timegm_(|g&amp;#39;&lt;/span> &lt;span class="k">$(&lt;/span>grep -rl &lt;span class="s1">&amp;#39;timegm(&amp;#39;&lt;/span> .&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="开始编译aria2编译">开始编译aria2编译&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/pkgconfig/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LD_LIBRARY_PATH&lt;/span>&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/lib/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android21-clang++ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">CC&lt;/span>&lt;span class="o">=&lt;/span>aarch64-linux-android21-clang &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">AR&lt;/span>&lt;span class="o">=&lt;/span>llvm-ar &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">RANLIB&lt;/span>&lt;span class="o">=&lt;/span>llvm-ranlib &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">STRIP&lt;/span>&lt;span class="o">=&lt;/span>llvm-strip
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./configure &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--host&lt;span class="o">=&lt;/span>aarch64-custom-linux-android &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-openssl &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libz --with-libz-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libexpat --with-libexpat-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-slite3 --with-sqlite3-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-libcares --with-libcares-prefix&lt;span class="o">=&lt;/span>/data/data/com.termux/files/usr/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--with-ca-bundle&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;/data/data/com.termux/files/usr/etc/tls/cert.pem&amp;#39;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">ZLIB_CFLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-I/data/data/com.termux/files/usr/include&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">ZLIB_LIBS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-L/data/data/com.termux/files/usr/lib -lz&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">EXPAT_CFLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-I/data/data/com.termux/files/usr/include&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">EXPAT_LIBS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-L/data/data/com.termux/files/usr/lib -lexpat&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">SQLITE3_CFLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-I/data/data/com.termux/files/usr/include&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">SQLITE3_LIBS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-L/data/data/com.termux/files/usr/lib -lsqlite3&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">OPENSSL_CFLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-I/data/data/com.termux/files/usr/include&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">OPENSSL_LIBS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-L/data/data/com.termux/files/usr/lib -lssl -lcrypto&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LIBCARES_CFLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-I/data/data/com.termux/files/usr/include&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LIBCARES_LIBS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-L/data/data/com.termux/files/usr/lib -lcares&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LIBSSH2_CFLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-I/data/data/com.termux/files/usr/include&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">LIBSSH2_LIBS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-L/data/data/com.termux/files/usr/lib -lssh2&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">PKG_CONFIG_PATH&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/data/data/com.termux/files/usr/lib/pkgconfig&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>&lt;span class="nv">ARIA2_STATIC&lt;/span>&lt;span class="o">=&lt;/span>yes
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>编译时出现使用的是gnults非openssl添加选项**&amp;ndash;without-gnutls**&lt;/p>
+&lt;h3 id="marchmtune选项说明">march、mtune选项说明：&lt;/h3>
+&lt;p>&lt;strong>-march=cpu-type&lt;/strong> &lt;br>
+优化选项。指定目标架构的名字，以及（可选的）一个或多个功能修饰符。 此选项的格式为:
+-march = arch {+ [no] feature} *&lt;/p>
+&lt;p>gcc/g++在编译时，会生成针对目标架构优化的目标代码。
+注意： -march=navite navite表示允许编译器自动探测目标架构（即：编译主机）并生成针对目标架构优化的目标代码。&lt;/p>
+&lt;p>-march=i686
+-march=prescott
+-march=armv8-a
+-march=pentium4&lt;/p>
+&lt;p>&lt;strong>-mtune=cpu-type&lt;/strong> &lt;br>
+优化选项。指定目标处理器的名字。与march选项功能类似，但相对于march而言，mtune是一种&amp;quot;松约束&amp;quot;。mtune可以提供后向兼容性，即：mtune=pentium-nmx编译出来的程序，在pentium4处理器上也可以运行。
+-mtune=native （与 -march=native 类似）&lt;/p>
+&lt;p>-mtune 允许值包括：&lt;strong>native，generic, cortex-a53, cortex-a57, cortex-a72, exynos-m1, thunderx, xgene1&lt;/strong>&amp;hellip;&lt;/p>
+&lt;p>例如：-march=i686 -mtune=pentium4 编译出来的程序，是为奔腾4处理器优化过的，但是在任何i686上都可以运行。
+若指定了 -march 而未指定 -mtune 或 -mcpu，则调整代码以确保在实现目标体系结构的一系列目标处理器上执行良好。
+march、mtune选项类型
+针对 march、mtune，可使用如下指令查看执行了哪些优化操作：&lt;/p>
+&lt;p>gcc -Q &amp;ndash;help=target -march=native [xxx].c&lt;/p>
+&lt;h3 id="系统自带工具打包">系统自带工具打包&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo checkinstall -D --install&lt;span class="o">=&lt;/span>no
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>打包过程中提示&lt;/strong>&lt;/p>
+&lt;p>The package documentation directory ./doc-pak does not exist.&lt;br>
+Should I create a default set of package docs? [y]:n #不需要创建doc文档&lt;/p>
+&lt;p>0 - Maintainer: [ root@DESKTOP-U5H0M22 ]#编译设备&lt;br>
+1 - Summary: [ moriz build aria2 ]#自定义信息&lt;br>
+2 - Name: [ aria2 ]#文件名&amp;amp;卸载用&lt;br>
+3 - Version: [ 1.36.0 ]#版本&lt;br>
+4 - Release: [ 1 ]#发布 &lt;br>
+5 - License: [ GPL ]#协议&lt;br>
+6 - Group: [ checkinstall ]#可忽略&lt;br>
+7 - Architecture: [ aarch64 ]#编译目标的cpu架构 &lt;br>
+8 - Source location: [ aria2-release-1.36.0 ]#可忽略&lt;br>
+9 - Alternate source location: [ ]#可忽略
+10 - Requires: [ libc++, c-ares, openssl, libxml2, zlib ]#软件所需依赖包 &lt;br>
+11 - Recommends: [ ]#可忽略 &lt;br>
+12 - Suggests: [ ]#可忽略&lt;br>
+13 - Provides: [ aria2-release ]#可忽略
+14 - Conflicts: [ ]#可忽略
+15 - Replaces: [ ]#可忽略&lt;/p>
+&lt;p>&lt;font color="#C12414">注意选项7必须修改目标设备的cpu架构&lt;/font>
+成功后显示内容如下，文件所在文件夹和安装过程提示，后面安装过程略过
+新建文件夹解包&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">dpkg-deb -R xxxxx.deb .
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>非必须&lt;/strong>
+重新打包&lt;code>命令不一样&lt;/code> xxx为文件名&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">dpkg -b xxx new_deb_name.deb
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;p>安装使用&lt;code>sudo apt-get install ./.deb&lt;/code>，使用&lt;code>aria2c --v&lt;/code>，出现如下内容成功需要多线程则&lt;code>aria2c -x 128 +链接&lt;/code>即可&lt;/p>
+&lt;pre tabindex="0">&lt;code>aria2 version 1.36.0
+Copyright (C) 2006, 2019 Tatsuhiro Tsujikawa
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+** Configuration **
+Enabled Features: Async DNS, BitTorrent, Firefox3 Cookie, GZip, HTTPS, Message Digest, Metalink, XML-RPC, SFTP
+Hash Algorithms: sha-1, sha-224, sha-256, sha-384, sha-512, md5, adler32
+Libraries: zlib/1.2.13 expat/2.5.0 sqlite3/3.39.4 OpenSSL/1.1.1s c-ares/1.18.1 libssh2/1.10.0
+Compiler: clang 9.0.9 (https://android.googlesource.com/toolchain/llvm-project a2a1e703c0edb03ba29944e529ccbf457742737b)
+built by x86_64-pc-linux-gnu
+targeting aarch64-unknown-linux-android
+on Nov 10 2022 15:30:40
+System: Linux 4.19.113-perf-g4a878ec38421 #1 SMP PREEMPT Tue May 11 02:13:41 CST 2021 aarch64
+Report bugs to https://github.com/aria2/aria2/issues
+Visit https://aria2.github.io/
+&lt;/code>&lt;/pre>&lt;h3 id="文档相关">文档相关&lt;/h3>
+&lt;p>群晖交叉编译&lt;a href="https://stray.love/itshou-zha/da-jian-qun-hui-jiao-cha-bian-yi-huan-jing-bing-bian-yi-aria2"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
+&lt;br>
+openssl编译问题&lt;a href="https://fucknmb.com/2017/05/24/openssl-NDK%e4%ba%a4%e5%8f%89%e7%bc%96%e8%af%91/?utm_source=tuicool&amp;amp;utm_medium=referral"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
+&lt;br>
+aria2 1.36源码静态库链接编译问题&lt;a href="https://fh0.github.io/%e7%bc%96%e8%af%91/2019/12/28/android-aria2.html"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
+&lt;br>
+Aria2介绍 与 Linux下编译 Window,Linux,Android 产物&lt;a href="https://aheadsnail.github.io/2018/08/23/aria2-jie-shao/"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
+&lt;/p></description></item><item><title>利用fonttools缩小ttf体积</title><link>https://www.omoe.cc/posts/%E5%88%A9%E7%94%A8fonttools%E7%BC%A9%E5%B0%8Fttf%E4%BD%93%E7%A7%AF/</link><pubDate>Tue, 24 Sep 2024 18:55:35 +0000</pubDate><guid>https://www.omoe.cc/posts/%E5%88%A9%E7%94%A8fonttools%E7%BC%A9%E5%B0%8Fttf%E4%BD%93%E7%A7%AF/</guid><description>&lt;h2 id="汉字体积缩小">汉字体积缩小&lt;/h2>
+&lt;ol>
+&lt;li>安装pip install fonttools&lt;/li>
+&lt;li>使用&lt;strong>pyftsubset&lt;/strong>命令&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code>pyftsubset &amp;#34;HanYi.ttf&amp;#34; --text-file=&amp;#34;常用汉字库3500.txt&amp;#34; --output-file=&amp;#34;./Hanyi.ttf&amp;#34;
+&lt;/code>&lt;/pre>&lt;p>2.1 权限说明
+–text 選項用於指定需要保留的字符
+–text-file 選項用於指定一個包含需要保留的字符的 txt 文檔
+–out­put-file 選項用於指定輸出文件的保存位置&lt;/p>
+&lt;p>[常用汉字库3500](&lt;a href="https://raw.githubusercontent.com/kaienfr/Font/master/learnfiles/"target="_blank" rel="noopener noreferrer">https://raw.githubusercontent.com/kaienfr/Font/master/learnfiles/&lt;/a>
+常用汉字库 3500.txt)
+[汉字库引用](&lt;a href="https://github.com/kaienfr/Font/blob/master/learnfiles/"target="_blank" rel="noopener noreferrer">https://github.com/kaienfr/Font/blob/master/learnfiles/&lt;/a>
+常用汉字库 3500.txt)&lt;/p></description></item><item><title>自编译hugo扩展</title><link>https://www.omoe.cc/posts/%E8%87%AA%E7%BC%96%E8%AF%91hugo%E6%89%A9%E5%B1%95/</link><pubDate>Tue, 24 Sep 2024 15:54:32 +0000</pubDate><guid>https://www.omoe.cc/posts/%E8%87%AA%E7%BC%96%E8%AF%91hugo%E6%89%A9%E5%B1%95/</guid><description>&lt;ol>
+&lt;li>
+&lt;p>安装 Go
+pkg install golang&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>更新 shell 配置&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code>echo &amp;#34;export GOPATH=$HOME/go\nexport PATH=$PATH:$GOROOT/bin:$GOPATH/bin&amp;#34; &amp;gt;&amp;gt; ~/.bashrc
+&lt;/code>&lt;/pre>&lt;ol start="3">
+&lt;li>重新加载 shell 配置
+source ~/.bashrc&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code>#安装 Mage（一个 Go 的构建工具）
+go get github.com/magefile/mage
+#检索，编译以及安装 Hugo
+go get -d github.com/gohugoio/hugo
+cd ${GOPATH:-$HOME/go}/src/github.com/gohugoio/hugo
+env DEPNOLOCK=1 mage vendor
+mage install
+&lt;/code>&lt;/pre>&lt;ol start="4">
+&lt;li>克隆源码&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code>git clone https://github.com/gohugoio/hugo.git
+cd hugo
+&lt;/code>&lt;/pre>&lt;ol start="5">
+&lt;li>编译扩展（在这步前必须配置好环境）&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code>CGO_ENABLED=1 go install --tags extended
+&lt;/code>&lt;/pre></description></item><item><title>Git切换分支</title><link>https://www.omoe.cc/posts/git%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF/</link><pubDate>Thu, 19 Oct 2023 19:05:11 +0000</pubDate><guid>https://www.omoe.cc/posts/git%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF/</guid><description>&lt;p>git branch -a
+git checkout -b hw origin/hw&lt;/p></description></item><item><title>Ubuntu上构建clang|llvm</title><link>https://www.omoe.cc/posts/ubuntu%E4%B8%8A%E6%9E%84%E5%BB%BAclangllvm/</link><pubDate>Fri, 22 Sep 2023 13:00:14 +0000</pubDate><guid>https://www.omoe.cc/posts/ubuntu%E4%B8%8A%E6%9E%84%E5%BB%BAclangllvm/</guid><description>&lt;p>gcc和g++经常使用但是clang的趋势慢慢上来，所以这里单独构建一个llvm包&lt;a href="https://github.com/llvm/llvm-project/releases/tag/llvmorg-15.0.7"target="_blank" rel="noopener noreferrer">LLVM 15.0.7&lt;/a>
+&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get install build-essential ninja-build python3 cmake
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>下载源码&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">wget https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/llvm-project-15.0.7.src.tar.xz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/clang-15.0.7.src.tar.xz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/cmake-15.0.7.src.tar.xz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/llvm-15.0.7.src.tar.xz
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="line">&lt;span class="cl">&lt;span class="n">cmake&lt;/span> &lt;span class="n">-G&lt;/span> &lt;span class="n">Ninja&lt;/span> &lt;span class="n">-DCMAKE_BUILD_TYPE&lt;/span>&lt;span class="p">=&lt;/span>&lt;span class="s2">&amp;#34;Release&amp;#34;&lt;/span> &lt;span class="n">-DLLVM_ENABLE_PROJECTS&lt;/span>&lt;span class="p">=&lt;/span>&lt;span class="s2">&amp;#34;llvm&amp;#34;&lt;/span> &lt;span class="p">\&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">-DLLVM_ENABLE_RUNTIMES&lt;/span>&lt;span class="p">=&lt;/span>&lt;span class="s2">&amp;#34;clang;libcxx;libcxxabi&amp;#34;&lt;/span> &lt;span class="p">\&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">-DCMAKE_INSTALL_PREFIX&lt;/span>&lt;span class="p">=/&lt;/span>&lt;span class="n">inspack&lt;/span>&lt;span class="p">/&lt;/span>&lt;span class="n">compiler&lt;/span> &lt;span class="p">../&lt;/span>&lt;span class="n">llvm&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>使用ninja构建，编译速度优化
+ninja必须先创建build文件夹 &lt;code>../llvm&lt;/code>是llvm所在目录&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cmake ../llvm -G Ninja -DCMAKE_BUILD_TYPE&lt;span class="o">=&lt;/span>RELEASE &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-DLLVM_ENABLE_PROJECTS&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;clang;lld;libcxx;libcxxabi&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-DCMAKE_INSTALL_PREFIX&lt;span class="o">=&lt;/span>/inspack/compiler -DLLVM_OPTIMIZED_TABLEGEN&lt;span class="o">=&lt;/span>ON
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>一般内存使用空间会不够报错，所以需要增加swap分区大小（6g左右）&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo touch /swapfile
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> /swapfile
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo dd &lt;span class="k">if&lt;/span>&lt;span class="o">=&lt;/span>/dev/zero &lt;span class="nv">of&lt;/span>&lt;span class="o">=&lt;/span>swapfile &lt;span class="nv">bs&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1024&lt;/span> &lt;span class="nv">count&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">67108864&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo mkswap -f swapfile
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo swapon swapon
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>切换系统编译器
+可以使用以下命令来设置默认编译器为 clang&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo update-alternatives --set cc /usr/bin/clang
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo update-alternatives --set c++ /usr/bin/clang++
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这将把 /usr/bin/cc 和 /usr/bin/c++ 符号链接指向 /usr/bin/clang 和 /usr/bin/clang++。&lt;/p>
+&lt;p>如果你想将默认编译器切换回 gcc，可以运行以下命令：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo update-alternatives --set cc /usr/bin/gcc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo update-alternatives --set c++ /usr/bin/g++
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Sed命令细节</title><link>https://www.omoe.cc/posts/sed%E5%91%BD%E4%BB%A4%E7%BB%86%E8%8A%82/</link><pubDate>Sat, 16 Sep 2023 05:49:22 +0000</pubDate><guid>https://www.omoe.cc/posts/sed%E5%91%BD%E4%BB%A4%E7%BB%86%E8%8A%82/</guid><description>&lt;h1 id="sed替换的基本语法为">sed替换的基本语法为:&lt;/h1>
+&lt;p>sed &amp;rsquo;s/原字符串/替换字符串/&amp;rsquo; &lt;br>
+特殊字符需要使用反斜线”\”进行转义。&lt;/p>
+&lt;p>单引号” ‘ ’”是没有办法用反斜线”\”转义的,这时候只要把命令中的单引号改为双引号就行了,格式如下：&lt;/p>
+&lt;h1 id="要处理的字符包含单引号">要处理的字符包含单引号&lt;/h1>
+&lt;p>sed &amp;ldquo;s/原字符串包含&amp;rsquo;/替换字符串包含&amp;rsquo;/&amp;rdquo; &lt;br>
+命令中的三根斜线分隔符可以换成别的符号,有时候替换目录字符串的时候有较多斜线，这个时候换成其它的分割符是较为方便,只需要紧跟s定义即可。&lt;/p>
+&lt;h1 id="替换所有匹配关键字">替换所有匹配关键字&lt;/h1>
+&lt;p>sed &amp;rsquo;s/原字符串/替换字符串/g&amp;rsquo;&lt;br>
+&lt;code>一些特殊字符的使用&lt;/code>&lt;/p>
+&lt;p>　　”^”表示行首&lt;/p>
+&lt;p>　　”$”符号如果在引号中表示行尾，但是在引号外却表示末行(最后一行)&lt;br>
+　　&lt;/p>
+&lt;h1 id="注意这里的----符号如果没有-就会直接将匹配到的字符串替换掉">注意这里的 &amp;quot; &amp;amp; &amp;quot; 符号，如果没有 “&amp;amp;”，就会直接将匹配到的字符串替换掉&lt;/h1>
+&lt;p>sed &amp;rsquo;s/^/添加的头部&amp;amp;/g&amp;rsquo; 　　　　 #在所有行首添加 &lt;br>
+sed &amp;rsquo;s/$/&amp;amp;添加的尾部/g&amp;rsquo; 　　　　 #在所有行末添加 &lt;br>
+sed &amp;lsquo;2s/原字符串/替换字符串/g&amp;rsquo;　 #替换第2行
+sed &amp;lsquo;$s/原字符串/替换字符串/g&amp;rsquo; #替换最后一行&lt;br>
+sed &amp;lsquo;2,5s/原字符串/替换字符串/g&amp;rsquo; #替换2到5行 &lt;br>
+sed &amp;lsquo;2,$s/原字符串/替换字符串/g&amp;rsquo; #替换2到最后一行&lt;/p>
+&lt;h1 id="批量替换字符串">批量替换字符串&lt;/h1>
+&lt;pre tabindex="0">&lt;code>sed -i &amp;#34;s/查找字段/替换字段/g&amp;#34; `grep 查找字段 -rl 路径`
+sed -i &amp;#34;s/oldstring/newstring/g&amp;#34; `grep oldstring -rl yourdir
+&lt;/code>&lt;/pre>&lt;h1 id="sed处理过的输出是直接输出到屏幕上的使用参数i直接在文件中替换">sed处理过的输出是直接输出到屏幕上的,使用参数”i”直接在文件中替换。&lt;/h1>
+&lt;h1 id="替换文件中的所有匹配项">替换文件中的所有匹配项&lt;/h1>
+&lt;p>sed -i &amp;rsquo;s/原字符串/替换字符串/g&amp;rsquo; filename&lt;br>
+8. 多个替换可以在同一条命令中执行,用分号”;”分隔，其格式为:&lt;/p>
+&lt;h1 id="同时执行两个替换规则">同时执行两个替换规则&lt;/h1>
+&lt;p>sed &amp;rsquo;s/^/添加的头部&amp;amp;/g；s/$/&amp;amp;添加的尾部/g&amp;rsquo;&lt;/p>
+&lt;p>sed替换字符串(变量)
+sed “s/查找字段/替换字段/g”&lt;/p>
+&lt;p>echo helloworld|sed ‘s/hello/world/g’&lt;/p>
+&lt;p>sed 替换字符串以变量形式&lt;/p>
+&lt;h1 id="sed命令使用双引号的情况下可以使用var变量直接引用">sed命令使用双引号的情况下，可以使用$var（变量）直接引用：&lt;/h1>
+&lt;p>echo | sed &amp;ldquo;s/^/$RANDOM.rmvb_/g&amp;rdquo; &lt;br>
+13562.rmvb_
+sed命令使用单引号的情况下，可以使用&amp;rsquo;&amp;quot;$var&amp;quot;&amp;lsquo;引用（单引号，然后双引号，变量）：&lt;br>
+echo | sed &amp;rsquo;s/^/&amp;rsquo;&amp;quot;$RANDOM&amp;quot;&amp;rsquo;.rmvb_/g&amp;rsquo; &lt;br>
+2442.rmvb_&lt;br>
+sed中执行外部命令。
+sed命令使用单引号的情况下使用&amp;rsquo;&lt;code>shell command&lt;/code>&amp;lsquo;或者&amp;rsquo;$(shell command)&amp;lsquo;引用命令执行的结果： &lt;br>
+echo | sed &amp;rsquo;s/^/&amp;rsquo;&lt;code>echo $RANDOM&lt;/code>&amp;rsquo;.rmvb_/g&amp;rsquo;&lt;br>
+7700.rmvb_# 结果&lt;/p>
+&lt;h1 id="上面的命令使用了旧式的命令替换也可以采用新式的命令替换方法如下">上面的命令使用了旧式的命令替换，也可以采用新式的命令替换方法，如下：&lt;/h1>
+&lt;p>echo | sed &amp;rsquo;s/^/&amp;rsquo;$(echo $RANDOM)&amp;rsquo;.rmvb_/g&amp;rsquo;&lt;br>
+13856.rmvb_# 结果&lt;/p>
+&lt;h1 id="下面例子取用当前日期作为结果的一部分如下">下面例子取用当前日期作为结果的一部分，如下：&lt;/h1>
+&lt;p>echo | sed &amp;rsquo;s/^/&amp;rsquo;$(date +&amp;quot;%Y%m%d&amp;quot;)&amp;rsquo;.rmvb_/g&amp;rsquo; &lt;br>
+20130401.rmvb_ # 结果&lt;br>
+sed命令中使用双引号的情况下，直接&lt;code>shell command&lt;/code>或者$(shell command)引用命令执行。&lt;br>
+echo | sed &amp;ldquo;s/^/$(date +&amp;quot;%Y%m%d&amp;rdquo;).rmvb_/g&amp;quot;&lt;br>
+20130401.rmvb_# 结果&lt;/p>
+&lt;h1 id="使用环境变量random以及旧式命令替换的例子">使用环境变量$RANDOM以及旧式命令替换的例子：&lt;/h1>
+&lt;p>echo | sed &amp;ldquo;s/^/&lt;code>echo $RANDOM&lt;/code>.rmvb_/g&amp;rdquo;&lt;/p></description></item><item><title>bashrc和vimec配置以及详细</title><link>https://www.omoe.cc/posts/bashrc%E5%92%8Cvimrc%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E8%AF%A6%E7%BB%86/</link><pubDate>Sat, 09 Sep 2023 09:45:41 +0000</pubDate><guid>https://www.omoe.cc/posts/bashrc%E5%92%8Cvimrc%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E8%AF%A6%E7%BB%86/</guid><description>&lt;pre tabindex="0">&lt;code>if [ &amp;#34;$TERM&amp;#34; == &amp;#34;xterm&amp;#34; ]; then
+export TERM=xterm-256color
+fi
+alias vi=&amp;#39;vim&amp;#39;
+alias ls=&amp;#39;ls --color=auto&amp;#39;
+alias ll=&amp;#39;ls -lh&amp;#39;
+alias rm=&amp;#39;rm -f&amp;#39;
+alias rr=&amp;#39;rm -rf&amp;#39;
+alias le=&amp;#34;less&amp;#34;
+#给history记录添加上时间戳
+export HISTTIMEFORMAT=&amp;#34;%F %T &amp;#34;
+#命令行用户头 \u是用户 \t是时间 \w是当前所在文件夹显示（可添加地址长短）
+export PS1=&amp;#34;\[\033]2;\h:\u \w\007\033[33;1m\]\u \033[35;1m\t\033[0m \[\033[36;1m\]\w\[\033[0m\]\n\[\e[32;1m\]$ \[\e[0m\]&amp;#34;
+&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>set nocompatible &amp;#34; 关闭 vi 兼容模式
+syntax on &amp;#34; 自动语法高亮
+colorscheme evening &amp;#34; 设定配色方案
+set number &amp;#34; 显示行号
+set cursorline &amp;#34; 突出显示当前行
+set ruler &amp;#34; 打开状态栏标尺
+set shiftwidth=4 &amp;#34; 设定 &amp;lt;&amp;lt; 和 &amp;gt;&amp;gt; 命令移动时的宽度为 4
+set softtabstop=4 &amp;#34; 使得按退格键时可以一次删掉 4 个空格
+set tabstop=4 &amp;#34; 设定 tab 长度为 4
+set nobackup &amp;#34; 覆盖文件时不备份
+set autochdir &amp;#34; 自动切换当前目录为当前文件所在的目录
+filetype plugin indent on &amp;#34; 开启插件
+set backupcopy=yes &amp;#34; 设置备份时的行为为覆盖
+set ignorecase smartcase &amp;#34; 搜索时忽略大小写，但在有一个或以上大写字母时仍保持对大小写敏感
+set nowrapscan &amp;#34; 禁止在搜索到文件两端时重新搜索
+set incsearch &amp;#34; 输入搜索内容时就显示搜索结果
+set hlsearch &amp;#34; 搜索时高亮显示被找到的文本
+set noerrorbells &amp;#34; 关闭错误信息响铃
+set novisualbell &amp;#34; 关闭使用可视响铃代替呼叫
+set t_vb= &amp;#34; 置空错误铃声的终端代码
+&amp;#34; set showmatch &amp;#34; 插入括号时，短暂地跳转到匹配的对应括号
+&amp;#34; set matchtime=2 &amp;#34; 短暂跳转到匹配括号的时间
+set magic &amp;#34; 设置魔术
+set hidden &amp;#34; 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
+set guioptions-=T &amp;#34; 隐藏工具栏
+set guioptions-=m &amp;#34; 隐藏菜单栏
+set smartindent &amp;#34; 开启新行时使用智能自动缩进
+set backspace=indent,eol,start
+&amp;#34; 不设定在插入状态无法用退格键和 Delete 键删除回车符
+set cmdheight=1 &amp;#34; 设定命令行的行数为 1
+set laststatus=2 &amp;#34; 显示状态栏 (默认值为 1, 无法显示状态栏)
+set statusline=\ %&amp;lt;%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&amp;amp;fileformat}\ %{&amp;amp;encoding}\ %c:%l/%L%)\
+&amp;#34; 设置在状态行显示的信息
+set foldenable &amp;#34; 开始折叠
+set foldmethod=syntax &amp;#34; 设置语法折叠
+set foldcolumn=0 &amp;#34; 设置折叠区域的宽度
+setlocal foldlevel=1 &amp;#34; 设置折叠层数为
+&amp;#34; set foldclose=all &amp;#34; 设置为自动关闭折叠
+&amp;#34; nnoremap &amp;lt;space&amp;gt; @=((foldclosed(line(&amp;#39;.&amp;#39;)) &amp;lt; 0) ? &amp;#39;zc&amp;#39; : &amp;#39;zo&amp;#39;)&amp;lt;CR&amp;gt;
+&amp;#34; 用空格键来开关折叠
+&amp;#34; return OS type, eg: windows, or linux, mac, et.st..
+function! MySys()
+if has(&amp;#34;win16&amp;#34;) || has(&amp;#34;win32&amp;#34;) || has(&amp;#34;win64&amp;#34;) || has(&amp;#34;win95&amp;#34;)
+return &amp;#34;windows&amp;#34;
+elseif has(&amp;#34;unix&amp;#34;)
+return &amp;#34;linux&amp;#34;
+endif
+endfunction
+&amp;#34; 用户目录变量$VIMFILES
+if MySys() == &amp;#34;windows&amp;#34;
+let $VIMFILES = $VIM.&amp;#39;/vimfiles&amp;#39;
+elseif MySys() == &amp;#34;linux&amp;#34;
+let $VIMFILES = $HOME.&amp;#39;/.vim&amp;#39;
+endif
+&amp;#34; 设定doc文档目录
+let helptags=$VIMFILES.&amp;#39;/doc&amp;#39;
+&amp;#34; 设置字体 以及中文支持
+if has(&amp;#34;win32&amp;#34;)
+set guifont=Inconsolata:h12:cANSI
+endif
+&amp;#34; 配置多语言环境
+if has(&amp;#34;multi_byte&amp;#34;)
+&amp;#34; UTF-8 编码
+set encoding=utf-8
+set termencoding=utf-8
+set formatoptions+=mM
+set fencs=utf-8,gbk &amp;#34;here can add argment to spurt the chinese
+if v:lang =~? &amp;#39;^\(zh\)\|\(ja\)\|\(ko\)&amp;#39;
+set ambiwidth=double
+endif
+if has(&amp;#34;win32&amp;#34;)
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+language messages zh_CN.utf-8
+endif
+else
+echoerr &amp;#34;Sorry, this version of (g)vim was not compiled with +multi_byte&amp;#34;
+endif
+&amp;#34; Buffers操作快捷方式!
+nnoremap &amp;lt;C-RETURN&amp;gt; :bnext&amp;lt;CR&amp;gt;
+nnoremap &amp;lt;C-S-RETURN&amp;gt; :bprevious&amp;lt;CR&amp;gt;
+&amp;#34; Tab操作快捷方式!
+nnoremap &amp;lt;C-TAB&amp;gt; :tabnext&amp;lt;CR&amp;gt;
+nnoremap &amp;lt;C-S-TAB&amp;gt; :tabprev&amp;lt;CR&amp;gt;
+&amp;#34;关于tab的快捷键
+&amp;#34; map tn :tabnext&amp;lt;cr&amp;gt;
+&amp;#34; map tp :tabprevious&amp;lt;cr&amp;gt;
+&amp;#34; map td :tabnew .&amp;lt;cr&amp;gt;
+&amp;#34; map te :tabedit
+&amp;#34; map tc :tabclose&amp;lt;cr&amp;gt;
+&amp;#34;窗口分割时,进行切换的按键热键需要连接两次,比如从下方窗口移动
+&amp;#34;光标到上方窗口,需要&amp;lt;c-w&amp;gt;&amp;lt;c-w&amp;gt;k,非常麻烦,现在重映射为&amp;lt;c-k&amp;gt;,切换的
+&amp;#34;时候会变得非常方便.
+nnoremap &amp;lt;C-h&amp;gt; &amp;lt;C-w&amp;gt;h
+nnoremap &amp;lt;C-j&amp;gt; &amp;lt;C-w&amp;gt;j
+nnoremap &amp;lt;C-k&amp;gt; &amp;lt;C-w&amp;gt;k
+nnoremap &amp;lt;C-l&amp;gt; &amp;lt;C-w&amp;gt;l
+&amp;#34;一些不错的映射转换语法（如果在一个文件中混合了不同语言时有用）
+nnoremap &amp;lt;leader&amp;gt;1 :set filetype=xhtml&amp;lt;CR&amp;gt;
+nnoremap &amp;lt;leader&amp;gt;2 :set filetype=css&amp;lt;CR&amp;gt;
+nnoremap &amp;lt;leader&amp;gt;3 :set filetype=javascript&amp;lt;CR&amp;gt;
+nnoremap &amp;lt;leader&amp;gt;4 :set filetype=php&amp;lt;CR&amp;gt;
+&amp;#34; set fileformats=unix,dos,mac
+&amp;#34; nmap &amp;lt;leader&amp;gt;fd :se fileformat=dos&amp;lt;CR&amp;gt;
+&amp;#34; nmap &amp;lt;leader&amp;gt;fu :se fileformat=unix&amp;lt;CR&amp;gt;
+&amp;#34; use Ctrl+[l|n|p|cc] to list|next|previous|jump to count the result
+&amp;#34; map &amp;lt;C-x&amp;gt;l &amp;lt;ESC&amp;gt;:cl&amp;lt;CR&amp;gt;
+&amp;#34; map &amp;lt;C-x&amp;gt;n &amp;lt;ESC&amp;gt;:cn&amp;lt;CR&amp;gt;
+&amp;#34; map &amp;lt;C-x&amp;gt;p &amp;lt;ESC&amp;gt;:cp&amp;lt;CR&amp;gt;
+&amp;#34; map &amp;lt;C-x&amp;gt;c &amp;lt;ESC&amp;gt;:cc&amp;lt;CR&amp;gt;
+&amp;#34; 让 Tohtml 产生有 CSS 语法的 html
+&amp;#34; syntax/2html.vim，可以用:runtime! syntax/2html.vim
+let html_use_css=1
+&amp;#34; Python 文件的一般设置，比如不要 tab 等
+autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
+autocmd FileType python map &amp;lt;F12&amp;gt; :!python %&amp;lt;CR&amp;gt;
+&amp;#34; 选中状态下 Ctrl+c 复制
+vmap &amp;lt;C-c&amp;gt; &amp;#34;+y
+&amp;#34; 打开javascript折叠
+let b:javascript_fold=1
+&amp;#34; 打开javascript对dom、html和css的支持
+let javascript_enable_domhtmlcss=1
+&amp;#34; 设置字典 ~/.vim/dict/文件的路径
+autocmd filetype javascript set dictionary=$VIMFILES/dict/javascript.dict
+autocmd filetype css set dictionary=$VIMFILES/dict/css.dict
+autocmd filetype php set dictionary=$VIMFILES/dict/php.dict
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin - bufexplorer.vim Buffers切换
+&amp;#34; \be 全屏方式查看全部打开的文件列表
+&amp;#34; \bv 左右方式查看 \bs 上下方式查看
+&amp;#34;-----------------------------------------------------------------
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin - taglist.vim 查看函数列表，需要ctags程序
+&amp;#34; F4 打开隐藏taglist窗口
+&amp;#34;-----------------------------------------------------------------
+if MySys() == &amp;#34;windows&amp;#34; &amp;#34; 设定windows系统中ctags程序的位置
+let Tlist_Ctags_Cmd = &amp;#39;&amp;#34;&amp;#39;.$VIMRUNTIME.&amp;#39;/ctags.exe&amp;#34;&amp;#39;
+elseif MySys() == &amp;#34;linux&amp;#34; &amp;#34; 设定windows系统中ctags程序的位置
+let Tlist_Ctags_Cmd = &amp;#39;/usr/bin/ctags&amp;#39;
+endif
+nnoremap &amp;lt;silent&amp;gt;&amp;lt;F4&amp;gt; :TlistToggle&amp;lt;CR&amp;gt;
+let Tlist_Show_One_File = 1 &amp;#34; 不同时显示多个文件的tag，只显示当前文件的
+let Tlist_Exit_OnlyWindow = 1 &amp;#34; 如果taglist窗口是最后一个窗口，则退出vim
+let Tlist_Use_Right_Window = 1 &amp;#34; 在右侧窗口中显示taglist窗口
+let Tlist_File_Fold_Auto_Close=1 &amp;#34; 自动折叠当前非编辑文件的方法列表
+let Tlist_Auto_Open = 0
+let Tlist_Auto_Update = 1
+let Tlist_Hightlight_Tag_On_BufEnter = 1
+let Tlist_Enable_Fold_Column = 0
+let Tlist_Process_File_Always = 1
+let Tlist_Display_Prototype = 0
+let Tlist_Compact_Format = 1
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin - mark.vim 给各种tags标记不同的颜色，便于观看调式的插件。
+&amp;#34; \m mark or unmark the word under (or before) the cursor
+&amp;#34; \r manually input a regular expression. 用于搜索.
+&amp;#34; \n clear this mark (i.e. the mark under the cursor), or clear all highlighted marks .
+&amp;#34; \* 当前MarkWord的下一个 \# 当前MarkWord的上一个
+&amp;#34; \/ 所有MarkWords的下一个 \? 所有MarkWords的上一个
+&amp;#34;-----------------------------------------------------------------
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin - NERD_tree.vim 以树状方式浏览系统中的文件和目录
+&amp;#34; :ERDtree 打开NERD_tree :NERDtreeClose 关闭NERD_tree
+&amp;#34; o 打开关闭文件或者目录 t 在标签页中打开
+&amp;#34; T 在后台标签页中打开 ! 执行此文件
+&amp;#34; p 到上层目录 P 到根目录
+&amp;#34; K 到第一个节点 J 到最后一个节点
+&amp;#34; u 打开上层目录 m 显示文件系统菜单（添加、删除、移动操作）
+&amp;#34; r 递归刷新当前目录 R 递归刷新当前根目录
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; F3 NERDTree 切换
+map &amp;lt;F3&amp;gt; :NERDTreeToggle&amp;lt;CR&amp;gt;
+imap &amp;lt;F3&amp;gt; &amp;lt;ESC&amp;gt;:NERDTreeToggle&amp;lt;CR&amp;gt;
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin - NERD_commenter.vim 注释代码用的，
+&amp;#34; [count],cc 光标以下count行逐行添加注释(7,cc)
+&amp;#34; [count],cu 光标以下count行逐行取消注释(7,cu)
+&amp;#34; [count],cm 光标以下count行尝试添加块注释(7,cm)
+&amp;#34; ,cA 在行尾插入 /* */,并且进入插入模式。 这个命令方便写注释。
+&amp;#34; 注：count参数可选，无则默认为选中行或当前行
+&amp;#34;-----------------------------------------------------------------
+let NERDSpaceDelims=1 &amp;#34; 让注释符与语句之间留一个空格
+let NERDCompactSexyComs=1 &amp;#34; 多行注释时样子更好看
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin - DoxygenToolkit.vim 由注释生成文档，并且能够快速生成函数标准注释
+&amp;#34;-----------------------------------------------------------------
+let g:DoxygenToolkit_authorName=&amp;#34;Asins - asinsimple AT gmail DOT com&amp;#34;
+let g:DoxygenToolkit_briefTag_funcName=&amp;#34;yes&amp;#34;
+map &amp;lt;leader&amp;gt;da :DoxAuthor&amp;lt;CR&amp;gt;
+map &amp;lt;leader&amp;gt;df :Dox&amp;lt;CR&amp;gt;
+map &amp;lt;leader&amp;gt;db :DoxBlock&amp;lt;CR&amp;gt;
+map &amp;lt;leader&amp;gt;dc a /* */&amp;lt;LEFT&amp;gt;&amp;lt;LEFT&amp;gt;&amp;lt;LEFT&amp;gt;
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin – ZenCoding.vim 很酷的插件，HTML代码生成
+&amp;#34; 插件最新版：http://github.com/mattn/zencoding-vim
+&amp;#34; 常用命令可看：http://nootn.com/blog/Tool/23/
+&amp;#34;-----------------------------------------------------------------
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin – checksyntax.vim JavaScript常见语法错误检查
+&amp;#34; 默认快捷方式为 F5
+&amp;#34;-----------------------------------------------------------------
+let g:checksyntax_auto = 0 &amp;#34; 不自动检查
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin - NeoComplCache.vim 自动补全插件
+&amp;#34;-----------------------------------------------------------------
+let g:AutoComplPop_NotEnableAtStartup = 1
+let g:NeoComplCache_EnableAtStartup = 1
+let g:NeoComplCache_SmartCase = 1
+let g:NeoComplCache_TagsAutoUpdate = 1
+let g:NeoComplCache_EnableInfo = 1
+let g:NeoComplCache_EnableCamelCaseCompletion = 1
+let g:NeoComplCache_MinSyntaxLength = 3
+let g:NeoComplCache_EnableSkipCompletion = 1
+let g:NeoComplCache_SkipInputTime = &amp;#39;0.5&amp;#39;
+let g:NeoComplCache_SnippetsDir = $VIMFILES.&amp;#39;/snippets&amp;#39;
+&amp;#34; &amp;lt;TAB&amp;gt; completion.
+inoremap &amp;lt;expr&amp;gt;&amp;lt;TAB&amp;gt; pumvisible() ? &amp;#34;\&amp;lt;C-n&amp;gt;&amp;#34; : &amp;#34;\&amp;lt;TAB&amp;gt;&amp;#34;
+&amp;#34; snippets expand key
+imap &amp;lt;silent&amp;gt; &amp;lt;C-e&amp;gt; &amp;lt;Plug&amp;gt;(neocomplcache_snippets_expand)
+smap &amp;lt;silent&amp;gt; &amp;lt;C-e&amp;gt; &amp;lt;Plug&amp;gt;(neocomplcache_snippets_expand)
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin - matchit.vim 对%命令进行扩展使得能在嵌套标签和语句之间跳转
+&amp;#34; % 正向匹配 g% 反向匹配
+&amp;#34; [% 定位块首 ]% 定位块尾
+&amp;#34;-----------------------------------------------------------------
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin - vcscommand.vim 对%命令进行扩展使得能在嵌套标签和语句之间跳转
+&amp;#34; SVN/git管理工具
+&amp;#34;-----------------------------------------------------------------
+&amp;#34;-----------------------------------------------------------------
+&amp;#34; plugin – a.vim
+&amp;#34;-----------------------------------------------------------------
+set mouse-=a
+&lt;/code>&lt;/pre></description></item><item><title>Linux快捷键指南</title><link>https://www.omoe.cc/posts/linux%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97/</link><pubDate>Wed, 06 Sep 2023 16:06:12 +0000</pubDate><guid>https://www.omoe.cc/posts/linux%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97/</guid><description>&lt;ol>
+&lt;li>
+&lt;p>基本操作
+Ctrl + C：中断当前正在运行的程序。 &lt;br>
+Ctrl + D：结束当前会话或退出终端。 &lt;br>
+Ctrl + Z：将当前程序置于后台运行。 &lt;br>
+Ctrl + L：清屏。 &lt;br>
+Tab：自动补全命令或文件名。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>光标移动
+Ctrl + A：将光标移至行首。 &lt;br>
+Ctrl + E：将光标移至行尾。 &lt;br>
+Ctrl + B：向后移动一个字符。 &lt;br>
+Ctrl + F：向前移动一个字符。 &lt;br>
+Alt + B：向后按单词移动。 &lt;br>
+Alt + F：向前按单词移动。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>命令历史：
+Ctrl + P：查看上一条命令。 &lt;br>
+Ctrl + N：查看下一条命令。 &lt;br>
+Ctrl + R：在历史命令中进行反向搜索。 &lt;br>
+Ctrl + G：退出历史命令搜索模式。 &lt;br>
+!!：执行上一条命令。 &lt;br>
+!n：执行历史命令中的第n条命令。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>文本编辑：
+Ctrl + U：删除光标之前的所有字符。 &lt;br>
+Ctrl + K：删除光标之后的所有字符。 &lt;br>
+Ctrl + W：删除光标之前的一个单词。 &lt;br>
+Ctrl + Y：粘贴最近删除的文本。 &lt;br>
+Ctrl + T：交换光标前两个字符。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>窗口管理：
+Alt + Tab：在打开的窗口之间切换。 &lt;br>
+Alt + F4：关闭当前窗口。 &lt;br>
+Ctrl + Alt + L：锁定屏幕。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>文件操作：
+Ctrl + N：新建文件或文件夹。 &lt;br>
+Ctrl + O：打开文件。 &lt;br>
+Ctrl + S：保存文件。 &lt;br>
+Ctrl + X：剪切选中的文件或文本。 &lt;br>
+Ctrl + C：复制选中的文件或文本。 &lt;br>
+Ctrl + V：粘贴剪切或复制的文件或文本。 &lt;br>
+Ctrl + Z：撤销上一步操作。 &lt;br>
+Ctrl + Y：重做上一步撤销的操作。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>终端操作：
+Ctrl + Shift + T：打开新终端选项卡。 &lt;br>
+Ctrl + Shift + W：关闭当前终端选项卡。 &lt;br>
+Ctrl + Alt + F1~F6：切换至虚拟终端。 &lt;br>
+Ctrl + Alt + F7：返回图形界面虚拟终端。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>进程管理：
+Ctrl + Z：将前台运行的程序放入后台。 &lt;br>
+jobs：查看当前所有作业。 &lt;br>
+fg %n：将作业 n 切换至前台运行。 &lt;br>
+bg %n：将作业 n 切换至后台运行。&lt;/p>
+&lt;/li>
+&lt;/ol></description></item><item><title>Andord线刷包img文件解包</title><link>https://www.omoe.cc/posts/andord%E7%BA%BF%E5%88%B7%E5%8C%85img%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8C%85/</link><pubDate>Sun, 16 Apr 2023 18:11:12 +0000</pubDate><guid>https://www.omoe.cc/posts/andord%E7%BA%BF%E5%88%B7%E5%8C%85img%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8C%85/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get install simg2img
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>git clone &lt;a href="https://github.com/LonelyFool/lpunpack_and_lpmake"target="_blank" rel="noopener noreferrer">https://github.com/LonelyFool/lpunpack_and_lpmake&lt;/a>
+sudo apt-get install clang
+编译出现
+fatal error: &amp;lsquo;zlib.h&amp;rsquo; file not found
+缺少依赖包&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get install zlib1g-dev
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="线刷刷入">线刷刷入&lt;/h3>
+&lt;pre tabindex="0">&lt;code>fastboot flash system system.img
+fastboot flash vbmeta vbmeta.img --disable-verity --disable-verification
+&lt;/code>&lt;/pre>&lt;h3 id="内核打包">内核打包&lt;/h3>
+&lt;p>Linux version 4.19.81-perf-g9f1d1c2 (builder@c5-miui-ota- bd111.bj) (clang version 8.0.12 for Android NDK) #1 SMP PREEMPT Tue Oct 20 00:50:24 CST 2020 %s version %s (&lt;a href="mailto:builder@c5-miui-ota-bd111.bj">builder@c5-miui-ota-bd111.bj&lt;/a>
+) (clang version 8.0.12 for Android NDK) %s&lt;/p>
+&lt;pre tabindex="0">&lt;code>Android Image Kitchen - UnpackImg Script by osm0sis @ xda-developers Supplied image: boot.img Removing old work folders and files (as root)... Setting up work folders... Image type: AOSP Signature with &amp;#34;AVBv2&amp;#34; type detected. Splitting image to &amp;#34;split_img/&amp;#34;... ANDROID! magic found at: 0 BOARD_KERNEL_CMDLINE console=ttyMSM0,115200,n8 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 cgroup.memory=nokmem,nosocket loop.max_part=7 buildvariant=user BOARD_KERNEL_BASE 0x00000000 BOARD_NAME BOARD_PAGE_SIZE 4096 BOARD_HASH_TYPE sha1 BOARD_KERNEL_OFFSET 0x00008000 BOARD_RAMDISK_OFFSET 0x01000000 BOARD_SECOND_OFFSET 0x00f00000 BOARD_TAGS_OFFSET 0x00000100 BOARD_OS_VERSION 10.0.0 BOARD_OS_PATCH_LEVEL 2020-10 BOARD_HEADER_VERSION 2 BOARD_HEADER_SIZE 1660 BOARD_DTB_SIZE 931261 BOARD_DTB_OFFSET 0x01f00000
+Unpacking ramdisk (as root) to &amp;#34;ramdisk/&amp;#34;...
+Warning: Using cpio 2.13 may result in an unusable repack; downgrade to 2.12 to be safe!
+Compression used: gzip
+3689 blocks
+Done!
+&lt;/code>&lt;/pre></description></item><item><title>Linuxdepoly部署</title><link>https://www.omoe.cc/posts/linuxdepoly%E9%83%A8%E7%BD%B2/</link><pubDate>Tue, 14 Mar 2023 16:15:48 +0000</pubDate><guid>https://www.omoe.cc/posts/linuxdepoly%E9%83%A8%E7%BD%B2/</guid><description>&lt;p>${ENV_DIR}/rootfs/linux&lt;/p>
+&lt;h2 id="自定义路径">自定义路径&lt;/h2></description></item></channel></rss>

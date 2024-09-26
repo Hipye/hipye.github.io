@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Java on 拾集</title><link>https://www.omoe.cc/categories/java/</link><description>Recent content in Java on 拾集</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>©2019 Moriz.</copyright><lastBuildDate>Tue, 14 Mar 2023 14:59:34 +0000</lastBuildDate><atom:link href="https://www.omoe.cc/categories/java/index.xml" rel="self" type="application/rss+xml"/><item><title>Ndk交叉编译aria2</title><link>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</link><pubDate>Sat, 21 Oct 2023 13:18:22 +0000</pubDate><guid>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</guid><description>&lt;h3 id="交叉编译aria2">交叉编译aria2&lt;/h3>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Java on 拾集</title><link>https://www.omoe.cc/categories/java/</link><description>Recent content in Java on 拾集</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>©2019 Moriz.</copyright><lastBuildDate>Tue, 14 Mar 2023 14:59:34 +0000</lastBuildDate><atom:link href="https://www.omoe.cc/categories/java/index.xml" rel="self" type="application/rss+xml"/><item><title>Ndk交叉编译aria2</title><link>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</link><pubDate>Wed, 25 Sep 2024 03:07:35 +0000</pubDate><guid>https://www.omoe.cc/posts/ndk%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91aria2/</guid><description>&lt;h3 id="交叉编译aria2">交叉编译aria2&lt;/h3>
 &lt;p>下载交叉编译工具(这里推荐r21e比较稳定且兼容)&lt;/p>
 &lt;table>
 &lt;thead>
@@ -202,7 +202,7 @@ Should I create a default set of package docs? [y]:n #不需要创建doc文档&l
 新建文件夹解包&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">dpkg-deb -R xxxxx.deb .
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>非必须&lt;/strong>
-重新打包&lt;code>命令不一样&lt;/code>&lt;/p>
+重新打包&lt;code>命令不一样&lt;/code> xxx为文件名&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">dpkg -b xxx new_deb_name.deb
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
 &lt;p>安装使用&lt;code>sudo apt-get install ./.deb&lt;/code>，使用&lt;code>aria2c --v&lt;/code>，出现如下内容成功需要多线程则&lt;code>aria2c -x 128 +链接&lt;/code>即可&lt;/p>
@@ -235,7 +235,50 @@ openssl编译问题&lt;a href="https://fucknmb.com/2017/05/24/openssl-NDK%e4%ba%
 aria2 1.36源码静态库链接编译问题&lt;a href="https://fh0.github.io/%e7%bc%96%e8%af%91/2019/12/28/android-aria2.html"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
 &lt;br>
 Aria2介绍 与 Linux下编译 Window,Linux,Android 产物&lt;a href="https://aheadsnail.github.io/2018/08/23/aria2-jie-shao/"target="_blank" rel="noopener noreferrer">[相关]&lt;/a>
-&lt;/p></description></item><item><title>Git切换分支</title><link>https://www.omoe.cc/posts/git%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF/</link><pubDate>Thu, 19 Oct 2023 19:05:11 +0000</pubDate><guid>https://www.omoe.cc/posts/git%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF/</guid><description>&lt;p>git branch -a
+&lt;/p></description></item><item><title>利用fonttools缩小ttf体积</title><link>https://www.omoe.cc/posts/%E5%88%A9%E7%94%A8fonttools%E7%BC%A9%E5%B0%8Fttf%E4%BD%93%E7%A7%AF/</link><pubDate>Tue, 24 Sep 2024 18:55:35 +0000</pubDate><guid>https://www.omoe.cc/posts/%E5%88%A9%E7%94%A8fonttools%E7%BC%A9%E5%B0%8Fttf%E4%BD%93%E7%A7%AF/</guid><description>&lt;h2 id="汉字体积缩小">汉字体积缩小&lt;/h2>
+&lt;ol>
+&lt;li>安装pip install fonttools&lt;/li>
+&lt;li>使用&lt;strong>pyftsubset&lt;/strong>命令&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code>pyftsubset &amp;#34;HanYi.ttf&amp;#34; --text-file=&amp;#34;常用汉字库3500.txt&amp;#34; --output-file=&amp;#34;./Hanyi.ttf&amp;#34;
+&lt;/code>&lt;/pre>&lt;p>2.1 权限说明
+–text 選項用於指定需要保留的字符
+–text-file 選項用於指定一個包含需要保留的字符的 txt 文檔
+–out­put-file 選項用於指定輸出文件的保存位置&lt;/p>
+&lt;p>[常用汉字库3500](&lt;a href="https://raw.githubusercontent.com/kaienfr/Font/master/learnfiles/"target="_blank" rel="noopener noreferrer">https://raw.githubusercontent.com/kaienfr/Font/master/learnfiles/&lt;/a>
+常用汉字库 3500.txt)
+[汉字库引用](&lt;a href="https://github.com/kaienfr/Font/blob/master/learnfiles/"target="_blank" rel="noopener noreferrer">https://github.com/kaienfr/Font/blob/master/learnfiles/&lt;/a>
+常用汉字库 3500.txt)&lt;/p></description></item><item><title>自编译hugo扩展</title><link>https://www.omoe.cc/posts/%E8%87%AA%E7%BC%96%E8%AF%91hugo%E6%89%A9%E5%B1%95/</link><pubDate>Tue, 24 Sep 2024 15:54:32 +0000</pubDate><guid>https://www.omoe.cc/posts/%E8%87%AA%E7%BC%96%E8%AF%91hugo%E6%89%A9%E5%B1%95/</guid><description>&lt;ol>
+&lt;li>
+&lt;p>安装 Go
+pkg install golang&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>更新 shell 配置&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code>echo &amp;#34;export GOPATH=$HOME/go\nexport PATH=$PATH:$GOROOT/bin:$GOPATH/bin&amp;#34; &amp;gt;&amp;gt; ~/.bashrc
+&lt;/code>&lt;/pre>&lt;ol start="3">
+&lt;li>重新加载 shell 配置
+source ~/.bashrc&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code>#安装 Mage（一个 Go 的构建工具）
+go get github.com/magefile/mage
+#检索，编译以及安装 Hugo
+go get -d github.com/gohugoio/hugo
+cd ${GOPATH:-$HOME/go}/src/github.com/gohugoio/hugo
+env DEPNOLOCK=1 mage vendor
+mage install
+&lt;/code>&lt;/pre>&lt;ol start="4">
+&lt;li>克隆源码&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code>git clone https://github.com/gohugoio/hugo.git
+cd hugo
+&lt;/code>&lt;/pre>&lt;ol start="5">
+&lt;li>编译扩展（在这步前必须配置好环境）&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code>CGO_ENABLED=1 go install --tags extended
+&lt;/code>&lt;/pre></description></item><item><title>Git切换分支</title><link>https://www.omoe.cc/posts/git%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF/</link><pubDate>Thu, 19 Oct 2023 19:05:11 +0000</pubDate><guid>https://www.omoe.cc/posts/git%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF/</guid><description>&lt;p>git branch -a
 git checkout -b hw origin/hw&lt;/p></description></item><item><title>Ubuntu上构建clang|llvm</title><link>https://www.omoe.cc/posts/ubuntu%E4%B8%8A%E6%9E%84%E5%BB%BAclangllvm/</link><pubDate>Fri, 22 Sep 2023 13:00:14 +0000</pubDate><guid>https://www.omoe.cc/posts/ubuntu%E4%B8%8A%E6%9E%84%E5%BB%BAclangllvm/</guid><description>&lt;p>gcc和g++经常使用但是clang的趋势慢慢上来，所以这里单独构建一个llvm包&lt;a href="https://github.com/llvm/llvm-project/releases/tag/llvmorg-15.0.7"target="_blank" rel="noopener noreferrer">LLVM 15.0.7&lt;/a>
 &lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get install build-essential ninja-build python3 cmake
@@ -652,41 +695,4 @@ Compression used: gzip
 3689 blocks
 Done!
 &lt;/code>&lt;/pre></description></item><item><title>Linuxdepoly部署</title><link>https://www.omoe.cc/posts/linuxdepoly%E9%83%A8%E7%BD%B2/</link><pubDate>Tue, 14 Mar 2023 16:15:48 +0000</pubDate><guid>https://www.omoe.cc/posts/linuxdepoly%E9%83%A8%E7%BD%B2/</guid><description>&lt;p>${ENV_DIR}/rootfs/linux&lt;/p>
-&lt;h2 id="自定义路径">自定义路径&lt;/h2></description></item><item><title>Java基础</title><link>https://www.omoe.cc/posts/java%E5%9F%BA%E7%A1%80/</link><pubDate>Tue, 14 Mar 2023 14:59:34 +0000</pubDate><guid>https://www.omoe.cc/posts/java%E5%9F%BA%E7%A1%80/</guid><description>&lt;p>在termux上jar包引入&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">CLASSPATH&lt;/span>&lt;span class="o">=&lt;/span>.:&lt;span class="nv">$JAVA_HOME&lt;/span>/lib/mysql-connector-java-8.0.16.jar
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Mysql基础命令</title><link>https://www.omoe.cc/posts/mysql%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</link><pubDate>Tue, 14 Mar 2023 11:24:16 +0000</pubDate><guid>https://www.omoe.cc/posts/mysql%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</guid><description>&lt;p>当您在使用 “UPDATE user SET password=PASSWORD(‘newpassword’) WHERE User=‘root’;” 命令时提示 “ERROR 1356 (HY000): View ‘mysql.user’ references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them”，表明在您的 MariaDB 版本中，‘user’ 表已经不存在，由于版本不同的MariaDB解决方案也不同。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#&amp;gt;10.4.4&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ALTER USER &lt;span class="s1">&amp;#39;root&amp;#39;&lt;/span>@&lt;span class="s1">&amp;#39;localhost&amp;#39;&lt;/span> IDENTIFIED BY &lt;span class="s1">&amp;#39;newpassword&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#&amp;lt;10.4.4&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">SET PASSWORD FOR &lt;span class="s1">&amp;#39;root&amp;#39;&lt;/span>@&lt;span class="s1">&amp;#39;localhost&amp;#39;&lt;/span> &lt;span class="o">=&lt;/span> PASSWORD&lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;newpassword&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>先登入数据库&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#使用mysql&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">use mysql
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#查询&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">SELECT User, Password, Host FROM user&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#创建用户&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">CREATE USER &lt;span class="s1">&amp;#39;root&amp;#39;&lt;/span>@&lt;span class="s1">&amp;#39;%&amp;#39;&lt;/span> IDENTIFIED BY &lt;span class="s1">&amp;#39;root&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#授权&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">grant all privileges on *.* to &lt;span class="s1">&amp;#39;root&amp;#39;&lt;/span>@&lt;span class="s1">&amp;#39;%&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#刷新&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">FLUSH PRIVILEGES&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#创建数据库&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">create DATABASE RUNOOB&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#删除数据库&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">drop database RUNOOB&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#使用数据库&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">use RUNOOB&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#添加数据表&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">CREATE TABLE &lt;span class="sb">`&lt;/span>websites&lt;span class="sb">`&lt;/span> &lt;span class="o">(&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="sb">`&lt;/span>id&lt;span class="sb">`&lt;/span> int&lt;span class="o">(&lt;/span>11&lt;span class="o">)&lt;/span> NOT NULL AUTO_INCREMENT,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="sb">`&lt;/span>name&lt;span class="sb">`&lt;/span> char&lt;span class="o">(&lt;/span>20&lt;span class="o">)&lt;/span> NOT NULL DEFAULT &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span> COMMENT &lt;span class="s1">&amp;#39;站点名称&amp;#39;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="sb">`&lt;/span>url&lt;span class="sb">`&lt;/span> varchar&lt;span class="o">(&lt;/span>255&lt;span class="o">)&lt;/span> NOT NULL DEFAULT &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="sb">`&lt;/span>alexa&lt;span class="sb">`&lt;/span> int&lt;span class="o">(&lt;/span>11&lt;span class="o">)&lt;/span> NOT NULL DEFAULT &lt;span class="s1">&amp;#39;0&amp;#39;&lt;/span> COMMENT &lt;span class="s1">&amp;#39;Alexa 排名&amp;#39;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="sb">`&lt;/span>country&lt;span class="sb">`&lt;/span> char&lt;span class="o">(&lt;/span>10&lt;span class="o">)&lt;/span> NOT NULL DEFAULT &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span> COMMENT &lt;span class="s1">&amp;#39;国家&amp;#39;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> PRIMARY KEY &lt;span class="o">(&lt;/span>&lt;span class="sb">`&lt;/span>id&lt;span class="sb">`&lt;/span>&lt;span class="o">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">)&lt;/span> &lt;span class="nv">ENGINE&lt;/span>&lt;span class="o">=&lt;/span>InnoDB &lt;span class="nv">AUTO_INCREMENT&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">10&lt;/span> DEFAULT &lt;span class="nv">CHARSET&lt;/span>&lt;span class="o">=&lt;/span>utf8&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">INSERT INTO &lt;span class="sb">`&lt;/span>websites&lt;span class="sb">`&lt;/span> VALUES &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;1&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;Google&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;https://www.google.cm/&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;1&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;USA&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>, &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;2&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;淘宝&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;https://www.taobao.com/&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;13&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;CN&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>, &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;3&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;菜鸟教程&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;http://www.runoob.com&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;5892&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>, &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;4&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;微博&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;http://weibo.com/&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;20&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;CN&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>, &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;5&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;Facebook&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;https://www.facebook.com/&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;3&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;USA&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>意外退出导致数据库不能运行&lt;/p>
-&lt;pre tabindex="0">&lt;code>cd ../usr/var/lib/mysql/
-rm -rf ibdata1 ib_logfile0 ib_logfile1
-&lt;/code>&lt;/pre></description></item></channel></rss>
+&lt;h2 id="自定义路径">自定义路径&lt;/h2></description></item></channel></rss>

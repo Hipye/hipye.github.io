@@ -18,28 +18,29 @@ pkg install golang&lt;/p>
 &lt;p>更新 shell 配置&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;pre tabindex="0">&lt;code>echo &amp;#34;export GOPATH=$HOME/go\nexport PATH=$PATH:$GOROOT/bin:$GOPATH/bin&amp;#34; &amp;gt;&amp;gt; ~/.bashrc
-&lt;/code>&lt;/pre>&lt;ol start="3">
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;export GOPATH=&lt;/span>&lt;span class="nv">$HOME&lt;/span>&lt;span class="s2">/go\nexport PATH=&lt;/span>&lt;span class="nv">$PATH&lt;/span>&lt;span class="s2">:&lt;/span>&lt;span class="nv">$GOROOT&lt;/span>&lt;span class="s2">/bin:&lt;/span>&lt;span class="nv">$GOPATH&lt;/span>&lt;span class="s2">/bin&amp;#34;&lt;/span> &amp;gt;&amp;gt; ~/.bashrc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
 &lt;li>重新加载 shell 配置
 source ~/.bashrc&lt;/li>
 &lt;/ol>
-&lt;pre tabindex="0">&lt;code>#安装 Mage（一个 Go 的构建工具）
-go get github.com/magefile/mage
-#检索，编译以及安装 Hugo
-go get -d github.com/gohugoio/hugo
-cd ${GOPATH:-$HOME/go}/src/github.com/gohugoio/hugo
-env DEPNOLOCK=1 mage vendor
-mage install
-&lt;/code>&lt;/pre>&lt;ol start="4">
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#安装 Mage（一个 Go 的构建工具）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">go get github.com/magefile/mage
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#检索，编译以及安装 Hugo&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">go get -d github.com/gohugoio/hugo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> &lt;span class="si">${&lt;/span>&lt;span class="nv">GOPATH&lt;/span>&lt;span class="k">:-&lt;/span>&lt;span class="nv">$HOME&lt;/span>&lt;span class="p">/go&lt;/span>&lt;span class="si">}&lt;/span>/src/github.com/gohugoio/hugo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">env &lt;span class="nv">DEPNOLOCK&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> mage vendor
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mage install
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="4">
 &lt;li>克隆源码&lt;/li>
 &lt;/ol>
-&lt;pre tabindex="0">&lt;code>git clone https://github.com/gohugoio/hugo.git
-cd hugo
-&lt;/code>&lt;/pre>&lt;ol start="5">
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git clone https://github.com/gohugoio/hugo.git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> hugo
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="5">
 &lt;li>编译扩展（在这步前必须配置好环境）&lt;/li>
 &lt;/ol>
-&lt;pre tabindex="0">&lt;code>CGO_ENABLED=1 go install --tags extended
-&lt;/code>&lt;/pre></description></item><item><title>Git切换分支</title><link>https://www.omoe.cc/posts/git%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF/</link><pubDate>Thu, 19 Oct 2023 19:05:11 +0000</pubDate><guid>https://www.omoe.cc/posts/git%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF/</guid><description>&lt;p>git branch -a
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">CGO_ENABLED&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> go install --tags extended
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>CGO_ENABLED=1 go install &amp;ndash;tags extended&lt;/p></description></item><item><title>Git切换分支</title><link>https://www.omoe.cc/posts/git%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF/</link><pubDate>Thu, 19 Oct 2023 19:05:11 +0000</pubDate><guid>https://www.omoe.cc/posts/git%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF/</guid><description>&lt;p>git branch -a
 git checkout -b hw origin/hw&lt;/p></description></item><item><title>Ubuntu上构建clang|llvm</title><link>https://www.omoe.cc/posts/ubuntu%E4%B8%8A%E6%9E%84%E5%BB%BAclang_llvm/</link><pubDate>Fri, 22 Sep 2023 13:00:14 +0000</pubDate><guid>https://www.omoe.cc/posts/ubuntu%E4%B8%8A%E6%9E%84%E5%BB%BAclang_llvm/</guid><description>&lt;p>gcc和g++经常使用但是clang的趋势慢慢上来，所以这里单独构建一个llvm包&lt;a href="https://github.com/llvm/llvm-project/releases/tag/llvmorg-15.0.7"target="_blank" rel="noopener noreferrer">LLVM 15.0.7&lt;/a>&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get install build-essential ninja-build python3 cmake
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>下载源码&lt;/p>

@@ -1,10 +1,10 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kotlin on 拾集</title><link>https://www.omoe.cc/categories/kotlin/</link><description>Recent content in Kotlin on 拾集</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>©2019 Moriz.</copyright><lastBuildDate>Thu, 02 Mar 2023 20:33:12 +0800</lastBuildDate><atom:link href="https://www.omoe.cc/categories/kotlin/index.xml" rel="self" type="application/rss+xml"/><item><title>利用fonttools缩小ttf体积</title><link>https://www.omoe.cc/posts/%E5%88%A9%E7%94%A8fonttools%E7%BC%A9%E5%B0%8Fttf%E4%BD%93%E7%A7%AF/</link><pubDate>Tue, 24 Sep 2024 18:55:35 +0000</pubDate><guid>https://www.omoe.cc/posts/%E5%88%A9%E7%94%A8fonttools%E7%BC%A9%E5%B0%8Fttf%E4%BD%93%E7%A7%AF/</guid><description>&lt;h2 id="汉字体积缩小">汉字体积缩小&lt;/h2>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kotlin on 拾集</title><link>https://www.omoe.cc/categories/kotlin/</link><description>Recent content in Kotlin on 拾集</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>©2019 Moriz.</copyright><lastBuildDate>Sat, 25 Feb 2023 14:00:23 +0800</lastBuildDate><atom:link href="https://www.omoe.cc/categories/kotlin/index.xml" rel="self" type="application/rss+xml"/><item><title>利用fonttools缩小ttf体积</title><link>https://www.omoe.cc/posts/%E5%88%A9%E7%94%A8fonttools%E7%BC%A9%E5%B0%8Fttf%E4%BD%93%E7%A7%AF/</link><pubDate>Tue, 24 Sep 2024 18:55:35 +0000</pubDate><guid>https://www.omoe.cc/posts/%E5%88%A9%E7%94%A8fonttools%E7%BC%A9%E5%B0%8Fttf%E4%BD%93%E7%A7%AF/</guid><description>&lt;h2 id="汉字体积缩小">汉字体积缩小&lt;/h2>
 &lt;ol>
 &lt;li>安装pip install fonttools&lt;/li>
 &lt;li>使用&lt;strong>pyftsubset&lt;/strong>命令&lt;/li>
 &lt;/ol>
-&lt;pre tabindex="0">&lt;code>pyftsubset &amp;#34;HanYi.ttf&amp;#34; --text-file=&amp;#34;常用汉字库3500.txt&amp;#34; --output-file=&amp;#34;./Hanyi.ttf&amp;#34;
-&lt;/code>&lt;/pre>&lt;p>2.1 权限说明
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pyftsubset &lt;span class="s2">&amp;#34;HanYi.ttf&amp;#34;&lt;/span> --text-file&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;常用汉字库3500.txt&amp;#34;&lt;/span> --output-file&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;./Hanyi.ttf&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>2.1 权限说明
 –text 選項用於指定需要保留的字符
 –text-file 選項用於指定一個包含需要保留的字符的 txt 文檔
 –out­put-file 選項用於指定輸出文件的保存位置&lt;/p>
@@ -124,253 +124,266 @@ sed命令中使用双引号的情况下，直接&lt;code>shell command&lt;/code>
 echo | sed &amp;ldquo;s/^/$(date +&amp;quot;%Y%m%d&amp;rdquo;).rmvb_/g&amp;quot;&lt;br>
 20130401.rmvb_# 结果&lt;/p>
 &lt;h1 id="使用环境变量random以及旧式命令替换的例子">使用环境变量$RANDOM以及旧式命令替换的例子：&lt;/h1>
-&lt;p>echo | sed &amp;ldquo;s/^/&lt;code>echo $RANDOM&lt;/code>.rmvb_/g&amp;rdquo;&lt;/p></description></item><item><title>bashrc和vimec配置以及详细</title><link>https://www.omoe.cc/posts/bashrc%E5%92%8Cvimrc%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E8%AF%A6%E7%BB%86/</link><pubDate>Sat, 09 Sep 2023 09:45:41 +0000</pubDate><guid>https://www.omoe.cc/posts/bashrc%E5%92%8Cvimrc%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E8%AF%A6%E7%BB%86/</guid><description>&lt;pre tabindex="0">&lt;code>if [ &amp;#34;$TERM&amp;#34; == &amp;#34;xterm&amp;#34; ]; then
-export TERM=xterm-256color
-fi
-alias vi=&amp;#39;vim&amp;#39;
-alias ls=&amp;#39;ls --color=auto&amp;#39;
-alias ll=&amp;#39;ls -lh&amp;#39;
-alias rm=&amp;#39;rm -f&amp;#39;
-alias rr=&amp;#39;rm -rf&amp;#39;
-alias le=&amp;#34;less&amp;#34;
-#给history记录添加上时间戳
-export HISTTIMEFORMAT=&amp;#34;%F %T &amp;#34;
-#命令行用户头 \u是用户 \t是时间 \w是当前所在文件夹显示（可添加地址长短）
-export PS1=&amp;#34;\[\033]2;\h:\u \w\007\033[33;1m\]\u \033[35;1m\t\033[0m \[\033[36;1m\]\w\[\033[0m\]\n\[\e[32;1m\]$ \[\e[0m\]&amp;#34;
-&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>set nocompatible &amp;#34; 关闭 vi 兼容模式
-syntax on &amp;#34; 自动语法高亮
-colorscheme evening &amp;#34; 设定配色方案
-set number &amp;#34; 显示行号
-set cursorline &amp;#34; 突出显示当前行
-set ruler &amp;#34; 打开状态栏标尺
-set shiftwidth=4 &amp;#34; 设定 &amp;lt;&amp;lt; 和 &amp;gt;&amp;gt; 命令移动时的宽度为 4
-set softtabstop=4 &amp;#34; 使得按退格键时可以一次删掉 4 个空格
-set tabstop=4 &amp;#34; 设定 tab 长度为 4
-set nobackup &amp;#34; 覆盖文件时不备份
-set autochdir &amp;#34; 自动切换当前目录为当前文件所在的目录
-filetype plugin indent on &amp;#34; 开启插件
-set backupcopy=yes &amp;#34; 设置备份时的行为为覆盖
-set ignorecase smartcase &amp;#34; 搜索时忽略大小写，但在有一个或以上大写字母时仍保持对大小写敏感
-set nowrapscan &amp;#34; 禁止在搜索到文件两端时重新搜索
-set incsearch &amp;#34; 输入搜索内容时就显示搜索结果
-set hlsearch &amp;#34; 搜索时高亮显示被找到的文本
-set noerrorbells &amp;#34; 关闭错误信息响铃
-set novisualbell &amp;#34; 关闭使用可视响铃代替呼叫
-set t_vb= &amp;#34; 置空错误铃声的终端代码
-&amp;#34; set showmatch &amp;#34; 插入括号时，短暂地跳转到匹配的对应括号
-&amp;#34; set matchtime=2 &amp;#34; 短暂跳转到匹配括号的时间
-set magic &amp;#34; 设置魔术
-set hidden &amp;#34; 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
-set guioptions-=T &amp;#34; 隐藏工具栏
-set guioptions-=m &amp;#34; 隐藏菜单栏
-set smartindent &amp;#34; 开启新行时使用智能自动缩进
-set backspace=indent,eol,start
-&amp;#34; 不设定在插入状态无法用退格键和 Delete 键删除回车符
-set cmdheight=1 &amp;#34; 设定命令行的行数为 1
-set laststatus=2 &amp;#34; 显示状态栏 (默认值为 1, 无法显示状态栏)
-set statusline=\ %&amp;lt;%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&amp;amp;fileformat}\ %{&amp;amp;encoding}\ %c:%l/%L%)\
-&amp;#34; 设置在状态行显示的信息
-set foldenable &amp;#34; 开始折叠
-set foldmethod=syntax &amp;#34; 设置语法折叠
-set foldcolumn=0 &amp;#34; 设置折叠区域的宽度
-setlocal foldlevel=1 &amp;#34; 设置折叠层数为
-&amp;#34; set foldclose=all &amp;#34; 设置为自动关闭折叠
-&amp;#34; nnoremap &amp;lt;space&amp;gt; @=((foldclosed(line(&amp;#39;.&amp;#39;)) &amp;lt; 0) ? &amp;#39;zc&amp;#39; : &amp;#39;zo&amp;#39;)&amp;lt;CR&amp;gt;
-&amp;#34; 用空格键来开关折叠
-&amp;#34; return OS type, eg: windows, or linux, mac, et.st..
-function! MySys()
-if has(&amp;#34;win16&amp;#34;) || has(&amp;#34;win32&amp;#34;) || has(&amp;#34;win64&amp;#34;) || has(&amp;#34;win95&amp;#34;)
-return &amp;#34;windows&amp;#34;
-elseif has(&amp;#34;unix&amp;#34;)
-return &amp;#34;linux&amp;#34;
-endif
-endfunction
-&amp;#34; 用户目录变量$VIMFILES
-if MySys() == &amp;#34;windows&amp;#34;
-let $VIMFILES = $VIM.&amp;#39;/vimfiles&amp;#39;
-elseif MySys() == &amp;#34;linux&amp;#34;
-let $VIMFILES = $HOME.&amp;#39;/.vim&amp;#39;
-endif
-&amp;#34; 设定doc文档目录
-let helptags=$VIMFILES.&amp;#39;/doc&amp;#39;
-&amp;#34; 设置字体 以及中文支持
-if has(&amp;#34;win32&amp;#34;)
-set guifont=Inconsolata:h12:cANSI
-endif
-&amp;#34; 配置多语言环境
-if has(&amp;#34;multi_byte&amp;#34;)
-&amp;#34; UTF-8 编码
-set encoding=utf-8
-set termencoding=utf-8
-set formatoptions+=mM
-set fencs=utf-8,gbk &amp;#34;here can add argment to spurt the chinese
-if v:lang =~? &amp;#39;^\(zh\)\|\(ja\)\|\(ko\)&amp;#39;
-set ambiwidth=double
-endif
-if has(&amp;#34;win32&amp;#34;)
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
-language messages zh_CN.utf-8
-endif
-else
-echoerr &amp;#34;Sorry, this version of (g)vim was not compiled with +multi_byte&amp;#34;
-endif
-&amp;#34; Buffers操作快捷方式!
-nnoremap &amp;lt;C-RETURN&amp;gt; :bnext&amp;lt;CR&amp;gt;
-nnoremap &amp;lt;C-S-RETURN&amp;gt; :bprevious&amp;lt;CR&amp;gt;
-&amp;#34; Tab操作快捷方式!
-nnoremap &amp;lt;C-TAB&amp;gt; :tabnext&amp;lt;CR&amp;gt;
-nnoremap &amp;lt;C-S-TAB&amp;gt; :tabprev&amp;lt;CR&amp;gt;
-&amp;#34;关于tab的快捷键
-&amp;#34; map tn :tabnext&amp;lt;cr&amp;gt;
-&amp;#34; map tp :tabprevious&amp;lt;cr&amp;gt;
-&amp;#34; map td :tabnew .&amp;lt;cr&amp;gt;
-&amp;#34; map te :tabedit
-&amp;#34; map tc :tabclose&amp;lt;cr&amp;gt;
-&amp;#34;窗口分割时,进行切换的按键热键需要连接两次,比如从下方窗口移动
-&amp;#34;光标到上方窗口,需要&amp;lt;c-w&amp;gt;&amp;lt;c-w&amp;gt;k,非常麻烦,现在重映射为&amp;lt;c-k&amp;gt;,切换的
-&amp;#34;时候会变得非常方便.
-nnoremap &amp;lt;C-h&amp;gt; &amp;lt;C-w&amp;gt;h
-nnoremap &amp;lt;C-j&amp;gt; &amp;lt;C-w&amp;gt;j
-nnoremap &amp;lt;C-k&amp;gt; &amp;lt;C-w&amp;gt;k
-nnoremap &amp;lt;C-l&amp;gt; &amp;lt;C-w&amp;gt;l
-&amp;#34;一些不错的映射转换语法（如果在一个文件中混合了不同语言时有用）
-nnoremap &amp;lt;leader&amp;gt;1 :set filetype=xhtml&amp;lt;CR&amp;gt;
-nnoremap &amp;lt;leader&amp;gt;2 :set filetype=css&amp;lt;CR&amp;gt;
-nnoremap &amp;lt;leader&amp;gt;3 :set filetype=javascript&amp;lt;CR&amp;gt;
-nnoremap &amp;lt;leader&amp;gt;4 :set filetype=php&amp;lt;CR&amp;gt;
-&amp;#34; set fileformats=unix,dos,mac
-&amp;#34; nmap &amp;lt;leader&amp;gt;fd :se fileformat=dos&amp;lt;CR&amp;gt;
-&amp;#34; nmap &amp;lt;leader&amp;gt;fu :se fileformat=unix&amp;lt;CR&amp;gt;
-&amp;#34; use Ctrl+[l|n|p|cc] to list|next|previous|jump to count the result
-&amp;#34; map &amp;lt;C-x&amp;gt;l &amp;lt;ESC&amp;gt;:cl&amp;lt;CR&amp;gt;
-&amp;#34; map &amp;lt;C-x&amp;gt;n &amp;lt;ESC&amp;gt;:cn&amp;lt;CR&amp;gt;
-&amp;#34; map &amp;lt;C-x&amp;gt;p &amp;lt;ESC&amp;gt;:cp&amp;lt;CR&amp;gt;
-&amp;#34; map &amp;lt;C-x&amp;gt;c &amp;lt;ESC&amp;gt;:cc&amp;lt;CR&amp;gt;
-&amp;#34; 让 Tohtml 产生有 CSS 语法的 html
-&amp;#34; syntax/2html.vim，可以用:runtime! syntax/2html.vim
-let html_use_css=1
-&amp;#34; Python 文件的一般设置，比如不要 tab 等
-autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
-autocmd FileType python map &amp;lt;F12&amp;gt; :!python %&amp;lt;CR&amp;gt;
-&amp;#34; 选中状态下 Ctrl+c 复制
-vmap &amp;lt;C-c&amp;gt; &amp;#34;+y
-&amp;#34; 打开javascript折叠
-let b:javascript_fold=1
-&amp;#34; 打开javascript对dom、html和css的支持
-let javascript_enable_domhtmlcss=1
-&amp;#34; 设置字典 ~/.vim/dict/文件的路径
-autocmd filetype javascript set dictionary=$VIMFILES/dict/javascript.dict
-autocmd filetype css set dictionary=$VIMFILES/dict/css.dict
-autocmd filetype php set dictionary=$VIMFILES/dict/php.dict
-&amp;#34;-----------------------------------------------------------------
-&amp;#34; plugin - bufexplorer.vim Buffers切换
-&amp;#34; \be 全屏方式查看全部打开的文件列表
-&amp;#34; \bv 左右方式查看 \bs 上下方式查看
-&amp;#34;-----------------------------------------------------------------
-&amp;#34;-----------------------------------------------------------------
-&amp;#34; plugin - taglist.vim 查看函数列表，需要ctags程序
-&amp;#34; F4 打开隐藏taglist窗口
-&amp;#34;-----------------------------------------------------------------
-if MySys() == &amp;#34;windows&amp;#34; &amp;#34; 设定windows系统中ctags程序的位置
-let Tlist_Ctags_Cmd = &amp;#39;&amp;#34;&amp;#39;.$VIMRUNTIME.&amp;#39;/ctags.exe&amp;#34;&amp;#39;
-elseif MySys() == &amp;#34;linux&amp;#34; &amp;#34; 设定windows系统中ctags程序的位置
-let Tlist_Ctags_Cmd = &amp;#39;/usr/bin/ctags&amp;#39;
-endif
-nnoremap &amp;lt;silent&amp;gt;&amp;lt;F4&amp;gt; :TlistToggle&amp;lt;CR&amp;gt;
-let Tlist_Show_One_File = 1 &amp;#34; 不同时显示多个文件的tag，只显示当前文件的
-let Tlist_Exit_OnlyWindow = 1 &amp;#34; 如果taglist窗口是最后一个窗口，则退出vim
-let Tlist_Use_Right_Window = 1 &amp;#34; 在右侧窗口中显示taglist窗口
-let Tlist_File_Fold_Auto_Close=1 &amp;#34; 自动折叠当前非编辑文件的方法列表
-let Tlist_Auto_Open = 0
-let Tlist_Auto_Update = 1
-let Tlist_Hightlight_Tag_On_BufEnter = 1
-let Tlist_Enable_Fold_Column = 0
-let Tlist_Process_File_Always = 1
-let Tlist_Display_Prototype = 0
-let Tlist_Compact_Format = 1
-&amp;#34;-----------------------------------------------------------------
-&amp;#34; plugin - mark.vim 给各种tags标记不同的颜色，便于观看调式的插件。
-&amp;#34; \m mark or unmark the word under (or before) the cursor
-&amp;#34; \r manually input a regular expression. 用于搜索.
-&amp;#34; \n clear this mark (i.e. the mark under the cursor), or clear all highlighted marks .
-&amp;#34; \* 当前MarkWord的下一个 \# 当前MarkWord的上一个
-&amp;#34; \/ 所有MarkWords的下一个 \? 所有MarkWords的上一个
-&amp;#34;-----------------------------------------------------------------
-&amp;#34;-----------------------------------------------------------------
-&amp;#34; plugin - NERD_tree.vim 以树状方式浏览系统中的文件和目录
-&amp;#34; :ERDtree 打开NERD_tree :NERDtreeClose 关闭NERD_tree
-&amp;#34; o 打开关闭文件或者目录 t 在标签页中打开
-&amp;#34; T 在后台标签页中打开 ! 执行此文件
-&amp;#34; p 到上层目录 P 到根目录
-&amp;#34; K 到第一个节点 J 到最后一个节点
-&amp;#34; u 打开上层目录 m 显示文件系统菜单（添加、删除、移动操作）
-&amp;#34; r 递归刷新当前目录 R 递归刷新当前根目录
-&amp;#34;-----------------------------------------------------------------
-&amp;#34; F3 NERDTree 切换
-map &amp;lt;F3&amp;gt; :NERDTreeToggle&amp;lt;CR&amp;gt;
-imap &amp;lt;F3&amp;gt; &amp;lt;ESC&amp;gt;:NERDTreeToggle&amp;lt;CR&amp;gt;
-&amp;#34;-----------------------------------------------------------------
-&amp;#34; plugin - NERD_commenter.vim 注释代码用的，
-&amp;#34; [count],cc 光标以下count行逐行添加注释(7,cc)
-&amp;#34; [count],cu 光标以下count行逐行取消注释(7,cu)
-&amp;#34; [count],cm 光标以下count行尝试添加块注释(7,cm)
-&amp;#34; ,cA 在行尾插入 /* */,并且进入插入模式。 这个命令方便写注释。
-&amp;#34; 注：count参数可选，无则默认为选中行或当前行
-&amp;#34;-----------------------------------------------------------------
-let NERDSpaceDelims=1 &amp;#34; 让注释符与语句之间留一个空格
-let NERDCompactSexyComs=1 &amp;#34; 多行注释时样子更好看
-&amp;#34;-----------------------------------------------------------------
-&amp;#34; plugin - DoxygenToolkit.vim 由注释生成文档，并且能够快速生成函数标准注释
-&amp;#34;-----------------------------------------------------------------
-let g:DoxygenToolkit_authorName=&amp;#34;Asins - asinsimple AT gmail DOT com&amp;#34;
-let g:DoxygenToolkit_briefTag_funcName=&amp;#34;yes&amp;#34;
-map &amp;lt;leader&amp;gt;da :DoxAuthor&amp;lt;CR&amp;gt;
-map &amp;lt;leader&amp;gt;df :Dox&amp;lt;CR&amp;gt;
-map &amp;lt;leader&amp;gt;db :DoxBlock&amp;lt;CR&amp;gt;
-map &amp;lt;leader&amp;gt;dc a /* */&amp;lt;LEFT&amp;gt;&amp;lt;LEFT&amp;gt;&amp;lt;LEFT&amp;gt;
-&amp;#34;-----------------------------------------------------------------
-&amp;#34; plugin – ZenCoding.vim 很酷的插件，HTML代码生成
-&amp;#34; 插件最新版：http://github.com/mattn/zencoding-vim
-&amp;#34; 常用命令可看：http://nootn.com/blog/Tool/23/
-&amp;#34;-----------------------------------------------------------------
-&amp;#34;-----------------------------------------------------------------
-&amp;#34; plugin – checksyntax.vim JavaScript常见语法错误检查
-&amp;#34; 默认快捷方式为 F5
-&amp;#34;-----------------------------------------------------------------
-let g:checksyntax_auto = 0 &amp;#34; 不自动检查
-&amp;#34;-----------------------------------------------------------------
-&amp;#34; plugin - NeoComplCache.vim 自动补全插件
-&amp;#34;-----------------------------------------------------------------
-let g:AutoComplPop_NotEnableAtStartup = 1
-let g:NeoComplCache_EnableAtStartup = 1
-let g:NeoComplCache_SmartCase = 1
-let g:NeoComplCache_TagsAutoUpdate = 1
-let g:NeoComplCache_EnableInfo = 1
-let g:NeoComplCache_EnableCamelCaseCompletion = 1
-let g:NeoComplCache_MinSyntaxLength = 3
-let g:NeoComplCache_EnableSkipCompletion = 1
-let g:NeoComplCache_SkipInputTime = &amp;#39;0.5&amp;#39;
-let g:NeoComplCache_SnippetsDir = $VIMFILES.&amp;#39;/snippets&amp;#39;
-&amp;#34; &amp;lt;TAB&amp;gt; completion.
-inoremap &amp;lt;expr&amp;gt;&amp;lt;TAB&amp;gt; pumvisible() ? &amp;#34;\&amp;lt;C-n&amp;gt;&amp;#34; : &amp;#34;\&amp;lt;TAB&amp;gt;&amp;#34;
-&amp;#34; snippets expand key
-imap &amp;lt;silent&amp;gt; &amp;lt;C-e&amp;gt; &amp;lt;Plug&amp;gt;(neocomplcache_snippets_expand)
-smap &amp;lt;silent&amp;gt; &amp;lt;C-e&amp;gt; &amp;lt;Plug&amp;gt;(neocomplcache_snippets_expand)
-&amp;#34;-----------------------------------------------------------------
-&amp;#34; plugin - matchit.vim 对%命令进行扩展使得能在嵌套标签和语句之间跳转
-&amp;#34; % 正向匹配 g% 反向匹配
-&amp;#34; [% 定位块首 ]% 定位块尾
-&amp;#34;-----------------------------------------------------------------
-&amp;#34;-----------------------------------------------------------------
-&amp;#34; plugin - vcscommand.vim 对%命令进行扩展使得能在嵌套标签和语句之间跳转
-&amp;#34; SVN/git管理工具
-&amp;#34;-----------------------------------------------------------------
-&amp;#34;-----------------------------------------------------------------
-&amp;#34; plugin – a.vim
-&amp;#34;-----------------------------------------------------------------
-set mouse-=a
-&lt;/code>&lt;/pre></description></item><item><title>Linux快捷键指南</title><link>https://www.omoe.cc/posts/linux%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97/</link><pubDate>Wed, 06 Sep 2023 16:06:12 +0000</pubDate><guid>https://www.omoe.cc/posts/linux%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97/</guid><description>&lt;ol>
+&lt;p>echo | sed &amp;ldquo;s/^/&lt;code>echo $RANDOM&lt;/code>.rmvb_/g&amp;rdquo;&lt;/p></description></item><item><title>bashrc和vimec配置以及详细</title><link>https://www.omoe.cc/posts/bashrc%E5%92%8Cvimrc%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E8%AF%A6%E7%BB%86/</link><pubDate>Sat, 09 Sep 2023 09:45:41 +0000</pubDate><guid>https://www.omoe.cc/posts/bashrc%E5%92%8Cvimrc%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E8%AF%A6%E7%BB%86/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$TERM&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;xterm&amp;#34;&lt;/span> &lt;span class="o">]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">export&lt;/span> &lt;span class="nv">TERM&lt;/span>&lt;span class="o">=&lt;/span>xterm-256color
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">alias&lt;/span> &lt;span class="nv">vi&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;vim&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">alias&lt;/span> &lt;span class="nv">ls&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;ls --color=auto&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">alias&lt;/span> &lt;span class="nv">ll&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;ls -lh&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">alias&lt;/span> &lt;span class="nv">rm&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;rm -f&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">alias&lt;/span> &lt;span class="nv">rr&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;rm -rf&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">alias&lt;/span> &lt;span class="nv">le&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;less&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#给history记录添加上时间戳&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">HISTTIMEFORMAT&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;%F %T &amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#命令行用户头 \u是用户 \t是时间 \w是当前所在文件夹显示（可添加地址长短）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">PS1&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;\[\033]2;\h:\u \w\007\033[33;1m\]\u \033[35;1m\t\033[0m \[\033[36;1m\]\w\[\033[0m\]\n\[\e[32;1m\]&lt;/span>$&lt;span class="s2"> \[\e[0m\]&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> nocompatible &lt;span class="s2">&amp;#34; 关闭 vi 兼容模式
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">syntax on &amp;#34;&lt;/span> 自动语法高亮
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">colorscheme evening &lt;span class="s2">&amp;#34; 设定配色方案
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">set number &amp;#34;&lt;/span> 显示行号
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> cursorline &lt;span class="s2">&amp;#34; 突出显示当前行
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">set ruler &amp;#34;&lt;/span> 打开状态栏标尺
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> &lt;span class="nv">shiftwidth&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">4&lt;/span> &lt;span class="s2">&amp;#34; 设定 &amp;lt;&amp;lt; 和 &amp;gt;&amp;gt; 命令移动时的宽度为 4
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">set softtabstop=4 &amp;#34;&lt;/span> 使得按退格键时可以一次删掉 &lt;span class="m">4&lt;/span> 个空格
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> &lt;span class="nv">tabstop&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">4&lt;/span> &lt;span class="s2">&amp;#34; 设定 tab 长度为 4
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">set nobackup &amp;#34;&lt;/span> 覆盖文件时不备份
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> autochdir &lt;span class="s2">&amp;#34; 自动切换当前目录为当前文件所在的目录
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">filetype plugin indent on &amp;#34;&lt;/span> 开启插件
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> &lt;span class="nv">backupcopy&lt;/span>&lt;span class="o">=&lt;/span>yes &lt;span class="s2">&amp;#34; 设置备份时的行为为覆盖
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">set ignorecase smartcase &amp;#34;&lt;/span> 搜索时忽略大小写，但在有一个或以上大写字母时仍保持对大小写敏感
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> nowrapscan &lt;span class="s2">&amp;#34; 禁止在搜索到文件两端时重新搜索
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">set incsearch &amp;#34;&lt;/span> 输入搜索内容时就显示搜索结果
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> hlsearch &lt;span class="s2">&amp;#34; 搜索时高亮显示被找到的文本
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">set noerrorbells &amp;#34;&lt;/span> 关闭错误信息响铃
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> novisualbell &lt;span class="s2">&amp;#34; 关闭使用可视响铃代替呼叫
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">set t_vb= &amp;#34;&lt;/span> 置空错误铃声的终端代码
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; set showmatch &amp;#34;&lt;/span> 插入括号时，短暂地跳转到匹配的对应括号
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; set matchtime=2 &amp;#34;&lt;/span> 短暂跳转到匹配括号的时间
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> magic &lt;span class="s2">&amp;#34; 设置魔术
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">set hidden &amp;#34;&lt;/span> 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> guioptions-&lt;span class="o">=&lt;/span>T &lt;span class="s2">&amp;#34; 隐藏工具栏
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">set guioptions-=m &amp;#34;&lt;/span> 隐藏菜单栏
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> smartindent &lt;span class="s2">&amp;#34; 开启新行时使用智能自动缩进
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">set backspace=indent,eol,start
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> &amp;#34;&lt;/span> 不设定在插入状态无法用退格键和 Delete 键删除回车符
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> &lt;span class="nv">cmdheight&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="s2">&amp;#34; 设定命令行的行数为 1
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">set laststatus=2 &amp;#34;&lt;/span> 显示状态栏 &lt;span class="o">(&lt;/span>默认值为 1, 无法显示状态栏&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> &lt;span class="nv">statusline&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="se">\ &lt;/span>%&amp;lt;%F&lt;span class="o">[&lt;/span>%1*%M%*%n%R%H&lt;span class="o">]&lt;/span>%&lt;span class="o">=&lt;/span>&lt;span class="se">\ &lt;/span>%y&lt;span class="se">\ &lt;/span>%0&lt;span class="o">(&lt;/span>%&lt;span class="o">{&lt;/span>&lt;span class="p">&amp;amp;&lt;/span>fileformat&lt;span class="o">}&lt;/span>&lt;span class="se">\ &lt;/span>%&lt;span class="o">{&lt;/span>&lt;span class="p">&amp;amp;&lt;/span>encoding&lt;span class="o">}&lt;/span>&lt;span class="se">\ &lt;/span>%c:%l/%L%&lt;span class="o">)&lt;/span>&lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> &lt;span class="s2">&amp;#34; 设置在状态行显示的信息
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">set foldenable &amp;#34;&lt;/span> 开始折叠
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> &lt;span class="nv">foldmethod&lt;/span>&lt;span class="o">=&lt;/span>syntax &lt;span class="s2">&amp;#34; 设置语法折叠
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">set foldcolumn=0 &amp;#34;&lt;/span> 设置折叠区域的宽度
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">setlocal &lt;span class="nv">foldlevel&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="s2">&amp;#34; 设置折叠层数为
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="nb">set&lt;/span> &lt;span class="nv">foldclose&lt;/span>&lt;span class="o">=&lt;/span>all &lt;span class="s2">&amp;#34; 设置为自动关闭折叠
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> nnoremap &amp;lt;space&amp;gt; @&lt;span class="o">=((&lt;/span>foldclosed&lt;span class="o">(&lt;/span>line&lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;.&amp;#39;&lt;/span>&lt;span class="o">))&lt;/span> &amp;lt; 0&lt;span class="o">)&lt;/span> ? &lt;span class="s1">&amp;#39;zc&amp;#39;&lt;/span> : &lt;span class="s1">&amp;#39;zo&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34; 用空格键来开关折叠
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="k">return&lt;/span> OS type, eg: windows, or linux, mac, et.st..
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">function&lt;/span>! MySys&lt;span class="o">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> has&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;win16&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">||&lt;/span> has&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;win32&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">||&lt;/span> has&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;win64&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">||&lt;/span> has&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;win95&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="s2">&amp;#34;windows&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> elseif has&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;unix&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="s2">&amp;#34;linux&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> endif
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">endfunction
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; 用户目录变量&lt;/span>&lt;span class="nv">$VIMFILES&lt;/span>&lt;span class="s2">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">if MySys() == &amp;#34;&lt;/span>windows&lt;span class="s2">&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> let &lt;/span>&lt;span class="nv">$VIMFILES&lt;/span>&lt;span class="s2"> = &lt;/span>&lt;span class="nv">$VIM&lt;/span>&lt;span class="s2">.&amp;#39;/vimfiles&amp;#39;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">elseif MySys() == &amp;#34;&lt;/span>linux&lt;span class="s2">&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> let &lt;/span>&lt;span class="nv">$VIMFILES&lt;/span>&lt;span class="s2"> = &lt;/span>&lt;span class="nv">$HOME&lt;/span>&lt;span class="s2">.&amp;#39;/.vim&amp;#39;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">endif
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> 设定doc文档目录
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">let&lt;/span> &lt;span class="nv">helptags&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">$VIMFILES&lt;/span>.&lt;span class="s1">&amp;#39;/doc&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; 设置字体 以及中文支持
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">if has(&amp;#34;&lt;/span>win32&lt;span class="s2">&amp;#34;)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> set guifont=Inconsolata:h12:cANSI
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">endif
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> 配置多语言环境
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> has&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;multi_byte&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34; UTF-8 编码
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> set encoding=utf-8
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> set termencoding=utf-8
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> set formatoptions+=mM
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> set fencs=utf-8,gbk &amp;#34;&lt;/span>here can add argment to spurt the chinese
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> v:lang &lt;span class="o">=&lt;/span>~? &lt;span class="s1">&amp;#39;^\(zh\)\|\(ja\)\|\(ko\)&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">set&lt;/span> &lt;span class="nv">ambiwidth&lt;/span>&lt;span class="o">=&lt;/span>double
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> endif
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> has&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;win32&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">source&lt;/span> &lt;span class="nv">$VIMRUNTIME&lt;/span>/delmenu.vim
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">source&lt;/span> &lt;span class="nv">$VIMRUNTIME&lt;/span>/menu.vim
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> language messages zh_CN.utf-8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> endif
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> echoerr &lt;span class="s2">&amp;#34;Sorry, this version of (g)vim was not compiled with +multi_byte&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">endif
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; Buffers操作快捷方式!
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">nnoremap &amp;lt;C-RETURN&amp;gt; :bnext&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">nnoremap &amp;lt;C-S-RETURN&amp;gt; :bprevious&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> Tab操作快捷方式!
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nnoremap &amp;lt;C-TAB&amp;gt; :tabnext&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nnoremap &amp;lt;C-S-TAB&amp;gt; :tabprev&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;关于tab的快捷键
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> map tn :tabnext&amp;lt;cr&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; map tp :tabprevious&amp;lt;cr&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> map td :tabnew .&amp;lt;cr&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; map te :tabedit
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> map tc :tabclose&amp;lt;cr&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;窗口分割时,进行切换的按键热键需要连接两次,比如从下方窗口移动
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span>光标到上方窗口,需要&amp;lt;c-w&amp;gt;&amp;lt;c-w&amp;gt;k,非常麻烦,现在重映射为&amp;lt;c-k&amp;gt;,切换的
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;时候会变得非常方便.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">nnoremap &amp;lt;C-h&amp;gt; &amp;lt;C-w&amp;gt;h
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">nnoremap &amp;lt;C-j&amp;gt; &amp;lt;C-w&amp;gt;j
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">nnoremap &amp;lt;C-k&amp;gt; &amp;lt;C-w&amp;gt;k
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">nnoremap &amp;lt;C-l&amp;gt; &amp;lt;C-w&amp;gt;l
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span>一些不错的映射转换语法（如果在一个文件中混合了不同语言时有用）
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nnoremap &amp;lt;leader&amp;gt;1 :set &lt;span class="nv">filetype&lt;/span>&lt;span class="o">=&lt;/span>xhtml&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nnoremap &amp;lt;leader&amp;gt;2 :set &lt;span class="nv">filetype&lt;/span>&lt;span class="o">=&lt;/span>css&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nnoremap &amp;lt;leader&amp;gt;3 :set &lt;span class="nv">filetype&lt;/span>&lt;span class="o">=&lt;/span>javascript&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nnoremap &amp;lt;leader&amp;gt;4 :set &lt;span class="nv">filetype&lt;/span>&lt;span class="o">=&lt;/span>php&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; set fileformats=unix,dos,mac
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> nmap &amp;lt;leader&amp;gt;fd :se &lt;span class="nv">fileformat&lt;/span>&lt;span class="o">=&lt;/span>dos&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; nmap &amp;lt;leader&amp;gt;fu :se fileformat=unix&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> use Ctrl+&lt;span class="o">[&lt;/span>l&lt;span class="p">|&lt;/span>n&lt;span class="p">|&lt;/span>p&lt;span class="p">|&lt;/span>cc&lt;span class="o">]&lt;/span> to list&lt;span class="p">|&lt;/span>next&lt;span class="p">|&lt;/span>previous&lt;span class="p">|&lt;/span>jump to count the result
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; map &amp;lt;C-x&amp;gt;l &amp;lt;ESC&amp;gt;:cl&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> map &amp;lt;C-x&amp;gt;n &amp;lt;ESC&amp;gt;:cn&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; map &amp;lt;C-x&amp;gt;p &amp;lt;ESC&amp;gt;:cp&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> map &amp;lt;C-x&amp;gt;c &amp;lt;ESC&amp;gt;:cc&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; 让 Tohtml 产生有 CSS 语法的 html
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> syntax/2html.vim，可以用:runtime! syntax/2html.vim
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">let&lt;/span> &lt;span class="nv">html_use_css&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; Python 文件的一般设置，比如不要 tab 等
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">autocmd FileType python map &amp;lt;F12&amp;gt; :!python %&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> 选中状态下 Ctrl+c 复制
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">vmap &amp;lt;C-c&amp;gt; &lt;span class="s2">&amp;#34;+y
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> 打开javascript折叠
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">let&lt;/span> b:javascript_fold&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; 打开javascript对dom、html和css的支持
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">let javascript_enable_domhtmlcss=1
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> 设置字典 ~/.vim/dict/文件的路径
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">autocmd filetype javascript &lt;span class="nb">set&lt;/span> &lt;span class="nv">dictionary&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">$VIMFILES&lt;/span>/dict/javascript.dict
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">autocmd filetype css &lt;span class="nb">set&lt;/span> &lt;span class="nv">dictionary&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">$VIMFILES&lt;/span>/dict/css.dict
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">autocmd filetype php &lt;span class="nb">set&lt;/span> &lt;span class="nv">dictionary&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">$VIMFILES&lt;/span>/dict/php.dict
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> plugin - bufexplorer.vim Buffers切换
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; \be 全屏方式查看全部打开的文件列表
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="se">\b&lt;/span>v 左右方式查看 &lt;span class="se">\b&lt;/span>s 上下方式查看
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span>-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; plugin - taglist.vim 查看函数列表，需要ctags程序
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> F4 打开隐藏taglist窗口
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">if MySys() == &amp;#34;&lt;/span>windows&lt;span class="s2">&amp;#34; &amp;#34;&lt;/span> 设定windows系统中ctags程序的位置
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">let&lt;/span> &lt;span class="nv">Tlist_Ctags_Cmd&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;&amp;#34;&amp;#39;&lt;/span>.&lt;span class="nv">$VIMRUNTIME&lt;/span>.&lt;span class="s1">&amp;#39;/ctags.exe&amp;#34;&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">elseif MySys&lt;span class="o">()&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;linux&amp;#34;&lt;/span> &lt;span class="s2">&amp;#34; 设定windows系统中ctags程序的位置
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> let Tlist_Ctags_Cmd = &amp;#39;/usr/bin/ctags&amp;#39;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">endif
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">nnoremap &amp;lt;silent&amp;gt;&amp;lt;F4&amp;gt; :TlistToggle&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">let Tlist_Show_One_File = 1 &amp;#34;&lt;/span> 不同时显示多个文件的tag，只显示当前文件的
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">let&lt;/span> &lt;span class="nv">Tlist_Exit_OnlyWindow&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span> &lt;span class="s2">&amp;#34; 如果taglist窗口是最后一个窗口，则退出vim
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">let Tlist_Use_Right_Window = 1 &amp;#34;&lt;/span> 在右侧窗口中显示taglist窗口
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">let&lt;/span> &lt;span class="nv">Tlist_File_Fold_Auto_Close&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="s2">&amp;#34; 自动折叠当前非编辑文件的方法列表
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">let Tlist_Auto_Open = 0
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">let Tlist_Auto_Update = 1
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">let Tlist_Hightlight_Tag_On_BufEnter = 1
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">let Tlist_Enable_Fold_Column = 0
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">let Tlist_Process_File_Always = 1
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">let Tlist_Display_Prototype = 0
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">let Tlist_Compact_Format = 1
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span>-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; plugin - mark.vim 给各种tags标记不同的颜色，便于观看调式的插件。
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="se">\m&lt;/span> mark or unmark the word under &lt;span class="o">(&lt;/span>or before&lt;span class="o">)&lt;/span> the cursor
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; \r manually input a regular expression. 用于搜索.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="se">\n&lt;/span> clear this mark &lt;span class="o">(&lt;/span>i.e. the mark under the cursor&lt;span class="o">)&lt;/span>, or clear all highlighted marks .
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; \* 当前MarkWord的下一个 \# 当前MarkWord的上一个
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="se">\/&lt;/span> 所有MarkWords的下一个 &lt;span class="se">\?&lt;/span> 所有MarkWords的上一个
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span>-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; plugin - NERD_tree.vim 以树状方式浏览系统中的文件和目录
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> :ERDtree 打开NERD_tree :NERDtreeClose 关闭NERD_tree
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; o 打开关闭文件或者目录 t 在标签页中打开
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> T 在后台标签页中打开 ! 执行此文件
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; p 到上层目录 P 到根目录
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> K 到第一个节点 J 到最后一个节点
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; u 打开上层目录 m 显示文件系统菜单（添加、删除、移动操作）
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> r 递归刷新当前目录 R 递归刷新当前根目录
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> F3 NERDTree 切换
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">map &amp;lt;F3&amp;gt; :NERDTreeToggle&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">imap &amp;lt;F3&amp;gt; &amp;lt;ESC&amp;gt;:NERDTreeToggle&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> plugin - NERD_commenter.vim 注释代码用的，
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; [count],cc 光标以下count行逐行添加注释(7,cc)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="o">[&lt;/span>count&lt;span class="o">]&lt;/span>,cu 光标以下count行逐行取消注释&lt;span class="o">(&lt;/span>7,cu&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; [count],cm 光标以下count行尝试添加块注释(7,cm)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> ,cA 在行尾插入 /* */,并且进入插入模式。 这个命令方便写注释。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; 注：count参数可选，无则默认为选中行或当前行
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span>-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">let&lt;/span> &lt;span class="nv">NERDSpaceDelims&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="s2">&amp;#34; 让注释符与语句之间留一个空格
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">let NERDCompactSexyComs=1 &amp;#34;&lt;/span> 多行注释时样子更好看
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> plugin - DoxygenToolkit.vim 由注释生成文档，并且能够快速生成函数标准注释
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">let g:DoxygenToolkit_authorName=&amp;#34;&lt;/span>Asins - asinsimple AT gmail DOT com&lt;span class="s2">&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">let g:DoxygenToolkit_briefTag_funcName=&amp;#34;&lt;/span>yes&lt;span class="s2">&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">map &amp;lt;leader&amp;gt;da :DoxAuthor&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">map &amp;lt;leader&amp;gt;df :Dox&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">map &amp;lt;leader&amp;gt;db :DoxBlock&amp;lt;CR&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">map &amp;lt;leader&amp;gt;dc a /* */&amp;lt;LEFT&amp;gt;&amp;lt;LEFT&amp;gt;&amp;lt;LEFT&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span>-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; plugin – ZenCoding.vim 很酷的插件，HTML代码生成
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> 插件最新版：http://github.com/mattn/zencoding-vim
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; 常用命令可看：http://nootn.com/blog/Tool/23/
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span>-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> plugin – checksyntax.vim JavaScript常见语法错误检查
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; 默认快捷方式为 F5
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span>-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">let&lt;/span> g:checksyntax_auto &lt;span class="o">=&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="s2">&amp;#34; 不自动检查
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span>-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; plugin - NeoComplCache.vim 自动补全插件
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span>-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">let&lt;/span> g:AutoComplPop_NotEnableAtStartup &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">let&lt;/span> g:NeoComplCache_EnableAtStartup &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">let&lt;/span> g:NeoComplCache_SmartCase &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">let&lt;/span> g:NeoComplCache_TagsAutoUpdate &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">let&lt;/span> g:NeoComplCache_EnableInfo &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">let&lt;/span> g:NeoComplCache_EnableCamelCaseCompletion &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">let&lt;/span> g:NeoComplCache_MinSyntaxLength &lt;span class="o">=&lt;/span> &lt;span class="m">3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">let&lt;/span> g:NeoComplCache_EnableSkipCompletion &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">let&lt;/span> g:NeoComplCache_SkipInputTime &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;0.5&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">let&lt;/span> g:NeoComplCache_SnippetsDir &lt;span class="o">=&lt;/span> &lt;span class="nv">$VIMFILES&lt;/span>.&lt;span class="s1">&amp;#39;/snippets&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; &amp;lt;TAB&amp;gt; completion.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">inoremap &amp;lt;expr&amp;gt;&amp;lt;TAB&amp;gt; pumvisible() ? &amp;#34;&lt;/span>&lt;span class="se">\&amp;lt;&lt;/span>C-n&amp;gt;&lt;span class="s2">&amp;#34; : &amp;#34;&lt;/span>&lt;span class="se">\&amp;lt;&lt;/span>TAB&amp;gt;&lt;span class="s2">&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> snippets expand key
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">imap &amp;lt;silent&amp;gt; &amp;lt;C-e&amp;gt; &amp;lt;Plug&amp;gt;&lt;span class="o">(&lt;/span>neocomplcache_snippets_expand&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">smap &amp;lt;silent&amp;gt; &amp;lt;C-e&amp;gt; &amp;lt;Plug&amp;gt;&lt;span class="o">(&lt;/span>neocomplcache_snippets_expand&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> plugin - matchit.vim 对%命令进行扩展使得能在嵌套标签和语句之间跳转
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; % 正向匹配 g% 反向匹配
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="o">[&lt;/span>% 定位块首 &lt;span class="o">]&lt;/span>% 定位块尾
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span>-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; plugin - vcscommand.vim 对%命令进行扩展使得能在嵌套标签和语句之间跳转
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span> SVN/git管理工具
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span>-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34; plugin – a.vim
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span>-----------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> mouse-&lt;span class="o">=&lt;/span>a
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Linux快捷键指南</title><link>https://www.omoe.cc/posts/linux%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97/</link><pubDate>Wed, 06 Sep 2023 16:06:12 +0000</pubDate><guid>https://www.omoe.cc/posts/linux%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97/</guid><description>&lt;ol>
 &lt;li>
 &lt;p>基本操作
 Ctrl + C：中断当前正在运行的程序。 &lt;br>

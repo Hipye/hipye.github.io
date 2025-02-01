@@ -8,7 +8,8 @@
 </span></span></span><span class=line><span class=cl><span class=se></span>libncurses5-dev libncursesw5-dev libpython3-dev libreadline-dev libssl-dev <span class=se>\
 </span></span></span><span class=line><span class=cl><span class=se></span>libtool llvm lrzsz msmtp ninja-build p7zip p7zip-full patch pkgconf python3 <span class=se>\
 </span></span></span><span class=line><span class=cl><span class=se></span>python3-pyelftools python3-setuptools qemu-utils rsync scons squashfs-tools <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
+</span></span></span><span class=line><span class=cl><span class=se></span>subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>golang-go python3 python3-pip
 </span></span></code></pre></div><h3 id=下载源码>下载源码</h3><p>clone<a href=https://github.com/coolsnowwolf/lede.git target=_blank rel="noopener noreferrer">[lean]</a>源码</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>git clone https://github.com/coolsnowwolf/lede.git 
 </span></span></code></pre></div><h3 id=添加第三方软件包>添加第三方软件包</h3><p>先编辑基础配置文件
 <strong>feeds.conf.default</strong> 这个文本类似软件包配置
@@ -19,6 +20,9 @@ kenzo是第三方基础源有想用的软件包<br>small是依赖包必须要添
 </span></span><span class=line><span class=cl>./scripts/feeds  install -a
 </span></span><span class=line><span class=cl>make menuconfig
 </span></span></code></pre></div><h3 id=编译失败排查>编译失败排查</h3><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>find dl  -size -1024c -exec ls -l <span class=o>{}</span> <span class=se>\;</span>
+</span></span></code></pre></div><p>在编译过程中，如果需要使用 <code>npm</code> 下载依赖包，可以设置淘宝镜像：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>npm config <span class=nb>set</span> registry https://registry.npmmirror.com
+</span></span></code></pre></div><p>如果编译涉及 Go 语言项目，设置 GOPROXY：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nb>export</span> <span class=nv>GOPROXY</span><span class=o>=</span>https://goproxy.cn,direct
+</span></span></code></pre></div><p>如果编译涉及 Python 脚本或工具，设置 <code>pip</code> 镜像：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>pip config <span class=nb>set</span> global.index-url https://mirrors.aliyun.com/pypi/simple
 </span></span></code></pre></div><p>前两项的必须选好 第一项是选择cpu的类别 第二项是你的路由型号</p><h3 id=dl包>dl包</h3><p><del>由于国内的网络环境导致在下载所需软件包时会导致失败这里提供一个国内dl镜像
 <a href=https://gitee.com/tolqy/openwrt-lede-dl target=_blank rel="noopener noreferrer">gitee</a></del></p><h3 id=修改默认网关地址>修改默认网关地址</h3><p>不喜欢路由器的默认地址<code>192.168.1.1</code>自己修改
 有多台路由时避免网关重复，这一步多设备必修改。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>vim package/base-files/files/bin/config_generate
